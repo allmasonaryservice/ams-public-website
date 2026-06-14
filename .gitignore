@@ -30,6 +30,9 @@ pnpm-debug.log*
 test-results/
 playwright-report/
 
+# Lighthouse reports
+lighthouse-*.json
+
 # Local dev scripts (Pexels image fetch tools)
 docs/fetch-*.mjs
 docs/preview-*.mjs
