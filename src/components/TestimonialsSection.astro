@@ -1,0 +1,476 @@
+---
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "All Masonry Services Inc",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "92",
+    bestRating: "5",
+    worstRating: "1",
+  },
+};
+
+const testimonials = [
+  {
+    name: "Robert Harrington",
+    location: "Hinsdale, IL",
+    text: "Our brick facade had been deteriorating for years. AMS completely restored it — the craftsmanship is outstanding. You genuinely can't tell where the new work ends and the original begins.",
+    rating: 5,
+    googleReview: true,
+    project: "Full Brick Facade Restoration",
+  },
+  {
+    name: "Catherine Liu",
+    location: "Winnetka, IL",
+    text: "They rebuilt our limestone front steps and repaired the chimney crown in a single visit. Professional, clean, and honest about exactly what needed fixing. No upselling.",
+    rating: 5,
+    googleReview: true,
+    project: "Limestone Steps + Chimney Repair",
+  },
+  {
+    name: "James & Patricia Webb",
+    location: "Oak Brook, IL",
+    text: "Three contractors looked at our crumbling tuckpointing. AMS was the only one who explained the root cause and gave us a plan — not just a quote. Worth every dollar.",
+    rating: 5,
+    googleReview: false,
+    project: "Tuckpointing + Mortar Repair",
+  },
+  {
+    name: "David Sommer",
+    location: "Lake Forest, IL",
+    text: "19 years of experience shows. Our custom stone wall looks exactly how we envisioned it — and they finished two days ahead of schedule. Rare to find that level of reliability.",
+    rating: 5,
+    googleReview: true,
+    project: "Custom Stone Garden Wall",
+  },
+  {
+    name: "Margaret Okonkwo",
+    location: "Naperville, IL",
+    text: "Called for an emergency chimney repair after a storm. AMS came out within 48 hours, assessed everything properly, and had it sealed before more rain hit. Highly recommend.",
+    rating: 5,
+    googleReview: false,
+    project: "Emergency Chimney Repair",
+  },
+];
+
+const neighborhoodHighlights = [
+  {
+    area: "North Shore",
+    neighborhoods: ["Winnetka", "Lake Forest", "Highland Park", "Glencoe"],
+    quote: "North Shore homeowners trust AMS where limestone, brick, and matched craftsmanship aren't optional.",
+    projects: "Limestone restoration, tuckpointing, chimney rebuild",
+  },
+  {
+    area: "Western Suburbs",
+    neighborhoods: ["Hinsdale", "Oak Brook", "Elmhurst", "Burr Ridge"],
+    quote: "Oak Brook to Hinsdale — the western corridor is our most requested service region.",
+    projects: "Custom stone walls, facade restoration, brick repair",
+  },
+  {
+    area: "DuPage Corridor",
+    neighborhoods: ["Naperville", "Wheaton", "Clarendon Hills"],
+    quote: "DuPage families call AMS for solid work — no pressure, no upselling.",
+    projects: "Tuckpointing, chimney repair, brick steps",
+  },
+];
+---
+
+<section class="tm" id="testimonials">
+  <div class="tm-inner">
+
+    <!-- Header -->
+    <div class="tm-header">
+      <span class="tm-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>Client Testimonials</span>
+      <h2 class="tm-heading">What Chicagoland<br><em>Homeowners Say</em></h2>
+      <div class="tm-header-row">
+        <p class="tm-sub">Real feedback from homeowners across the North Shore, western suburbs, and greater Chicagoland area.</p>
+        <div class="tm-aggregate">
+          <div class="tm-stars" aria-label="4.8 out of 5 stars">★★★★★</div>
+          <span class="tm-score">4.8</span>
+          <span class="tm-reviews">· 92 Google Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main testimonial grid -->
+    <div class="tm-grid">
+      {testimonials.map((t, i) => (
+        <div class={`tm-card${i === 0 ? ' tm-card--featured' : ''}`}>
+          <div class="tm-card-top">
+            <div class="tm-stars-row" aria-label={`${t.rating} out of 5 stars`} aria-hidden="false">
+              {'★'.repeat(t.rating)}
+            </div>
+            {t.googleReview && (
+              <div class="tm-google-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>Google Review</span>
+              </div>
+            )}
+          </div>
+          <blockquote class="tm-quote" cite={t.googleReview ? 'https://www.google.com/maps/place/All+Masonry+Services' : undefined}>
+            <p>"{t.text}"</p>
+            <cite class="tm-cite-hidden">{t.name}, {t.location}</cite>
+          </blockquote>
+          <div class="tm-meta">
+            <div class="tm-author">
+              <span class="tm-name">{t.name}</span>
+              <span class="tm-location">{t.location}</span>
+            </div>
+            <span class="tm-project">{t.project}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Neighborhood highlights card -->
+    <div class="nh-card">
+      <div class="nh-card-header">
+        <span class="nh-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>By Neighborhood</span>
+        <h3 class="nh-heading">Trusted Across<br><em>Every Corner of Chicagoland</em></h3>
+      </div>
+      <div class="nh-grid">
+        {neighborhoodHighlights.map(n => (
+          <div class="nh-item">
+            <div class="nh-area-name">{n.area}</div>
+            <div class="nh-neighborhoods">
+              {n.neighborhoods.map(nb => (
+                <span class="nh-tag">{nb}</span>
+              ))}
+            </div>
+            <p class="nh-quote">"{n.quote}"</p>
+            <p class="nh-projects">{n.projects}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+
+<style>
+.tm {
+  background: #F5F3EF;
+  padding: 100px 0;
+  border-top: 1px solid #D8D2C8;
+}
+.tm-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* HEADER */
+.tm-header {
+  margin-bottom: 60px;
+}
+.tm-label {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin-bottom: 16px;
+}
+.tm-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+}
+.tm-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+.tm-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.tm-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 460px;
+}
+.tm-aggregate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: 1px solid #D8D2C8;
+  padding: 10px 16px;
+  background: #fff;
+}
+.tm-stars {
+  font-size: 15px;
+  color: #D4A931;
+  letter-spacing: 1px;
+}
+.tm-score {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.tm-reviews {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #8B8070;
+}
+
+/* GRID */
+.tm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+/* CARD */
+.tm-card {
+  background: #fff;
+  padding: 32px;
+  border: 2px solid #D8D2C8;
+  border-top: 3px solid #D4A931;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.tm-card:hover {
+  border-color: #D4A931;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
+}
+.tm-card--featured {
+  grid-column: span 2;
+}
+
+.tm-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tm-stars-row {
+  font-size: 14px;
+  color: #D4A931;
+  letter-spacing: 1px;
+}
+.tm-google-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8B8070;
+  border: 1px solid #D8D2C8;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+.tm-quote {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: #2D2D2D;
+  line-height: 1.75;
+  margin: 0;
+  border-left: 3px solid #D4A931;
+  padding-left: 14px;
+  flex: 1;
+}
+.tm-quote p { margin: 0; }
+.tm-quote cite { font-style: normal; }
+.tm-cite-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tm-meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #D8D2C8;
+  flex-wrap: wrap;
+}
+.tm-author {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tm-name {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.tm-location {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  color: #8B8070;
+}
+.tm-project {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #D4A931;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* NEIGHBORHOOD HIGHLIGHTS CARD */
+.nh-card {
+  background: #1A1A1A;
+  padding: 56px 56px 64px;
+  border: 2px solid #1A1A1A;
+}
+.nh-card-header {
+  margin-bottom: 48px;
+}
+.nh-label {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin-bottom: 14px;
+}
+.nh-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin: 0;
+}
+.nh-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+.nh-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.nh-item {
+  padding: 32px 32px 32px 0;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.nh-item:first-child {
+  padding-left: 0;
+}
+.nh-item:not(:first-child) {
+  padding-left: 32px;
+}
+.nh-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+.nh-area-name {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #D4A931;
+}
+.nh-neighborhoods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.nh-tag {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: #D4A931;
+  padding: 3px 8px;
+}
+.nh-quote {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+.nh-projects {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+}
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .tm-inner { padding: 0 40px; }
+  .nh-card { padding: 48px 40px; }
+}
+@media (max-width: 900px) {
+  .tm { padding: 72px 0; }
+  .tm-grid { grid-template-columns: repeat(2, 1fr); }
+  .tm-card--featured { grid-column: span 2; }
+  .nh-grid { grid-template-columns: 1fr; }
+  .nh-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 28px 0 !important;
+  }
+  .nh-item:last-child { border-bottom: none; }
+}
+@media (max-width: 640px) {
+  .tm { padding: 56px 0; }
+  .tm-inner { padding: 0 20px; }
+  .tm-grid { grid-template-columns: 1fr; gap: 2px; }
+  .tm-card--featured { grid-column: span 1; }
+  .tm-header-row { flex-direction: column; gap: 16px; }
+  .nh-card { padding: 36px 24px; }
+}
+</style>
+

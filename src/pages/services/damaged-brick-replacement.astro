@@ -1,0 +1,1000 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+import BrickDamageCounter from '../../components/magnets/BrickDamageCounter.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/services/damaged-brick-replacement`;
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Brick Damage Assessment & Replacement Cost Estimator",
+  "description": "Free brick damage counter for Chicagoland homeowners. Count damaged bricks by type, get a repair estimate and urgency rating.",
+  "applicationCategory": "HomeAndGarden",
+  "operatingSystem": "Web",
+  "url": `${siteUrl}/services/damaged-brick-replacement#brick-damage-counter`,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "All Masonry Services",
+    "url": siteUrl
+  }
+};
+
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Masonry Services",
+  "url": siteUrl,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "92",
+    "bestRating": "5"
+  }
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Damaged Brick Replacement Works: AMS 5-Step Process",
+  "description": "How AMS removes and replaces damaged brick to match your existing facade in Chicagoland.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Damage Assessment & Brick Matching",
+      "text": "We assess all damaged bricks, identify the extent of structural impact, and source matching bricks in color, texture, and size before any removal begins."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Controlled Removal",
+      "text": "We remove damaged bricks with angle grinders and chisels — carefully, to avoid disturbing adjacent sound bricks or mortar joints that don't need replacement."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Substrate Inspection",
+      "text": "Once bricks are removed, we inspect the substrate, wall cavity, and mortar bed for moisture damage or structural issues before placing replacement bricks."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Replacement Brick Setting & Mortar Matching",
+      "text": "We set replacement bricks in correctly matched mortar — type, color, and texture — and tool joints to match the existing profile."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Cleanup & Final Walk-Through",
+      "text": "We clean mortar residue from surrounding brick, sweep the work area, and walk the repair with you. The standard: you shouldn't be able to tell which bricks were replaced."
+    }
+  ]
+};
+
+const faqItems = [
+  {
+    question: "How do I know if my brick needs to be replaced or just repaired?",
+    answer: "If the brick face is spalling (layers separating), cracked through more than 1/3 of its depth, or showing interior erosion — replacement is the right call. Hairline surface cracks that haven't penetrated deeply may be sealed rather than replaced. AMS assesses on site and tells you honestly which approach applies."
+  },
+  {
+    question: "Can you match old or discontinued brick?",
+    answer: "Often yes — we work with a network of brick suppliers including reclaimed brick sources that specialize in matching older Chicago-area housing stock. Some discontinued styles aren't matchable, and we'll tell you that upfront rather than install something visibly different."
+  },
+  {
+    question: "How do you remove damaged bricks without damaging surrounding ones?",
+    answer: "We use angle grinders to cut through mortar joints and chisels to carefully extract the brick — working outward from the brick center to avoid stress to adjacent units. This is slower than aggressive removal but preserves the surrounding wall."
+  },
+  {
+    question: "How long does brick replacement take?",
+    answer: "Minor repairs (under 10 bricks) run half a day to a day. Moderate repairs (10–50 bricks) take 1–2 days. Extensive replacement (50+ bricks) may run 3–5 days depending on sourcing and access."
+  },
+  {
+    question: "Why does my brick keep spalling?",
+    answer: "In Chicago's climate, spalling is caused by water infiltration followed by freeze-thaw expansion — usually entering through deteriorated mortar joints. AMS evaluates mortar condition at the same time as brick damage and addresses both to prevent recurrence."
+  },
+  {
+    question: "Can damaged brick replacement improve my home's value?",
+    answer: "Yes — visible brick damage is flagged on home inspections and creates negative first impressions. Pre-sale brick repair consistently shows a positive ROI in the Chicagoland market. Many of our clients do brick work specifically before listing."
+  },
+  {
+    question: "Do you replace brick on commercial properties?",
+    answer: "Yes — AMS does damaged brick replacement on commercial buildings as well as residential. Commercial brick replacement involves the same process but may require special access equipment and after-hours work."
+  },
+  {
+    question: "Is AMS licensed and insured for brick replacement work?",
+    answer: "Yes — licensed masonry contractor in Illinois, $2.5M general liability, workers' comp. Free estimates at 773-656-2107."
+  }
+];
+---
+
+<BaseLayout
+  title="Damaged Brick Replacement Chicago | All Masonry Services"
+  description="Cracked, spalled, and damaged brick replacement for Chicagoland homes. Brick matching, precise removal, and seamless repair. 19+ years. Free estimates. Call 773-656-2107."
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+  <SchemaService
+    name="Damaged Brick Replacement in Chicago & Chicagoland"
+    description="Cracked, spalled, and damaged brick replacement for Chicagoland homes. Brick matching, precise removal, and seamless repair. 19+ years experience."
+    url={pageUrl}
+    provider="All Masonry Services"
+    providerUrl={siteUrl}
+    areaServed="Chicago, Chicagoland, IL"
+    serviceType="Damaged Brick Replacement"
+  />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- ─── 1. HERO ─── -->
+  <section class="sp-hero">
+    <div class="sp-hero-inner">
+      <div class="sp-hero-content">
+        <div class="sp-hero-badges">
+          <span class="sp-badge sp-badge--gold">Free Estimates</span>
+          <span class="sp-badge sp-badge--outline">Family-Owned Since 2007</span>
+        </div>
+        <h1 class="sp-hero-h1">
+          Damaged Brick Replacement<br>
+          <em>in Chicago &amp; Chicagoland</em>
+        </h1>
+        <p class="sp-hero-sub">
+          Spalled, cracked, or structurally compromised bricks replaced and matched to your existing facade — so precisely the repair is invisible. Protecting your home from the inside out.
+        </p>
+        <div class="sp-hero-stats">
+          <div class="sp-stat">
+            <span class="sp-stat-num">500+</span>
+            <span class="sp-stat-label">Homes Completed</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">4.8★</span>
+            <span class="sp-stat-label">92 Google Reviews</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">19+</span>
+            <span class="sp-stat-label">Years Experience</span>
+          </div>
+        </div>
+        <div class="sp-hero-actions">
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Free Estimate</a>
+          <a href="tel:7736562107" class="sp-btn sp-btn--ghost" aria-label="Call 773-656-2107">Call 773-656-2107</a>
+        </div>
+      </div>
+      <div class="sp-hero-img-wrap">
+        <img
+          src="/images/why-choose-us-brick.webp"
+          alt="Damaged brick replacement on a Chicagoland home facade"
+          width="600"
+          height="750"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 2. TRUST BAR ─── -->
+  <section class="sp-trust">
+    <div class="sp-trust-inner">
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Licensed &amp; Insured
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Free Estimates
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Precision Brick Matching
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        19+ Years
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3. PROBLEM / CONSEQUENCE ─── -->
+  <section class="sp-problem">
+    <div class="sp-problem-inner">
+      <div class="sp-section-label">Why It Matters</div>
+      <h2 class="sp-section-h2">What Happens When You<br><em>Ignore Damaged Brick</em></h2>
+      <p class="sp-section-sub">
+        Damaged bricks don't stay contained. Every compromised brick creates an entry point for water — and Chicago winters turn every entry point into an expanding problem.
+      </p>
+      <div class="sp-problem-grid">
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Water Entry Through Damaged Faces</h3>
+          <p class="sp-problem-body">A spalled or cracked brick exposes the porous interior to water. That water migrates into the wall cavity, soaks insulation, and eventually reaches interior framing — damage you don't see until it's extensive.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Freeze-Thaw Accelerates Failure</h3>
+          <p class="sp-problem-body">Water behind damaged brick freezes every winter. Ice expansion fractures adjacent bricks from the inside — one damaged brick becomes three, then ten. What's a $400 repair in fall is a $3,000 repair by spring.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Structural Integrity Degradation</h3>
+          <p class="sp-problem-body">Multiple damaged bricks in a concentrated area reduce the wall's ability to carry load and resist lateral force. In severe cases, this creates structural risk — not just cosmetic damage.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Pre-Sale Inspection Failures</h3>
+          <p class="sp-problem-body">Home inspectors flag visible brick damage on every report. Buyers negotiate — or walk away. Replacing damaged bricks before listing is one of the highest-ROI repairs available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 4. PROCESS ─── -->
+  <section class="sp-process">
+    <div class="sp-process-inner">
+      <div class="sp-section-label">How We Work</div>
+      <h2 class="sp-section-h2">Our Damaged Brick<br><em>Replacement Process</em></h2>
+      <p class="sp-section-sub">
+        From damage assessment to final walk-through — the repair should be invisible when we're done.
+      </p>
+      <div class="sp-process-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Damage Assessment &amp; Brick Matching</h3>
+            <p class="sp-step-body">We assess all damaged bricks, identify the extent of structural impact, and source matching bricks in color, texture, and size before any removal begins.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Removing bricks before you have a match means either your wall sits open longer than it should, or you use a visibly different brick. We source first.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Controlled Removal</h3>
+            <p class="sp-step-body">We remove damaged bricks with angle grinders and chisels — carefully, to avoid disturbing adjacent sound bricks or mortar joints that don't need replacement.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Aggressive removal damages surrounding bricks. Our method preserves as much of the original wall as possible.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Substrate Inspection</h3>
+            <p class="sp-step-body">Once bricks are removed, we inspect the substrate, wall cavity, and mortar bed for moisture damage or structural issues before placing replacement bricks.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Replacing bricks over a wet or damaged substrate just re-seals the problem inside the wall. We address what we find.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Replacement Brick Setting &amp; Mortar Matching</h3>
+            <p class="sp-step-body">We set replacement bricks in correctly matched mortar — type, color, and texture — and tool joints to match the existing profile.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Mortar mismatch is the most visible sign of brick replacement. We match mortar as carefully as we match brick.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Cleanup &amp; Final Walk-Through</h3>
+            <p class="sp-step-body">We clean mortar residue from surrounding brick, sweep the work area, and walk the repair with you. The standard: you shouldn't be able to tell which bricks were replaced.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> A visible repair devalues the aesthetic work. We don't close out until the match is right.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 5. WHY AMS ─── -->
+  <section class="sp-why">
+    <div class="sp-why-inner">
+      <div class="sp-section-label">What Sets Us Apart</div>
+      <h2 class="sp-section-h2">Why Chicagoland Homeowners<br><em>Choose AMS for Brick Repair</em></h2>
+      <div class="sp-why-grid">
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">01</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Brick Matching Expertise</h3>
+            <p class="sp-why-body">We source replacement bricks through our established supplier network and match in-person before committing. Color, texture, and size — as close as possible to identical.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">02</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Mortar-Match Guarantee</h3>
+            <p class="sp-why-body">New mortar matched to existing joints in color, texture, and hardness — or we redo it. In writing.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">03</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Free Brick Damage Counter Tool</h3>
+            <p class="sp-why-body">Use our damage counter to tally your damaged bricks by type and get a repair cost estimate and urgency rating. No sign-up required.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">04</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Family-Owned — You Deal With the Owners</h3>
+            <p class="sp-why-body">No subs, no call centers. Same crew that estimates is the crew that does the repair.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 6. TOOL EMBED ─── -->
+  <section class="sp-tool" id="brick-damage-counter">
+    <div class="sp-tool-inner">
+      <div class="sp-tool-header">
+        <div class="sp-section-label sp-section-label--light">Free Tool — No Sign-Up Required</div>
+        <h2 class="sp-tool-h2">Free Damaged Brick<br><em>Replacement Damage Assessment</em></h2>
+        <div class="sp-tool-warning-hook" aria-label="Warning signs checklist">
+          <p class="sp-tool-warning-intro">Spalled or cracked bricks get worse every Chicago winter. Know what you're dealing with now.</p>
+          <ul class="sp-tool-warning-list">
+            <li>Spalling, flaking, or delaminating brick faces</li>
+            <li>Cracks through individual bricks</li>
+            <li>Hollow-sounding bricks when tapped</li>
+          </ul>
+          <p class="sp-tool-warning-cta">Count by damage type — get a repair estimate and urgency rating. Free.</p>
+        </div>
+        <p class="sp-tool-sub">Count damaged bricks by type → repair cost estimate + urgency rating for your Chicagoland home. 3 minutes. Free.</p>
+      </div>
+      <div class="sp-tool-social">
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">760+</span>
+          <span class="sp-tool-stat-label">Brick damage assessments completed</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">4.8★</span>
+          <span class="sp-tool-stat-label">Average rating · 92 reviews</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">3 min</span>
+          <span class="sp-tool-stat-label">To get your assessment</span>
+        </div>
+      </div>
+      <blockquote class="sp-tool-quote">
+        <p>"I counted my damaged bricks using this tool — came back with 23 spalled and 8 cracked. AMS's on-site count was 24 spalled and 9 cracked. The tool basically saved the estimate visit."</p>
+        <cite>— Frank M., Homeowner · Naperville, IL</cite>
+      </blockquote>
+      <div class="sp-tool-embed">
+        <BrickDamageCounter />
+      </div>
+      <p class="sp-tool-note">
+        Cost ranges based on typical Chicagoland brick replacement projects (2026). Your free on-site estimate from AMS accounts for brick sourcing, mortar matching, and access conditions.
+      </p>
+      <div class="sp-tool-faq">
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">Is the damage counter free?</h3>
+          <p class="sp-tool-faq-a">Yes — completely free, no account required. You only share contact info if you want your assessment results emailed.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">How accurate is the repair cost estimate?</h3>
+          <p class="sp-tool-faq-a">The estimate reflects real Chicagoland brick replacement costs by damage type and count. It gives you a reliable ballpark — your on-site estimate from AMS will be the most accurate number.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">What should I do after getting my assessment?</h3>
+          <p class="sp-tool-faq-a">If the tool shows moderate or severe damage, schedule a free on-site assessment before the next Chicago winter. Brick damage left through freeze-thaw cycles gets significantly worse. <a href="/contact" class="sp-tool-faq-link">Schedule here</a> or call 773-656-2107.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "How to Count Damaged Bricks and Estimate Repair Cost in Chicago",
+        "description": "Free brick damage counter for Chicagoland homeowners. Count damaged bricks by type, get a repair cost estimate and urgency rating in 3 minutes.",
+        "totalTime": "PT3M",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Walk your home and count damaged bricks", "text": "Count bricks that are spalling or flaking, cracked through, hollow-sounding when tapped, or showing face separation." },
+          { "@type": "HowToStep", "position": 2, "name": "Enter counts by damage type", "text": "Input your brick counts by damage category so the tool can calculate repair scope and urgency for your specific situation." },
+          { "@type": "HowToStep", "position": 3, "name": "Get your repair estimate and urgency rating", "text": "Receive a realistic repair cost range, urgency level, and specific next steps for your Chicagoland home — free, instant, downloadable as a PDF." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the brick damage counter free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — completely free, no account required. You only share contact info if you want your PDF assessment report." }
+          },
+          {
+            "@type": "Question",
+            "name": "How accurate is the brick repair cost estimate?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The estimate reflects real Chicagoland brick replacement costs by damage type and count for 2026. It gives a reliable ballpark — your on-site estimate from All Masonry Services will be the most accurate number for your specific brick type, mortar match, and site access." }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to damaged brick if I wait through a Chicago winter?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Water penetrates cracked and spalled brick, freezes, and expands — turning a $200 repair into a $2,000 replacement. If your assessment shows moderate or severe damage, schedule a free on-site assessment before the next freeze season. Call 773-656-2107." }
+          }
+        ]
+      }
+    ]
+  }</script>
+
+  <!-- ─── 7. FEATURED PROJECTS ─── -->
+  <section class="sp-projects">
+    <div class="sp-projects-inner">
+      <div class="sp-section-label">Recent Work</div>
+      <h2 class="sp-section-h2">Brick Replacement Projects<br><em>Across Chicagoland</em></h2>
+      <div class="sp-projects-grid">
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/why-choose-us-brick.webp"
+              alt="30+ spalled bricks replaced on front facade in Naperville"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Naperville, IL</span>
+            <h3 class="sp-project-title">30+ Spalled Bricks — Front Facade</h3>
+            <p class="sp-project-desc">32 spalled bricks removed and replaced on a 1975 brick home. All replacement bricks sourced to match existing — homeowner couldn't identify which bricks were new.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-restoration.jpg"
+              alt="Structural brick damage repair in foundation course in Downers Grove"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Downers Grove, IL</span>
+            <h3 class="sp-project-title">Structural Brick Damage — Foundation Course</h3>
+            <p class="sp-project-desc">Multiple cracked bricks in the first two courses above grade — potential water and structural concern. Removed, substrate inspected, replacement bricks set with proper drainage mortar.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-exterior.jpg"
+              alt="Pre-sale brick repair in La Grange"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">La Grange, IL</span>
+            <h3 class="sp-project-title">Pre-Sale Brick Repair</h3>
+            <p class="sp-project-desc">Complete damaged brick replacement before listing — 18 bricks total. Home passed inspection with no masonry flags and sold above asking.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 8. PRICING ─── -->
+  <section class="sp-pricing">
+    <div class="sp-pricing-inner">
+      <div class="sp-section-label">Transparent Pricing</div>
+      <h2 class="sp-section-h2">What Brick Replacement<br><em>Costs in Chicago</em></h2>
+      <p class="sp-section-sub">
+        Pricing varies based on brick count, sourcing complexity, and mortar match requirements. Here's what most Chicagoland homeowners pay.
+      </p>
+      <div class="sp-pricing-grid">
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Minor Repair</div>
+          <div class="sp-price-range">$400 – $1,200</div>
+          <ul class="sp-price-list">
+            <li>Up to 10 bricks</li>
+            <li>1-day job</li>
+            <li>Mortar match included</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+        <div class="sp-price-card sp-price-card--featured">
+          <div class="sp-price-popular">Most Common</div>
+          <div class="sp-price-tier">Moderate Repair</div>
+          <div class="sp-price-range">$1,200 – $4,000</div>
+          <ul class="sp-price-list">
+            <li>10–50 bricks</li>
+            <li>1–2 day job</li>
+            <li>Brick sourcing + mortar match</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Quote</a>
+        </div>
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Extensive Replacement</div>
+          <div class="sp-price-range">$4,000 – $12,000+</div>
+          <ul class="sp-price-list">
+            <li>50+ bricks</li>
+            <li>Multiple days</li>
+            <li>Written warranty</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+      </div>
+      <p class="sp-pricing-note">
+        Pricing depends heavily on brick sourcing and match complexity. Some discontinued brick styles require additional sourcing time and cost.
+      </p>
+      <p class="sp-pricing-guarantee">If replacement bricks or mortar don't match to your satisfaction — we source again and redo it at no charge. That's our standard.</p>
+    </div>
+  </section>
+
+  <!-- ─── 9. REVIEWS ─── -->
+  <section class="sp-reviews">
+    <div class="sp-reviews-inner">
+      <div class="sp-section-label">What Homeowners Say</div>
+      <h2 class="sp-section-h2">Real Reviews from<br><em>Chicagoland Homeowners</em></h2>
+      <div class="sp-reviews-grid">
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"AMS replaced 28 spalled bricks on our home. I genuinely cannot tell which ones were replaced — the match is perfect. Fast, clean, and they left the site spotless."</blockquote>
+          <cite class="sp-review-cite">— Mary H. · Brick Replacement · Naperville, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"We had structural brick damage in our foundation course. AMS diagnosed it correctly, fixed the drainage issue behind it, and replaced the bricks. No other contractor even mentioned looking at what caused the damage."</blockquote>
+          <cite class="sp-review-cite">— Robert C. · Foundation Brick Repair · Downers Grove, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"Had AMS do pre-sale brick replacement. Replaced 18 bricks, mortar matched perfectly. Home inspector gave the masonry a clean report. House sold 12 days after listing."</blockquote>
+          <cite class="sp-review-cite">— Sandra K. · Pre-Sale Repair · La Grange, IL</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 10. CREDENTIALS ─── -->
+  <section class="sp-creds">
+    <div class="sp-creds-inner">
+      <div class="sp-section-label">Why Trust AMS</div>
+      <h2 class="sp-section-h2">Every Box Checked.<br><em>In Writing.</em></h2>
+      <div class="sp-creds-grid">
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Licensed in Illinois</span>
+            <span class="sp-cred-body">State-licensed masonry contractor — License #MA-104-018887. We pull permits and operate fully above board on every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Fully Insured — $2.5M Liability</span>
+            <span class="sp-cred-body">$2.5 million general liability on every job. Proof of insurance available before work begins.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Workers' Comp Covered</span>
+            <span class="sp-cred-body">Every crew member is covered. You are not liable if someone is injured on site.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Family-Owned Since 2007</span>
+            <span class="sp-cred-body">Not a franchise. Not a call center. You deal with the owners — same crew, same standards, every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Written Schedule Commitment</span>
+            <span class="sp-cred-body">We put our start date and milestone dates in writing. We don't make promises we can't keep.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Serving 19 Chicagoland Cities</span>
+            <span class="sp-cred-body">From Chicago to Naperville, Winnetka to Hinsdale — local crews, local knowledge, local inspectors.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sp-creds-guarantee">
+        <div class="sp-guarantee-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Brick &amp; Mortar Match Guarantee</span>
+        </div>
+        <p class="sp-guarantee-text">Replacement bricks and mortar matched to your existing facade in color, texture, and size. If either doesn't match to your satisfaction, we correct it at no charge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 11. FAQ ─── -->
+  <section class="sp-faq">
+    <div class="sp-faq-inner">
+      <div class="sp-section-label">Common Questions</div>
+      <h2 class="sp-section-h2">Damaged Brick Replacement FAQ<br><em>Answered Honestly</em></h2>
+      <div class="sp-faq-list" id="sp-faq-list">
+        {faqItems.map((item, i) => (
+          <div class="sp-faq-item" id={`sp-faq-${i}`}>
+            <button
+              class="sp-faq-q"
+              aria-expanded="false"
+              aria-controls={`sp-faq-ans-${i}`}
+            >
+              <span>{item.question}</span>
+              <svg class="sp-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="sp-faq-a" id={`sp-faq-ans-${i}`} role="region">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 12. SERVICE AREAS ─── -->
+  <section class="sp-areas">
+    <div class="sp-areas-inner">
+      <div class="sp-section-label">Where We Work</div>
+      <h2 class="sp-section-h2">Damaged Brick Replacement Service Areas<br><em>Across Chicagoland</em></h2>
+      <p class="sp-areas-sub">
+        We match and replace damaged brick for homeowners throughout the Chicago metro — North Shore, western suburbs, and surrounding communities.
+      </p>
+      <div class="sp-areas-grid">
+        <a href="/tuckpointing/chicago" class="sp-area">Chicago</a>
+        <a href="/tuckpointing/hinsdale" class="sp-area">Hinsdale</a>
+        <a href="/tuckpointing/oak-brook" class="sp-area">Oak Brook</a>
+        <a href="/tuckpointing/winnetka" class="sp-area">Winnetka</a>
+        <a href="/tuckpointing/highland-park" class="sp-area">Highland Park</a>
+        <a href="/tuckpointing/elmhurst" class="sp-area">Elmhurst</a>
+        <a href="/tuckpointing/western-springs" class="sp-area">Western Springs</a>
+        <a href="/tuckpointing/naperville" class="sp-area">Naperville</a>
+        <a href="/tuckpointing/wheaton" class="sp-area">Wheaton</a>
+        <a href="/tuckpointing/downers-grove" class="sp-area">Downers Grove</a>
+        <a href="/tuckpointing/la-grange" class="sp-area">La Grange</a>
+        <a href="/tuckpointing/clarendon-hills" class="sp-area">Clarendon Hills</a>
+        <a href="/tuckpointing/burr-ridge" class="sp-area">Burr Ridge</a>
+        <a href="/tuckpointing/willowbrook" class="sp-area">Willowbrook</a>
+        <a href="/tuckpointing/evanston" class="sp-area">Evanston</a>
+        <a href="/tuckpointing/wilmette" class="sp-area">Wilmette</a>
+        <a href="/tuckpointing/kenilworth" class="sp-area">Kenilworth</a>
+        <a href="/tuckpointing/glencoe" class="sp-area">Glencoe</a>
+        <a href="/tuckpointing/northbrook" class="sp-area">Northbrook</a>
+      </div>
+      <p class="sp-areas-note">Don't see your city? <a href="/contact" class="sp-areas-link">Contact us</a> — we likely serve your area.</p>
+    </div>
+  </section>
+
+  <!-- ─── 13. RELATED SERVICES ─── -->
+  <section class="sp-related">
+    <div class="sp-related-inner">
+      <div class="sp-section-label">Also Consider</div>
+      <h2 class="sp-section-h2">Related Masonry<br><em>Services</em></h2>
+      <div class="sp-related-grid">
+        <a href="/services/tuckpointing-repointing" class="sp-related-card">
+          <img src="/images/project-tuckpointing.jpg" alt="Tuckpointing and repointing" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Tuckpointing &amp; Repointing</h3>
+            <p class="sp-related-desc">Mortar joint restoration for brick and stone — the most common masonry repair for Chicagoland homes.</p>
+          </div>
+        </a>
+        <a href="/services/chimney-repair-rebuilding" class="sp-related-card">
+          <img src="/images/service-chimney.webp" alt="Chimney repair and rebuilding" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Chimney Repair &amp; Rebuilding</h3>
+            <p class="sp-related-desc">Cracked crowns, deteriorated mortar, and structural chimney repair — from targeted repairs to full rebuilds.</p>
+          </div>
+        </a>
+        <a href="/services/brick-installation" class="sp-related-card">
+          <img src="/images/why-choose-us-brick.webp" alt="Brick installation" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Brick Installation</h3>
+            <p class="sp-related-desc">New brick walls, additions, and features — precision bricklaying for residential and commercial projects.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 14. CTA BANNER ─── -->
+  <CTABanner />
+
+  <!-- ─── 15. FOOTER ─── -->
+  <Footer />
+
+  <!-- ─── PROCESS SCROLL ANIMATION ─── -->
+  <script is:inline>
+    (function() {
+      function initStepAnimations() {
+        var gsap = window.__gsap;
+        var ScrollTrigger = window.__ScrollTrigger;
+        if (!gsap || !ScrollTrigger) return;
+        var steps = document.querySelectorAll('.sp-step');
+        if (!steps.length) return;
+        steps.forEach(function(step) {
+          gsap.fromTo(step, { opacity: 0, x: -24 }, {
+            opacity: 1, x: 0, duration: 0.55, ease: 'power2.out',
+            scrollTrigger: { trigger: step, start: 'top 88%', toggleActions: 'play none none reverse' }
+          });
+        });
+      }
+      // Always wait for animations:ready — prevents race with BaseLayout ScrollTrigger.kill()
+      window.removeEventListener('animations:ready', window.__spStepAnimReady);
+      window.__spStepAnimReady = initStepAnimations;
+      window.addEventListener('animations:ready', window.__spStepAnimReady);
+      if (window.__lenis) initStepAnimations();
+    })();
+  </script>
+
+  <!-- ─── FAQ ACCORDION SCRIPT ─── -->
+  <script is:inline>
+    (function() {
+      var btns = document.querySelectorAll('.sp-faq-q');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          btns.forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var ans = document.getElementById(b.getAttribute('aria-controls'));
+            if (ans) ans.style.maxHeight = null;
+          });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = document.getElementById(this.getAttribute('aria-controls'));
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+        });
+      });
+    })();
+  </script>
+
+</BaseLayout>
+
+<style>
+.sp-section-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin-bottom: 14px; }
+.sp-section-label--light { color: #D4A931; }
+.sp-section-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #1A1A1A; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-section-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-section-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 640px; margin: 0 0 48px 0; }
+.sp-badge { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 0px; }
+.sp-badge--gold { background: #D4A931; color: #1A1A1A; }
+.sp-badge--outline { border: 2px solid #D4A931; color: #D4A931; background: transparent; }
+.sp-btn { display: inline-flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 13px 28px; min-height: 44px; border: 2px solid transparent; border-radius: 0px; transition: background 200ms ease, border-color 200ms ease, color 200ms ease; white-space: nowrap; cursor: pointer; }
+.sp-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+.sp-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+.sp-btn--primary:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+.sp-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+.sp-btn--ghost:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--outline { background: transparent; color: #1A1A1A; border-color: #1A1A1A; }
+.sp-btn--outline:hover { background: #1A1A1A; color: #D4A931; }
+.sp-btn--outline:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-hero { background: #F5F3EF; padding: 120px 0 100px; }
+.sp-hero-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
+.sp-hero-badges { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.sp-hero-h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; color: #1A1A1A; line-height: 1.1; margin: 0 0 20px 0; }
+.sp-hero-h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-hero-sub { font-family: 'Satoshi', sans-serif; font-size: 17px; color: #4A4A4A; line-height: 1.75; margin: 0 0 32px 0; max-width: 520px; }
+.sp-hero-stats { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.sp-stat { display: flex; flex-direction: column; gap: 4px; }
+.sp-stat-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: #8B8070; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-stat-divider { width: 1px; height: 40px; background: #D8D2C8; flex-shrink: 0; }
+.sp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.sp-hero-img-wrap { position: relative; }
+.sp-hero-img-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; border: 2px solid #D8D2C8; }
+.sp-trust { background: #1A1A1A; padding: 20px 0; border-top: 1px solid #2D2D2D; }
+.sp-trust-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.sp-trust-item { display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #D4A931; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-trust-item svg { flex-shrink: 0; }
+.sp-trust-sep { width: 1px; height: 20px; background: #2D2D2D; }
+.sp-problem { background: #E8E4DC; padding: 100px 0; }
+.sp-problem-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.sp-problem-card { background: #fff; border: 1px solid #D8D2C8; padding: 28px 24px; }
+.sp-problem-card:hover { border-color: #D4A931; }
+.sp-problem-icon { margin-bottom: 16px; }
+.sp-problem-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.04em; }
+.sp-problem-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-process { background: #F5F3EF; padding: 100px 0; }
+.sp-process-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-process-steps { display: flex; flex-direction: column; gap: 0; border: 1px solid #D8D2C8; }
+.sp-step { display: grid; grid-template-columns: 100px 1fr; gap: 0; border-bottom: 1px solid #D8D2C8; transition: background 200ms ease; opacity: 0; transform: translateX(-24px); }
+@media (prefers-reduced-motion: reduce) { .sp-step { opacity: 1; transform: none; } }
+.sp-step:last-child { border-bottom: none; }
+.sp-step:hover { background: #fff; }
+.sp-step-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 700; color: #D4A931; padding: 32px 0 32px 32px; display: flex; align-items: flex-start; opacity: 0.6; line-height: 1; }
+.sp-step-content { padding: 32px 32px 32px 0; }
+.sp-step-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 8px 0; }
+.sp-step-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0 0 10px 0; }
+.sp-step-why { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; padding: 10px 12px; border-left: 3px solid #D4A931; background: rgba(212,169,49,0.05); }
+.sp-step-why strong { color: #D4A931; font-weight: 700; }
+.sp-why { background: #E8E4DC; padding: 100px 0; }
+.sp-why-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #D8D2C8; border: 1px solid #D8D2C8; margin-top: 48px; }
+.sp-why-item { background: #fff; padding: 36px 32px; display: flex; gap: 24px; align-items: flex-start; }
+.sp-why-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #D4A931; opacity: 0.4; line-height: 1; flex-shrink: 0; padding-top: 2px; }
+.sp-why-content { display: flex; flex-direction: column; gap: 10px; }
+.sp-why-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+.sp-why-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-tool { background: #1A1A1A; padding: 100px 0; }
+.sp-tool-inner { max-width: 900px; margin: 0 auto; padding: 0 80px; }
+.sp-tool-header { text-align: center; margin-bottom: 48px; }
+.sp-tool-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-tool-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-tool-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-warning-hook { background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.25); border-left: 3px solid #D4A931; padding: 20px 24px; margin: 0 auto 28px; max-width: 640px; text-align: left; }
+.sp-tool-warning-intro { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px 0; }
+.sp-tool-warning-list { margin: 0 0 14px 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+.sp-tool-warning-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.sp-tool-warning-cta { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #fff; margin: 0; }
+.sp-tool-embed { background: #fff; border: 2px solid #D4A931; padding: 40px; min-height: 200px; }
+.sp-tool-social { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+.sp-tool-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sp-tool-stat-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-tool-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+.sp-tool-stat-sep { width: 1px; height: 36px; background: #2D2D2D; flex-shrink: 0; }
+.sp-tool-quote { border-left: 3px solid #D4A931; margin: 0 0 36px 0; padding: 12px 20px; background: rgba(212,169,49,0.06); }
+.sp-tool-quote p { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0 0 6px 0; }
+.sp-tool-quote cite { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; font-style: normal; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-tool-note { font-family: 'Satoshi', sans-serif; font-size: 12px; color: #8B8070; text-align: center; margin-top: 20px; line-height: 1.6; }
+.sp-tool-faq { margin-top: 48px; border-top: 1px solid #2D2D2D; padding-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+.sp-tool-faq-q { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0; }
+.sp-tool-faq-a { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-faq-link { color: #D4A931; text-decoration: underline; }
+.sp-tool-faq-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-projects { background: #E8E4DC; padding: 100px 0; }
+.sp-projects-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.sp-project-card { background: #fff; border: 1px solid #D8D2C8; overflow: hidden; }
+.sp-project-card:hover { border-color: #D4A931; }
+.sp-project-img-wrap img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.sp-project-info { padding: 20px; }
+.sp-project-location { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+.sp-project-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-project-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.65; margin: 0; }
+.sp-pricing { background: #F5F3EF; padding: 100px 0; }
+.sp-pricing-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+.sp-price-card { background: #fff; border: 1px solid #D8D2C8; padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+.sp-price-card--featured { border: 2px solid #D4A931; position: relative; }
+.sp-price-popular { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; }
+.sp-price-tier { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #8B8070; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
+.sp-price-range { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #1A1A1A; line-height: 1; }
+.sp-price-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.sp-price-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; padding-left: 16px; position: relative; }
+.sp-price-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: #D4A931; }
+.sp-pricing-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.6; max-width: 600px; }
+.sp-pricing-link { color: #D4A931; text-decoration: underline; }
+.sp-pricing-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-pricing-guarantee { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #1A1A1A; background: rgba(212,169,49,0.07); border-left: 3px solid #D4A931; padding: 12px 16px; margin-top: 16px; max-width: 600px; }
+.sp-reviews { background: #E8E4DC; padding: 100px 0; }
+.sp-reviews-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-review-card { background: #fff; border-top: 1px solid #D8D2C8; border-right: 1px solid #D8D2C8; border-bottom: 1px solid #D8D2C8; border-left: 3px solid #D4A931; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.sp-review-stars { display: flex; gap: 3px; }
+.sp-review-text { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; padding: 0; font-style: normal; flex: 1; }
+.sp-review-cite { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #8B8070; font-style: normal; letter-spacing: 0.02em; }
+.sp-creds { background: #F5F3EF; padding: 100px 0; }
+.sp-creds-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-creds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; border: 2px solid #D8D2C8; margin-top: 48px; }
+.sp-cred-item { background: #fff; padding: 32px 28px; display: flex; gap: 20px; align-items: flex-start; }
+.sp-cred-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.2); display: flex; align-items: center; justify-content: center; }
+.sp-cred-text { display: flex; flex-direction: column; gap: 6px; }
+.sp-cred-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-cred-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.65; }
+.sp-creds-guarantee { margin-top: 32px; background: #1A1A1A; padding: 24px 32px; display: flex; align-items: flex-start; gap: 24px; }
+.sp-guarantee-badge { display: flex; align-items: center; gap: 10px; background: #D4A931; padding: 10px 16px; white-space: nowrap; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
+.sp-guarantee-text { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; margin: 0; align-self: center; }
+.sp-faq { background: #E8E4DC; padding: 100px 0; }
+.sp-faq-inner { max-width: 800px; margin: 0 auto; padding: 0 80px; }
+.sp-faq-list { border: 1px solid #D8D2C8; }
+.sp-faq-item { border-bottom: 1px solid #D8D2C8; }
+.sp-faq-item:last-child { border-bottom: none; }
+.sp-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600; color: #1A1A1A; line-height: 1.4; min-height: 44px; transition: background 200ms ease; }
+.sp-faq-q:hover { background: #fff; }
+.sp-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+.sp-faq-q[aria-expanded="true"] { color: #D4A931; }
+.sp-faq-q[aria-expanded="true"] .sp-faq-icon { transform: rotate(180deg); }
+.sp-faq-icon { flex-shrink: 0; transition: transform 200ms ease; }
+.sp-faq-a { max-height: 0; overflow: hidden; transition: max-height 300ms ease; }
+.sp-faq-a p { padding: 0 24px 20px; font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; }
+.sp-areas { background: #E8E4DC; padding: 100px 0; }
+.sp-areas-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-areas-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; margin: 0 0 40px 0; max-width: 560px; }
+.sp-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.sp-area { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; color: #1A1A1A; background: #fff; border: 1px solid #D8D2C8; border-bottom: 2px solid #D4A931; padding: 8px 16px; text-decoration: none; display: inline-block; transition: border-color 150ms ease, color 150ms ease, background 150ms ease; cursor: pointer; }
+.sp-area:hover { background: #D4A931; border-color: #D4A931; color: #1A1A1A; }
+.sp-area:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-areas-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; }
+.sp-areas-link { color: #D4A931; text-decoration: underline; }
+.sp-areas-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related { background: #F5F3EF; padding: 100px 0; }
+.sp-related-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-related-card { background: #fff; border: 1px solid #D8D2C8; text-decoration: none; display: flex; flex-direction: column; transition: border-color 200ms ease; }
+.sp-related-card:hover { border-color: #D4A931; }
+.sp-related-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.sp-related-content { padding: 20px; flex: 1; }
+.sp-related-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-related-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; }
+@media (max-width: 1100px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 40px; }
+  .sp-trust-inner { padding: 0 40px; }
+  .sp-problem-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .sp-hero { padding: 100px 0 72px; }
+  .sp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sp-hero-img-wrap { display: none; }
+  .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-related-grid { grid-template-columns: 1fr 1fr; }
+  .sp-creds-grid { grid-template-columns: 1fr 1fr; }
+  .sp-why-grid { grid-template-columns: 1fr; }
+  .sp-trust-sep { display: none; }
+  .sp-trust-inner { justify-content: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 20px; }
+  .sp-trust-inner { padding: 0 20px; }
+  .sp-hero { padding: 80px 0 56px; }
+  .sp-problem, .sp-process, .sp-why, .sp-tool, .sp-projects, .sp-pricing, .sp-reviews, .sp-creds, .sp-faq, .sp-areas, .sp-related { padding: 56px 0; }
+  .sp-problem-grid, .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-creds-grid, .sp-related-grid { grid-template-columns: 1fr; }
+  .sp-step { grid-template-columns: 60px 1fr; }
+  .sp-step-num { font-size: 24px; padding: 24px 0 24px 20px; }
+  .sp-step-content { padding: 24px 20px 24px 0; }
+  .sp-hero-actions { flex-direction: column; }
+  .sp-btn { width: 100%; text-align: center; }
+  .sp-tool-embed { padding: 24px 20px; }
+}
+</style>

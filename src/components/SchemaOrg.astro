@@ -1,0 +1,87 @@
+---
+interface Props {
+  siteName: string;
+  siteUrl: string;
+  description: string;
+  logo?: string;
+  email?: string;
+  phone?: string;
+  address?: {
+    street: string;
+    city: string;
+    country: string;
+  };
+  socials?: string[];
+}
+
+const {
+  siteName,
+  siteUrl,
+  description,
+  logo,
+  email,
+  phone,
+  address,
+  socials = [],
+} = Astro.props;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  name: siteName,
+  url: siteUrl,
+  description,
+  telephone: "+17736562107",
+  email: email || "info@allmasonry.com",
+  priceRange: "$$$",
+  ...(logo && { logo: `${siteUrl}${logo}` }),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: address?.street || "Chicago, IL",
+    addressLocality: address?.city || "Chicago",
+    addressRegion: "IL",
+    postalCode: "60601",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 41.8781,
+    longitude: -87.6298,
+  },
+  areaServed: [
+    "Hinsdale, IL", "Western Springs, IL", "Elmhurst, IL", "Oak Brook, IL",
+    "Burr Ridge, IL", "Clarendon Hills, IL", "La Grange, IL", "River Forest, IL",
+    "Oak Park, IL", "Winnetka, IL", "Kenilworth, IL", "Wilmette, IL",
+    "Glencoe, IL", "Highland Park, IL", "Lake Forest, IL", "Northbrook, IL",
+    "Naperville, IL", "Wheaton, IL", "Chicago, IL",
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "92",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "07:00",
+      closes: "18:00",
+    },
+  ],
+  hasMap: "https://maps.google.com/?q=All+Masonry+Services+Chicago+IL",
+  ...(socials.length > 0 && { sameAs: socials }),
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  description,
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

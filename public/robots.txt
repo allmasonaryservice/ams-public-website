@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block admin or private pages (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap
+Sitemap: https://allmasonryservices.com/sitemap-index.xml

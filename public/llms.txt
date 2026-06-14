@@ -1,0 +1,23 @@
+# AMS
+
+> AMS is a [your company description here]. We specialize in [your services].
+
+## About
+[Brief description of your company and what you do]
+
+## Services
+- [Service 1]
+- [Service 2]
+- [Service 3]
+
+## Why Choose Us
+- [Key differentiator 1]
+- [Key differentiator 2]
+- [Key differentiator 3]
+
+## Contact
+- Website: https://allmasonryservices.com
+- Email: contact@allmasonryservices.com
+
+## Optional
+- [Link to sitemap](https://allmasonryservices.com/sitemap-index.xml)

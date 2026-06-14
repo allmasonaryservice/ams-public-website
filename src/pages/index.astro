@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSequence from '../components/HeroSequence.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ToolSectionMortar from '../components/ToolSectionMortar.astro';
+import FreeToolsStrip from '../components/FreeToolsStrip.astro';
+import RecentProjectsSection from '../components/RecentProjectsSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import ServiceAreasSection from '../components/ServiceAreasSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="All Masonry Services Inc — Chicago's Most Trusted Masonry Contractor"
+  description="19 years of brick, stone, and limestone masonry across Chicagoland. Custom home masonry, commercial projects, chimney repair & more. Free estimates."
+>
+  <HeroSequence />
+  <WhyChooseUs />
+  <ServicesSection />
+  <AboutSection />
+  <RecentProjectsSection />
+  <ToolSectionMortar />
+  <FreeToolsStrip />
+  <TestimonialsSection />
+  <ServiceAreasSection />
+  <FAQSection />
+  <CTABanner />
+  <Footer />
+
+  <script>
+    import '../scripts/section-transitions';
+  </script>
+</BaseLayout>

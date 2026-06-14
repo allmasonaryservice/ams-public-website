@@ -1,0 +1,521 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const city       = "Elmhurst";
+const slug       = "elmhurst";
+const county     = "DuPage County";
+const state      = "IL";
+const neighborhoods = "Downtown Elmhurst, Wilder Park area, York Rd corridor";
+const zipCodes   = "60126";
+const siteUrl    = 'https://allmasonryservices.com';
+const pageUrl    = `${siteUrl}/tuckpointing/${slug}`;
+
+const nearbyCities = [
+  { name: "Oak Brook",        slug: "oak-brook"        },
+  { name: "Wheaton",          slug: "wheaton"          },
+  { name: "Downers Grove",    slug: "downers-grove"    },
+  { name: "Hinsdale",         slug: "hinsdale"         },
+  { name: "Western Springs",  slug: "western-springs"  },
+  { name: "Willowbrook",      slug: "willowbrook"      },
+];
+
+const services = [
+  { name: "Tuckpointing & Repointing",   href: "/services/tuckpointing-repointing"   },
+  { name: "Brick Installation",          href: "/services/brick-installation"         },
+  { name: "Damaged Brick Replacement",   href: "/services/damaged-brick-replacement"  },
+  { name: "Chimney Repair & Rebuilding", href: "/services/chimney-repair-rebuilding"  },
+  { name: "Natural Stone & Limestone",   href: "/services/natural-stone-limestone"    },
+  { name: "CMU Block Installation",      href: "/services/cmu-block-installation"     },
+  { name: "Brick & Stone Veneers",       href: "/services/brick-stone-veneers"        },
+  { name: "Custom Home Masonry",         href: "/services/custom-home-masonry"        },
+  { name: "Commercial Masonry",          href: "/services/commercial-brick-stone"     },
+  { name: "Chimney & Fireplace",         href: "/services/chimney-fireplace"          },
+  { name: "Commercial Masonry Veneers",  href: "/services/commercial-masonry-veneers" },
+];
+
+const faqs = [
+  {
+    q: "How much does tuckpointing cost in Elmhurst, IL?",
+    a: "Tuckpointing in Elmhurst ranges from $9–$25 per linear foot; most homes in zip code 60126 fall between $1,200 and $4,000 for a full repoint. Prairie-era lime mortar work runs higher due to material precision. Free on-site estimates with written scope."
+  },
+  {
+    q: "What's the difference between tuckpointing and repointing?",
+    a: "Technically, tuckpointing uses a two-color mortar finish with a contrasting fine line on top — common in historic buildings. Repointing removes deteriorated mortar and replaces it. We provide both and recommend the right approach for your Elmhurst home's era in DuPage County."
+  },
+  {
+    q: "Do you repair chimneys in Elmhurst?",
+    a: "Yes. We repair crowns, repoint chimney mortar, replace damaged brick, and rebuild when needed. We identify building era before selecting mortar — especially critical for pre-war Elmhurst chimneys. Licensed and insured; free estimate."
+  },
+  {
+    q: "How long does tuckpointing take for an Elmhurst home?",
+    a: "Most Elmhurst homes take 1–3 days for a full repoint; Prairie-era lime mortar jobs may take slightly longer due to cure time. We provide a written timeline and schedule within 2–3 weeks, weather permitting."
+  },
+  {
+    q: "Are you licensed and insured for masonry work in Illinois?",
+    a: "Yes. All Masonry Services is fully licensed and insured in Illinois for all masonry work. We carry full liability and workers' comp on every job in Elmhurst and DuPage County."
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `Tuckpointing in ${city}, ${state}`,
+  "description": `Professional tuckpointing, brick repair, and mortar repointing for ${city} homes. All Masonry Services — licensed, insured, family-owned since 2007.`,
+  "url": pageUrl,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "All Masonry Services",
+    "url": siteUrl,
+    "telephone": "+17736562107",
+    "address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL", "addressCountry": "US" }
+  },
+  "areaServed": { "@type": "City", "name": city, "addressRegion": state },
+  "serviceType": "Tuckpointing",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free on-site estimate" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",         "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tuckpointing", "item": `${siteUrl}/services/tuckpointing-repointing` },
+    { "@type": "ListItem", "position": 3, "name": city,           "item": pageUrl }
+  ]
+};
+---
+
+<BaseLayout
+  title={`Tuckpointing in ${city}, IL — Brick & Mortar Repair | All Masonry Services`}
+  description={`Expert tuckpointing & brick repair in Elmhurst, IL. Prairie-era to mid-century masonry, mortar matching, chimney restoration. DuPage County. Free estimates. Call 773-656-2107.`}
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── HERO ── */
+  .lp-hero { background: #1A1A1A; padding: 120px 0 80px; border-bottom: 1px solid #2D2D2D; }
+  .lp-hero-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .lp-breadcrumb { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .lp-breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 200ms ease; }
+  .lp-breadcrumb a:hover { color: #D4A931; }
+  .lp-breadcrumb a:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .lp-breadcrumb-sep { color: rgba(255,255,255,0.2); }
+  .lp-breadcrumb-current { color: #D4A931; }
+  .lp-hero-label { display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1A1A1A; background: #D4A931; padding: 4px 12px; margin-bottom: 20px; }
+  .lp-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(38px, 5vw, 68px); font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 20px; }
+  .lp-hero h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .lp-hero-sub { font-family: 'Satoshi', sans-serif; font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 600px; margin-bottom: 36px; }
+  .lp-hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .lp-btn { font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 13px 28px; min-height: 44px; border: 2px solid transparent; transition: background 200ms ease, border-color 200ms ease, color 200ms ease; white-space: nowrap; display: inline-flex; align-items: center; }
+  .lp-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+  .lp-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+  .lp-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+  .lp-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+  .lp-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .lp-stats { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .lp-stat-item { display: flex; flex-direction: column; gap: 3px; }
+  .lp-stat-value { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #D4A931; line-height: 1; }
+  .lp-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .lp-stat-divider { width: 1px; height: 36px; background: #2D2D2D; }
+
+  /* ── TRUST BAR ── */
+  .lp-trust { background: #111; border-bottom: 1px solid #2D2D2D; padding: 18px 0; }
+  .lp-trust-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  .lp-trust-item { display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.5); padding: 6px 0; }
+  .lp-trust-dot { width: 5px; height: 5px; background: #D4A931; flex-shrink: 0; }
+
+  /* ── SHARED LAYOUT ── */
+  .lp-section { padding: 100px 0; }
+  .lp-section-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .lp-section-label { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #D4A931; margin-bottom: 14px; }
+  .lp-section-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; color: #1A1A1A; line-height: 1.1; margin-bottom: 40px; }
+  .lp-section-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .lp-section-h2--light { color: #fff; }
+  .lp-two-col { display: grid; grid-template-columns: 1fr 360px; gap: 64px; align-items: start; }
+  .lp-prose p { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #3D3D3D; line-height: 1.8; margin-bottom: 20px; }
+  .lp-prose p:last-child { margin-bottom: 0; }
+
+  /* ── SERVICE DETAILS SIDEBAR ── */
+  .lp-info-box { background: #1A1A1A; padding: 36px; border: 1px solid #2D2D2D; }
+  .lp-info-box-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: #D4A931; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #2D2D2D; }
+  .lp-info-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2D2D2D; }
+  .lp-info-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .lp-info-key { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+  .lp-info-val { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 500; color: #fff; text-align: right; }
+  .lp-info-val--gold { color: #D4A931; font-weight: 700; }
+  .lp-info-val a { color: #D4A931; text-decoration: none; }
+
+  /* ── MASONRY PROFILE ── */
+  .lp-profile { background: #F5F3EF; border-top: 1px solid #D8D2C8; }
+  .lp-profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; margin-top: 40px; }
+  .lp-profile-card { background: #F5F3EF; padding: 32px 28px; }
+  .lp-profile-card-label { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin-bottom: 10px; }
+  .lp-profile-card-value { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: #1A1A1A; margin-bottom: 8px; }
+  .lp-profile-card-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.65; }
+
+  /* ── COMMON PROBLEMS ── */
+  .lp-problems { background: #E8E4DC; border-top: 1px solid #D8D2C8; }
+  .lp-problems-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #D8D2C8; margin-top: 40px; }
+  .lp-problem-card { background: #E8E4DC; padding: 32px 28px; }
+  .lp-problem-card h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: #1A1A1A; margin-bottom: 12px; }
+  .lp-problem-card p { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.75; }
+  .lp-problem-accent { width: 32px; height: 3px; background: #D4A931; margin-bottom: 16px; }
+
+  /* ── SERVICES GRID ── */
+  .lp-services { background: #1A1A1A; }
+  .lp-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #2D2D2D; margin-top: 40px; }
+  .lp-service-card { background: #1A1A1A; padding: 20px 24px; min-height: 44px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 200ms ease; }
+  .lp-service-card:hover { background: #2D2D2D; }
+  .lp-service-card:hover .lp-service-arrow { color: #D4A931; }
+  .lp-service-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .lp-service-num { font-family: 'Fraunces', serif; font-size: 12px; font-weight: 700; color: #D4A931; flex-shrink: 0; min-width: 22px; }
+  .lp-service-name { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #fff; flex: 1; }
+  .lp-service-arrow { color: #2D2D2D; flex-shrink: 0; transition: color 200ms ease; }
+
+  /* ── REVIEWS ── */
+  .lp-reviews { background: #F5F3EF; border-top: 1px solid #D8D2C8; }
+  .lp-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+  .lp-review-card { background: #fff; padding: 32px; border: 1px solid #D5CFC5; border-left: 3px solid #D4A931; }
+  .lp-review-stars { font-size: 14px; color: #D4A931; letter-spacing: 2px; margin-bottom: 14px; }
+  .lp-review-quote { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #3D3D3D; line-height: 1.75; margin-bottom: 20px; font-style: normal; }
+  .lp-review-author { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #1A1A1A; }
+  .lp-review-location { font-family: 'Satoshi', sans-serif; font-size: 11px; color: #8B8070; margin-top: 3px; font-style: normal; }
+
+  /* ── FAQ ── */
+  .lp-faq { background: #E8E4DC; border-top: 1px solid #D8D2C8; }
+  .lp-faq-list { display: flex; flex-direction: column; gap: 2px; background: #D8D2C8; max-width: 840px; margin-top: 40px; }
+  .lp-faq-item { background: #E8E4DC; }
+  .lp-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; color: #1A1A1A; line-height: 1.4; transition: background 150ms ease; min-height: 44px; }
+  .lp-faq-q:hover { background: #D8D2C8; }
+  .lp-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+  .lp-faq-q[aria-expanded="true"] { color: #D4A931; }
+  .lp-faq-q[aria-expanded="true"] .lp-faq-icon { transform: rotate(45deg); }
+  .lp-faq-icon { flex-shrink: 0; transition: transform 250ms ease; }
+  .lp-faq-body { padding: 0 24px 20px; font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; }
+  .lp-faq-body[hidden] { display: none; }
+
+  /* ── NEARBY CITIES ── */
+  .lp-nearby { background: #F5F3EF; border-top: 1px solid #D8D2C8; }
+  .lp-nearby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; margin-top: 40px; }
+  .lp-nearby-card { background: #F5F3EF; padding: 20px 24px; min-height: 44px; display: flex; align-items: center; gap: 12px; text-decoration: none; transition: background 200ms ease; }
+  .lp-nearby-card:hover { background: #E8E4DC; }
+  .lp-nearby-card:hover .lp-nearby-arrow { color: #D4A931; }
+  .lp-nearby-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .lp-nearby-name { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; flex: 1; }
+  .lp-nearby-sub { font-family: 'Satoshi', sans-serif; font-size: 11px; color: #8B8070; }
+  .lp-nearby-arrow { color: #D8D2C8; flex-shrink: 0; transition: color 200ms ease; }
+
+  /* ── BACK LINK ── */
+  .lp-back { background: #F5F3EF; padding: 32px 0; border-top: 1px solid #DDD9D0; }
+  .lp-back-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .lp-back-link { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #1A1A1A; text-decoration: none; border-bottom: 1px solid #1A1A1A; padding-bottom: 1px; transition: color 200ms ease, border-color 200ms ease; }
+  .lp-back-link:hover { color: #D4A931; border-color: #D4A931; }
+  .lp-back-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .lp-hero-inner, .lp-trust-inner, .lp-section-inner { padding: 0 40px; }
+    .lp-back-inner { padding: 0 40px; }
+  }
+  @media (max-width: 900px) {
+    .lp-section { padding: 72px 0; }
+    .lp-two-col { grid-template-columns: 1fr; gap: 40px; }
+    .lp-reviews-grid { grid-template-columns: 1fr; gap: 20px; }
+    .lp-profile-grid { grid-template-columns: 1fr; }
+    .lp-problems-grid { grid-template-columns: 1fr; }
+    .lp-nearby-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .lp-hero { padding: 100px 0 60px; }
+    .lp-hero-inner, .lp-trust-inner, .lp-section-inner, .lp-back-inner { padding: 0 20px; }
+    .lp-section { padding: 56px 0; }
+    .lp-hero-actions { flex-direction: column; align-items: flex-start; }
+    .lp-btn { width: 100%; justify-content: center; }
+    .lp-stats { gap: 24px; }
+    .lp-stat-divider { display: none; }
+    .lp-trust-inner { gap: 10px; flex-direction: column; align-items: flex-start; }
+    .lp-services-grid { grid-template-columns: 1fr; }
+    .lp-nearby-grid { grid-template-columns: 1fr; }
+  }
+  </style>
+
+  <!-- HERO -->
+  <section class="lp-hero">
+    <div class="lp-hero-inner">
+      <nav class="lp-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="lp-breadcrumb-sep" aria-hidden="true">›</span>
+        <a href="/service-areas">Service Areas</a>
+        <span class="lp-breadcrumb-sep" aria-hidden="true">›</span>
+        <span class="lp-breadcrumb-current">{city}</span>
+      </nav>
+      <div class="lp-hero-label">Local Masonry Experts</div>
+      <h1>Tuckpointing in <em>{city}, IL</em></h1>
+      <p class="lp-hero-sub">Elmhurst spans Prairie-era lime mortar to mid-century Portland blends — the wrong mortar choice causes irreversible brick damage. All Masonry Services has served Elmhurst with tuckpointing, brick repair, and chimney restoration since 2007, matching mortar to every era.</p>
+      <div class="lp-hero-actions">
+        <a href="/contact" class="lp-btn lp-btn--primary">Get a Free Estimate</a>
+        <a href="tel:+17736562107" class="lp-btn lp-btn--ghost" aria-label="Call 773-656-2107">Call 773-656-2107</a>
+      </div>
+      <div class="lp-stats">
+        <div class="lp-stat-item">
+          <span class="lp-stat-value">19+</span>
+          <span class="lp-stat-label">Years Experience</span>
+        </div>
+        <div class="lp-stat-divider"></div>
+        <div class="lp-stat-item">
+          <span class="lp-stat-value">500+</span>
+          <span class="lp-stat-label">Homes Restored</span>
+        </div>
+        <div class="lp-stat-divider"></div>
+        <div class="lp-stat-item">
+          <span class="lp-stat-value" aria-label="4.8 star rating">4.8<svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="vertical-align:middle;margin-left:2px"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></span>
+          <span class="lp-stat-label">92 Google Reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="lp-trust" role="list" aria-label="Trust indicators">
+    <div class="lp-trust-inner">
+      <div class="lp-trust-item" role="listitem"><span class="lp-trust-dot"></span>Licensed &amp; Insured in Illinois</div>
+      <div class="lp-trust-item" role="listitem"><span class="lp-trust-dot"></span>Free On-Site Estimates</div>
+      <div class="lp-trust-item" role="listitem"><span class="lp-trust-dot"></span>Mortar Color Matched</div>
+      <div class="lp-trust-item" role="listitem"><span class="lp-trust-dot"></span>Family-Owned Since 2007</div>
+      <div class="lp-trust-item" role="listitem"><span class="lp-trust-dot"></span>Workers' Comp Covered</div>
+    </div>
+  </div>
+
+  <!-- WHY ELMHURST BRICK -->
+  <section class="lp-section lp-profile" style="background:#F5F3EF;">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">Elmhurst Tuckpointing</div>
+      <h2 class="lp-section-h2">Why Elmhurst Homes Need <em>Precise Mortar Repointing</em></h2>
+      <div class="lp-two-col">
+        <div class="lp-prose">
+          <p>Elmhurst brick spans 1910s Prairie-style lime mortar homes to 1960s colonials built with Type S/N Portland blends. The correct tuckpointing approach differs completely between these eras — wrong mortar causes moisture trapping that destroys the brick face. We identify building era and test original mortar before prescribing any mix in zip code {zipCodes}, DuPage County.</p>
+          <p>Prairie-era homes need lime putty mortar; mid-century colonials need Portland-lime blends. We don't guess — we assess first and match to the original. Free estimates, written scope, era-appropriate mortar for every Elmhurst decade.</p>
+        </div>
+        <aside class="lp-info-box" aria-label="Service details">
+          <div class="lp-info-box-title">Service Details</div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">Areas Served</span>
+            <span class="lp-info-val">{neighborhoods}</span>
+          </div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">Zip Codes</span>
+            <span class="lp-info-val">{zipCodes}</span>
+          </div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">County</span>
+            <span class="lp-info-val">{county}</span>
+          </div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">Hours</span>
+            <span class="lp-info-val">Mon–Sat 7am–6pm</span>
+          </div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">Free Estimate</span>
+            <span class="lp-info-val lp-info-val--gold">Yes</span>
+          </div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">Licensed &amp; Insured</span>
+            <span class="lp-info-val lp-info-val--gold">Yes</span>
+          </div>
+          <div class="lp-info-row">
+            <span class="lp-info-key">Phone</span>
+            <span class="lp-info-val"><a href="tel:+17736562107">773-656-2107</a></span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELMHURST MASONRY PROFILE -->
+  <section class="lp-section lp-profile" style="background:#E8E4DC;border-top:1px solid #D8D2C8;">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">Elmhurst Architecture &amp; Masonry Profile</div>
+      <h2 class="lp-section-h2">What Makes Elmhurst Masonry <em>Different</em></h2>
+      <div class="lp-profile-grid">
+        <div class="lp-profile-card">
+          <div class="lp-profile-card-label">Primary Building Era</div>
+          <div class="lp-profile-card-value">1910s – 1960s</div>
+          <p class="lp-profile-card-desc">Prairie-style homes from the 1910s–1920s need lime putty; mid-century colonials from the 1940s–1960s need Type S or N Portland blends. Getting the era wrong in DuPage County means getting the mortar wrong — and that causes irreversible spalling.</p>
+        </div>
+        <div class="lp-profile-card">
+          <div class="lp-profile-card-label">Dominant Brick Type</div>
+          <div class="lp-profile-card-value">Chicago Common, Clay &amp; Buff Modular</div>
+          <p class="lp-profile-card-desc">Elmhurst spans Chicago Common in early buildings to buff and red clay modular in mid-century construction. Each brick type has different absorption rates and mortar compatibility — we identify which is present before prescribing any repair.</p>
+        </div>
+        <div class="lp-profile-card">
+          <div class="lp-profile-card-label">Climate Risk</div>
+          <div class="lp-profile-card-value">High — 90+ Freeze-Thaw Cycles/Year</div>
+          <p class="lp-profile-card-desc">Chicagoland's 90+ annual freeze-thaw cycles force moisture into failing mortar joints — accelerating crumbling, spalling, and water infiltration behind the brick face every winter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMON MASONRY PROBLEMS -->
+  <section class="lp-section lp-problems" style="background:#F5F3EF;border-top:1px solid #D8D2C8;">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">Common Masonry Problems in Elmhurst</div>
+      <h2 class="lp-section-h2">What We Fix — <em>Most Often in Elmhurst</em></h2>
+      <div class="lp-problems-grid">
+        <div class="lp-problem-card">
+          <div class="lp-problem-accent"></div>
+          <h3>Prairie-Era Lime Mortar Failure</h3>
+          <p>After 100+ years, lime putty mortar on Elmhurst's Prairie-style homes has shrunk and crumbled in exposed joints. Repair requires lime-based mortar — Portland cement on these homes destroys irreplaceable historic brick face.</p>
+        </div>
+        <div class="lp-problem-card">
+          <div class="lp-problem-accent"></div>
+          <h3>Mid-Century Chimney Joint Cracking</h3>
+          <p>1940s–1960s Elmhurst colonials show consistent chimney crown and upper-course cracking. Crown failure lets water in — causing interior damage and eventually requiring full chimney rebuilding.</p>
+        </div>
+        <div class="lp-problem-card">
+          <div class="lp-problem-accent"></div>
+          <h3>Brick Spalling from Incorrect Previous Repairs</h3>
+          <p>Portland cement over soft Chicago Common or lime-set brick traps moisture and forces the brick face to delaminate. Correcting prior incompatible repairs is a major part of our Elmhurst work in DuPage County.</p>
+        </div>
+        <div class="lp-problem-card">
+          <div class="lp-problem-accent"></div>
+          <h3>Grade-Level Mortar Deterioration on North Elevations</h3>
+          <p>North-facing grade-level brick experiences the most aggressive freeze-thaw cycling and fails first — often below sightline from the street, unnoticed until damage is extensive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL SERVICES -->
+  <section class="lp-section lp-services" style="background:#1A1A1A;">
+    <div class="lp-section-inner">
+      <div class="lp-section-label" style="color:#D4A931;">Our Masonry Services in Elmhurst</div>
+      <h2 class="lp-section-h2 lp-section-h2--light">All 11 Services — <em>Available in Elmhurst</em></h2>
+      <div class="lp-services-grid">
+        {services.map((s, i) => (
+          <a href={s.href} class="lp-service-card">
+            <span class="lp-service-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="lp-service-name">{s.name}</span>
+            <span class="lp-service-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="lp-section lp-reviews">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">What Homeowners Say</div>
+      <h2 class="lp-section-h2">Trusted by <em>DuPage County Homeowners</em></h2>
+      <div class="lp-reviews-grid">
+        <div class="lp-review-card">
+          <div class="lp-review-stars">★★★★★</div>
+          <p class="lp-review-quote">We have a 1918 Prairie-style home in Elmhurst. AMS understood immediately that lime mortar was required — and they matched the original joints perfectly. The most professional masonry crew we've worked with.</p>
+          <div class="lp-review-author">Susan &amp; Mark L.</div>
+          <div class="lp-review-location">Elmhurst, IL</div>
+        </div>
+        <div class="lp-review-card">
+          <div class="lp-review-stars">★★★★★</div>
+          <p class="lp-review-quote">Our 1955 colonial needed a full chimney repoint and crown repair. All Masonry Services diagnosed the problem correctly, provided a clear written estimate, and finished the work ahead of schedule.</p>
+          <div class="lp-review-author">David C.</div>
+          <div class="lp-review-location">DuPage County, IL</div>
+        </div>
+        <div class="lp-review-card">
+          <div class="lp-review-stars">★★★★★</div>
+          <p class="lp-review-quote">They found incorrect Portland cement repairs from a previous contractor on our pre-war brick. They corrected everything properly and explained every step. Excellent work.</p>
+          <div class="lp-review-author">Nancy P.</div>
+          <div class="lp-review-location">Elmhurst, IL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="lp-section lp-faq">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">Questions</div>
+      <h2 class="lp-section-h2">Elmhurst Masonry — <em>Frequently Asked</em></h2>
+      <div class="lp-faq-list">
+        {faqs.map((f, i) => (
+          <div class="lp-faq-item">
+            <button class="lp-faq-q" aria-expanded="false" aria-controls={`lfaq-${i}`} data-faq={String(i)}>
+              <span>{f.q}</span>
+              <svg class="lp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" stroke-linecap="square" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="lp-faq-body" id={`lfaq-${i}`} hidden>
+              <p>{f.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEARBY CITIES -->
+  <section class="lp-section lp-nearby">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">Also Serving Nearby Communities</div>
+      <h2 class="lp-section-h2">Masonry Services Near <em>Elmhurst</em></h2>
+      <div class="lp-nearby-grid">
+        {nearbyCities.map(c => (
+          <a href={`/tuckpointing/${c.slug}`} class="lp-nearby-card">
+            <div>
+              <div class="lp-nearby-name">{c.name}</div>
+              <div class="lp-nearby-sub">Tuckpointing &amp; Masonry</div>
+            </div>
+            <span class="lp-nearby-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+
+  <!-- BACK LINK -->
+  <div class="lp-back">
+    <div class="lp-back-inner">
+      <a href="/service-areas" class="lp-back-link">View All Service Areas</a>
+    </div>
+  </div>
+
+  <Footer />
+
+  <script is:inline>
+  (function () {
+    document.querySelectorAll('.lp-faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = this.getAttribute('data-faq');
+        var body = document.getElementById('lfaq-' + idx);
+        var open = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
+        body.hidden = open;
+      });
+    });
+  })();
+  </script>
+
+</BaseLayout>

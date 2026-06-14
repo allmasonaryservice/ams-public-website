@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CustomHomeMasonryPlanner from '../components/magnets/CustomHomeMasonryPlanner.astro';
+import BrickInstallationEstimator from '../components/magnets/BrickInstallationEstimator.astro';
+import StoneStyleSelector from '../components/magnets/StoneStyleSelector.astro';
+import VeneerCoverageCalculator from '../components/magnets/VeneerCoverageCalculator.astro';
+import ChimneyInspectionChecklist from '../components/magnets/ChimneyInspectionChecklist.astro';
+import CMULoadCalculator from '../components/magnets/CMULoadCalculator.astro';
+import CommercialProjectScopeBuilder from '../components/magnets/CommercialProjectScopeBuilder.astro';
+import FacadeCoverageEstimator from '../components/magnets/FacadeCoverageEstimator.astro';
+import MortarDamageAssessment from '../components/magnets/MortarDamageAssessment.astro';
+import BrickDamageCounter from '../components/magnets/BrickDamageCounter.astro';
+import ChimneyRiskScore from '../components/magnets/ChimneyRiskScore.astro';
+---
+
+<BaseLayout title="Lead Magnets Preview — All Masonry Services" noindex={true}>
+  <div style="background:#F5F3EF; min-height:100vh; padding:48px 20px;">
+    <div style="max-width:1200px; margin:0 auto;">
+
+      <div style="text-align:center; margin-bottom:48px;">
+        <span style="display:inline-block; background:#D4A931; color:#1A1A1A; font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 12px; margin-bottom:12px;">DEV PREVIEW — NOT FOR PUBLIC</span>
+        <h1 style="font-family:'Fraunces',serif; font-size:32px; color:#1A1A1A; margin:0 0 8px;">AI Lead Magnets</h1>
+        <p style="font-family:'Satoshi',sans-serif; font-size:14px; color:#8B8070;">All 11 service magnets — powered by Gemini 2.5 Flash</p>
+      </div>
+
+      <!-- RESIDENTIAL -->
+      <div style="margin-bottom:16px;">
+        <p style="font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8B8070; margin:0 0 24px; border-bottom:1px solid #D8D2C8; padding-bottom:8px;">🏠 Residential Services</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(560px,1fr)); gap:32px; margin-bottom:48px;">
+        <div><CustomHomeMasonryPlanner /></div>
+        <div><BrickInstallationEstimator /></div>
+        <div><StoneStyleSelector /></div>
+        <div><VeneerCoverageCalculator /></div>
+        <div><ChimneyInspectionChecklist /></div>
+      </div>
+
+      <!-- COMMERCIAL -->
+      <div style="margin-bottom:16px;">
+        <p style="font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8B8070; margin:0 0 24px; border-bottom:1px solid #D8D2C8; padding-bottom:8px;">🏢 Commercial Services</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(580px,1fr)); gap:32px; margin-bottom:48px;">
+        <div><CMULoadCalculator /></div>
+        <div><CommercialProjectScopeBuilder /></div>
+        <div><FacadeCoverageEstimator /></div>
+      </div>
+
+      <!-- RESTORATION -->
+      <div style="margin-bottom:16px;">
+        <p style="font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8B8070; margin:0 0 24px; border-bottom:1px solid #D8D2C8; padding-bottom:8px;">🔧 Masonry Restoration</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(560px,1fr)); gap:32px;">
+        <div><MortarDamageAssessment /></div>
+        <div><BrickDamageCounter /></div>
+        <div><ChimneyRiskScore /></div>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,433 @@
+---
+const projects = [
+  {
+    id: 1,
+    title: "Full Brick Facade Restoration",
+    location: "Hinsdale, IL",
+    scope: "Complete facade repointing, spalled brick replacement, and waterproof sealing across a 3,200 sq ft estate exterior.",
+    tags: ["Brick Restoration", "Repointing", "Waterproofing"],
+    year: "2026",
+    sqft: "3,200 sq ft",
+    duration: "3 weeks",
+    image: "/images/project-brick-restoration.jpg",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "Custom Limestone Entry Steps",
+    location: "Winnetka, IL",
+    scope: "Hand-cut limestone steps and landing with custom iron railing footings — matched the home's 1930s architectural character.",
+    tags: ["Limestone", "Custom Stonework"],
+    year: "2026",
+    sqft: "240 sq ft",
+    duration: "8 days",
+    image: "/images/project-limestone-steps.jpg",
+    featured: false,
+  },
+  {
+    id: 3,
+    title: "Historic Chimney Rebuild",
+    location: "Oak Park, IL",
+    scope: "Full chimney crown replacement, flashing repair, and tuckpointing roofline to cap on a 1920s craftsman.",
+    tags: ["Chimney", "Tuckpointing"],
+    year: "2026",
+    sqft: null,
+    duration: "5 days",
+    image: "/images/project-chimney.jpg",
+    featured: false,
+  },
+  {
+    id: 4,
+    title: "Full Exterior Tuckpointing",
+    location: "Elmhurst, IL",
+    scope: "Complete mortar joint raking and repointing across four elevations of a 1940s brick colonial — color-matched original mortar.",
+    tags: ["Tuckpointing", "Brick Repair"],
+    year: "2026",
+    sqft: "2,800 sq ft",
+    duration: "10 days",
+    image: "/images/project-tuckpointing.jpg",
+    featured: false,
+  },
+];
+
+const featured = projects.find(p => p.featured);
+const rest = projects.filter(p => !p.featured);
+---
+
+<section class="rp" id="recent-projects">
+  <div class="rp-inner">
+
+    <!-- Header -->
+    <div class="rp-header">
+      <div class="rp-header-left">
+        <span class="rp-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>Recent Work</span>
+        <h2 class="rp-heading">Real Jobs.<br><em>Real Results.</em></h2>
+      </div>
+      <p class="rp-sub">Every project below was completed on time, on budget, by our own crew — no stock photos, no subcontractors, built to survive Illinois winters.</p>
+    </div>
+
+    <!-- Featured project -->
+    <div class="rp-featured">
+      <div class="rp-featured-image">
+        <img src={featured.image} alt={featured.title} loading="lazy" decoding="async" width="880" height="480" />
+        <div class="rp-featured-overlay">
+          <span class="rp-year-badge">{featured.year}</span>
+        </div>
+      </div>
+      <div class="rp-featured-details">
+        <div class="rp-tags">
+          {featured.tags.map(tag => <span class="rp-tag">{tag}</span>)}
+        </div>
+        <h3 class="rp-featured-title">{featured.title}</h3>
+        <div class="rp-location">
+          <span class="rp-location-dot"></span>
+          {featured.location}
+        </div>
+        <p class="rp-scope">{featured.scope}</p>
+        <div class="rp-stats">
+          {featured.sqft && (
+            <div class="rp-stat">
+              <p class="rp-stat-value">{featured.sqft}</p>
+              <p class="rp-stat-label">Project Area</p>
+            </div>
+          )}
+          <div class="rp-stat">
+            <p class="rp-stat-value">{featured.duration}</p>
+            <p class="rp-stat-label">Completion Time</p>
+          </div>
+          <div class="rp-stat">
+            <p class="rp-stat-value">{featured.year}</p>
+            <p class="rp-stat-label">Year Completed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rest of projects grid -->
+    <div class="rp-grid">
+      {rest.map(p => (
+        <div class="rp-card">
+          <div class="rp-card-image">
+            <img src={p.image} alt={p.title} loading="lazy" decoding="async" width="400" height="180" />
+            <span class="rp-card-year">{p.year}</span>
+          </div>
+          <div class="rp-card-body">
+            <div class="rp-tags">
+              {p.tags.map(tag => <span class="rp-tag">{tag}</span>)}
+            </div>
+            <h4 class="rp-card-title">{p.title}</h4>
+            <div class="rp-location">
+              <span class="rp-location-dot"></span>
+              {p.location}
+            </div>
+            <p class="rp-card-scope">{p.scope}</p>
+            <div class="rp-card-meta">
+              {p.sqft && <span class="rp-meta-item">{p.sqft}</span>}
+              <span class="rp-meta-item">{p.duration}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+.rp {
+  background: #F5F3EF;
+  padding: 100px 0;
+  border-top: 1px solid #D8D2C8;
+}
+.rp-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* HEADER */
+.rp-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.rp-label {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin-bottom: 16px;
+}
+.rp-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.2;
+  margin: 0;
+}
+.rp-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+.rp-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 400px;
+  padding-bottom: 6px;
+}
+
+/* FEATURED */
+.rp-featured {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 0;
+  margin-bottom: 2px;
+  background: #fff;
+  border: 2px solid #D8D2C8;
+  border-top: 3px solid #D4A931;
+}
+.rp-featured-image {
+  position: relative;
+  overflow: hidden;
+  height: 480px;
+}
+.rp-featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms ease;
+}
+.rp-featured:hover .rp-featured-image img {
+  transform: scale(1.03);
+}
+.rp-featured-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+.rp-year-badge {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: #D4A931;
+  padding: 4px 10px;
+}
+.rp-featured-details {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  border-left: 1px solid #D8D2C8;
+}
+.rp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rp-tag {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #D4A931;
+  border: 1px solid #D4A931;
+  padding: 3px 8px;
+}
+.rp-featured-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.2;
+  margin: 0;
+}
+.rp-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8B8070;
+}
+.rp-location-dot {
+  width: 6px;
+  height: 6px;
+  background: #D4A931;
+  flex-shrink: 0;
+}
+.rp-scope {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0;
+}
+.rp-stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid #D8D2C8;
+  padding-top: 20px;
+}
+.rp-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 16px;
+  border-right: 1px solid #D8D2C8;
+}
+.rp-stat:last-child {
+  border-right: none;
+  padding-right: 0;
+  padding-left: 16px;
+  flex: none;
+}
+.rp-stat:not(:first-child):not(:last-child) {
+  padding-left: 16px;
+}
+.rp-stat-value {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.rp-stat-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8B8070;
+}
+
+/* GRID */
+.rp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.rp-card {
+  background: #fff;
+  border: 2px solid #D8D2C8;
+  border-top: 3px solid #D4A931;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+.rp-card:hover {
+  border-color: #D4A931;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.rp-card-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+.rp-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 500ms ease;
+}
+.rp-card:hover .rp-card-image img {
+  transform: scale(1.05);
+}
+.rp-card-year {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: #D4A931;
+  padding: 3px 7px;
+}
+.rp-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.rp-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.25;
+  margin: 0;
+}
+.rp-card-scope {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #4A4A4A;
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+.rp-card-meta {
+  display: flex;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #D8D2C8;
+  flex-wrap: wrap;
+}
+.rp-meta-item {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8B8070;
+}
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .rp-inner { padding: 0 40px; }
+}
+@media (max-width: 900px) {
+  .rp { padding: 72px 0; }
+  .rp-featured { grid-template-columns: 1fr; }
+  .rp-featured-image { height: 320px; }
+  .rp-featured-details { border-left: none; border-top: 1px solid #D8D2C8; }
+  .rp-grid { grid-template-columns: repeat(2, 1fr); }
+  .rp-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .rp { padding: 56px 0; }
+  .rp-inner { padding: 0 20px; }
+  .rp-grid { grid-template-columns: 1fr; }
+  .rp-featured-image { height: 260px; }
+  .rp-stats { flex-wrap: wrap; gap: 16px; }
+  .rp-stat { border-right: none; padding: 0; flex: none; width: 45%; }
+  .rp-stat:last-child { padding-left: 0; }
+}
+</style>
+

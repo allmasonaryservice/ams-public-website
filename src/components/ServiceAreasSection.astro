@@ -1,0 +1,357 @@
+---
+const areas = [
+  // Western suburbs — core market
+  { name: "Hinsdale", lat: 41.8006, lng: -87.9284 },
+  { name: "Western Springs", lat: 41.8089, lng: -87.9006 },
+  { name: "Elmhurst", lat: 41.8995, lng: -87.9401 },
+  { name: "Oak Brook", lat: 41.8320, lng: -87.9284 },
+  { name: "Burr Ridge", lat: 41.7517, lng: -87.9195 },
+  { name: "Clarendon Hills", lat: 41.7978, lng: -87.9573 },
+  { name: "La Grange", lat: 41.8056, lng: -87.8695 },
+  { name: "River Forest", lat: 41.8978, lng: -87.8134 },
+  { name: "Oak Park", lat: 41.8850, lng: -87.7845 },
+  // North Shore — premium market
+  { name: "Winnetka", lat: 42.1075, lng: -87.7359 },
+  { name: "Kenilworth", lat: 42.0867, lng: -87.7159 },
+  { name: "Wilmette", lat: 42.0725, lng: -87.7273 },
+  { name: "Glencoe", lat: 42.1353, lng: -87.7584 },
+  { name: "Highland Park", lat: 42.1817, lng: -87.8003 },
+  { name: "Lake Forest", lat: 42.2589, lng: -87.8401 },
+  { name: "Northbrook", lat: 42.1253, lng: -87.8270 },
+  // DuPage / Naperville corridor
+  { name: "Naperville", lat: 41.7508, lng: -88.1535 },
+  { name: "Wheaton", lat: 41.8661, lng: -88.1070 },
+  // Chicago
+  { name: "Chicago", lat: 41.8781, lng: -87.6298 },
+];
+---
+
+<section class="sa" id="service-areas">
+  <div class="sa-inner">
+
+    <div class="sa-header">
+      <span class="sa-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>Where We Work</span>
+      <h2 class="sa-heading">We Come to You —<br><em>Across Chicagoland.</em></h2>
+      <p class="sa-sub">19 Illinois communities served since 2007. North Shore estates, western suburb colonials, Naperville corridor homes — if your masonry needs work, we're already nearby.</p>
+    </div>
+
+    <div class="sa-layout">
+
+      <div class="sa-map-wrap">
+        <div id="sa-map"></div>
+      </div>
+
+      <div class="sa-sidebar">
+        <p class="sa-sidebar-label">All Service Areas</p>
+        <ul class="sa-list">
+          {areas.map(a => (
+            <li class="sa-item">
+              <span class="sa-dot-icon"></span>
+              {a.name}{a.name !== "Chicago" ? ", IL" : ""}
+            </li>
+          ))}
+        </ul>
+        <a href="/contact" class="sa-cta">
+          Not sure if we serve your area? Ask us
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+.sa {
+  background: #E8E4DC;
+  padding: 100px 0;
+  border-top: 1px solid #D8D2C8;
+}
+
+.sa-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* HEADER */
+.sa-header {
+  margin-bottom: 56px;
+}
+.sa-label {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin-bottom: 16px;
+}
+.sa-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.2;
+  margin: 0 0 14px 0;
+}
+.sa-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+.sa-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 480px;
+}
+
+/* LAYOUT */
+.sa-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* MAP */
+.sa-map-wrap {
+  position: relative;
+}
+#sa-map {
+  width: 100%;
+  height: 520px;
+  border: 2px solid #1A1A1A;
+  background: #2D2D2D;
+}
+
+/* SIDEBAR */
+.sa-sidebar {
+  position: sticky;
+  top: 120px;
+}
+.sa-sidebar-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin: 0 0 14px 0;
+  border-bottom: 1px solid #D8D2C8;
+  padding-bottom: 10px;
+}
+.sa-list {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 420px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #D4A931 #E8E4DC;
+}
+.sa-list::-webkit-scrollbar { width: 3px; }
+.sa-list::-webkit-scrollbar-thumb { background: #D4A931; }
+.sa-item {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #1A1A1A;
+  padding: 7px 0;
+  border-bottom: 1px solid #D8D2C8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+.sa-item:last-child { border-bottom: none; }
+.sa-dot-icon {
+  width: 6px;
+  height: 6px;
+  background: #D4A931;
+  flex-shrink: 0;
+}
+
+.sa-cta {
+  display: block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: #D4A931;
+  border: 2px solid #D4A931;
+  padding: 10px 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.sa-cta:hover { background: #B8932A; border-color: #B8932A; }
+.sa-cta:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .sa-inner { padding: 0 40px; }
+  .sa-layout { grid-template-columns: 1fr 280px; gap: 32px; }
+}
+@media (max-width: 900px) {
+  .sa { padding: 72px 0; }
+  .sa-layout { grid-template-columns: 1fr; }
+  .sa-sidebar { position: static; }
+  .sa-list { max-height: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .sa-item { padding: 6px 0; }
+  #sa-map { height: 400px; }
+}
+@media (max-width: 640px) {
+  .sa { padding: 56px 0; }
+  .sa-inner { padding: 0 20px; }
+  .sa-list { grid-template-columns: repeat(2, 1fr); }
+  #sa-map { height: 320px; }
+}
+</style>
+
+<script is:inline>
+  function initMap() {
+    var mapEl = document.getElementById('sa-map');
+    if (!mapEl || !window.L) return;
+    var L = window.L;
+
+    // Destroy previous Leaflet instance if it exists on this container
+    if (window.__saMap) {
+      try { window.__saMap.remove(); } catch(e) {}
+      window.__saMap = null;
+    }
+    // Also clear Leaflet's internal container tracking
+    if (mapEl._leaflet_id) {
+      delete mapEl._leaflet_id;
+    }
+
+    var map = L.map('sa-map', {
+      center: [41.95, -87.85],
+      zoom: 10,
+      zoomControl: true,
+      scrollWheelZoom: false,
+      attributionControl: false,
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    var goldIcon = L.divIcon({
+      className: '',
+      html: '<div style="width:12px;height:12px;background:#D4A931;border:2px solid #1A1A1A;"></div>',
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+    });
+
+    var areas = [
+      { name: "Hinsdale", lat: 41.8006, lng: -87.9284 },
+      { name: "Western Springs", lat: 41.8089, lng: -87.9006 },
+      { name: "Elmhurst", lat: 41.8995, lng: -87.9401 },
+      { name: "Oak Brook", lat: 41.8320, lng: -87.9284 },
+      { name: "Burr Ridge", lat: 41.7517, lng: -87.9195 },
+      { name: "Clarendon Hills", lat: 41.7978, lng: -87.9573 },
+      { name: "La Grange", lat: 41.8056, lng: -87.8695 },
+      { name: "River Forest", lat: 41.8978, lng: -87.8134 },
+      { name: "Oak Park", lat: 41.8850, lng: -87.7845 },
+      { name: "Winnetka", lat: 42.1075, lng: -87.7359 },
+      { name: "Kenilworth", lat: 42.0867, lng: -87.7159 },
+      { name: "Wilmette", lat: 42.0725, lng: -87.7273 },
+      { name: "Glencoe", lat: 42.1353, lng: -87.7584 },
+      { name: "Highland Park", lat: 42.1817, lng: -87.8003 },
+      { name: "Lake Forest", lat: 42.2589, lng: -87.8401 },
+      { name: "Northbrook", lat: 42.1253, lng: -87.8270 },
+      { name: "Naperville", lat: 41.7508, lng: -88.1535 },
+      { name: "Wheaton", lat: 41.8661, lng: -88.1070 },
+      { name: "Chicago", lat: 41.8781, lng: -87.6298 },
+    ];
+
+    areas.forEach(function(a) {
+      L.marker([a.lat, a.lng], { icon: goldIcon })
+        .bindTooltip(a.name, {
+          permanent: false,
+          direction: 'top',
+          offset: [0, -10],
+          className: 'sa-tooltip',
+        })
+        .addTo(map);
+    });
+
+    window.__saMap = map;
+  }
+
+  function loadLeafletAndInit() {
+    if (window.L) {
+      initMap();
+      return;
+    }
+    var script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = initMap;
+    document.head.appendChild(script);
+  }
+
+  // On each navigation: if Leaflet already loaded, init map immediately.
+  // Also hook into astro:page-load in case this runs before Leaflet is ready.
+  if (window.L) {
+    initMap();
+  } else {
+    // First load — use IntersectionObserver to lazy-load Leaflet
+    var mapSection = document.getElementById('service-areas');
+    if (mapSection) {
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          loadLeafletAndInit();
+        }
+      }, { rootMargin: '200px' });
+      observer.observe(mapSection);
+    }
+  }
+
+  // After any ViewTransition, if Leaflet loaded but map not yet init, try again
+  document.addEventListener('astro:page-load', function() {
+    if (window.L && document.getElementById('sa-map')) {
+      initMap();
+    }
+  });
+</script>
+
+<style is:global>
+.sa-tooltip {
+  background: #1A1A1A !important;
+  color: #D4A931 !important;
+  border: 1px solid #D4A931 !important;
+  border-radius: 0 !important;
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  padding: 4px 8px !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+}
+.sa-tooltip::before {
+  border-top-color: #D4A931 !important;
+}
+.leaflet-control-zoom a {
+  background: #1A1A1A !important;
+  color: #D4A931 !important;
+  border: 1px solid #D4A931 !important;
+  border-radius: 0 !important;
+}
+.leaflet-control-zoom a:hover {
+  background: #D4A931 !important;
+  color: #1A1A1A !important;
+}
+</style>

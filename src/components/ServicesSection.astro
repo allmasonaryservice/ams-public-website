@@ -1,0 +1,551 @@
+---
+// ServicesSection — All Masonry Services Inc
+// 2-tab layout: Residential (5 cards) + Commercial (3 cards)
+// AMS Design System: Charcoal #1A1A1A · Gold #D4A931 · border-radius: 0px
+---
+
+<section class="svc-section" id="services-section">
+  <div class="svc-container">
+
+    <!-- Header -->
+    <div class="svc-header">
+      <div class="svc-label">
+        <span class="svc-label-dot"></span>
+        <span>What We Offer</span>
+      </div>
+      <h2 class="svc-heading">
+        <span class="svc-h-light">A Brief Look at </span>
+        <span class="svc-h-bold">The Services</span>
+        <span class="svc-h-light"> We Deliver</span>
+      </h2>
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="svc-tabs" role="tablist" aria-label="Service categories">
+      <button class="svc-tab active" data-tab="residential" role="tab" aria-selected="true" aria-controls="tab-residential">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Residential Services
+      </button>
+      <button class="svc-tab" data-tab="commercial" role="tab" aria-selected="false" aria-controls="tab-commercial">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="2" y="7" width="20" height="14" rx="0"/>
+          <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+        </svg>
+        Commercial Services
+      </button>
+    </div>
+
+    <!-- ── RESIDENTIAL CARDS ── -->
+    <div class="svc-panel" id="tab-residential" role="tabpanel" aria-labelledby="tab-residential">
+      <div class="svc-grid">
+
+        <!-- Card: Custom Home Masonry -->
+        <a href="/services/custom-home-masonry" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-custom-home.webp" alt="Custom Home Masonry" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Custom Home Masonry</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Full masonry work for custom-built homes — from foundation brick to decorative stone finish.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card: Brick Installation -->
+        <a href="/services/brick-installation" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-brick-installation.webp?v=2" alt="Brick Installation" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Brick Installation</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Professional brick laying with precision and craftsmanship for walls, facades, and more.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card: Natural Stone & Limestone -->
+        <a href="/services/natural-stone-limestone" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-stone.webp" alt="Natural Stone & Limestone" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Natural Stone &amp; Limestone</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">High-quality natural stone and limestone installation for a timeless, elegant look that lasts decades.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card: Brick & Stone Veneers -->
+        <a href="/services/brick-stone-veneers" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-veneers.webp" alt="Brick & Stone Veneers" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Brick &amp; Stone Veneers</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Full masonry veneers that add beauty and durability to any residential structure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card: Chimney & Fireplace -->
+        <a href="/services/chimney-fireplace" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-chimney.webp" alt="Chimney & Fireplace" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Chimney &amp; Fireplace</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Custom chimney construction and fireplace masonry for residential properties.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── COMMERCIAL CARDS ── -->
+    <div class="svc-panel svc-panel--hidden" id="tab-commercial" role="tabpanel" aria-labelledby="tab-commercial">
+      <div class="svc-grid svc-grid--3col">
+
+        <!-- Card: CMU Block Installation -->
+        <a href="/services/cmu-block-installation" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-cmu.webp?v=2" alt="CMU Block Installation" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">CMU Block Installation</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Expert concrete masonry unit installation for commercial buildings and structural applications.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card: Commercial Brick & Stone -->
+        <a href="/services/commercial-brick-stone" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-commercial.webp?v=2" alt="Commercial Brick & Stone" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Commercial Brick &amp; Stone</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Large-scale masonry solutions for commercial buildings, storefronts, and industrial properties across Chicagoland.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card: Full Masonry Veneers (Commercial) -->
+        <a href="/services/commercial-masonry-veneers" class="svc-card">
+          <div class="svc-shield">
+            <div class="svc-img-wrap">
+              <img src="/images/service-commercial-veneers.webp?v=2" alt="Full Masonry Veneers" loading="lazy" decoding="async" width="300" height="400" class="svc-img" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="svc-img-fallback"></div>
+            </div>
+            <div class="svc-overlay"></div>
+            <div class="svc-content">
+              <h3 class="svc-title">Full Masonry Veneers</h3>
+              <div class="svc-desc-wrap">
+                <div class="svc-desc-inner">
+                  <p class="svc-desc">Commercial-grade masonry veneer systems for storefronts, office buildings, and more.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- View All Services -->
+    <div class="svc-footer">
+      <a href="/services" class="svc-all-btn">
+        View All Services
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ══════════════════════════════════════════
+   SERVICES SECTION
+══════════════════════════════════════════ */
+.svc-section {
+  background: #F5F3EF;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.svc-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* ── Header ── */
+.svc-header {
+  margin-bottom: 40px;
+}
+
+.svc-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+}
+
+.svc-label-dot {
+  width: 6px;
+  height: 6px;
+  background: #D4A931;
+  display: block;
+}
+
+.svc-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin: 0;
+}
+.svc-h-light { font-weight: 400; color: #4A4A4A; }
+.svc-h-bold  { font-weight: 700; color: #1A1A1A; }
+
+/* ── Tab Switcher ── */
+.svc-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #D8D2C8;
+}
+
+.svc-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8B8070;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.svc-tab svg {
+  flex-shrink: 0;
+  transition: stroke 200ms ease;
+}
+
+.svc-tab:hover {
+  color: #1A1A1A;
+}
+.svc-tab:hover svg {
+  stroke: #1A1A1A;
+}
+.svc-tab:focus-visible {
+  outline: 2px solid #D4A931;
+  outline-offset: 2px;
+}
+
+.svc-tab.active {
+  color: #1A1A1A;
+  border-bottom-color: #D4A931;
+}
+.svc-tab.active svg {
+  stroke: #D4A931;
+}
+
+/* ── Panels ── */
+.svc-panel {
+  display: block;
+}
+.svc-panel--hidden {
+  display: none;
+}
+
+/* ── Grid ── */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+/* Commercial: 3 equal cols centered */
+.svc-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 840px;
+}
+
+/* ── Card ── */
+.svc-card {
+  display: block;
+  text-decoration: none;
+  aspect-ratio: 3/4;
+  position: relative;
+}
+
+/* Hexagonal shield mask */
+.svc-shield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #1A1A1A;
+  clip-path: polygon(50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%, 0% 15%);
+  transition: clip-path 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+.svc-card:hover .svc-shield {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Image */
+.svc-img-wrap {
+  position: absolute;
+  inset: 0;
+}
+.svc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transform: scale(1.2);
+  transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.9s ease;
+  display: block;
+}
+.svc-card:hover .svc-img {
+  transform: scale(1);
+  opacity: 1;
+}
+.svc-img-wrap.no-img .svc-img { display: none; }
+.svc-img-wrap.no-img .svc-img-fallback { display: flex; }
+
+.svc-img-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: #2D2D2D;
+}
+
+/* Gradient overlay */
+.svc-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  opacity: 0.7;
+  transition: opacity 0.9s ease;
+  z-index: 1;
+}
+.svc-card:hover .svc-overlay { opacity: 0.9; }
+
+/* Content */
+.svc-content {
+  position: absolute;
+  inset: 0;
+  /* bottom padding must clear the hexagon taper (bottom 15% = ~tapered zone) */
+  padding: 20px 22px 22% 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.svc-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin: 0;
+  /* always visible at bottom — no transform hiding */
+}
+
+/* Description slide-up on hover */
+.svc-desc-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+              margin-top 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  margin-top: 0;
+  overflow: hidden;
+}
+.svc-card:hover .svc-desc-wrap {
+  grid-template-rows: 1fr;
+  margin-top: 10px;
+}
+
+/* inner wrapper — required for grid-rows: 0fr trick */
+.svc-desc-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.svc-desc {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.55;
+  margin: 0 0 8px 0;
+}
+
+/* ── View All ── */
+.svc-footer {
+  text-align: center;
+}
+
+.svc-all-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 28px;
+  background: transparent;
+  color: #1A1A1A;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid #1A1A1A;
+  transition: background 200ms ease, color 200ms ease;
+}
+.svc-all-btn:hover {
+  background: #1A1A1A;
+  color: #D4A931;
+}
+.svc-all-btn:focus-visible {
+  outline: 2px solid #D4A931;
+  outline-offset: 2px;
+}
+
+.svc-card:focus-visible {
+  outline: 2px solid #D4A931;
+  outline-offset: 2px;
+}
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .svc-container { padding: 0 40px; }
+  .svc-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .svc-grid--3col { max-width: 100%; }
+}
+
+@media (max-width: 900px) {
+  .svc-section { padding: 72px 0; }
+  .svc-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .svc-grid--3col { grid-template-columns: repeat(3, 1fr); }
+  .svc-tab { padding: 12px 20px; font-size: 12px; }
+}
+
+@media (max-width: 640px) {
+  .svc-section { padding: 56px 0; }
+  .svc-container { padding: 0 16px; }
+  .svc-tabs { margin-bottom: 28px; }
+  .svc-tab { padding: 10px 14px; gap: 6px; font-size: 11px; }
+  .svc-tab svg { display: none; }
+
+  .svc-grid,
+  .svc-grid--3col {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .svc-card { aspect-ratio: 4/5; }
+  .svc-title { font-size: 13px; }
+}
+</style>
+
+<script is:inline>
+  (() => {
+    const section = document.getElementById('services-section');
+    if (!section) return;
+
+    const tabs   = section.querySelectorAll('.svc-tab');
+    const panels = section.querySelectorAll('.svc-panel');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        const target = tab.dataset.tab;
+
+        tabs.forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        panels.forEach(function(panel) {
+          if (panel.id === 'tab-' + target) {
+            panel.classList.remove('svc-panel--hidden');
+          } else {
+            panel.classList.add('svc-panel--hidden');
+          }
+        });
+      });
+    });
+  })();
+</script>

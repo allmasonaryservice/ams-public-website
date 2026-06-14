@@ -1,0 +1,530 @@
+---
+// Flatten all FAQs for schema
+const allFaqs = [
+  { q: "My mortar joints are crumbling. How serious is it?", a: "Very serious — Chicagoland's freeze-thaw cycle turns surface wear into structural damage fast. Tuckpointing now is 3–5× cheaper than the repair after two more winters of neglect." },
+  { q: "There's a white powder on my brick. What is that?", a: "That's efflorescence — mineral salts pushed to the surface by water migrating through your masonry. We diagnose the root cause first so the repair actually holds, not just the stain." },
+  { q: "My chimney bricks look fine but the cap is cracked. Do I really need to fix it?", a: "Yes — a cracked chimney cap is the #1 entry point for water into your flue. A $300 cap repair now can save you a $4,000+ chimney rebuild in 2–3 years." },
+  { q: "One brick fell out of my front steps. Can I just replace that one brick?", a: "Possibly, but a single failed brick usually signals a larger moisture or settling issue nearby. We assess the surrounding mortar and match the brick color and mortar composition so the repair blends completely." },
+  { q: "What's the difference between tuckpointing and repointing?", a: "In Chicagoland the terms are used interchangeably — both mean raking out failed mortar and refilling to spec. We match the original composition so the repair holds for decades, not seasons." },
+  { q: "Do you do full chimney rebuilds or just repairs?", a: "Both — from crown repair and flashing replacement to full above-the-roofline rebuilds. We give you an honest recommendation on scope, not just the most expensive option." },
+  { q: "Can you match my original brick and mortar color?", a: "Yes — we source matching brick from regional suppliers and blend mortar to match your original joint. On 1920s–1960s homes common across Oak Park, Hinsdale, and Winnetka, we specialize in historic profiles that big box stores don't carry." },
+  { q: "What are your free homeowner tools and how do they work?", a: "Three free tools built for Illinois homeowners: Chimney Risk Score (12-point structural check, 2 minutes), Brick Damage Counter (damaged brick count → repair estimate with urgency rating), and Brick Project Estimator (material and labor ranges for new brick work). All are free, no login required, and generate a PDF." },
+  { q: "Which Illinois communities do you serve?", a: "We serve 19 Chicagoland communities: Hinsdale, Western Springs, Elmhurst, Oak Brook, Burr Ridge, Clarendon Hills, La Grange, River Forest, Oak Park, Winnetka, Kenilworth, Wilmette, Glencoe, Highland Park, Lake Forest, Northbrook, Naperville, Wheaton, and Chicago proper." },
+  { q: "Do you use subcontractors?", a: "Never — every job is done by our own crew, from Naperville to Winnetka. No subcontractors, no handoffs — that's why we have zero callbacks on record." },
+  { q: "How do I get a quote?", a: "Call 773-656-2107 or use the contact form to schedule a free on-site assessment and written estimate. We don't quote over photos — masonry is structural and requires seeing the work in person." },
+  { q: "How far in advance should I book?", a: "Spring books 4–6 weeks out by May — reach out before April; fall slots fill in August. Emergency repairs are handled on a priority basis regardless of season." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: allFaqs.map(item => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+const categories = [
+  {
+    id: "pain",
+    label: "Common Problems",
+    icon: "✦",
+    faqs: [
+      {
+        q: "My mortar joints are crumbling. How serious is it?",
+        a: "Very serious — Chicagoland's freeze-thaw cycle turns surface wear into structural damage fast. Tuckpointing now is 3–5× cheaper than the repair after two more winters of neglect.",
+      },
+      {
+        q: "There's a white powder on my brick. What is that?",
+        a: "That's efflorescence — mineral salts pushed to the surface by water migrating through your masonry. We diagnose the root cause first so the repair actually holds, not just the stain.",
+      },
+      {
+        q: "My chimney bricks look fine but the cap is cracked. Do I really need to fix it?",
+        a: "Yes — a cracked chimney cap is the #1 entry point for water into your flue. A $300 cap repair now can save you a $4,000+ chimney rebuild in 2–3 years.",
+      },
+      {
+        q: "One brick fell out of my front steps. Can I just replace that one brick?",
+        a: "Possibly, but a single failed brick usually signals a larger moisture or settling issue nearby. We assess the surrounding mortar and match the brick color and mortar composition so the repair blends completely.",
+      },
+    ],
+  },
+  {
+    id: "services",
+    label: "Our Services",
+    icon: "✦",
+    faqs: [
+      {
+        q: "What's the difference between tuckpointing and repointing?",
+        a: "In Chicagoland the terms are used interchangeably — both mean raking out failed mortar and refilling to spec. We match the original composition so the repair holds for decades, not seasons.",
+      },
+      {
+        q: "Do you do full chimney rebuilds or just repairs?",
+        a: "Both — from crown repair and flashing replacement to full above-the-roofline rebuilds. We give you an honest recommendation on scope, not just the most expensive option.",
+      },
+      {
+        q: "Can you match my original brick and mortar color?",
+        a: "Yes — we source matching brick from regional suppliers and blend mortar to match your original joint. On 1920s–1960s homes common across Oak Park, Hinsdale, and Winnetka, we specialize in historic profiles that big box stores don't carry.",
+      },
+      {
+        q: "Do you work on historic or older homes?",
+        a: "Yes — many homes we service across the North Shore and western suburbs are pre-war construction with limestone facades and lime-based mortar. We use period-appropriate materials and methods to preserve both the structure and the character.",
+      },
+    ],
+  },
+  {
+    id: "tools",
+    label: "Free Diagnostic Tools",
+    icon: "✦",
+    faqs: [
+      {
+        q: "What are your free homeowner tools and how do they work?",
+        a: "Three free tools built for Illinois homeowners: Chimney Risk Score (12-point structural check, 2 minutes), Brick Damage Counter (damaged brick count → repair estimate with urgency rating), and Brick Project Estimator (material and labor ranges for new brick work). All are free, no login required, and generate a PDF.",
+      },
+      {
+        q: "Is the estimate from your tools binding?",
+        a: "No — they're ballpark ranges so you understand rough cost before talking to any contractor. Real pricing depends on scope and site conditions, but knowing the range means you can spot an outlier immediately.",
+      },
+      {
+        q: "Who are the tools designed for?",
+        a: "Illinois homeowners who want to understand their situation before committing to a contractor visit. The Chimney Risk Score or Brick Damage Counter will tell you whether something is urgent in 2 minutes.",
+      },
+    ],
+  },
+  {
+    id: "areas",
+    label: "Service Areas",
+    icon: "✦",
+    faqs: [
+      {
+        q: "Which Illinois communities do you serve?",
+        a: "We serve 19 Chicagoland communities: Hinsdale, Western Springs, Elmhurst, Oak Brook, Burr Ridge, Clarendon Hills, La Grange, River Forest, Oak Park, Winnetka, Kenilworth, Wilmette, Glencoe, Highland Park, Lake Forest, Northbrook, Naperville, Wheaton, and Chicago proper.",
+      },
+      {
+        q: "Do you travel to areas outside your listed service zones?",
+        a: "For larger projects — full facade restorations or complete chimney rebuilds — we do take on select work beyond our standard zones. Call 773-656-2107 and describe the project; if it's within range, we'll make it work.",
+      },
+      {
+        q: "I'm in Chicago's North Shore. Do you serve historic homes there?",
+        a: "Yes — the North Shore is one of our most active service areas. We work regularly on pre-war estates in Winnetka, Kenilworth, Lake Forest, and Glencoe with original limestone and historic brick that requires matched materials and traditional techniques.",
+      },
+    ],
+  },
+  {
+    id: "process",
+    label: "How We Work",
+    icon: "✦",
+    faqs: [
+      {
+        q: "Do you use subcontractors?",
+        a: "Never — every job is done by our own crew, from Naperville to Winnetka. No subcontractors, no handoffs — that's why we have zero callbacks on record.",
+      },
+      {
+        q: "How do I get a quote?",
+        a: "Call 773-656-2107 or use the contact form to schedule a free on-site assessment and written estimate. We don't quote over photos — masonry is structural and requires seeing the work in person.",
+      },
+      {
+        q: "How far in advance should I book?",
+        a: "Spring books 4–6 weeks out by May — reach out before April; fall slots fill in August. Emergency repairs are handled on a priority basis regardless of season.",
+      },
+      {
+        q: "What's your warranty?",
+        a: "If anything we've done fails within the warranty period, we come back at no charge. Specific terms vary by scope and are provided in writing with your estimate.",
+      },
+    ],
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+
+    <div class="faq-header">
+      <span class="faq-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>Common Questions</span>
+      <h2 class="faq-heading">Answers for Illinois<br><em>Homeowners.</em></h2>
+      <p class="faq-sub">Everything about masonry repair and how we work — before you pick up the phone.</p>
+    </div>
+
+    <div class="faq-layout">
+
+      <!-- Category tabs -->
+      <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
+        {categories.map((cat, i) => (
+          <button
+            class={`faq-tab${i === 0 ? ' faq-tab--active' : ''}`}
+            data-target={`faq-cat-${cat.id}`}
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            aria-controls={`faq-cat-${cat.id}`}
+            type="button"
+          >
+            <span class="faq-tab-icon" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></span>
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- FAQ panels -->
+      <div class="faq-panels">
+        {categories.map((cat, i) => (
+          <div
+            class={`faq-panel${i === 0 ? ' faq-panel--active' : ''}`}
+            id={`faq-cat-${cat.id}`}
+            role="tabpanel"
+          >
+            {cat.faqs.map((item, j) => (
+              <div class="faq-item" data-index={`${cat.id}-${j}`}>
+                <button class="faq-q" type="button" aria-expanded="false" aria-controls={`faq-a-${cat.id}-${j}`}>
+                  <span class="faq-q-text">{item.q}</span>
+                  <span class="faq-chevron" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M4 6l4 4 4-4" stroke="#D4A931" stroke-width="2" stroke-linecap="square"/>
+                    </svg>
+                  </span>
+                </button>
+                <div class="faq-a" id={`faq-a-${cat.id}-${j}`} role="region" hidden>
+                  <p class="faq-a-text">{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="faq-cta-row">
+      <p class="faq-cta-text">Still have questions? We're happy to talk through your specific situation.</p>
+      <a href="/contact" class="faq-cta-btn">Ask Us Directly</a>
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+.faq {
+  background: #F5F3EF;
+  padding: 100px 0;
+  border-top: 1px solid #D8D2C8;
+}
+.faq-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* HEADER */
+.faq-header {
+  margin-bottom: 64px;
+}
+.faq-label {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin-bottom: 16px;
+}
+.faq-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.2;
+  margin: 0 0 14px 0;
+}
+.faq-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+.faq-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 520px;
+}
+
+/* LAYOUT */
+.faq-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* TABS */
+.faq-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: sticky;
+  top: 120px;
+  border: 2px solid #D8D2C8;
+}
+.faq-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #4A4A4A;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #D8D2C8;
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: color 200ms ease, background 200ms ease;
+  width: 100%;
+}
+.faq-tab:last-child {
+  border-bottom: none;
+}
+.faq-tab-icon {
+  color: #D8D2C8;
+  font-size: 9px;
+  transition: color 200ms ease;
+  flex-shrink: 0;
+}
+.faq-tab:hover {
+  color: #1A1A1A;
+  background: #EAE7E0;
+}
+.faq-tab:hover .faq-tab-icon {
+  color: #D4A931;
+}
+.faq-tab--active {
+  color: #1A1A1A;
+  background: #1A1A1A;
+  color: #D4A931;
+}
+.faq-tab--active .faq-tab-icon {
+  color: #D4A931;
+}
+.faq-tab:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+/* PANELS */
+.faq-panel {
+  display: none;
+}
+.faq-panel--active {
+  display: block;
+}
+
+/* FAQ ITEM */
+.faq-item {
+  border-bottom: 1px solid #D8D2C8;
+}
+.faq-item:first-child {
+  border-top: 1px solid #D8D2C8;
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 20px 0;
+  cursor: pointer;
+  text-align: left;
+}
+.faq-q-text {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.45;
+  flex: 1;
+}
+.faq-chevron {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #D8D2C8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+.faq-q:hover .faq-chevron {
+  border-color: #D4A931;
+}
+.faq-q[aria-expanded="true"] .faq-chevron {
+  border-color: #D4A931;
+  background: #D4A931;
+}
+.faq-q[aria-expanded="true"] .faq-chevron svg path {
+  stroke: #1A1A1A;
+}
+.faq-q[aria-expanded="true"] .faq-chevron svg {
+  transform: rotate(180deg);
+}
+.faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.faq-chevron svg {
+  transition: transform 250ms ease;
+}
+
+/* ANSWER */
+.faq-a {
+  padding: 0 0 20px 0;
+}
+.faq-a-text {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.8;
+  margin: 0;
+  border-left: 3px solid #D4A931;
+  padding-left: 16px;
+}
+
+/* BOTTOM CTA ROW */
+.faq-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 2px solid #1A1A1A;
+  flex-wrap: wrap;
+}
+.faq-cta-text {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 1.6;
+  margin: 0;
+}
+.faq-cta-btn {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: #D4A931;
+  border: 2px solid #D4A931;
+  padding: 12px 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.faq-cta-btn:hover {
+  background: #B8932A;
+  border-color: #B8932A;
+}
+.faq-cta-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .faq-inner { padding: 0 40px; }
+  .faq-layout { grid-template-columns: 180px 1fr; gap: 32px; }
+}
+@media (max-width: 900px) {
+  .faq { padding: 72px 0; }
+  .faq-layout { grid-template-columns: 1fr; gap: 0; }
+  .faq-tabs {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: none;
+    border-bottom: 2px solid #D8D2C8;
+    margin-bottom: 32px;
+    gap: 0;
+  }
+  .faq-tab {
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 14px;
+    flex: none;
+  }
+  .faq-tab--active {
+    background: transparent;
+    color: #1A1A1A;
+    border-bottom: 3px solid #D4A931;
+  }
+  .faq-tab--active .faq-tab-icon { color: #D4A931; }
+}
+@media (max-width: 640px) {
+  .faq { padding: 56px 0; }
+  .faq-inner { padding: 0 20px; }
+  .faq-q-text { font-size: 14px; }
+  .faq-cta-row { flex-direction: column; align-items: flex-start; }
+  .faq-cta-btn { width: 100%; text-align: center; }
+}
+</style>
+
+
+<script is:inline>
+  function initFAQ() {
+    // Tab switching
+    const tabs = document.querySelectorAll('.faq-tab');
+    const panels = document.querySelectorAll('.faq-panel');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        const targetId = tab.getAttribute('data-target');
+
+        tabs.forEach(function(t) {
+          t.classList.remove('faq-tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(function(p) {
+          p.classList.remove('faq-panel--active');
+        });
+
+        tab.classList.add('faq-tab--active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(targetId);
+        if (panel) panel.classList.add('faq-panel--active');
+      });
+    });
+
+    // Accordion expand/collapse
+    const questions = document.querySelectorAll('.faq-q');
+    questions.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const answerId = btn.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+
+        // Close all others in same panel
+        const panel = btn.closest('.faq-panel');
+        if (panel) {
+          panel.querySelectorAll('.faq-q').forEach(function(other) {
+            if (other !== btn) {
+              other.setAttribute('aria-expanded', 'false');
+              const otherAnswerId = other.getAttribute('aria-controls');
+              const otherAnswer = document.getElementById(otherAnswerId);
+              if (otherAnswer) otherAnswer.hidden = true;
+            }
+          });
+        }
+
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (answer) answer.hidden = expanded;
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initFAQ);
+</script>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

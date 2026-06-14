@@ -1,0 +1,213 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<section class="cta" id="cta-banner">
+  <div class="cta-inner">
+
+    <div class="cta-badges">
+      <span class="cta-badge cta-badge--gold">Now Booking {currentYear}</span>
+      <span class="cta-badge cta-badge--outline">Limited Slots Remaining</span>
+    </div>
+
+    <h2 class="cta-heading">
+      Ready to Start Your<br><em>Masonry Project?</em>
+    </h2>
+
+    <p class="cta-sub">
+      19 years of brick, stone, and limestone masonry across Chicagoland.<br>
+      Free estimates. No pressure. Just honest work done right.
+    </p>
+
+    <div class="cta-trust">
+      <span class="cta-trust-item">
+        <span class="cta-dot"></span>
+        Licensed &amp; Insured
+      </span>
+      <span class="cta-divider">|</span>
+      <span class="cta-trust-item">
+        <span class="cta-dot"></span>
+        Serving Chicagoland Since 2007
+      </span>
+      <span class="cta-divider">|</span>
+      <span class="cta-trust-item">
+        <span class="cta-dot"></span>
+        92 Google Reviews · 4.8 ★
+      </span>
+    </div>
+
+    <div class="cta-actions">
+      <a href="/contact" class="cta-btn cta-btn--primary">
+        Get a Free Quote — Limited Spots Available
+      </a>
+      <a href="tel:7736562107" class="cta-btn cta-btn--ghost" aria-label="Call 773-656-2107">
+        Call 773-656-2107
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+.cta {
+  background: #1A1A1A;
+  padding: 100px 0;
+  border-top: 1px solid #2D2D2D;
+  text-align: center;
+}
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* BADGES */
+.cta-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cta-badge {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+.cta-badge--gold {
+  background: #D4A931;
+  color: #1A1A1A;
+}
+.cta-badge--outline {
+  border: 2px solid #D4A931;
+  color: #D4A931;
+  background: transparent;
+}
+
+/* HEADING */
+.cta-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+.cta-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+
+/* SUB */
+.cta-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* TRUST STRIP */
+.cta-trust {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cta-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+}
+.cta-dot {
+  width: 5px;
+  height: 5px;
+  background: #D4A931;
+  flex-shrink: 0;
+}
+.cta-divider {
+  color: rgba(255,255,255,0.15);
+  font-size: 14px;
+}
+
+/* BUTTONS */
+.cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+.cta-btn {
+  display: inline-block;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 28px;
+  border: 2px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  white-space: nowrap;
+}
+.cta-btn--primary {
+  background: #D4A931;
+  color: #1A1A1A;
+  border-color: #D4A931;
+}
+.cta-btn--primary:hover {
+  background: #B8932A;
+  border-color: #B8932A;
+}
+.cta-btn--ghost {
+  background: transparent;
+  color: #D4A931;
+  border-color: #D4A931;
+}
+.cta-btn--ghost:hover {
+  background: #D4A931;
+  color: #1A1A1A;
+}
+.cta-btn--primary:focus-visible,
+.cta-btn--ghost:focus-visible {
+  outline: 2px solid #D4A931;
+  outline-offset: 2px;
+}
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .cta-inner { padding: 0 40px; }
+}
+@media (max-width: 900px) {
+  .cta { padding: 72px 0; }
+  .cta-divider { display: none; }
+  .cta-trust { flex-direction: column; gap: 8px; }
+}
+@media (max-width: 640px) {
+  .cta { padding: 56px 0; }
+  .cta-inner { padding: 0 20px; gap: 22px; }
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-btn { width: 100%; text-align: center; }
+}
+</style>
+

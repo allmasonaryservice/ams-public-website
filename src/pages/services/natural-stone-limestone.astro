@@ -1,0 +1,1013 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+import StoneStyleSelector from '../../components/magnets/StoneStyleSelector.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/services/natural-stone-limestone`;
+const phone = '773-656-2107';
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Natural Stone & Limestone Style Selector",
+  "description": "Free stone style selector for Chicagoland homeowners. Get personalized stone recommendations with care and cost guidance.",
+  "url": `${siteUrl}/services/natural-stone-limestone#stone-selector`,
+  "applicationCategory": "HomeAndGarden",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "All Masonry Services Inc",
+    "telephone": phone,
+    "url": siteUrl
+  }
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Natural Stone & Limestone Installation Works: AMS 5-Step Process",
+  "description": "How AMS installs natural stone and limestone for facades, fireplaces, and architectural features in Chicagoland.",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Style & Material Consultation", "text": "We evaluate your home's architecture, existing materials, and your aesthetic goals — then recommend specific stone types and finishes that work together." },
+    { "@type": "HowToStep", "position": 2, "name": "Stone Sourcing & Vetting", "text": "We source stone from reputable suppliers and physically inspect material for consistency — color, texture, and cut quality." },
+    { "@type": "HowToStep", "position": 3, "name": "Substrate & Waterproofing Prep", "text": "We prepare the substrate with correct waterproofing membrane, drainage layer, and mortar bed per stone type." },
+    { "@type": "HowToStep", "position": 4, "name": "Stone Installation & Jointing", "text": "We install stone in deliberate patterns — dry-laid first to check fit and appearance, then set in mortar with correct joint width and profile." },
+    { "@type": "HowToStep", "position": 5, "name": "Sealing & Final Inspection", "text": "After curing, we apply appropriate sealer for the stone type, clean the face, and walk the completed work with you before closeout." }
+  ]
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Masonry Services Inc",
+  "url": siteUrl,
+  "telephone": phone,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chicago",
+    "addressRegion": "IL",
+    "addressCountry": "US"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "92"
+  },
+  "areaServed": "Chicagoland",
+  "description": "Premium natural stone and limestone installation for Chicagoland homes. 19+ years experience.",
+  "priceRange": "$$"
+};
+
+const faqItems = [
+  {
+    question: "What's the difference between natural stone, limestone, and manufactured stone?",
+    answer: "Natural stone is quarried with irregular variation in color and texture. Limestone is a sedimentary stone that cuts cleanly and consistently — often used for architectural features and facades. Manufactured stone is a concrete product that mimics stone — less durable and less valuable. AMS installs natural stone and limestone only."
+  },
+  {
+    question: "How do I know if my home can support limestone?",
+    answer: "Limestone is heavy and requires proper structural support — a ledger, flashing, and in some cases structural reinforcement. AMS assesses your home's substrate and structural capacity on every estimate visit before recommending an installation approach."
+  },
+  {
+    question: "Is limestone good for Chicago winters?",
+    answer: "Yes — Indiana limestone in particular was quarried and shipped to Chicago for over a century and handles freeze-thaw cycles well. The key is proper waterproofing and sealing. AMS seals every limestone installation and uses appropriate mortar for the stone type."
+  },
+  {
+    question: "How long does natural stone installation take?",
+    answer: "Accent features and small sections run 2–5 days. Partial facades take 1–2 weeks. Full exterior limestone or stone installations can take 3–6 weeks depending on scope and stone sourcing lead time."
+  },
+  {
+    question: "Can you match stone on an existing home?",
+    answer: "Yes — AMS sources stone from the same or compatible quarry to match your existing installation. Some historic stones are no longer quarried in the same way; we'll tell you upfront if an exact match isn't achievable and show you the closest available option."
+  },
+  {
+    question: "Does natural stone need to be sealed?",
+    answer: "Yes — and it's not optional in Chicago's climate. Unsealed natural stone absorbs water, which freezes and causes spalling. AMS applies a penetrating sealer after installation and recommends resealing every 5–7 years."
+  },
+  {
+    question: "Do you do interior stone work?",
+    answer: "Yes — fireplaces, feature walls, kitchen backsplashes, and interior architectural accents. Same stone sourcing and installation quality as exterior work."
+  },
+  {
+    question: "How much does limestone installation cost?",
+    answer: "Natural stone and limestone installation typically runs $25–$65 per square foot installed, depending on stone type, sourcing, substrate conditions, and design complexity. Free on-site estimates at 773-656-2107."
+  }
+];
+---
+
+<BaseLayout
+  title="Natural Stone & Limestone Installation Chicago | All Masonry Services"
+  description="Premium natural stone and limestone installation for Chicagoland homes. Facades, accents, fireplaces, and architectural features. 19+ years. Free estimates. Call 773-656-2107."
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <SchemaService
+    name="Natural Stone Installation in Chicago & Chicagoland"
+    description="Premium natural stone and limestone installation for Chicagoland homes. Facades, accents, fireplaces, and architectural features. 19+ years. Free estimates. Call 773-656-2107."
+    url={pageUrl}
+    provider="All Masonry Services"
+    providerUrl={siteUrl}
+    areaServed="Chicago, Chicagoland, IL"
+    serviceType="Natural Stone Installation"
+  />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- HERO -->
+  <section class="sp-hero" aria-labelledby="hero-h1">
+    <div class="sp-hero-inner">
+      <div class="sp-hero-text">
+        <div class="sp-hero-badges">
+          <span class="sp-badge sp-badge--gold">19+ Years</span>
+          <span class="sp-badge sp-badge--outline">Licensed &amp; Insured</span>
+        </div>
+        <h1 class="sp-hero-h1" id="hero-h1">Natural Stone &amp; Limestone<br><em>in Chicago &amp; Chicagoland</em></h1>
+        <p class="sp-hero-sub">Limestone facades, natural stone accents, architectural features — premium stone installation that elevates any home's character and holds up through Chicago winters.</p>
+        <div class="sp-hero-stats" aria-label="Company stats">
+          <div class="sp-stat">
+            <span class="sp-stat-num">4.8★</span>
+            <span class="sp-stat-label">Rating</span>
+          </div>
+          <div class="sp-stat-divider" aria-hidden="true"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">92</span>
+            <span class="sp-stat-label">Reviews</span>
+          </div>
+          <div class="sp-stat-divider" aria-hidden="true"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">500+</span>
+            <span class="sp-stat-label">Homes</span>
+          </div>
+          <div class="sp-stat-divider" aria-hidden="true"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">19+</span>
+            <span class="sp-stat-label">Years</span>
+          </div>
+        </div>
+        <div class="sp-hero-actions">
+          <a href={`tel:${phone}`} class="sp-btn sp-btn--primary">Call {phone}</a>
+          <a href="/contact" class="sp-btn sp-btn--ghost">Free Estimate</a>
+        </div>
+      </div>
+      <div class="sp-hero-img-wrap" aria-hidden="true">
+        <img src="/images/project-tuckpointing.jpg" alt="Natural stone and limestone installation in Chicagoland" width="420" height="500" loading="eager" fetchpriority="high" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="sp-trust" aria-label="Trust indicators">
+    <div class="sp-trust-inner">
+      <span class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Licensed &amp; Insured
+      </span>
+      <div class="sp-trust-sep" aria-hidden="true"></div>
+      <span class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Free Estimates
+      </span>
+      <div class="sp-trust-sep" aria-hidden="true"></div>
+      <span class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Premium Stone Sourcing
+      </span>
+      <div class="sp-trust-sep" aria-hidden="true"></div>
+      <span class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        19+ Years in Chicagoland
+      </span>
+    </div>
+  </div>
+
+  <!-- PROBLEM SECTION -->
+  <section class="sp-problem" aria-labelledby="problem-h2">
+    <div class="sp-problem-inner">
+      <p class="sp-section-label">Why It Matters</p>
+      <h2 class="sp-section-h2" id="problem-h2">What Goes Wrong With<br><em>Poor Stone Installation</em></h2>
+      <p class="sp-section-sub">Natural stone and limestone are unforgiving materials. Installation errors that seem minor become permanent, visible, and expensive to correct.</p>
+      <div class="sp-problem-grid">
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <p class="sp-problem-title">Wrong Mortar = Staining &amp; Failure</p>
+          <p class="sp-problem-body">Stone requires specific mortar mixes — particularly for limestone, which is highly reactive. Use the wrong mortar and you get permanent staining, joint failure, and spalling within a few years.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <p class="sp-problem-title">No Movement Joints = Cracks</p>
+          <p class="sp-problem-body">Stone expands and contracts differently than your home's framing. Without proper movement joints, thermal stress cracks the stone face — often within the first two winters.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p class="sp-problem-title">Untreated Stone = Water Damage</p>
+          <p class="sp-problem-body">Unsealed natural stone is porous. In Chicago's climate, moisture penetrates, freezes, and expands — causing internal fractures and surface spalling that look like a 20-year-old installation after 3 seasons.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <p class="sp-problem-title">Poor Stone Selection = Visual Mismatch</p>
+          <p class="sp-problem-body">Not all stones work with all architectural styles. Selecting limestone for a contemporary home, or rough-cut fieldstone for a formal colonial, creates a permanent visual conflict no amount of landscaping fixes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+  <section class="sp-process" aria-labelledby="process-h2">
+    <div class="sp-process-inner">
+      <p class="sp-section-label">How We Work</p>
+      <h2 class="sp-section-h2" id="process-h2">Our Stone Installation<br><em>Process</em></h2>
+      <p class="sp-section-sub">From material consultation to final sealing — every step protects your investment.</p>
+      <div class="sp-process-steps">
+
+        <div class="sp-step">
+          <span class="sp-step-num" aria-hidden="true">01</span>
+          <div class="sp-step-content">
+            <p class="sp-step-title">Style &amp; Material Consultation</p>
+            <p class="sp-step-body">We evaluate your home's architecture, existing materials, and your aesthetic goals — then recommend specific stone types and finishes that work together.</p>
+            <p class="sp-step-why"><strong>Why this matters:</strong> Stone selection made without reference to the home's existing proportions and materials almost always looks wrong. Getting this right is 50% of the installation.</p>
+          </div>
+        </div>
+
+        <div class="sp-step">
+          <span class="sp-step-num" aria-hidden="true">02</span>
+          <div class="sp-step-content">
+            <p class="sp-step-title">Stone Sourcing &amp; Vetting</p>
+            <p class="sp-step-body">We source stone from reputable suppliers and physically inspect material for consistency — color, texture, and cut quality. We reject inconsistent batches before they arrive on site.</p>
+            <p class="sp-step-why"><strong>Why this matters:</strong> Stone from different quarry batches can vary significantly in color and texture. Using mixed batches without vetting creates obvious inconsistency that's permanent.</p>
+          </div>
+        </div>
+
+        <div class="sp-step">
+          <span class="sp-step-num" aria-hidden="true">03</span>
+          <div class="sp-step-content">
+            <p class="sp-step-title">Substrate &amp; Waterproofing Prep</p>
+            <p class="sp-step-body">We prepare the substrate with correct waterproofing membrane, drainage layer, and mortar bed per stone type. Limestone and natural stone each require specific systems.</p>
+            <p class="sp-step-why"><strong>Why this matters:</strong> Skipping proper waterproofing is the most common cause of stone failure. Water behind stone = freeze-thaw spalling, staining, and eventual structural deterioration.</p>
+          </div>
+        </div>
+
+        <div class="sp-step">
+          <span class="sp-step-num" aria-hidden="true">04</span>
+          <div class="sp-step-content">
+            <p class="sp-step-title">Stone Installation &amp; Jointing</p>
+            <p class="sp-step-body">We install stone in deliberate patterns — dry-laid first to check fit and appearance, then set in mortar with correct joint width and profile for the selected stone type.</p>
+            <p class="sp-step-why"><strong>Why this matters:</strong> Stone installation can't be rushed. Dry-laying first catches fit issues before they're set in mortar. This step is where most contractors cut corners.</p>
+          </div>
+        </div>
+
+        <div class="sp-step">
+          <span class="sp-step-num" aria-hidden="true">05</span>
+          <div class="sp-step-content">
+            <p class="sp-step-title">Sealing &amp; Final Inspection</p>
+            <p class="sp-step-body">After curing, we apply appropriate sealer for the stone type, clean the face, and walk the completed work with you before closeout.</p>
+            <p class="sp-step-why"><strong>Why this matters:</strong> Sealing limestone and porous natural stone is non-optional in Chicago's climate. An unsealed installation will show water damage within 1–2 seasons.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY AMS -->
+  <section class="sp-why" aria-labelledby="why-h2">
+    <div class="sp-why-inner">
+      <p class="sp-section-label">Why AMS</p>
+      <h2 class="sp-section-h2" id="why-h2">Why Chicagoland Homeowners<br><em>Choose AMS for Stone</em></h2>
+      <div class="sp-why-grid">
+        <div class="sp-why-item">
+          <span class="sp-why-num" aria-hidden="true">01</span>
+          <div class="sp-why-content">
+            <p class="sp-why-title">Stone Compatibility Guarantee</p>
+            <p class="sp-why-body">We guarantee the stone we select works with your home's architecture and existing materials — or we don't propose it. No visual mismatches.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <span class="sp-why-num" aria-hidden="true">02</span>
+          <div class="sp-why-content">
+            <p class="sp-why-title">Premium Supplier Network</p>
+            <p class="sp-why-body">We work with established stone suppliers and physically inspect material for consistency before it arrives on your job site.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <span class="sp-why-num" aria-hidden="true">03</span>
+          <div class="sp-why-content">
+            <p class="sp-why-title">Free Stone Style Selector</p>
+            <p class="sp-why-body">Use our free tool to explore stone options for your home's style and get personalized recommendations. No sign-up required.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <span class="sp-why-num" aria-hidden="true">04</span>
+          <div class="sp-why-content">
+            <p class="sp-why-title">Family-Owned — Direct Owner Contact</p>
+            <p class="sp-why-body">No subs, no call centers. You deal with the owners on every job.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL SECTION -->
+  <section class="sp-tool" id="stone-selector" aria-labelledby="tool-h2">
+    <div class="sp-tool-inner">
+      <div class="sp-tool-header">
+        <p class="sp-section-label sp-section-label--light">Free Tool</p>
+        <h2 class="sp-tool-h2" id="tool-h2">Free Natural Stone &amp; Limestone<br><em>Style Selector</em></h2>
+        <p class="sp-tool-sub">Home style + application + budget → the right stone or limestone for your Chicagoland home. Instant. Free.</p>
+      </div>
+
+      <div class="sp-tool-warning-hook" role="note" aria-label="Tool use cases">
+        <p class="sp-tool-warning-intro">Not sure which stone suits your home — or your Chicago winters?</p>
+        <ul class="sp-tool-warning-list">
+          <li>Front facade, feature elevation, or chimney facing</li>
+          <li>Fireplace surround or outdoor entertainment area</li>
+          <li>Accent bands or architectural details</li>
+        </ul>
+        <p class="sp-tool-warning-cta">Tell us your home's style — get a personalized stone match with cost and care guidance. Free.</p>
+      </div>
+
+      <div class="sp-tool-social" aria-label="Tool stats">
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">740+</span>
+          <span class="sp-tool-stat-label">Stone style assessments completed</span>
+        </div>
+        <div class="sp-tool-stat-sep" aria-hidden="true"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">4.8★</span>
+          <span class="sp-tool-stat-label">Average rating · 92 reviews</span>
+        </div>
+        <div class="sp-tool-stat-sep" aria-hidden="true"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">3 min</span>
+          <span class="sp-tool-stat-label">To get your recommendation</span>
+        </div>
+      </div>
+
+      <blockquote class="sp-tool-quote">
+        <p>"The selector recommended Indiana limestone for our Tudor-style home. AMS installed it — every person who visits asks who did the stone work."</p>
+        <cite>— Sandra K., Homeowner · Winnetka, IL</cite>
+      </blockquote>
+
+      <div class="sp-tool-embed" aria-label="Natural stone and limestone style selector">
+        <StoneStyleSelector />
+      </div>
+
+      <p class="sp-tool-note">Recommendations based on common Chicagoland stone applications (2026). Your free on-site estimate will confirm material selection and give exact pricing.</p>
+
+      <div class="sp-tool-faq" aria-label="Selector FAQ">
+        <div>
+          <p class="sp-tool-faq-q">Is the stone selector free?</p>
+          <p class="sp-tool-faq-a">Yes — free, no account needed. You only share contact info if you want recommendations emailed to you.</p>
+        </div>
+        <div>
+          <p class="sp-tool-faq-q">How do I know which stone is right for my home?</p>
+          <p class="sp-tool-faq-a">The selector considers your home's architectural style, the location of the installation (above grade, below grade, interior), and your aesthetic preferences. It narrows options to 2–3 that work well together.</p>
+        </div>
+        <div>
+          <p class="sp-tool-faq-q">What's next after I get my recommendation?</p>
+          <p class="sp-tool-faq-a">Call 773-656-2107 or fill out our <a href="/contact" class="sp-tool-faq-link">contact form</a>. We'll visit on-site, show you physical samples, and give you a written estimate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "How to Choose the Right Natural Stone or Limestone for a Chicago Home",
+        "description": "Free natural stone and limestone style selector for Chicagoland homeowners. Match stone type to your home's architecture, application, and budget — with freeze-thaw ratings for Chicago's climate.",
+        "totalTime": "PT3M",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Select your home style and application", "text": "Choose your home's architectural style (Tudor, Colonial, Contemporary, etc.) and the specific application: front facade, fireplace surround, chimney facing, outdoor kitchen, or accent details." },
+          { "@type": "HowToStep", "position": 2, "name": "Enter your area and budget range", "text": "Provide the approximate square footage of the installation area and your budget preference so the selector can narrow options to realistic choices for your project." },
+          { "@type": "HowToStep", "position": 3, "name": "Get your personalized stone recommendation", "text": "Receive a primary stone recommendation with Chicago climate rating, cost range, care requirements, and alternative options — free, instant, downloadable as a PDF." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the natural stone style selector free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — free, no account needed. You only share contact info if you want your personalized stone recommendation as a PDF." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which natural stone holds up best in Chicago winters?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Indiana limestone, bluestone, and properly sealed granite are the strongest performers in Chicago's Zone 5B freeze-thaw climate. Softer stones like sandstone require more careful sealing and placement. The style selector includes a freeze-thaw rating for each recommendation." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the cost of natural stone installation in Chicago in 2026?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Natural stone installation in the Chicago metro area typically ranges from $35–$80+ per square foot installed, depending on stone type, thickness, pattern complexity, and site conditions. Limestone panels typically run $28–$55 per square foot. Run the free selector for a range specific to your application and material choice." }
+          }
+        ]
+      }
+    ]
+  }</script>
+
+  <!-- PROJECTS -->
+  <section class="sp-projects" aria-labelledby="projects-h2">
+    <div class="sp-projects-inner">
+      <p class="sp-section-label">Recent Work</p>
+      <h2 class="sp-section-h2" id="projects-h2">Natural Stone &amp; Limestone<br><em>Recent Projects</em></h2>
+      <p class="sp-section-sub">A sample of recent natural stone and limestone installations across Chicagoland.</p>
+      <div class="sp-projects-grid">
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img src="/images/project-tuckpointing.jpg" alt="Indiana limestone facade on a Tudor Colonial in Winnetka" width="400" height="240" loading="lazy" decoding="async" />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Winnetka, IL</span>
+            <h3 class="sp-project-title">Indiana Limestone Facade — Tudor Colonial</h3>
+            <p class="sp-project-desc">Full front elevation in Indiana limestone with custom-cut sills and lintels. Stone sourced, inspected, and installed by AMS.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img src="/images/project-brick-exterior.jpg" alt="Natural stone fireplace and chimney facing in Hinsdale" width="400" height="240" loading="lazy" decoding="async" />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Hinsdale, IL</span>
+            <h3 class="sp-project-title">Natural Stone Fireplace &amp; Chimney Facing</h3>
+            <p class="sp-project-desc">Fieldstone fireplace surround and full chimney face in matching natural stone. Dry-laid pattern approved by homeowner before setting.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img src="/images/project-brick-restoration.jpg" alt="Limestone accent bands on a custom home in Oak Brook" width="400" height="240" loading="lazy" decoding="async" />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Oak Brook, IL</span>
+            <h3 class="sp-project-title">Limestone Accent Bands — Custom Home</h3>
+            <p class="sp-project-desc">Horizontal limestone accent bands on all four elevations of a new custom home. Material matched to architect's specification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sp-pricing" aria-labelledby="pricing-h2">
+    <div class="sp-pricing-inner">
+      <p class="sp-section-label">Investment</p>
+      <h2 class="sp-section-h2" id="pricing-h2">Natural Stone &amp; Limestone<br><em>Pricing Ranges</em></h2>
+      <p class="sp-section-sub">Ranges based on typical Chicagoland projects. Your free on-site estimate is the only accurate number.</p>
+      <div class="sp-pricing-grid">
+        <div class="sp-price-card">
+          <p class="sp-price-tier">Accent Feature</p>
+          <p class="sp-price-range">$5,000 – $18,000</p>
+          <ul class="sp-price-list">
+            <li>Fireplace, chimney face, or entry feature</li>
+            <li>Select stone, 1–3 day install</li>
+            <li>Free estimate</li>
+          </ul>
+          <a href={`tel:${phone}`} class="sp-btn sp-btn--outline">Call for Estimate</a>
+        </div>
+        <div class="sp-price-card sp-price-card--featured">
+          <span class="sp-price-popular">Most Common</span>
+          <p class="sp-price-tier">Partial Facade</p>
+          <p class="sp-price-range">$18,000 – $55,000</p>
+          <ul class="sp-price-list">
+            <li>Front elevation or two sides</li>
+            <li>Natural stone or limestone</li>
+            <li>Includes waterproofing &amp; sealing</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--primary">Get Free Estimate</a>
+        </div>
+        <div class="sp-price-card">
+          <p class="sp-price-tier">Full Exterior</p>
+          <p class="sp-price-range">$55,000 – $150,000+</p>
+          <ul class="sp-price-list">
+            <li>All four elevations</li>
+            <li>Premium limestone or fieldstone</li>
+            <li>Written schedule &amp; warranty</li>
+          </ul>
+          <a href={`tel:${phone}`} class="sp-btn sp-btn--outline">Call for Estimate</a>
+        </div>
+      </div>
+      <p class="sp-pricing-note">Stone type and sourcing significantly affect pricing. On-site estimate is the only accurate number. <a href="/contact" class="sp-pricing-link">Schedule yours free.</a></p>
+      <p class="sp-pricing-guarantee">Every stone project gets a written estimate with material specifications, timeline, and sourcing plan — before any work begins.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="sp-reviews" aria-labelledby="reviews-h2">
+    <div class="sp-reviews-inner">
+      <p class="sp-section-label">What Homeowners Say</p>
+      <h2 class="sp-section-h2" id="reviews-h2">Natural Stone &amp; Limestone<br><em>Customer Reviews</em></h2>
+      <p class="sp-section-sub">4.8★ average across 92 reviews from Chicagoland homeowners.</p>
+      <div class="sp-reviews-grid">
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"AMS recommended Lannon stone for our Prairie-style home — something I'd never have thought of. The result is exactly right for the architecture. They clearly know their materials."</blockquote>
+          <cite class="sp-review-cite">— John M. · Stone Facade · Western Springs, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"We wanted a natural limestone fireplace surround. AMS dry-laid the pattern for our approval before setting a single stone. The finished result is exactly what we envisioned."</blockquote>
+          <cite class="sp-review-cite">— Catherine R. · Fireplace &amp; Chimney · Hinsdale, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"The limestone accent bands on our custom home look incredible. AMS worked directly with our architect on the spec and delivered exactly what the drawings called for."</blockquote>
+          <cite class="sp-review-cite">— Andrew &amp; Lisa W. · Custom Home · Oak Brook, IL</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="sp-creds" aria-labelledby="creds-h2">
+    <div class="sp-creds-inner">
+      <p class="sp-section-label">Credentials</p>
+      <h2 class="sp-section-h2" id="creds-h2">Licensed, Insured,<br><em>and Accountable</em></h2>
+      <div class="sp-creds-grid">
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Licensed in Illinois</span>
+            <span class="sp-cred-body">State-licensed masonry contractor — License #MA-104-018887. We pull permits and operate fully above board on every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Fully Insured — $2.5M Liability</span>
+            <span class="sp-cred-body">$2.5 million general liability on every job. Proof of insurance available before work begins.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Workers' Comp Covered</span>
+            <span class="sp-cred-body">Every crew member is covered. You are not liable if someone is injured on site.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Family-Owned Since 2007</span>
+            <span class="sp-cred-body">Not a franchise. Not a call center. You deal with the owners — same crew, same standards, every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Written Schedule Commitment</span>
+            <span class="sp-cred-body">We put our start date and milestone dates in writing. We don't make promises we can't keep.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Serving 19 Chicagoland Cities</span>
+            <span class="sp-cred-body">From Chicago to Naperville, Winnetka to Hinsdale — local crews, local knowledge, local inspectors.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sp-creds-guarantee" role="note" aria-label="Guarantee">
+        <div class="sp-guarantee-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Stone Match &amp; Waterproofing Guarantee
+        </div>
+        <p class="sp-guarantee-text">If installed stone doesn't match your approved sample in color and texture, or if water infiltration occurs within 2 years of installation — we correct it at no charge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sp-faq" aria-labelledby="faq-h2">
+    <div class="sp-faq-inner">
+      <p class="sp-section-label">Questions</p>
+      <h2 class="sp-section-h2" id="faq-h2">Natural Stone &amp; Limestone FAQ<br><em>Answered Honestly</em></h2>
+      <div class="sp-faq-list" role="list">
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-1">
+            What's the difference between natural stone, limestone, and manufactured stone?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-1" role="region">
+            <p>Natural stone (fieldstone, bluestone, granite) is quarried in irregular shapes and finished on site. Limestone is a sedimentary stone that cuts cleanly and gives a refined, architectural look — especially popular on Chicago North Shore homes. Manufactured stone veneer is a concrete product that mimics stone appearance but doesn't have the same durability or authentic look. AMS installs natural stone and limestone only — not manufactured veneer.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-2">
+            How do I know if my home can support limestone?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-2" role="region">
+            <p>Limestone is heavy — full veneers require a proper ledger, flashing, and structural support. We assess structural capacity on every estimate visit before recommending a full limestone facade.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-3">
+            Is limestone good for Chicago winters?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-3" role="region">
+            <p>Yes — Indiana limestone in particular is quarried for Chicago's climate and has been used on North Shore homes for over a century. Proper waterproofing and sealing are essential. AMS seals every limestone installation.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-4">
+            How long does natural stone installation take?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-4" role="region">
+            <p>Accent features (fireplaces, chimneys, entries) run 2–5 days. Partial facades take 1–2 weeks. Full exterior stone can run 3–6 weeks. Timeline depends heavily on stone selection and custom cutting.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-5">
+            Can you match stone on an existing home?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-5" role="region">
+            <p>Matching existing stone requires finding stone from the same or compatible quarry source. AMS has an established supplier network and will source samples for your approval before committing. Some stones are unavailable or have changed color in new quarry batches — we'll tell you upfront.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-6">
+            Does natural stone need to be sealed?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-6" role="region">
+            <p>Yes — in Chicago's climate, sealing is non-optional for limestone and most porous natural stones. AMS applies appropriate penetrating sealer after every installation and recommends resealing every 5–7 years.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-7">
+            Do you do interior stone work?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-7" role="region">
+            <p>Yes — fireplaces, feature walls, kitchen backsplashes, and interior accent features. Interior stone work follows the same standards as exterior, with appropriate substrate and adhesive systems.</p>
+          </div>
+        </div>
+
+        <div class="sp-faq-item" role="listitem">
+          <button class="sp-faq-q" aria-expanded="false" aria-controls="faq-a-8">
+            How much does limestone installation cost?
+            <svg class="sp-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sp-faq-a" id="faq-a-8" role="region">
+            <p>Limestone installation in Chicagoland typically runs $25–$65 per square foot installed, depending on stone selection, custom cutting requirements, and substrate preparation. Free on-site estimates at 773-656-2107.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="sp-areas" aria-labelledby="areas-h2">
+    <div class="sp-areas-inner">
+      <p class="sp-section-label">Service Area</p>
+      <h2 class="sp-section-h2" id="areas-h2">Natural Stone &amp; Limestone Service Areas<br><em>Across Chicagoland</em></h2>
+      <p class="sp-areas-sub">We install premium stone and limestone for homeowners throughout the Chicago metro — North Shore estates, western suburb custom homes, and everything in between.</p>
+      <div class="sp-areas-grid" aria-label="Service area cities">
+        <a href="/tuckpointing/chicago" class="sp-area">Chicago</a>
+        <a href="/tuckpointing/hinsdale" class="sp-area">Hinsdale</a>
+        <a href="/tuckpointing/oak-brook" class="sp-area">Oak Brook</a>
+        <a href="/tuckpointing/winnetka" class="sp-area">Winnetka</a>
+        <a href="/tuckpointing/highland-park" class="sp-area">Highland Park</a>
+        <a href="/tuckpointing/elmhurst" class="sp-area">Elmhurst</a>
+        <a href="/tuckpointing/western-springs" class="sp-area">Western Springs</a>
+        <a href="/tuckpointing/naperville" class="sp-area">Naperville</a>
+        <a href="/tuckpointing/wheaton" class="sp-area">Wheaton</a>
+        <a href="/tuckpointing/downers-grove" class="sp-area">Downers Grove</a>
+        <a href="/tuckpointing/la-grange" class="sp-area">La Grange</a>
+        <a href="/tuckpointing/clarendon-hills" class="sp-area">Clarendon Hills</a>
+        <a href="/tuckpointing/burr-ridge" class="sp-area">Burr Ridge</a>
+        <a href="/tuckpointing/willowbrook" class="sp-area">Willowbrook</a>
+        <a href="/tuckpointing/evanston" class="sp-area">Evanston</a>
+        <a href="/tuckpointing/wilmette" class="sp-area">Wilmette</a>
+        <a href="/tuckpointing/kenilworth" class="sp-area">Kenilworth</a>
+        <a href="/tuckpointing/glencoe" class="sp-area">Glencoe</a>
+        <a href="/tuckpointing/northbrook" class="sp-area">Northbrook</a>
+      </div>
+      <p class="sp-areas-note">Not on this list? <a href="/contact" class="sp-areas-link">Contact us</a> — we may still serve your area.</p>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section class="sp-related" aria-labelledby="related-h2">
+    <div class="sp-related-inner">
+      <p class="sp-section-label">Also From AMS</p>
+      <h2 class="sp-section-h2" id="related-h2">Related<br><em>Masonry Services</em></h2>
+      <div class="sp-related-grid">
+        <a href="/services/brick-installation" class="sp-related-card">
+          <img src="/images/why-choose-us-brick.webp" alt="Brick installation" width="400" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Brick Installation</h3>
+            <p class="sp-related-desc">New brick walls, additions, and features — precision bricklaying for residential and commercial projects.</p>
+          </div>
+        </a>
+        <a href="/services/custom-home-masonry" class="sp-related-card">
+          <img src="/images/project-brick-exterior.jpg" alt="Custom home masonry" width="400" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Custom Home Masonry</h3>
+            <p class="sp-related-desc">Full-scope masonry for custom home builds — brick, stone, limestone, fireplaces, and chimneys.</p>
+          </div>
+        </a>
+        <a href="/services/chimney-fireplace" class="sp-related-card">
+          <img src="/images/service-chimney.webp" alt="Chimney and fireplace masonry" width="400" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Chimney &amp; Fireplace</h3>
+            <p class="sp-related-desc">Custom chimney construction and fireplace masonry — built to code and built to last.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function() {
+      function initStepAnimations() {
+        var gsap = window.__gsap;
+        var ScrollTrigger = window.__ScrollTrigger;
+        if (!gsap || !ScrollTrigger) return;
+        var steps = document.querySelectorAll('.sp-step');
+        if (!steps.length) return;
+        steps.forEach(function(step) {
+          gsap.fromTo(step, { opacity: 0, x: -24 }, {
+            opacity: 1, x: 0, duration: 0.55, ease: 'power2.out',
+            scrollTrigger: { trigger: step, start: 'top 88%', toggleActions: 'play none none reverse' }
+          });
+        });
+      }
+      // Always wait for animations:ready — prevents race with BaseLayout ScrollTrigger.kill()
+      window.removeEventListener('animations:ready', window.__spStepAnimReady);
+      window.__spStepAnimReady = initStepAnimations;
+      window.addEventListener('animations:ready', window.__spStepAnimReady);
+      if (window.__lenis) initStepAnimations();
+    })();
+  </script>
+
+  <script is:inline>
+    (function() {
+      var btns = document.querySelectorAll('.sp-faq-q');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          btns.forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var ans = document.getElementById(b.getAttribute('aria-controls'));
+            if (ans) ans.style.maxHeight = null;
+          });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = document.getElementById(this.getAttribute('aria-controls'));
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+        });
+      });
+    })();
+  </script>
+
+  <CTABanner />
+  <Footer />
+</BaseLayout>
+
+<style>
+.sp-section-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin-bottom: 14px; }
+.sp-section-label--light { color: #D4A931; }
+.sp-section-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #1A1A1A; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-section-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-section-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 640px; margin: 0 0 48px 0; }
+.sp-badge { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 0px; }
+.sp-badge--gold { background: #D4A931; color: #1A1A1A; }
+.sp-badge--outline { border: 2px solid #D4A931; color: #D4A931; background: transparent; }
+.sp-btn { display: inline-flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 13px 28px; min-height: 44px; border: 2px solid transparent; border-radius: 0px; transition: background 200ms ease, border-color 200ms ease, color 200ms ease; white-space: nowrap; cursor: pointer; }
+.sp-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+.sp-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+.sp-btn--primary:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+.sp-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+.sp-btn--ghost:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--outline { background: transparent; color: #1A1A1A; border-color: #1A1A1A; }
+.sp-btn--outline:hover { background: #1A1A1A; color: #D4A931; }
+.sp-btn--outline:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-hero { background: #F5F3EF; padding: 120px 0 100px; }
+.sp-hero-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
+.sp-hero-badges { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.sp-hero-h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; color: #1A1A1A; line-height: 1.1; margin: 0 0 20px 0; }
+.sp-hero-h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-hero-sub { font-family: 'Satoshi', sans-serif; font-size: 17px; color: #4A4A4A; line-height: 1.75; margin: 0 0 32px 0; max-width: 520px; }
+.sp-hero-stats { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.sp-stat { display: flex; flex-direction: column; gap: 4px; }
+.sp-stat-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: #8B8070; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-stat-divider { width: 1px; height: 40px; background: #D8D2C8; flex-shrink: 0; }
+.sp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.sp-hero-img-wrap { position: relative; }
+.sp-hero-img-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; border: 2px solid #D8D2C8; }
+.sp-trust { background: #1A1A1A; padding: 20px 0; border-top: 1px solid #2D2D2D; }
+.sp-trust-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.sp-trust-item { display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #D4A931; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-trust-item svg { flex-shrink: 0; }
+.sp-trust-sep { width: 1px; height: 20px; background: #2D2D2D; }
+.sp-problem { background: #E8E4DC; padding: 100px 0; }
+.sp-problem-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.sp-problem-card { background: #fff; border: 1px solid #D8D2C8; padding: 28px 24px; }
+.sp-problem-card:hover { border: 2px solid #D4A931; }
+.sp-problem-icon { margin-bottom: 16px; }
+.sp-problem-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.04em; }
+.sp-problem-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-process { background: #F5F3EF; padding: 100px 0; }
+.sp-process-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-process-steps { display: flex; flex-direction: column; gap: 0; border: 1px solid #D8D2C8; }
+.sp-step { display: grid; grid-template-columns: 100px 1fr; gap: 0; border-bottom: 1px solid #D8D2C8; transition: background 200ms ease; opacity: 0; transform: translateX(-24px); }
+@media (prefers-reduced-motion: reduce) { .sp-step { opacity: 1; transform: none; } }
+.sp-step:last-child { border-bottom: none; }
+.sp-step:hover { background: #fff; }
+.sp-step-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 700; color: #D4A931; padding: 32px 0 32px 32px; display: flex; align-items: flex-start; opacity: 0.6; line-height: 1; }
+.sp-step-content { padding: 32px 32px 32px 0; }
+.sp-step-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 8px 0; }
+.sp-step-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0 0 10px 0; }
+.sp-step-why { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; padding: 10px 12px; border-left: 3px solid #D4A931; background: rgba(212,169,49,0.05); }
+.sp-step-why strong { color: #D4A931; font-weight: 700; }
+.sp-why { background: #E8E4DC; padding: 100px 0; }
+.sp-why-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #D8D2C8; border: 1px solid #D8D2C8; margin-top: 48px; }
+.sp-why-item { background: #fff; padding: 36px 32px; display: flex; gap: 24px; align-items: flex-start; }
+.sp-why-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #D4A931; opacity: 0.4; line-height: 1; flex-shrink: 0; padding-top: 2px; }
+.sp-why-content { display: flex; flex-direction: column; gap: 10px; }
+.sp-why-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+.sp-why-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-tool { background: #1A1A1A; padding: 100px 0; }
+.sp-tool-inner { max-width: 900px; margin: 0 auto; padding: 0 80px; }
+.sp-tool-header { text-align: center; margin-bottom: 48px; }
+.sp-tool-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-tool-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-tool-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-warning-hook { background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.25); border-left: 3px solid #D4A931; padding: 20px 24px; margin: 0 auto 28px; max-width: 640px; text-align: left; }
+.sp-tool-warning-intro { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px 0; }
+.sp-tool-warning-list { margin: 0 0 14px 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+.sp-tool-warning-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.sp-tool-warning-cta { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #fff; margin: 0; }
+.sp-tool-embed { background: #fff; border: 2px solid #D4A931; padding: 40px; min-height: 200px; }
+.sp-tool-social { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+.sp-tool-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sp-tool-stat-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-tool-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+.sp-tool-stat-sep { width: 1px; height: 36px; background: #2D2D2D; flex-shrink: 0; }
+.sp-tool-quote { border-left: 3px solid #D4A931; margin: 0 0 36px 0; padding: 12px 20px; background: rgba(212,169,49,0.06); }
+.sp-tool-quote p { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0 0 6px 0; }
+.sp-tool-quote cite { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; font-style: normal; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-tool-note { font-family: 'Satoshi', sans-serif; font-size: 12px; color: #8B8070; text-align: center; margin-top: 20px; line-height: 1.6; }
+.sp-tool-faq { margin-top: 48px; border-top: 1px solid #2D2D2D; padding-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+.sp-tool-faq-q { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0; }
+.sp-tool-faq-a { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-faq-link { color: #D4A931; text-decoration: underline; }
+.sp-tool-faq-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-projects { background: #E8E4DC; padding: 100px 0; }
+.sp-projects-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.sp-project-card { background: #fff; border: 1px solid #D8D2C8; overflow: hidden; }
+.sp-project-card:hover { border-color: #D4A931; }
+.sp-project-img-wrap img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.sp-project-info { padding: 20px; }
+.sp-project-location { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+.sp-project-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-project-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.65; margin: 0; }
+.sp-pricing { background: #F5F3EF; padding: 100px 0; }
+.sp-pricing-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+.sp-price-card { background: #fff; border: 1px solid #D8D2C8; padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+.sp-price-card--featured { border: 2px solid #D4A931; position: relative; }
+.sp-price-popular { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; }
+.sp-price-tier { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #8B8070; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
+.sp-price-range { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #1A1A1A; line-height: 1; }
+.sp-price-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.sp-price-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; padding-left: 16px; position: relative; }
+.sp-price-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: #D4A931; }
+.sp-pricing-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.6; max-width: 600px; }
+.sp-pricing-link { color: #D4A931; text-decoration: underline; }
+.sp-pricing-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-pricing-guarantee { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #1A1A1A; background: rgba(212,169,49,0.07); border-left: 3px solid #D4A931; padding: 12px 16px; margin-top: 16px; max-width: 600px; }
+.sp-reviews { background: #E8E4DC; padding: 100px 0; }
+.sp-reviews-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-review-card { background: #fff; border-top: 1px solid #D8D2C8; border-right: 1px solid #D8D2C8; border-bottom: 1px solid #D8D2C8; border-left: 3px solid #D4A931; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.sp-review-stars { display: flex; gap: 3px; }
+.sp-review-text { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; padding: 0; font-style: normal; flex: 1; }
+.sp-review-cite { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #8B8070; font-style: normal; letter-spacing: 0.02em; }
+.sp-creds { background: #F5F3EF; padding: 100px 0; }
+.sp-creds-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-creds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; border: 2px solid #D8D2C8; margin-top: 48px; }
+.sp-cred-item { background: #fff; padding: 32px 28px; display: flex; gap: 20px; align-items: flex-start; }
+.sp-cred-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.2); display: flex; align-items: center; justify-content: center; }
+.sp-cred-text { display: flex; flex-direction: column; gap: 6px; }
+.sp-cred-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-cred-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.65; }
+.sp-creds-guarantee { margin-top: 32px; background: #1A1A1A; padding: 24px 32px; display: flex; align-items: flex-start; gap: 24px; }
+.sp-guarantee-badge { display: flex; align-items: center; gap: 10px; background: #D4A931; padding: 10px 16px; white-space: nowrap; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
+.sp-guarantee-text { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; margin: 0; align-self: center; }
+.sp-faq { background: #E8E4DC; padding: 100px 0; }
+.sp-faq-inner { max-width: 800px; margin: 0 auto; padding: 0 80px; }
+.sp-faq-list { border: 1px solid #D8D2C8; }
+.sp-faq-item { border-bottom: 1px solid #D8D2C8; }
+.sp-faq-item:last-child { border-bottom: none; }
+.sp-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600; color: #1A1A1A; line-height: 1.4; min-height: 44px; transition: background 200ms ease; }
+.sp-faq-q:hover { background: #fff; }
+.sp-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+.sp-faq-q[aria-expanded="true"] { color: #D4A931; }
+.sp-faq-q[aria-expanded="true"] .sp-faq-icon { transform: rotate(180deg); }
+.sp-faq-icon { flex-shrink: 0; transition: transform 200ms ease; }
+.sp-faq-a { max-height: 0; overflow: hidden; transition: max-height 300ms ease; }
+.sp-faq-a p { padding: 0 24px 20px; font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; }
+.sp-areas { background: #E8E4DC; padding: 100px 0; }
+.sp-areas-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-areas-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; margin: 0 0 40px 0; max-width: 560px; }
+.sp-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.sp-area { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; color: #1A1A1A; background: #fff; border: 1px solid #D8D2C8; border-bottom: 2px solid #D4A931; padding: 8px 16px; text-decoration: none; display: inline-block; transition: border-color 150ms ease, color 150ms ease, background 150ms ease; cursor: pointer; }
+.sp-area:hover { background: #D4A931; border-color: #D4A931; color: #1A1A1A; }
+.sp-area:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-areas-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; }
+.sp-areas-link { color: #D4A931; text-decoration: underline; }
+.sp-areas-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related { background: #F5F3EF; padding: 100px 0; }
+.sp-related-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-related-card { background: #fff; border: 1px solid #D8D2C8; text-decoration: none; display: flex; flex-direction: column; transition: border-color 200ms ease; }
+.sp-related-card:hover { border-color: #D4A931; }
+.sp-related-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.sp-related-content { padding: 20px; flex: 1; }
+.sp-related-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-related-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; }
+@media (max-width: 1100px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 40px; }
+  .sp-trust-inner { padding: 0 40px; }
+  .sp-problem-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .sp-hero { padding: 100px 0 72px; }
+  .sp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sp-hero-img-wrap { display: none; }
+  .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-related-grid { grid-template-columns: 1fr 1fr; }
+  .sp-creds-grid { grid-template-columns: 1fr 1fr; }
+  .sp-why-grid { grid-template-columns: 1fr; }
+  .sp-trust-sep { display: none; }
+  .sp-trust-inner { justify-content: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 20px; }
+  .sp-trust-inner { padding: 0 20px; }
+  .sp-hero { padding: 80px 0 56px; }
+  .sp-problem, .sp-process, .sp-why, .sp-tool, .sp-projects, .sp-pricing, .sp-reviews, .sp-creds, .sp-faq, .sp-areas, .sp-related { padding: 56px 0; }
+  .sp-problem-grid, .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-creds-grid, .sp-related-grid { grid-template-columns: 1fr; }
+  .sp-step { grid-template-columns: 60px 1fr; }
+  .sp-step-num { font-size: 24px; padding: 24px 0 24px 20px; }
+  .sp-step-content { padding: 24px 20px 24px 0; }
+  .sp-hero-actions { flex-direction: column; }
+  .sp-btn { width: 100%; text-align: center; }
+  .sp-tool-embed { padding: 24px 20px; }
+}
+</style>

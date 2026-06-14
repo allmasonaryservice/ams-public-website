@@ -1,0 +1,685 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Footer from '../components/Footer.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/service-areas`;
+
+const areas = [
+  { name: "Hinsdale",        slug: "hinsdale",        region: "western",    lat: 41.8006, lng: -87.9284, county: "DuPage County" },
+  { name: "Western Springs", slug: "western-springs", region: "western",    lat: 41.8089, lng: -87.9006, county: "Cook County"   },
+  { name: "Elmhurst",        slug: "elmhurst",        region: "western",    lat: 41.8995, lng: -87.9401, county: "DuPage County" },
+  { name: "Oak Brook",       slug: "oak-brook",       region: "western",    lat: 41.8320, lng: -87.9284, county: "DuPage County" },
+  { name: "Burr Ridge",      slug: "burr-ridge",      region: "western",    lat: 41.7517, lng: -87.9195, county: "DuPage County" },
+  { name: "Clarendon Hills", slug: "clarendon-hills", region: "western",    lat: 41.7978, lng: -87.9573, county: "DuPage County" },
+  { name: "La Grange",       slug: "la-grange",       region: "western",    lat: 41.8056, lng: -87.8695, county: "Cook County"   },
+  { name: "Willowbrook",     slug: "willowbrook",     region: "western",    lat: 41.7706, lng: -87.9401, county: "DuPage County" },
+  { name: "Winnetka",        slug: "winnetka",        region: "northshore", lat: 42.1075, lng: -87.7359, county: "Cook County"   },
+  { name: "Kenilworth",      slug: "kenilworth",      region: "northshore", lat: 42.0867, lng: -87.7159, county: "Cook County"   },
+  { name: "Wilmette",        slug: "wilmette",        region: "northshore", lat: 42.0725, lng: -87.7273, county: "Cook County"   },
+  { name: "Glencoe",         slug: "glencoe",         region: "northshore", lat: 42.1353, lng: -87.7584, county: "Cook County"   },
+  { name: "Highland Park",   slug: "highland-park",   region: "northshore", lat: 42.1817, lng: -87.8003, county: "Lake County"   },
+  { name: "Evanston",        slug: "evanston",        region: "northshore", lat: 42.0450, lng: -87.6877, county: "Cook County"   },
+  { name: "Northbrook",      slug: "northbrook",      region: "northshore", lat: 42.1253, lng: -87.8270, county: "Cook County"   },
+  { name: "Naperville",      slug: "naperville",      region: "dupage",     lat: 41.7508, lng: -88.1535, county: "DuPage County" },
+  { name: "Wheaton",         slug: "wheaton",         region: "dupage",     lat: 41.8661, lng: -88.1070, county: "DuPage County" },
+  { name: "Downers Grove",   slug: "downers-grove",   region: "dupage",     lat: 41.8081, lng: -88.0117, county: "DuPage County" },
+  { name: "Chicago",         slug: "chicago",         region: "chicago",    lat: 41.8781, lng: -87.6298, county: "Cook County"   },
+];
+
+const regions = [
+  { key: "western",    title: "Western Suburbs", tagline: "Tuckpointing & brick repair for colonial estates and historic brick homes — our core market since 2007.",          icon: "W", count: 8 },
+  { key: "northshore", title: "North Shore",     tagline: "Chimney restoration, limestone work, and tuckpointing for premium lakefront estates and century-old stonework.",  icon: "N", count: 6 },
+  { key: "dupage",     title: "DuPage Corridor", tagline: "Full masonry services in Naperville, Wheaton, and Downers Grove — brick repair, repointing, and stone work.",    icon: "D", count: 3 },
+  { key: "chicago",    title: "Chicago",          tagline: "Tuckpointing and brick repair for greystones, two-flats, courtyard buildings, and commercial masonry blocks.",   icon: "C", count: 1 },
+];
+
+const services = [
+  { name: "Tuckpointing & Repointing",   href: "/services/tuckpointing-repointing"  },
+  { name: "Brick Installation",          href: "/services/brick-installation"        },
+  { name: "Damaged Brick Replacement",   href: "/services/damaged-brick-replacement" },
+  { name: "Chimney Repair & Rebuilding", href: "/services/chimney-repair-rebuilding" },
+  { name: "Natural Stone & Limestone",   href: "/services/natural-stone-limestone"   },
+  { name: "CMU Block Installation",      href: "/services/cmu-block-installation"    },
+  { name: "Brick & Stone Veneers",       href: "/services/brick-stone-veneers"       },
+  { name: "Custom Home Masonry",         href: "/services/custom-home-masonry"       },
+  { name: "Commercial Masonry",          href: "/services/commercial-brick-stone"    },
+  { name: "Chimney & Fireplace",         href: "/services/chimney-fireplace"         },
+  { name: "Commercial Masonry Veneers",  href: "/services/commercial-masonry-veneers"},
+];
+
+const faqs = [
+  { q: "How much does tuckpointing cost in Chicagoland?",                             a: "Tuckpointing in Chicagoland typically runs $8–$25 per linear foot — most single-family homes in Hinsdale, Winnetka, or Naperville fall between $800 and $3,500 for a full repoint. AMS provides free on-site estimates so you get an exact price before any work begins." },
+  { q: "What masonry services do you offer across Chicagoland?",                      a: "We offer tuckpointing & repointing, brick installation, damaged brick replacement, chimney repair & rebuilding, natural stone & limestone work, CMU block installation, brick & stone veneers, custom home masonry, commercial masonry, chimney & fireplace restoration, and commercial masonry veneers — all available across all 19 service communities." },
+  { q: "How do I know if my brick or mortar needs repair?",                           a: "Look for crumbling mortar joints, white staining (efflorescence), cracks along mortar lines, spalling brick, or water leaking through walls after rain. Chicagoland's freeze-thaw winters accelerate mortar decay — call 773-656-2107 for a free assessment." },
+  { q: "Do you charge for travel to my area?",                                        a: "No. We provide free on-site estimates across all 19 communities — no travel fee, no obligation." },
+  { q: "Do you serve areas not on this list?",                                        a: "We focus on the 19 communities listed, but may be able to accommodate nearby locations. Call us at 773-656-2107 to ask." },
+  { q: "Are you licensed and insured in Illinois?",                                   a: "Yes. All Masonry Services is fully licensed and insured in the State of Illinois for all masonry work, including residential and commercial projects." },
+  { q: "Do you handle both residential and commercial masonry across these areas?",   a: "Absolutely. We serve homeowners, property managers, and commercial clients throughout Chicagoland with tuckpointing, brick repair, chimney work, and stone restoration. Commercial assessments are also free." },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Masonry Services",
+  "url": siteUrl,
+  "telephone": "+17736562107",
+  "email": "info@allmasonryservices.com",
+  "foundingDate": "2007",
+  "priceRange": "$$",
+  "image": `${siteUrl}/og-image.jpg`,
+  "description": "Licensed masonry contractor serving 19 Chicagoland communities since 2007.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chicago",
+    "addressRegion": "IL",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 41.8781, "longitude": -87.6298 },
+  "areaServed": areas.map(a => ({ "@type": "City", "name": a.name, "addressRegion": "IL" })),
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "92", "bestRating": "5" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:00" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": pageUrl }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+
+const areasJson = JSON.stringify(areas.map(a => ({ name: a.name, slug: a.slug, lat: a.lat, lng: a.lng })));
+---
+
+<BaseLayout
+  title="Chicagoland Masonry Service Areas — All 19 Communities | All Masonry Services"
+  description="All Masonry Services covers 19 Chicagoland communities — Hinsdale, Winnetka, Naperville, Chicago and more. Free estimates, licensed & insured since 2007."
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── HERO ── */
+  .sa-hero { background: #1A1A1A; border-bottom: 1px solid #2D2D2D; }
+  .sa-hero-inner { max-width: 1280px; margin: 0 auto; padding: 120px 80px 80px; }
+  .sa-breadcrumb {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 28px;
+  }
+  .sa-breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 200ms ease; }
+  .sa-breadcrumb a:hover { color: #D4A931; }
+  .sa-breadcrumb a:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .sa-breadcrumb-sep { color: rgba(255,255,255,0.2); }
+  .sa-breadcrumb-current { color: #D4A931; }
+  .sa-hero-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 10px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #1A1A1A; background: #D4A931; padding: 4px 12px; margin-bottom: 20px;
+  }
+  .sa-hero h1 {
+    font-family: 'Fraunces', serif; font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 20px;
+  }
+  .sa-hero h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .sa-hero-sub {
+    font-family: 'Satoshi', sans-serif; font-size: 17px; color: rgba(255,255,255,0.6);
+    line-height: 1.75; max-width: 600px; margin-bottom: 36px;
+  }
+  .sa-hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .sa-btn {
+    display: inline-flex; align-items: center; font-family: 'Satoshi', sans-serif;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; padding: 13px 28px; min-height: 44px;
+    border: 2px solid transparent; transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+    white-space: nowrap;
+  }
+  .sa-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+  .sa-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+  .sa-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+  .sa-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+  .sa-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .sa-hero-stats { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .sa-stat { display: flex; flex-direction: column; gap: 3px; }
+  .sa-stat-value { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #D4A931; line-height: 1; }
+  .sa-stat-label { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .sa-stat-divider { width: 1px; height: 36px; background: #2D2D2D; }
+  .sa-hero-trust { background: #111; border-top: 1px solid #2D2D2D; }
+  .sa-hero-trust-inner {
+    max-width: 1280px; margin: 0 auto; padding: 18px 80px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 20px; justify-content: space-between;
+  }
+  .sa-trust-item {
+    display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .sa-trust-dot { width: 5px; height: 5px; background: #D4A931; flex-shrink: 0; }
+
+  /* ── MAP ── */
+  .samap { background: #E8E4DC; padding: 100px 0; border-top: 1px solid #D8D2C8; }
+  .samap-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .samap-header { margin-bottom: 56px; }
+  .samap-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #D4A931; margin-bottom: 16px;
+  }
+  .samap-header h2 {
+    font-family: 'Fraunces', serif; font-size: clamp(30px, 3.5vw, 44px);
+    font-weight: 700; color: #1A1A1A; line-height: 1.15; margin-bottom: 14px;
+  }
+  .samap-header h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .samap-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 540px; }
+  .samap-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+  .samap-map-wrap { position: relative; }
+  #sapage-map { width: 100%; height: 520px; border: 2px solid #1A1A1A; background: #2D2D2D; }
+  .samap-sidebar { position: sticky; top: 120px; }
+  .samap-sidebar-label {
+    font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931;
+    margin: 0 0 12px; border-bottom: 1px solid #D8D2C8; padding-bottom: 10px;
+  }
+  .samap-list {
+    list-style: none; margin: 0 0 20px; padding: 0;
+    max-height: 420px; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: #D4A931 #E8E4DC;
+  }
+  .samap-list::-webkit-scrollbar { width: 3px; }
+  .samap-list::-webkit-scrollbar-thumb { background: #D4A931; }
+  .samap-item { display: flex; align-items: center; gap: 8px; padding: 0; border-bottom: 1px solid #D8D2C8; }
+  .samap-item:last-child { border-bottom: none; }
+  .samap-dot { width: 6px; height: 6px; background: #D4A931; flex-shrink: 0; }
+  .samap-city-link {
+    display: flex; align-items: center; min-height: 44px; flex: 1;
+    font-family: 'Satoshi', sans-serif; font-size: 13px; color: #1A1A1A;
+    text-decoration: none; transition: color 200ms ease; line-height: 1;
+  }
+  .samap-city-link:hover { color: #D4A931; }
+  .samap-city-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .samap-cta {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 44px; font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase; color: #1A1A1A;
+    background: #D4A931; border: 2px solid #D4A931; padding: 10px 14px;
+    text-decoration: none; text-align: center; transition: background 200ms ease;
+  }
+  .samap-cta:hover { background: #B8932A; border-color: #B8932A; }
+  .samap-cta:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+  /* ── REGIONS ── */
+  .sa-regions { background: #F5F3EF; padding: 100px 0; border-top: 1px solid #D8D2C8; }
+  .sa-regions-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .sa-regions-header { margin-bottom: 56px; }
+  .sa-regions-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #D4A931; margin-bottom: 16px;
+  }
+  .sa-regions-header h2 {
+    font-family: 'Fraunces', serif; font-size: clamp(30px, 3.5vw, 44px);
+    font-weight: 700; color: #1A1A1A; line-height: 1.15; margin-bottom: 14px;
+  }
+  .sa-regions-header h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .sa-regions-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 540px; }
+  .sa-regions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #D8D2C8; }
+  .sa-region-card { background: #F5F3EF; padding: 36px 28px; display: flex; flex-direction: column; gap: 12px; }
+  .sa-region-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; background: #1A1A1A; color: #D4A931;
+    font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; flex-shrink: 0;
+  }
+  .sa-region-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: #1A1A1A; line-height: 1.2; }
+  .sa-region-tagline { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.6; }
+  .sa-region-count {
+    font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #D4A931;
+    padding-top: 4px; border-top: 1px solid #D8D2C8;
+  }
+  .sa-region-cities { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+  .sa-region-cities li a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 4px 0;
+    font-family: 'Satoshi', sans-serif; font-size: 13px; color: #D4A931;
+    text-decoration: underline; text-underline-offset: 3px;
+    text-decoration-color: rgba(212,169,49,0.4); transition: text-decoration-color 200ms ease;
+  }
+  .sa-region-cities li a:hover { text-decoration-color: #D4A931; }
+  .sa-region-cities li a:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+  /* ── CITIES GRID ── */
+  .sa-cities { background: #E8E4DC; padding: 100px 0; border-top: 1px solid #D8D2C8; }
+  .sa-cities-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .sa-cities-header { margin-bottom: 56px; }
+  .sa-cities-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #D4A931; margin-bottom: 16px;
+  }
+  .sa-cities-header h2 {
+    font-family: 'Fraunces', serif; font-size: clamp(30px, 3.5vw, 44px);
+    font-weight: 700; color: #1A1A1A; line-height: 1.15; margin-bottom: 14px;
+  }
+  .sa-cities-header h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .sa-cities-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 540px; }
+  .sa-cities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #D8D2C8; }
+  .sa-city-card {
+    background: #E8E4DC; padding: 20px; min-height: 44px; display: flex; align-items: center;
+    gap: 12px; text-decoration: none; transition: background 200ms ease;
+  }
+  .sa-city-card:hover { background: #D8D2C8; }
+  .sa-city-card:hover .sa-city-arrow { color: #D4A931; }
+  .sa-city-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .sa-city-name { font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; color: #1A1A1A; flex: 1; }
+  .sa-city-county { font-family: 'Satoshi', sans-serif; font-size: 11px; color: #6A6A6A; font-weight: 500; }
+  .sa-city-arrow { color: #D8D2C8; flex-shrink: 0; transition: color 200ms ease; }
+
+  /* ── WHY AMS ── */
+  .sa-why { background: #1A1A1A; padding: 100px 0; }
+  .sa-why-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .sa-why-header { margin-bottom: 56px; }
+  .sa-why-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #D4A931; margin-bottom: 16px;
+  }
+  .sa-why-header h2 { font-family: 'Fraunces', serif; font-size: clamp(30px, 3.5vw, 44px); font-weight: 700; color: #fff; line-height: 1.15; }
+  .sa-why-header h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .sa-why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #2D2D2D; }
+  .sa-why-card {
+    background: #1A1A1A; padding: 36px 28px; display: flex; flex-direction: column;
+    gap: 14px; border-top: 2px solid transparent; transition: border-color 200ms ease;
+  }
+  .sa-why-card:hover { border-color: #D4A931; }
+  .sa-why-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 700; color: #2D2D2D; line-height: 1; }
+  .sa-why-card h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .sa-why-card p { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
+  /* ── SERVICES GRID ── */
+  .sa-services { background: #F5F3EF; padding: 100px 0; border-top: 1px solid #D8D2C8; }
+  .sa-services-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .sa-services-header { margin-bottom: 56px; }
+  .sa-services-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #D4A931; margin-bottom: 16px;
+  }
+  .sa-services-header h2 {
+    font-family: 'Fraunces', serif; font-size: clamp(30px, 3.5vw, 44px);
+    font-weight: 700; color: #1A1A1A; line-height: 1.15; margin-bottom: 14px;
+  }
+  .sa-services-header h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .sa-services-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 540px; }
+  .sa-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #D8D2C8; }
+  .sa-service-card {
+    background: #F5F3EF; padding: 18px 24px; min-height: 44px; display: flex; align-items: center;
+    gap: 16px; text-decoration: none; transition: background 200ms ease;
+  }
+  .sa-service-card:hover { background: #EBE7DF; }
+  .sa-service-card:hover .sa-service-arrow { color: #D4A931; }
+  .sa-service-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+  .sa-service-num { font-family: 'Fraunces', serif; font-size: 13px; font-weight: 700; color: #D4A931; flex-shrink: 0; min-width: 24px; }
+  .sa-service-name { font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; color: #1A1A1A; flex: 1; }
+  .sa-service-arrow { color: #D8D2C8; flex-shrink: 0; transition: color 200ms ease; }
+
+  /* ── FAQ ── */
+  .sa-faq { background: #E8E4DC; padding: 100px 0; border-top: 1px solid #D8D2C8; }
+  .sa-faq-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .sa-faq-header { margin-bottom: 56px; }
+  .sa-faq-label {
+    display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #D4A931; margin-bottom: 16px;
+  }
+  .sa-faq-header h2 { font-family: 'Fraunces', serif; font-size: clamp(30px, 3.5vw, 44px); font-weight: 700; color: #1A1A1A; line-height: 1.15; }
+  .sa-faq-header h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+  .sa-faq-list { display: flex; flex-direction: column; gap: 2px; background: #D8D2C8; max-width: 840px; }
+  .sa-faq-item { background: #E8E4DC; }
+  .sa-faq-q {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 22px 24px; background: none; border: none; cursor: pointer;
+    text-align: left; font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700;
+    color: #1A1A1A; line-height: 1.4; transition: background 150ms ease;
+  }
+  .sa-faq-q:hover { background: #D8D2C8; }
+  .sa-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+  .sa-faq-q[aria-expanded="true"] { color: #D4A931; }
+  .sa-faq-q[aria-expanded="true"] .sa-faq-icon { transform: rotate(45deg); }
+  .sa-faq-icon { flex-shrink: 0; transition: transform 250ms ease; }
+  .sa-faq-body { padding: 0 24px 22px; font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; }
+  .sa-faq-body[hidden] { display: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .sa-hero-inner, .samap-inner, .sa-regions-inner, .sa-cities-inner,
+    .sa-why-inner, .sa-services-inner, .sa-faq-inner { padding: 0 40px; }
+    .sa-hero-inner { padding-top: 100px; padding-bottom: 60px; }
+    .sa-hero-trust-inner { padding: 14px 40px; }
+    .samap-layout { grid-template-columns: 1fr 260px; }
+    .sa-regions-grid { grid-template-columns: repeat(2, 1fr); }
+    .sa-why-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .samap, .sa-regions, .sa-cities, .sa-why, .sa-services, .sa-faq { padding: 72px 0; }
+    .samap-layout { grid-template-columns: 1fr; }
+    .samap-sidebar { position: static; }
+    .samap-list { max-height: none; display: grid; grid-template-columns: repeat(3, 1fr); }
+    #sapage-map { height: 400px; }
+    .sa-cities-grid { grid-template-columns: repeat(3, 1fr); }
+    .sa-services-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .sa-hero-inner { padding: 80px 20px 48px; }
+    .sa-hero-trust-inner { padding: 12px 20px; gap: 12px; }
+    .samap-inner, .sa-regions-inner, .sa-cities-inner,
+    .sa-why-inner, .sa-services-inner, .sa-faq-inner { padding: 0 20px; }
+    .samap, .sa-regions, .sa-cities, .sa-why, .sa-services, .sa-faq { padding: 56px 0; }
+    .sa-hero h1 { font-size: clamp(34px, 9vw, 52px); }
+    .sa-hero-stats { gap: 24px; }
+    .sa-stat-value { font-size: 22px; }
+    .samap-list { grid-template-columns: repeat(2, 1fr); }
+    #sapage-map { height: 320px; }
+    .sa-regions-grid { grid-template-columns: 1fr; }
+    .sa-cities-grid { grid-template-columns: repeat(2, 1fr); }
+    .sa-why-grid { grid-template-columns: 1fr; }
+  }
+  </style>
+
+  <!-- HERO -->
+  <section class="sa-hero" id="sa-hero">
+    <div class="sa-hero-inner">
+      <nav class="sa-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sa-breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="sa-breadcrumb-current">Service Areas</span>
+      </nav>
+      <span class="sa-hero-label">Where We Work</span>
+      <h1>Masonry Contractor<br><em>Across Chicagoland.</em></h1>
+      <p class="sa-hero-sub">Tuckpointing, brick repair, chimney restoration, and stone work across 19 Illinois communities since 2007. North Shore estates, western suburb colonials, DuPage corridor homes — if your masonry needs work, we're already nearby.</p>
+      <div class="sa-hero-actions">
+        <a href="/contact" class="sa-btn sa-btn--primary">Get a Free Estimate</a>
+        <a href="tel:+17736562107" class="sa-btn sa-btn--ghost">Call 773-656-2107</a>
+      </div>
+      <div class="sa-hero-stats">
+        <div class="sa-stat"><span class="sa-stat-value">19+</span><span class="sa-stat-label">Years</span></div>
+        <div class="sa-stat-divider"></div>
+        <div class="sa-stat"><span class="sa-stat-value">500+</span><span class="sa-stat-label">Homes</span></div>
+        <div class="sa-stat-divider"></div>
+        <div class="sa-stat"><span class="sa-stat-value">19</span><span class="sa-stat-label">Cities</span></div>
+        <div class="sa-stat-divider"></div>
+        <div class="sa-stat"><span class="sa-stat-value" aria-label="4.8 star rating">4.8<svg width="16" height="16" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="vertical-align:middle;margin-left:2px"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></span><span class="sa-stat-label">Rating</span></div>
+      </div>
+    </div>
+    <div class="sa-hero-trust">
+      <div class="sa-hero-trust-inner">
+        <span class="sa-trust-item"><span class="sa-trust-dot"></span>Licensed &amp; Insured in Illinois</span>
+        <span class="sa-trust-item"><span class="sa-trust-dot"></span>Family-Owned Since 2007</span>
+        <span class="sa-trust-item"><span class="sa-trust-dot"></span>Free On-Site Estimates</span>
+        <span class="sa-trust-item"><span class="sa-trust-dot"></span>92 Verified Reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="samap" id="samap-section">
+    <div class="samap-inner">
+      <div class="samap-header">
+        <span class="samap-label">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          All 19 Communities
+        </span>
+        <h2>Masonry Services —<br><em>Delivered to Your Door.</em></h2>
+        <p class="samap-sub">Click any marker to see tuckpointing, brick repair, and chimney services for that city. We cover the full arc from Chicago's North Shore through the western suburbs and into the DuPage corridor — one licensed crew, all 19 communities.</p>
+      </div>
+      <div class="samap-layout">
+        <div class="samap-map-wrap">
+          <div id="sapage-map"></div>
+        </div>
+        <div class="samap-sidebar">
+          <p class="samap-sidebar-label">All Service Areas</p>
+          <ul class="samap-list">
+            {areas.map(a => (
+              <li class="samap-item">
+                <span class="samap-dot"></span>
+                <a href={`/tuckpointing/${a.slug}`} class="samap-city-link">{a.name}{a.name !== "Chicago" ? ", IL" : ""}</a>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="samap-cta">Not Sure We Cover Your Area? Ask Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROWSE BY REGION -->
+  <section class="sa-regions" id="sa-regions">
+    <div class="sa-regions-inner">
+      <div class="sa-regions-header">
+        <span class="sa-regions-label">Browse by Region</span>
+        <h2>Four Masonry Service Zones —<br><em>One Standard of Work.</em></h2>
+        <p class="sa-regions-sub">We divide Chicagoland into four zones for tuckpointing, brick repair, chimney work, and stone restoration — so our crews stay close and response times stay short. Every zone gets the same licensed, insured masonry team.</p>
+      </div>
+      <div class="sa-regions-grid">
+        {regions.map(r => (
+          <div class="sa-region-card">
+            <span class="sa-region-icon">{r.icon}</span>
+            <h3 class="sa-region-title">{r.title}</h3>
+            <p class="sa-region-tagline">{r.tagline}</p>
+            <p class="sa-region-count">{r.count} {r.count === 1 ? "community" : "communities"}</p>
+            <ul class="sa-region-cities">
+              {areas.filter(a => a.region === r.key).map(a => (
+                <li><a href={`/tuckpointing/${a.slug}`}>{a.name}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL CITIES GRID -->
+  <section class="sa-cities" id="sa-cities">
+    <div class="sa-cities-inner">
+      <div class="sa-cities-header">
+        <span class="sa-cities-label">Every City We Serve</span>
+        <h2>19 Communities —<br><em>Tuckpointing &amp; Masonry Near You.</em></h2>
+        <p class="sa-cities-sub">Select your city for neighborhood-specific tuckpointing, brick repair, and chimney service information — plus local project galleries and direct estimate requests.</p>
+      </div>
+      <div class="sa-cities-grid">
+        {areas.map(a => (
+          <a href={`/tuckpointing/${a.slug}`} class="sa-city-card">
+            <span class="sa-city-name">{a.name}</span>
+            <span class="sa-city-county">{a.county}</span>
+            <span class="sa-city-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY AMS -->
+  <section class="sa-why" id="sa-why">
+    <div class="sa-why-inner">
+      <div class="sa-why-header">
+        <span class="sa-why-label">Why All Masonry Services</span>
+        <h2>19 Years of Masonry.<br><em>Same Family. Same Promise.</em></h2>
+      </div>
+      <div class="sa-why-grid">
+        <div class="sa-why-card">
+          <div class="sa-why-num">01</div>
+          <h3>Local Masonry Contractor Since 2007</h3>
+          <p>We started tuckpointing in the western suburbs and grew by word of mouth. Every crew member knows Chicagoland's brick types, mortar styles, freeze-thaw damage patterns, and neighborhood construction standards.</p>
+        </div>
+        <div class="sa-why-card">
+          <div class="sa-why-num">02</div>
+          <h3>Free On-Site Masonry Estimates</h3>
+          <p>No travel fee, no pressure. A licensed mason visits your property, inspects your brick, mortar, chimney, or stone in person, and provides a detailed written estimate — at no cost to you.</p>
+        </div>
+        <div class="sa-why-card">
+          <div class="sa-why-num">03</div>
+          <h3>Licensed &amp; Fully Insured in Illinois</h3>
+          <p>Every tuckpointing, brick repair, chimney, and stone project is covered by our Illinois masonry contractor license and full liability insurance. We protect your property and our workers on every job.</p>
+        </div>
+        <div class="sa-why-card">
+          <div class="sa-why-num">04</div>
+          <h3>500+ Masonry Projects Completed</h3>
+          <p>From single-brick patches to full tuckpointing and façade restorations, our 92-review track record at 4.8 stars reflects 500+ completed masonry projects across Chicagoland.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="sa-services" id="sa-services-grid">
+    <div class="sa-services-inner">
+      <div class="sa-services-header">
+        <span class="sa-services-label">What We Do</span>
+        <h2>All Masonry Services —<br><em>Across All 19 Cities.</em></h2>
+        <p class="sa-services-sub">Every masonry service listed below — from tuckpointing and brick repair to chimney restoration and commercial stone work — is available across all 19 Chicagoland communities. One call, one licensed crew, every trade.</p>
+      </div>
+      <div class="sa-services-grid">
+        {services.map((s, i) => (
+          <a href={s.href} class="sa-service-card">
+            <span class="sa-service-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="sa-service-name">{s.name}</span>
+            <span class="sa-service-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sa-faq" id="sa-faq">
+    <div class="sa-faq-inner">
+      <div class="sa-faq-header">
+        <span class="sa-faq-label">Questions</span>
+        <h2>Masonry Service Areas —<br><em>Frequently Asked Questions.</em></h2>
+      </div>
+      <div class="sa-faq-list">
+        {faqs.map((f, i) => (
+          <div class="sa-faq-item">
+            <button class="sa-faq-q" aria-expanded="false" aria-controls={`faq-body-${i}`} data-faq={String(i)}>
+              <span>{f.q}</span>
+              <svg class="sa-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" stroke-linecap="square" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="sa-faq-body" id={`faq-body-${i}`} hidden>
+              <p>{f.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+  <Footer />
+
+  <style is:global>
+  .sa-tooltip {
+    background: #1A1A1A !important; color: #D4A931 !important;
+    border: 1px solid #D4A931 !important; border-radius: 0 !important;
+    font-family: 'Satoshi', sans-serif !important; font-size: 11px !important;
+    font-weight: 700 !important; letter-spacing: 0.05em !important;
+    padding: 4px 8px !important; box-shadow: none !important; white-space: nowrap !important;
+  }
+  .sa-tooltip::before { border-top-color: #D4A931 !important; }
+  #sapage-map .leaflet-control-zoom a {
+    background: #1A1A1A !important; color: #D4A931 !important;
+    border: 1px solid #D4A931 !important; border-radius: 0 !important;
+  }
+  #sapage-map .leaflet-control-zoom a:hover {
+    background: #D4A931 !important; color: #1A1A1A !important;
+  }
+  #sapage-map .leaflet-control-zoom { border: none !important; }
+  </style>
+
+  <script is:inline define:vars={{ areasJson }}>
+  (function () {
+    var AREAS = JSON.parse(areasJson);
+
+    /* ── MAP ── */
+    function initSaPageMap() {
+      var mapEl = document.getElementById('sapage-map');
+      if (!mapEl || !window.L) return;
+      var L = window.L;
+      if (window.__saPageMap) { try { window.__saPageMap.remove(); } catch(e) {} window.__saPageMap = null; }
+      if (mapEl._leaflet_id) { delete mapEl._leaflet_id; }
+      var map = L.map('sapage-map', { center: [41.95, -87.85], zoom: 10, zoomControl: true, scrollWheelZoom: false, attributionControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
+      var goldIcon = L.divIcon({
+        className: '',
+        html: '<div style="width:12px;height:12px;background:#D4A931;border:2px solid #1A1A1A;"></div>',
+        iconSize: [12, 12], iconAnchor: [6, 6],
+      });
+      AREAS.forEach(function (a) {
+        L.marker([a.lat, a.lng], { icon: goldIcon })
+          .bindTooltip(a.name, { permanent: false, direction: 'top', offset: [0, -10], className: 'sa-tooltip' })
+          .on('click', function () { window.location.href = '/tuckpointing/' + a.slug; })
+          .addTo(map);
+      });
+      window.__saPageMap = map;
+    }
+
+    function loadLeafletAndInit() {
+      if (window.L) { initSaPageMap(); return; }
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.onload = initSaPageMap;
+      document.head.appendChild(script);
+    }
+
+    var mapSection = document.getElementById('samap-section');
+    if (mapSection) {
+      if (window.L) {
+        initSaPageMap();
+      } else {
+        var obs = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { obs.disconnect(); loadLeafletAndInit(); }
+        }, { rootMargin: '200px' });
+        obs.observe(mapSection);
+      }
+    }
+
+    document.addEventListener('astro:page-load', function () {
+      if (window.L && document.getElementById('sapage-map')) { initSaPageMap(); }
+    });
+
+    /* ── FAQ ── */
+    document.querySelectorAll('.sa-faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = this.getAttribute('data-faq');
+        var body = document.getElementById('faq-body-' + idx);
+        var open = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
+        body.hidden = open;
+      });
+    });
+  })();
+  </script>
+
+</BaseLayout>

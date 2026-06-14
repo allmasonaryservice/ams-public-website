@@ -1,0 +1,998 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+import FacadeCoverageEstimator from '../../components/magnets/FacadeCoverageEstimator.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/services/commercial-masonry-veneers`;
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Commercial Masonry Veneers Facade Coverage Estimator",
+  "description": "Free facade coverage estimator for commercial masonry veneer projects in Chicagoland. Get coverage area, material estimates, and project complexity notes.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": `${siteUrl}/services/commercial-masonry-veneers#facade-estimator`,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "All Masonry Services",
+    "url": siteUrl
+  }
+};
+
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Masonry Services",
+  "url": siteUrl,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "92",
+    "bestRating": "5"
+  }
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Commercial Masonry Veneer Installation Works: AMS 5-Step Process",
+  "description": "How AMS installs commercial masonry veneer systems for storefronts, office buildings, and mixed-use developments.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Spec Review & System Selection",
+      "text": "We review the project spec and select a veneer system — substrate, waterproofing, lath, scratch coat, and veneer — from compatible manufacturers per the architect's requirements."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Pre-Installation Coordination",
+      "text": "We coordinate with the GC on sequencing — windows, waterproofing, and roofing must be completed in the correct order relative to veneer."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Substrate & Waterproofing Installation",
+      "text": "We install waterproof barrier, lath fastened to structural framing, and scratch coat per spec — with inspection points coordinated with the GC before veneer placement begins."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Veneer Installation & Quality Control",
+      "text": "We install veneer to the approved pattern with consistent mortar joints, movement joints at required intervals, and daily progress documentation."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Closeout & Special Inspection Documentation",
+      "text": "We complete special inspection logs, clean-up, and punch list before closing out — with documentation package ready for your GC."
+    }
+  ]
+};
+
+const faqItems = [
+  {
+    question: "What is the difference between commercial and residential veneer installation?",
+    answer: "Commercial installations typically involve larger areas, higher wind loads, special inspection requirements, and multi-trade coordination. Commercial projects also require specific documentation — special inspection logs, lien waivers, certificates of insurance — that residential projects don't. AMS is set up for both."
+  },
+  {
+    question: "What is a special inspection for masonry?",
+    answer: "Special inspections are third-party quality verifications required by the IBC for certain commercial masonry applications. An inspector verifies mortar mix, joint consistency, and grout placement during construction. AMS coordinates special inspection scheduling and maintains logs."
+  },
+  {
+    question: "Do you work with spec'd veneer systems?",
+    answer: "Yes — we install systems from major commercial veneer manufacturers per architect's specification. We review submittals and can provide product data sheets for spec approval."
+  },
+  {
+    question: "Can you phase commercial veneer work around occupied tenants?",
+    answer: "Yes — we're experienced with phased commercial work including after-hours installation and dust containment for occupied retail and office properties."
+  },
+  {
+    question: "How does commercial facade veneer handle wind load?",
+    answer: "Commercial veneers are designed to transfer lateral loads through the lath and substrate system to the structural framing — not to rely on adhesion alone. Lath fastening to structural framing (not just sheathing) is the critical requirement. AMS installs to this standard."
+  },
+  {
+    question: "Is AMS certified or approved for commercial masonry veneers?",
+    answer: "AMS is a licensed masonry contractor in Illinois with commercial project experience. We can work with your architect on material submittals and system approval documentation."
+  },
+  {
+    question: "Do you provide warranties on commercial veneer work?",
+    answer: "Yes — our commercial veneer warranty covers installation deficiencies. Material warranties are passed through from the manufacturer. Terms provided with every commercial contract."
+  },
+  {
+    question: "What's the lead time for a commercial facade project?",
+    answer: "Contact us 6–10 weeks before your required mobilization date for large commercial projects. Mid-size projects typically need 3–5 weeks of lead time."
+  }
+];
+---
+
+<BaseLayout
+  title="Commercial Masonry Veneers Chicago | All Masonry Services"
+  description="Commercial masonry veneer systems for storefronts, office buildings, and mixed-use developments in Chicagoland. Full facade coverage estimation. Call 773-656-2107."
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+  <SchemaService
+    name="Commercial Masonry Veneers in Chicago & Chicagoland"
+    description="Commercial masonry veneer systems for storefronts, office buildings, and mixed-use developments in Chicagoland. System-specified, GC-coordinated, code-compliant."
+    url={pageUrl}
+    provider="All Masonry Services"
+    providerUrl={siteUrl}
+    areaServed="Chicago, Chicagoland, IL"
+    serviceType="Commercial Masonry Veneer"
+  />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- ─── 1. HERO ─── -->
+  <section class="sp-hero">
+    <div class="sp-hero-inner">
+      <div class="sp-hero-content">
+        <div class="sp-hero-badges">
+          <span class="sp-badge sp-badge--gold">Free Estimates</span>
+          <span class="sp-badge sp-badge--outline">Family-Owned Since 2007</span>
+        </div>
+        <h1 class="sp-hero-h1">
+          Commercial Masonry Veneers<br>
+          <em>in Chicago &amp; Chicagoland</em>
+        </h1>
+        <p class="sp-hero-sub">
+          Full commercial facade veneer systems — brick, stone, and masonry panel installation for storefronts, office buildings, and mixed-use developments, installed to spec and built to last.
+        </p>
+        <div class="sp-hero-stats">
+          <div class="sp-stat">
+            <span class="sp-stat-num">500+</span>
+            <span class="sp-stat-label">Projects Completed</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">4.8★</span>
+            <span class="sp-stat-label">92 Google Reviews</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">19+</span>
+            <span class="sp-stat-label">Years Experience</span>
+          </div>
+        </div>
+        <div class="sp-hero-actions">
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Free Estimate</a>
+          <a href="tel:7736562107" class="sp-btn sp-btn--ghost" aria-label="Call 773-656-2107">Call 773-656-2107</a>
+        </div>
+      </div>
+      <div class="sp-hero-img-wrap">
+        <img
+          src="/images/project-brick-exterior.jpg"
+          alt="Commercial masonry veneer facade on a Chicagoland office building"
+          width="600"
+          height="750"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 2. TRUST BAR ─── -->
+  <section class="sp-trust">
+    <div class="sp-trust-inner">
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Licensed &amp; Insured
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Commercial Facade Experience
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Code-Compliant Systems
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        19+ Years
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3. PROBLEM / CONSEQUENCE ─── -->
+  <section class="sp-problem">
+    <div class="sp-problem-inner">
+      <div class="sp-section-label">Why It Matters</div>
+      <h2 class="sp-section-h2">Commercial Veneer Failures<br><em>Are Expensive and Visible</em></h2>
+      <p class="sp-section-sub">
+        A veneer failure on a commercial building isn't just a repair — it's a building with scaffolding in front of it, a closed storefront, and a property manager trying to explain to tenants why the facade is failing at year 4.
+      </p>
+      <div class="sp-problem-grid">
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Incompatible System Components</h3>
+          <p class="sp-problem-body">Commercial veneer systems require compatible waterproofing, lath, scratch coat, and mortar — all from the same approved system. Mixing components from different manufacturers voids warranties and causes failures.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Inadequate Substrate Attachment</h3>
+          <p class="sp-problem-body">Commercial veneers span large areas with high wind loads. Lath attached only to sheathing, not to structural framing, pulls away under lateral load — creating cascading delamination.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="sp-problem-title">No Third-Party Inspection</h3>
+          <p class="sp-problem-body">Commercial projects often require special inspections for masonry work. Skipping or cutting corners on special inspections creates liability exposure and may void the building's certificate of occupancy.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Sequencing Conflicts with Other Trades</h3>
+          <p class="sp-problem-body">Commercial veneer must be coordinated with window installation, waterproofing, and roofing. Installed out of sequence — particularly before windows are flashed — guarantees water intrusion at every penetration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 4. PROCESS ─── -->
+  <section class="sp-process">
+    <div class="sp-process-inner">
+      <div class="sp-section-label">How We Work</div>
+      <h2 class="sp-section-h2">Our Commercial Veneer<br><em>Process</em></h2>
+      <p class="sp-section-sub">
+        From spec review to special inspection documentation — system-installed, GC-coordinated, built to pass.
+      </p>
+      <div class="sp-process-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Spec Review &amp; System Selection</h3>
+            <p class="sp-step-body">We review the project spec and select a veneer system — substrate, waterproofing, lath, scratch coat, and veneer — from compatible manufacturers per the architect's requirements.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Spec'd systems have tested compatibility data. Field substitutions without engineering review are a warranty void and a failure waiting to happen.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Pre-Installation Coordination</h3>
+            <p class="sp-step-body">We coordinate with the GC on sequencing — windows, waterproofing, and roofing must be completed in the correct order relative to veneer.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Veneer installed before window flashing is complete guarantees water infiltration at window heads. This sequence error is the most common cause of commercial envelope failures.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Substrate &amp; Waterproofing Installation</h3>
+            <p class="sp-step-body">We install waterproof barrier, lath fastened to structural framing, and scratch coat per spec — with inspection points coordinated with the GC before veneer placement begins.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> This is the invisible work that determines whether the veneer lasts 5 years or 30. We don't rush the substrate for schedule.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Veneer Installation &amp; Quality Control</h3>
+            <p class="sp-step-body">We install veneer to the approved pattern with consistent mortar joints, movement joints at required intervals, and daily progress documentation.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Daily documentation gives your GC visibility and provides evidence for special inspection records. We make inspection coordination easy.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Closeout &amp; Special Inspection Documentation</h3>
+            <p class="sp-step-body">We complete special inspection logs, clean-up, and punch list before closing out — with documentation package ready for your GC.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Clean special inspection records are required for certificate of occupancy on commercial projects. We don't leave you chasing paperwork.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 5. WHY AMS ─── -->
+  <section class="sp-why">
+    <div class="sp-why-inner">
+      <div class="sp-section-label">What Sets Us Apart</div>
+      <h2 class="sp-section-h2">Why Commercial Clients<br><em>Choose AMS for Facade Veneers</em></h2>
+      <div class="sp-why-grid">
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">01</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">System Compatibility Expertise</h3>
+            <p class="sp-why-body">We install complete veneer systems — not just the visible layer. Compatible components, correct installation sequence, and documented special inspections.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">02</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">GC Sequencing Coordination</h3>
+            <p class="sp-why-body">We integrate with your project schedule — windows, waterproofing, roofing — and communicate proactively when sequencing issues arise.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">03</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Free Facade Coverage Estimator</h3>
+            <p class="sp-why-body">Estimate commercial facade coverage before your first meeting with us. Dimensions in, coverage and cost range out.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">04</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Family-Owned — Owner Accountability</h3>
+            <p class="sp-why-body">No layers of management. You deal directly with the people responsible for the work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 6. TOOL EMBED ─── -->
+  <section class="sp-tool" id="facade-estimator">
+    <div class="sp-tool-inner">
+      <div class="sp-tool-header">
+        <div class="sp-section-label sp-section-label--light">Free Tool — No Sign-Up Required</div>
+        <h2 class="sp-tool-h2">Free Commercial Masonry Veneers<br><em>Facade Coverage Estimator</em></h2>
+        <div class="sp-tool-warning-hook" aria-label="Project type checklist">
+          <p class="sp-tool-warning-intro">Need facade coverage numbers before the formal takeoff?</p>
+          <ul class="sp-tool-warning-list">
+            <li>Full building exterior or partial facade</li>
+            <li>Storefront, retail, or mixed-use cladding</li>
+            <li>Parking structure or industrial facing</li>
+          </ul>
+          <p class="sp-tool-warning-cta">Enter building dimensions — get coverage area, material estimate, and cost range. Free.</p>
+        </div>
+        <p class="sp-tool-sub">Building dimensions → net coverage, material count, Chicago commercial 2026 cost range. 90 seconds. Free.</p>
+      </div>
+      <div class="sp-tool-social">
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">420+</span>
+          <span class="sp-tool-stat-label">Commercial facade estimates generated</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">4.8★</span>
+          <span class="sp-tool-stat-label">Average rating · 92 reviews</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">90s</span>
+          <span class="sp-tool-stat-label">To get your estimate</span>
+        </div>
+      </div>
+      <blockquote class="sp-tool-quote">
+        <p>"The facade estimator gave our project team a quick coverage check before the formal takeoff. It matched our architect's numbers within 5%. Useful for early budget conversations."</p>
+        <cite>— GC Project Manager · Chicagoland</cite>
+      </blockquote>
+      <div class="sp-tool-embed">
+        <FacadeCoverageEstimator />
+      </div>
+      <p class="sp-tool-note">
+        Coverage estimates based on standard commercial veneer panel configurations (2026). Your formal bid from AMS requires project drawings and a site visit.
+      </p>
+      <div class="sp-tool-faq">
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">Is the facade estimator free?</h3>
+          <p class="sp-tool-faq-a">Yes — free, no account required. Intended for preliminary commercial planning and early budget discussions.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">Does this replace a formal bid?</h3>
+          <p class="sp-tool-faq-a">No — it's a planning tool. AMS's formal bid requires project drawings and a site visit to account for openings, details, and site conditions.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">How do I get a formal bid?</h3>
+          <p class="sp-tool-faq-a">Contact us with your project documents — drawings, spec, and a project timeline. We'll schedule a project review and provide a complete written bid. <a href="/contact" class="sp-tool-faq-link">Get in touch here.</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "How to Estimate Commercial Masonry Veneer Coverage in Chicago",
+        "description": "Free commercial facade coverage estimator for Chicagoland GCs and developers. Enter building dimensions, get net coverage, material count, and cost range.",
+        "totalTime": "PT2M",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Enter building dimensions and elevations", "text": "Input your building width, depth, number of stories, and select which elevations (front, rear, left, right) will be clad with masonry veneer." },
+          { "@type": "HowToStep", "position": 2, "name": "Select veneer system and enter openings", "text": "Choose your veneer system (thin brick, natural stone, limestone panel, or manufactured stone) and enter the total square footage of openings to deduct." },
+          { "@type": "HowToStep", "position": 3, "name": "Get your facade estimate", "text": "Receive net coverage area, material quantity with waste factor, Chicago commercial 2026 cost range, and project complexity notes — free, instant, downloadable as a PDF." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the commercial facade coverage estimator free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — free, no account required. Intended for preliminary commercial planning and early budget discussions with your GC or architect." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the facade estimator replace a formal bid?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No — it is a planning tool for preliminary coverage and budgeting. All Masonry Services' formal bid requires project drawings and a site visit to account for openings, anchorage details, and site conditions." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a formal commercial masonry veneer bid in Chicago?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Contact All Masonry Services with your project drawings, spec section, and project timeline. We'll schedule a project review and provide a complete written bid within 48–72 hours. Call 773-656-2107." }
+          }
+        ]
+      }
+    ]
+  }</script>
+
+  <!-- ─── 7. FEATURED PROJECTS ─── -->
+  <section class="sp-projects">
+    <div class="sp-projects-inner">
+      <div class="sp-section-label">Recent Work</div>
+      <h2 class="sp-section-h2">Commercial Veneer Projects<br><em>Across Chicagoland</em></h2>
+      <div class="sp-projects-grid">
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-exterior.jpg"
+              alt="Office building stone veneer facade in Chicagoland"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Chicagoland</span>
+            <h3 class="sp-project-title">Office Building — Stone Veneer Facade</h3>
+            <p class="sp-project-desc">Full exterior stone veneer on a 5-story office building — system-specified, GC-coordinated, special inspections documented. Certificate of occupancy issued on schedule.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-restoration.jpg"
+              alt="Retail storefront brick veneer renovation in Western Suburbs"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Western Suburbs</span>
+            <h3 class="sp-project-title">Retail Storefront Renovation</h3>
+            <p class="sp-project-desc">Complete facade renovation using brick veneer on a national retail location — completed during off-peak hours to minimize tenant disruption.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-tuckpointing.jpg"
+              alt="Mixed-use development brick veneer on three elevations"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Chicagoland</span>
+            <h3 class="sp-project-title">Mixed-Use — Brick Veneer on 3 Elevations</h3>
+            <p class="sp-project-desc">Brick veneer on three elevations of a mixed-use development — coordination with window and roofing trades, zero sequencing conflicts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 8. PRICING ─── -->
+  <section class="sp-pricing">
+    <div class="sp-pricing-inner">
+      <div class="sp-section-label">Transparent Pricing</div>
+      <h2 class="sp-section-h2">Commercial Veneer<br><em>Investment Ranges</em></h2>
+      <p class="sp-section-sub">
+        Commercial veneer pricing depends on facade area, system specification, and project complexity. These ranges reflect typical Chicagoland projects.
+      </p>
+      <div class="sp-pricing-grid">
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Small Commercial Facade</div>
+          <div class="sp-price-range">$25,000 – $70,000</div>
+          <ul class="sp-price-list">
+            <li>Under 3,000 sq ft</li>
+            <li>Standard brick or stone veneer</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+        <div class="sp-price-card sp-price-card--featured">
+          <div class="sp-price-popular">Most Common</div>
+          <div class="sp-price-tier">Mid-Size Facade</div>
+          <div class="sp-price-range">$70,000 – $220,000</div>
+          <ul class="sp-price-list">
+            <li>3,000–10,000 sq ft</li>
+            <li>Complete system</li>
+            <li>Spec-compliant</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Quote</a>
+        </div>
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Large Commercial Project</div>
+          <div class="sp-price-range">$220,000+</div>
+          <ul class="sp-price-list">
+            <li>10,000+ sq ft</li>
+            <li>Full package including special inspections</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+      </div>
+      <p class="sp-pricing-note">
+        Commercial veneer pricing requires formal bid from drawings and site visit. Contact us with project documents for a complete bid.
+      </p>
+      <p class="sp-pricing-guarantee">System-specified installation, GC-coordinated sequencing, documented special inspections. No shortcuts that create liability downstream.</p>
+    </div>
+  </section>
+
+  <!-- ─── 9. REVIEWS ─── -->
+  <section class="sp-reviews">
+    <div class="sp-reviews-inner">
+      <div class="sp-section-label">What Clients Say</div>
+      <h2 class="sp-section-h2">Real Reviews from<br><em>Commercial Clients</em></h2>
+      <div class="sp-reviews-grid">
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"AMS handled our commercial facade veneer with exactly the level of professionalism a $180K project demands. Special inspection logs were complete, sequencing with our other trades was clean."</blockquote>
+          <cite class="sp-review-cite">— GC · Commercial · Chicagoland</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"We've used AMS on two retail facade renovations. Both times — on-schedule, zero callbacks, documentation complete at closeout. That's exactly what commercial property management needs."</blockquote>
+          <cite class="sp-review-cite">— Property Manager · Retail · Western Suburbs</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"The stone veneer AMS installed on our office building looks exactly like the architect's rendering. They held the joint width and coursing pattern throughout — no drift over a 5-story elevation."</blockquote>
+          <cite class="sp-review-cite">— Architect · Commercial · Chicagoland</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 10. CREDENTIALS ─── -->
+  <section class="sp-creds">
+    <div class="sp-creds-inner">
+      <div class="sp-section-label">Why Trust AMS</div>
+      <h2 class="sp-section-h2">Every Box Checked.<br><em>In Writing.</em></h2>
+      <div class="sp-creds-grid">
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Licensed in Illinois</span>
+            <span class="sp-cred-body">State-licensed masonry contractor — License #MA-104-018887. We pull permits and operate fully above board on every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Fully Insured — $2.5M Liability</span>
+            <span class="sp-cred-body">$2.5 million general liability on every job. Proof of insurance available before work begins.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Workers' Comp Covered</span>
+            <span class="sp-cred-body">Every crew member is covered. You are not liable if someone is injured on site.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Family-Owned Since 2007</span>
+            <span class="sp-cred-body">Not a franchise. Not a call center. You deal with the owners — same crew, same standards, every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Written Schedule Commitment</span>
+            <span class="sp-cred-body">We put our start date and milestone dates in writing. We don't make promises we can't keep.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Serving 19 Chicagoland Cities</span>
+            <span class="sp-cred-body">From Chicago to Naperville, Winnetka to Hinsdale — local crews, local knowledge, local inspectors.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sp-creds-guarantee">
+        <div class="sp-guarantee-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>System Integrity Guarantee</span>
+        </div>
+        <p class="sp-guarantee-text">Veneer installed to spec with compatible system components. Special inspections documented and filed. If installation deficiencies cause veneer failure within 3 years, we correct it at no charge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 11. FAQ ─── -->
+  <section class="sp-faq">
+    <div class="sp-faq-inner">
+      <div class="sp-section-label">Common Questions</div>
+      <h2 class="sp-section-h2">Commercial Masonry Veneers FAQ<br><em>Answered Honestly</em></h2>
+      <div class="sp-faq-list" id="sp-faq-list">
+        {faqItems.map((item, i) => (
+          <div class="sp-faq-item" id={`sp-faq-${i}`}>
+            <button
+              class="sp-faq-q"
+              aria-expanded="false"
+              aria-controls={`sp-faq-ans-${i}`}
+            >
+              <span>{item.question}</span>
+              <svg class="sp-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="sp-faq-a" id={`sp-faq-ans-${i}`} role="region">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 12. SERVICE AREAS ─── -->
+  <section class="sp-areas">
+    <div class="sp-areas-inner">
+      <div class="sp-section-label">Where We Work</div>
+      <h2 class="sp-section-h2">Commercial Masonry Veneer Service Areas<br><em>Across Chicagoland</em></h2>
+      <p class="sp-areas-sub">
+        We serve commercial clients, GCs, and developers throughout the Chicago metro and surrounding communities.
+      </p>
+      <div class="sp-areas-grid">
+        <a href="/tuckpointing/chicago" class="sp-area">Chicago</a>
+        <a href="/tuckpointing/hinsdale" class="sp-area">Hinsdale</a>
+        <a href="/tuckpointing/oak-brook" class="sp-area">Oak Brook</a>
+        <a href="/tuckpointing/winnetka" class="sp-area">Winnetka</a>
+        <a href="/tuckpointing/highland-park" class="sp-area">Highland Park</a>
+        <a href="/tuckpointing/elmhurst" class="sp-area">Elmhurst</a>
+        <a href="/tuckpointing/western-springs" class="sp-area">Western Springs</a>
+        <a href="/tuckpointing/naperville" class="sp-area">Naperville</a>
+        <a href="/tuckpointing/wheaton" class="sp-area">Wheaton</a>
+        <a href="/tuckpointing/downers-grove" class="sp-area">Downers Grove</a>
+        <a href="/tuckpointing/la-grange" class="sp-area">La Grange</a>
+        <a href="/tuckpointing/clarendon-hills" class="sp-area">Clarendon Hills</a>
+        <a href="/tuckpointing/burr-ridge" class="sp-area">Burr Ridge</a>
+        <a href="/tuckpointing/willowbrook" class="sp-area">Willowbrook</a>
+        <a href="/tuckpointing/evanston" class="sp-area">Evanston</a>
+        <a href="/tuckpointing/wilmette" class="sp-area">Wilmette</a>
+        <a href="/tuckpointing/kenilworth" class="sp-area">Kenilworth</a>
+        <a href="/tuckpointing/glencoe" class="sp-area">Glencoe</a>
+        <a href="/tuckpointing/northbrook" class="sp-area">Northbrook</a>
+      </div>
+      <p class="sp-areas-note">Don't see your city? <a href="/contact" class="sp-areas-link">Contact us</a> — we likely serve your area.</p>
+    </div>
+  </section>
+
+  <!-- ─── 13. RELATED SERVICES ─── -->
+  <section class="sp-related">
+    <div class="sp-related-inner">
+      <div class="sp-section-label">Also Consider</div>
+      <h2 class="sp-section-h2">Related Masonry<br><em>Services</em></h2>
+      <div class="sp-related-grid">
+        <a href="/services/commercial-brick-stone" class="sp-related-card">
+          <img src="/images/project-brick-exterior.jpg" alt="Commercial brick and stone masonry" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Commercial Brick &amp; Stone</h3>
+            <p class="sp-related-desc">Large-scale commercial brick and stone masonry for developers, GCs, and commercial property owners.</p>
+          </div>
+        </a>
+        <a href="/services/cmu-block-installation" class="sp-related-card">
+          <img src="/images/project-brick-restoration.jpg" alt="CMU block installation" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">CMU Block Installation</h3>
+            <p class="sp-related-desc">Engineered CMU block construction for commercial load-bearing walls, retaining structures, and foundations.</p>
+          </div>
+        </a>
+        <a href="/services/brick-stone-veneers" class="sp-related-card">
+          <img src="/images/project-tuckpointing.jpg" alt="Brick and stone veneers" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Brick &amp; Stone Veneers</h3>
+            <p class="sp-related-desc">Residential brick and stone veneer installation with proper flashing, drainage, and substrate systems.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 14. CTA BANNER ─── -->
+  <CTABanner />
+
+  <!-- ─── 15. FOOTER ─── -->
+  <Footer />
+
+  <!-- ─── PROCESS SCROLL ANIMATION ─── -->
+  <script is:inline>
+    (function() {
+      function initStepAnimations() {
+        var gsap = window.__gsap;
+        var ScrollTrigger = window.__ScrollTrigger;
+        if (!gsap || !ScrollTrigger) return;
+        var steps = document.querySelectorAll('.sp-step');
+        if (!steps.length) return;
+        steps.forEach(function(step) {
+          gsap.fromTo(step, { opacity: 0, x: -24 }, {
+            opacity: 1, x: 0, duration: 0.55, ease: 'power2.out',
+            scrollTrigger: { trigger: step, start: 'top 88%', toggleActions: 'play none none reverse' }
+          });
+        });
+      }
+      // Always wait for animations:ready — prevents race with BaseLayout ScrollTrigger.kill()
+      window.removeEventListener('animations:ready', window.__spStepAnimReady);
+      window.__spStepAnimReady = initStepAnimations;
+      window.addEventListener('animations:ready', window.__spStepAnimReady);
+      if (window.__lenis) initStepAnimations();
+    })();
+  </script>
+
+  <!-- ─── FAQ ACCORDION SCRIPT ─── -->
+  <script is:inline>
+    (function() {
+      var btns = document.querySelectorAll('.sp-faq-q');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          btns.forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var ans = document.getElementById(b.getAttribute('aria-controls'));
+            if (ans) ans.style.maxHeight = null;
+          });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = document.getElementById(this.getAttribute('aria-controls'));
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+        });
+      });
+    })();
+  </script>
+
+</BaseLayout>
+
+<style>
+.sp-section-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin-bottom: 14px; }
+.sp-section-label--light { color: #D4A931; }
+.sp-section-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #1A1A1A; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-section-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-section-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 640px; margin: 0 0 48px 0; }
+.sp-badge { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 0px; }
+.sp-badge--gold { background: #D4A931; color: #1A1A1A; }
+.sp-badge--outline { border: 2px solid #D4A931; color: #D4A931; background: transparent; }
+.sp-btn { display: inline-flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 13px 28px; min-height: 44px; border: 2px solid transparent; border-radius: 0px; transition: background 200ms ease, border-color 200ms ease, color 200ms ease; white-space: nowrap; cursor: pointer; }
+.sp-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+.sp-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+.sp-btn--primary:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+.sp-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+.sp-btn--ghost:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--outline { background: transparent; color: #1A1A1A; border-color: #1A1A1A; }
+.sp-btn--outline:hover { background: #1A1A1A; color: #D4A931; }
+.sp-btn--outline:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-hero { background: #F5F3EF; padding: 120px 0 100px; }
+.sp-hero-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
+.sp-hero-badges { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.sp-hero-h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; color: #1A1A1A; line-height: 1.1; margin: 0 0 20px 0; }
+.sp-hero-h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-hero-sub { font-family: 'Satoshi', sans-serif; font-size: 17px; color: #4A4A4A; line-height: 1.75; margin: 0 0 32px 0; max-width: 520px; }
+.sp-hero-stats { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.sp-stat { display: flex; flex-direction: column; gap: 4px; }
+.sp-stat-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: #8B8070; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-stat-divider { width: 1px; height: 40px; background: #D8D2C8; flex-shrink: 0; }
+.sp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.sp-hero-img-wrap { position: relative; }
+.sp-hero-img-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; border: 2px solid #D8D2C8; }
+.sp-trust { background: #1A1A1A; padding: 20px 0; border-top: 1px solid #2D2D2D; }
+.sp-trust-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.sp-trust-item { display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #D4A931; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-trust-item svg { flex-shrink: 0; }
+.sp-trust-sep { width: 1px; height: 20px; background: #2D2D2D; }
+.sp-problem { background: #E8E4DC; padding: 100px 0; }
+.sp-problem-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.sp-problem-card { background: #fff; border: 1px solid #D8D2C8; padding: 28px 24px; }
+.sp-problem-card:hover { border-color: #D4A931; }
+.sp-problem-icon { margin-bottom: 16px; }
+.sp-problem-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.04em; }
+.sp-problem-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-process { background: #F5F3EF; padding: 100px 0; }
+.sp-process-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-process-steps { display: flex; flex-direction: column; gap: 0; border: 1px solid #D8D2C8; }
+.sp-step { display: grid; grid-template-columns: 100px 1fr; gap: 0; border-bottom: 1px solid #D8D2C8; transition: background 200ms ease; opacity: 0; transform: translateX(-24px); }
+@media (prefers-reduced-motion: reduce) { .sp-step { opacity: 1; transform: none; } }
+.sp-step:last-child { border-bottom: none; }
+.sp-step:hover { background: #fff; }
+.sp-step-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 700; color: #D4A931; padding: 32px 0 32px 32px; display: flex; align-items: flex-start; opacity: 0.6; line-height: 1; }
+.sp-step-content { padding: 32px 32px 32px 0; }
+.sp-step-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 8px 0; }
+.sp-step-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0 0 10px 0; }
+.sp-step-why { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; padding: 10px 12px; border-left: 3px solid #D4A931; background: rgba(212,169,49,0.05); }
+.sp-step-why strong { color: #D4A931; font-weight: 700; }
+.sp-why { background: #E8E4DC; padding: 100px 0; }
+.sp-why-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #D8D2C8; border: 1px solid #D8D2C8; margin-top: 48px; }
+.sp-why-item { background: #fff; padding: 36px 32px; display: flex; gap: 24px; align-items: flex-start; }
+.sp-why-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #D4A931; opacity: 0.4; line-height: 1; flex-shrink: 0; padding-top: 2px; }
+.sp-why-content { display: flex; flex-direction: column; gap: 10px; }
+.sp-why-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+.sp-why-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-tool { background: #1A1A1A; padding: 100px 0; }
+.sp-tool-inner { max-width: 900px; margin: 0 auto; padding: 0 80px; }
+.sp-tool-header { text-align: center; margin-bottom: 48px; }
+.sp-tool-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-tool-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-tool-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-warning-hook { background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.25); border-left: 3px solid #D4A931; padding: 20px 24px; margin: 0 auto 28px; max-width: 640px; text-align: left; }
+.sp-tool-warning-intro { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px 0; }
+.sp-tool-warning-list { margin: 0 0 14px 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+.sp-tool-warning-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.sp-tool-warning-cta { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #fff; margin: 0; }
+.sp-tool-embed { background: #fff; border: 2px solid #D4A931; padding: 40px; min-height: 200px; }
+.sp-tool-social { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+.sp-tool-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sp-tool-stat-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-tool-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+.sp-tool-stat-sep { width: 1px; height: 36px; background: #2D2D2D; flex-shrink: 0; }
+.sp-tool-quote { border-left: 3px solid #D4A931; margin: 0 0 36px 0; padding: 12px 20px; background: rgba(212,169,49,0.06); }
+.sp-tool-quote p { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0 0 6px 0; }
+.sp-tool-quote cite { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; font-style: normal; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-tool-note { font-family: 'Satoshi', sans-serif; font-size: 12px; color: #8B8070; text-align: center; margin-top: 20px; line-height: 1.6; }
+.sp-tool-faq { margin-top: 48px; border-top: 1px solid #2D2D2D; padding-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+.sp-tool-faq-q { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0; }
+.sp-tool-faq-a { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-faq-link { color: #D4A931; text-decoration: underline; }
+.sp-tool-faq-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-projects { background: #E8E4DC; padding: 100px 0; }
+.sp-projects-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.sp-project-card { background: #fff; border: 1px solid #D8D2C8; overflow: hidden; }
+.sp-project-card:hover { border-color: #D4A931; }
+.sp-project-img-wrap img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.sp-project-info { padding: 20px; }
+.sp-project-location { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+.sp-project-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-project-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.65; margin: 0; }
+.sp-pricing { background: #F5F3EF; padding: 100px 0; }
+.sp-pricing-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+.sp-price-card { background: #fff; border: 1px solid #D8D2C8; padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+.sp-price-card--featured { border: 2px solid #D4A931; position: relative; }
+.sp-price-popular { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; }
+.sp-price-tier { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #8B8070; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
+.sp-price-range { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #1A1A1A; line-height: 1; }
+.sp-price-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.sp-price-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; padding-left: 16px; position: relative; }
+.sp-price-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: #D4A931; }
+.sp-pricing-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.6; max-width: 600px; }
+.sp-pricing-link { color: #D4A931; text-decoration: underline; }
+.sp-pricing-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-pricing-guarantee { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #1A1A1A; background: rgba(212,169,49,0.07); border-left: 3px solid #D4A931; padding: 12px 16px; margin-top: 16px; max-width: 600px; }
+.sp-reviews { background: #E8E4DC; padding: 100px 0; }
+.sp-reviews-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-review-card { background: #fff; border-top: 1px solid #D8D2C8; border-right: 1px solid #D8D2C8; border-bottom: 1px solid #D8D2C8; border-left: 3px solid #D4A931; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.sp-review-stars { display: flex; gap: 3px; }
+.sp-review-text { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; padding: 0; font-style: normal; flex: 1; }
+.sp-review-cite { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #8B8070; font-style: normal; letter-spacing: 0.02em; }
+.sp-creds { background: #F5F3EF; padding: 100px 0; }
+.sp-creds-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-creds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; border: 2px solid #D8D2C8; margin-top: 48px; }
+.sp-cred-item { background: #fff; padding: 32px 28px; display: flex; gap: 20px; align-items: flex-start; }
+.sp-cred-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.2); display: flex; align-items: center; justify-content: center; }
+.sp-cred-text { display: flex; flex-direction: column; gap: 6px; }
+.sp-cred-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-cred-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.65; }
+.sp-creds-guarantee { margin-top: 32px; background: #1A1A1A; padding: 24px 32px; display: flex; align-items: flex-start; gap: 24px; }
+.sp-guarantee-badge { display: flex; align-items: center; gap: 10px; background: #D4A931; padding: 10px 16px; white-space: nowrap; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
+.sp-guarantee-text { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; margin: 0; align-self: center; }
+.sp-faq { background: #E8E4DC; padding: 100px 0; }
+.sp-faq-inner { max-width: 800px; margin: 0 auto; padding: 0 80px; }
+.sp-faq-list { border: 1px solid #D8D2C8; }
+.sp-faq-item { border-bottom: 1px solid #D8D2C8; }
+.sp-faq-item:last-child { border-bottom: none; }
+.sp-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600; color: #1A1A1A; line-height: 1.4; min-height: 44px; transition: background 200ms ease; }
+.sp-faq-q:hover { background: #fff; }
+.sp-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+.sp-faq-q[aria-expanded="true"] { color: #D4A931; }
+.sp-faq-q[aria-expanded="true"] .sp-faq-icon { transform: rotate(180deg); }
+.sp-faq-icon { flex-shrink: 0; transition: transform 200ms ease; }
+.sp-faq-a { max-height: 0; overflow: hidden; transition: max-height 300ms ease; }
+.sp-faq-a p { padding: 0 24px 20px; font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; }
+.sp-areas { background: #E8E4DC; padding: 100px 0; }
+.sp-areas-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-areas-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; margin: 0 0 40px 0; max-width: 560px; }
+.sp-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.sp-area { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; color: #1A1A1A; background: #fff; border: 1px solid #D8D2C8; border-bottom: 2px solid #D4A931; padding: 8px 16px; text-decoration: none; display: inline-block; transition: border-color 150ms ease, color 150ms ease, background 150ms ease; cursor: pointer; }
+.sp-area:hover { background: #D4A931; border-color: #D4A931; color: #1A1A1A; }
+.sp-area:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-areas-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; }
+.sp-areas-link { color: #D4A931; text-decoration: underline; }
+.sp-areas-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related { background: #F5F3EF; padding: 100px 0; }
+.sp-related-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-related-card { background: #fff; border: 1px solid #D8D2C8; text-decoration: none; display: flex; flex-direction: column; transition: border-color 200ms ease; }
+.sp-related-card:hover { border-color: #D4A931; }
+.sp-related-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.sp-related-content { padding: 20px; flex: 1; }
+.sp-related-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-related-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; }
+@media (max-width: 1100px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 40px; }
+  .sp-trust-inner { padding: 0 40px; }
+  .sp-problem-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .sp-hero { padding: 100px 0 72px; }
+  .sp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sp-hero-img-wrap { display: none; }
+  .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-related-grid { grid-template-columns: 1fr 1fr; }
+  .sp-creds-grid { grid-template-columns: 1fr 1fr; }
+  .sp-why-grid { grid-template-columns: 1fr; }
+  .sp-trust-sep { display: none; }
+  .sp-trust-inner { justify-content: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 20px; }
+  .sp-trust-inner { padding: 0 20px; }
+  .sp-hero { padding: 80px 0 56px; }
+  .sp-problem, .sp-process, .sp-why, .sp-tool, .sp-projects, .sp-pricing, .sp-reviews, .sp-creds, .sp-faq, .sp-areas, .sp-related { padding: 56px 0; }
+  .sp-problem-grid, .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-creds-grid, .sp-related-grid { grid-template-columns: 1fr; }
+  .sp-step { grid-template-columns: 60px 1fr; }
+  .sp-step-num { font-size: 24px; padding: 24px 0 24px 20px; }
+  .sp-step-content { padding: 24px 20px 24px 0; }
+  .sp-hero-actions { flex-direction: column; }
+  .sp-btn { width: 100%; text-align: center; }
+  .sp-tool-embed { padding: 24px 20px; }
+}
+</style>

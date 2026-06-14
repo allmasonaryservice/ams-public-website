@@ -1,0 +1,1000 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+import ChimneyRiskScore from '../../components/magnets/ChimneyRiskScore.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/services/chimney-repair-rebuilding`;
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Chimney Repair & Structural Risk Score",
+  "description": "Free chimney structural risk assessment for Chicagoland homeowners. Answer 12 questions and get a risk score with specific repair recommendations.",
+  "applicationCategory": "HomeAndGarden",
+  "operatingSystem": "Web",
+  "url": `${siteUrl}/services/chimney-repair-rebuilding#chimney-risk-score`,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "All Masonry Services",
+    "url": siteUrl
+  }
+};
+
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Masonry Services",
+  "url": siteUrl,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "92",
+    "bestRating": "5"
+  }
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Chimney Repair & Rebuilding Works: AMS 5-Step Process",
+  "description": "How AMS assesses, repairs, and rebuilds chimneys in Chicagoland.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Full Chimney Assessment",
+      "text": "We assess the chimney from footing to crown — exterior brick, mortar joints, flashing, crown condition, and flue liner — and identify all issues before recommending a scope."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Repair vs. Rebuild Recommendation",
+      "text": "Based on the assessment, we recommend targeted repair (tuckpointing, crown, cap, flashing) or partial or full rebuild — with honest reasoning for the recommendation."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Targeted Repair or Partial Rebuild",
+      "text": "We execute the agreed scope — tuckpointing, crown replacement, flashing, or rebuild from the roofline — with materials specified to the existing chimney's brick type and exposure."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Full Rebuild When Required",
+      "text": "Where structural issues or severe deterioration require it, we rebuild the chimney in full — new footing assessment, brick laying from the base, refractory firebox, and proper crown and cap — to current code."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Final Inspection & Water Test",
+      "text": "We inspect the completed work, run a water test to verify crown and flashing integrity, and walk the work with you before closing out."
+    }
+  ]
+};
+
+const faqItems = [
+  {
+    question: "How do I know if my chimney needs repair or full rebuild?",
+    answer: "If damage is limited to mortar joints, crown, cap, or flashing — targeted repair is usually sufficient. If the brick itself is structurally compromised (crumbling, spalling deeply, or the chimney has shifted) — partial or full rebuild is required. AMS assesses on site and gives you an honest written recommendation."
+  },
+  {
+    question: "What is a chimney crown and why does mine keep cracking?",
+    answer: "The crown is the concrete or mortar cap at the top of the chimney. Thin mortar crowns (the most common installation) crack within 2–3 Chicago winters from freeze-thaw expansion. A proper crown is sloped, overhangs the brick, and is cast in concrete — not mortar. AMS only installs proper concrete crowns."
+  },
+  {
+    question: "Can you repair a leaning chimney?",
+    answer: "Chimney lean indicates foundation movement or structural separation. Depending on the extent, this requires either stabilization and tuckpointing or full demolition and rebuild. A leaning chimney is a safety issue — contact us for an assessment before the next storm season."
+  },
+  {
+    question: "How long does chimney repair take?",
+    answer: "Crown and flashing repair: 1 day. Full chimney tuckpoint + crown: 1–2 days. Partial rebuild from roofline: 3–5 days. Full rebuild: 5–10 days depending on height and complexity."
+  },
+  {
+    question: "What causes chimney brick to spall?",
+    answer: "Spalling is caused by water infiltrating the brick and freezing. The root cause in most cases is deteriorated mortar joints that allow water entry. Addressing mortar (tuckpointing) alongside brick replacement prevents recurrence. AMS evaluates mortar condition on every brick repair job."
+  },
+  {
+    question: "My ceiling has water stains near the chimney — is that the chimney?",
+    answer: "Usually, yes. The most common sources are: a cracked or flat crown allowing water into the flue, deteriorated flashing at the chimney-roof junction, or missing chimney cap allowing rainwater entry. All three are repairable without full rebuild in most cases. AMS diagnoses on site."
+  },
+  {
+    question: "Is AMS licensed for chimney repair and rebuilding?",
+    answer: "Yes — licensed masonry contractor in Illinois (License #MA-104-018887), $2.5M general liability, workers' comp. We pull permits for structural chimney work and pass inspections."
+  },
+  {
+    question: "Do you offer warranties on chimney repair work?",
+    answer: "Yes — all repair and rebuild work is warranted against deficient installation. Warranty terms are included in every written contract."
+  }
+];
+---
+
+<BaseLayout
+  title="Chimney Repair & Rebuilding Chicago | All Masonry Services"
+  description="Expert chimney repair and rebuilding for Chicagoland homes — tuckpointing, crown repair, full rebuilds, and structural restoration. 19+ years. Free estimates. Call 773-656-2107."
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+  <SchemaService
+    name="Chimney Repair & Rebuilding in Chicago & Chicagoland"
+    description="Expert chimney repair and rebuilding for Chicagoland homes — tuckpointing, crown repair, full rebuilds, and structural restoration. 19+ years experience."
+    url={pageUrl}
+    provider="All Masonry Services"
+    providerUrl={siteUrl}
+    areaServed="Chicago, Chicagoland, IL"
+    serviceType="Chimney Repair"
+  />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- ─── 1. HERO ─── -->
+  <section class="sp-hero">
+    <div class="sp-hero-inner">
+      <div class="sp-hero-content">
+        <div class="sp-hero-badges">
+          <span class="sp-badge sp-badge--gold">Free Estimates</span>
+          <span class="sp-badge sp-badge--outline">Family-Owned Since 2007</span>
+        </div>
+        <h1 class="sp-hero-h1">
+          Chimney Repair &amp; Rebuilding<br>
+          <em>in Chicago &amp; Chicagoland</em>
+        </h1>
+        <p class="sp-hero-sub">
+          Cracked crowns, deteriorated mortar, spalling brick, and structurally compromised chimneys restored — from targeted repairs to full rebuilds, with code-compliant construction and permanent results.
+        </p>
+        <div class="sp-hero-stats">
+          <div class="sp-stat">
+            <span class="sp-stat-num">500+</span>
+            <span class="sp-stat-label">Homes Completed</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">4.8★</span>
+            <span class="sp-stat-label">92 Google Reviews</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">19+</span>
+            <span class="sp-stat-label">Years Experience</span>
+          </div>
+        </div>
+        <div class="sp-hero-actions">
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Free Estimate</a>
+          <a href="tel:7736562107" class="sp-btn sp-btn--ghost" aria-label="Call 773-656-2107">Call 773-656-2107</a>
+        </div>
+      </div>
+      <div class="sp-hero-img-wrap">
+        <img
+          src="/images/service-chimney.webp"
+          alt="Chimney repair and rebuilding by AMS in Chicagoland"
+          width="600"
+          height="750"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 2. TRUST BAR ─── -->
+  <section class="sp-trust">
+    <div class="sp-trust-inner">
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Licensed &amp; Insured
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Free Estimates
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Structural Chimney Expertise
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        19+ Years
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3. PROBLEM / CONSEQUENCE ─── -->
+  <section class="sp-problem">
+    <div class="sp-problem-inner">
+      <div class="sp-section-label">Why It Matters</div>
+      <h2 class="sp-section-h2">What Happens When You<br><em>Delay Chimney Repair</em></h2>
+      <p class="sp-section-sub">
+        Chimney deterioration is a structural and safety issue — not cosmetic — that compounds with every Chicago winter and ranks among the most expensive masonry failures homeowners face.
+      </p>
+      <div class="sp-problem-grid">
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Water Entry Through Damaged Crown</h3>
+          <p class="sp-problem-body">A cracked or flat chimney crown allows water to pool and enter the flue. Once water is inside a chimney, it damages the flue liner, mortar joints, and eventually the firebox — repairs escalate from hundreds to thousands quickly.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Freeze-Thaw Destroys Chimney Brick</h3>
+          <p class="sp-problem-body">Water in chimney brick expands 9% per freeze cycle — Chicago's 40–60 annual cycles turn surface spalling into structural deterioration within 2–4 years.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Leaning Chimneys Are Safety Hazards</h3>
+          <p class="sp-problem-body">A leaning chimney is a structural failure — not cosmetic. An unsecured chimney can separate from the home or fall in a severe storm. Not a repair to defer.</p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Water Infiltration Damages Interior</h3>
+          <p class="sp-problem-body">Chimney water entry doesn't stay in the chimney. It migrates to the chimney breast, attic framing, ceilings, and interior walls — causing mold, rot, and staining that spreads until the source is fixed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 4. PROCESS ─── -->
+  <section class="sp-process">
+    <div class="sp-process-inner">
+      <div class="sp-section-label">How We Work</div>
+      <h2 class="sp-section-h2">Our Chimney Repair &amp;<br><em>Rebuilding Process</em></h2>
+      <p class="sp-section-sub">
+        From full assessment to final water test — honest recommendations, permanent repairs.
+      </p>
+      <div class="sp-process-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Full Chimney Assessment</h3>
+            <p class="sp-step-body">We assess the chimney from footing to crown — exterior brick, mortar joints, flashing, crown condition, and flue liner — and identify all issues before recommending a scope.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Partial assessments lead to partial repairs that don't address the root cause. We don't want to be back next year for something we should have caught on the first visit.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Repair vs. Rebuild Recommendation</h3>
+            <p class="sp-step-body">Based on the assessment, we recommend targeted repair (tuckpointing, crown, cap, flashing) or partial or full rebuild — with honest reasoning for the recommendation.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Some contractors recommend full rebuild when targeted repair is sufficient. Others recommend targeted repair when the structure actually needs rebuilding. We give you an honest answer — in writing.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Targeted Repair or Partial Rebuild</h3>
+            <p class="sp-step-body">We execute the agreed scope — tuckpointing, crown replacement, flashing, or rebuild from the roofline — with materials specified to the existing chimney's brick type and exposure.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Chimney repairs done with incorrect mortar or mismatched materials fail faster than the original deterioration. We specify every material before touching the chimney.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Full Rebuild (When Required)</h3>
+            <p class="sp-step-body">Where structural issues or severe deterioration require it, we rebuild the chimney in full — new footing assessment, brick laying from the base, refractory firebox, and proper crown and cap — to current code.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> A chimney rebuilt to code will outlast the original. We don't patch structural problems — we fix them.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Final Inspection &amp; Water Test</h3>
+            <p class="sp-step-body">We inspect the completed work, run a water test to verify crown and flashing integrity, and walk the work with you before closing out.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> The water test is the only way to confirm flashing and crown integrity before you find out through a ceiling stain. We run it every time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 5. WHY AMS ─── -->
+  <section class="sp-why">
+    <div class="sp-why-inner">
+      <div class="sp-section-label">What Sets Us Apart</div>
+      <h2 class="sp-section-h2">Why Chicagoland Homeowners<br><em>Trust AMS for Chimney Repair</em></h2>
+      <div class="sp-why-grid">
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">01</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Honest Repair vs. Rebuild Recommendation</h3>
+            <p class="sp-why-body">We tell you what the chimney actually needs — not the most expensive option. Our written recommendation includes specific reasoning for every item in scope.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">02</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Structural Chimney Expertise</h3>
+            <p class="sp-why-body">Full chimney assessment — footing to crown. We know what failing looks like at every component.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">03</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Free Chimney Risk Score Tool</h3>
+            <p class="sp-why-body">Check your chimney against 12 structural risk indicators and get a detailed recommendation. No sign-up required.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">04</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Family-Owned — You Deal With the Owners</h3>
+            <p class="sp-why-body">The people giving you the assessment are the people doing the repair. Same standards, every job.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 6. TOOL EMBED ─── -->
+  <section class="sp-tool" id="chimney-risk-score">
+    <div class="sp-tool-inner">
+      <div class="sp-tool-header">
+        <div class="sp-section-label sp-section-label--light">Free Tool — No Sign-Up Required</div>
+        <h2 class="sp-tool-h2">Free Chimney Repair &amp;<br><em>Structural Risk Score</em></h2>
+        <div class="sp-tool-warning-hook" aria-label="Warning signs checklist">
+          <p class="sp-tool-warning-intro">A leaning chimney is a structural emergency. Don't wait.</p>
+          <ul class="sp-tool-warning-list">
+            <li>Cracks in chimney crown, mortar, or brick</li>
+            <li>Chimney shifting, leaning, or separating from house</li>
+            <li>Water stains on ceilings near chimney</li>
+          </ul>
+          <p class="sp-tool-warning-cta">Answer 12 questions — get a structural risk score and repair priority. Free.</p>
+        </div>
+        <p class="sp-tool-sub">12 questions. 4 minutes. Structural risk score + prioritized repair recommendations for your Chicagoland chimney.</p>
+      </div>
+      <div class="sp-tool-social">
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">890+</span>
+          <span class="sp-tool-stat-label">Chimney risk assessments completed</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">4.8★</span>
+          <span class="sp-tool-stat-label">Average rating · 92 reviews</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">4 min</span>
+          <span class="sp-tool-stat-label">To complete assessment</span>
+        </div>
+      </div>
+      <blockquote class="sp-tool-quote">
+        <p>"The risk score came back 'High — structural attention required' with three specific items flagged. AMS came out the next day. Two of the three flagged items needed immediate repair. The tool was right."</p>
+        <cite>— George W., Homeowner · Evanston, IL</cite>
+      </blockquote>
+      <div class="sp-tool-embed">
+        <ChimneyRiskScore />
+      </div>
+      <p class="sp-tool-note">
+        Risk assessment based on visual warning signs. A professional on-site assessment by AMS is required for accurate structural determination and repair scoping. Call 773-656-2107 to schedule.
+      </p>
+      <div class="sp-tool-faq">
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">Is the chimney risk score tool free?</h3>
+          <p class="sp-tool-faq-a">Yes — completely free, no account required. You only share contact info if you want your PDF report.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">Is this a substitute for a professional inspection?</h3>
+          <p class="sp-tool-faq-a">No — this tool identifies visual risk indicators. An AMS on-site assessment evaluates structural integrity, mortar condition, flashing, crown, and flue from a trained perspective. Call 773-656-2107 to schedule.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">What should I do if my score is High?</h3>
+          <p class="sp-tool-faq-a">Schedule an on-site assessment before the next winter season. High-risk chimneys can deteriorate significantly through a single Chicago winter — or become a safety hazard in a severe storm. <a href="/contact" class="sp-tool-faq-link">Schedule here</a> or call 773-656-2107.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "How to Check Your Chimney Structural Risk — Chicagoland",
+        "description": "Free chimney structural risk score tool for Chicago-area homeowners. Answer 12 questions, get a risk level and prioritized repair recommendations.",
+        "totalTime": "PT4M",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Inspect your chimney", "text": "Look for cracks in the crown or mortar, leaning or separation, water stains near chimney, and spalling brick." },
+          { "@type": "HowToStep", "position": 2, "name": "Answer 12 condition questions", "text": "Walk through 12 structural and visual indicators of chimney deterioration specific to Chicago's climate." },
+          { "@type": "HowToStep", "position": 3, "name": "Get your risk score and repair plan", "text": "Receive a Low / Medium / High structural risk score with specific, prioritized repair recommendations — free, instant, no sign-up." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the chimney structural risk score tool free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — completely free. No account or email required. You only share contact info if you want your PDF risk report." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this replace a professional chimney inspection?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No — this tool identifies visual risk indicators. An AMS on-site assessment evaluates structural integrity, mortar condition, flashing, crown, and flue from a trained perspective. Call All Masonry Services at 773-656-2107." }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if my chimney risk score is High?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Schedule a free on-site assessment before the next Chicago winter season. High-risk chimneys can deteriorate rapidly through a single freeze-thaw cycle or become a safety hazard in a severe storm. Call 773-656-2107 or contact All Masonry Services online." }
+          }
+        ]
+      }
+    ]
+  }</script>
+
+  <!-- ─── 7. FEATURED PROJECTS ─── -->
+  <section class="sp-projects">
+    <div class="sp-projects-inner">
+      <div class="sp-section-label">Recent Work</div>
+      <h2 class="sp-section-h2">Chimney Repair Projects<br><em>Across Chicagoland</em></h2>
+      <div class="sp-projects-grid">
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/service-chimney.webp"
+              alt="Full chimney rebuild in Evanston after structural failure"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Evanston, IL</span>
+            <h3 class="sp-project-title">Full Chimney Rebuild — Structural Failure</h3>
+            <p class="sp-project-desc">Chimney had separated from the home at the roof junction and was leaning. Demolished and rebuilt from the footing — new brick, refractory firebox, proper crown. Home safe for first fire of winter.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-restoration.jpg"
+              alt="Crown replacement and tuckpointing in Northbrook"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Northbrook, IL</span>
+            <h3 class="sp-project-title">Crown Replacement &amp; Full Tuckpointing</h3>
+            <p class="sp-project-desc">Flat mortar crown cracked through — replaced with proper sloped concrete crown. All four sides of chimney tuckpointed to match. Active water leak into attic resolved.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-exterior.jpg"
+              alt="Partial chimney rebuild above roofline in Glencoe"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Glencoe, IL</span>
+            <h3 class="sp-project-title">Partial Rebuild — Above-Roofline</h3>
+            <p class="sp-project-desc">Top 6 courses of chimney removed and rebuilt — brick matched to existing. New cap and flashing with cricket. Flue liner inspected and approved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 8. PRICING ─── -->
+  <section class="sp-pricing">
+    <div class="sp-pricing-inner">
+      <div class="sp-section-label">Transparent Pricing</div>
+      <h2 class="sp-section-h2">What Chimney Repair<br><em>Costs in Chicago</em></h2>
+      <p class="sp-section-sub">
+        Pricing depends on what the chimney actually needs — crown repair, full tuckpointing, or partial to full rebuild. Here's what Chicagoland homeowners typically pay.
+      </p>
+      <div class="sp-pricing-grid">
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Crown, Cap &amp; Flashing</div>
+          <div class="sp-price-range">$800 – $3,000</div>
+          <ul class="sp-price-list">
+            <li>Targeted repair</li>
+            <li>1-day job</li>
+            <li>Most common first repair</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+        <div class="sp-price-card sp-price-card--featured">
+          <div class="sp-price-popular">Most Common</div>
+          <div class="sp-price-tier">Tuckpointing + Crown</div>
+          <div class="sp-price-range">$2,500 – $7,000</div>
+          <ul class="sp-price-list">
+            <li>Full chimney tuckpoint + new crown</li>
+            <li>1–2 day job</li>
+            <li>Mortar match + written quote</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Quote</a>
+        </div>
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Partial or Full Rebuild</div>
+          <div class="sp-price-range">$6,000 – $25,000+</div>
+          <ul class="sp-price-list">
+            <li>Rebuild from roofline or full</li>
+            <li>3–7 day job</li>
+            <li>Code-compliant + written warranty</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+      </div>
+      <p class="sp-pricing-note">
+        Chimney height, access, and brick type significantly affect pricing. Free on-site assessment with written quote at 773-656-2107.
+      </p>
+      <p class="sp-pricing-guarantee">We assess the full chimney before recommending scope. If our repair doesn't resolve the identified issue — water intrusion, structural movement, crown failure — we correct it at no charge.</p>
+    </div>
+  </section>
+
+  <!-- ─── 9. REVIEWS ─── -->
+  <section class="sp-reviews">
+    <div class="sp-reviews-inner">
+      <div class="sp-section-label">What Homeowners Say</div>
+      <h2 class="sp-section-h2">Real Reviews from<br><em>Chicagoland Homeowners</em></h2>
+      <div class="sp-reviews-grid">
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"Our chimney was leaning — I didn't realize how serious that was until AMS explained what happens to an unsecured chimney in a storm. They rebuilt it completely. The new chimney is exactly right."</blockquote>
+          <cite class="sp-review-cite">— William P. · Full Chimney Rebuild · Evanston, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"AMS replaced our flat mortar crown with a proper sloped concrete crown and tuckpointed the entire chimney. No more ceiling stains. The first winter after the repair — completely dry."</blockquote>
+          <cite class="sp-review-cite">— Linda R. · Crown Replacement · Northbrook, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text">"Glencoe home with a chimney that needed partial rebuild above the roofline. AMS matched the brick perfectly, installed a new cap and flashing with cricket. The job looks like it was always that way."</blockquote>
+          <cite class="sp-review-cite">— Thomas G. · Partial Rebuild · Glencoe, IL</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 10. CREDENTIALS ─── -->
+  <section class="sp-creds">
+    <div class="sp-creds-inner">
+      <div class="sp-section-label">Why Trust AMS</div>
+      <h2 class="sp-section-h2">Every Box Checked.<br><em>In Writing.</em></h2>
+      <div class="sp-creds-grid">
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Licensed in Illinois</span>
+            <span class="sp-cred-body">State-licensed masonry contractor — License #MA-104-018887. We pull permits and operate fully above board on every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Fully Insured — $2.5M Liability</span>
+            <span class="sp-cred-body">$2.5 million general liability on every job. Proof of insurance available before work begins.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Workers' Comp Covered</span>
+            <span class="sp-cred-body">Every crew member is covered. You are not liable if someone is injured on site.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Family-Owned Since 2007</span>
+            <span class="sp-cred-body">Not a franchise. Not a call center. You deal with the owners — same crew, same standards, every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Written Schedule Commitment</span>
+            <span class="sp-cred-body">We put our start date and milestone dates in writing. We don't make promises we can't keep.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Serving 19 Chicagoland Cities</span>
+            <span class="sp-cred-body">From Chicago to Naperville, Winnetka to Hinsdale — local crews, local knowledge, local inspectors.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sp-creds-guarantee">
+        <div class="sp-guarantee-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Full Repair Guarantee</span>
+        </div>
+        <p class="sp-guarantee-text">If our repair doesn't resolve the assessed issue — water intrusion, structural movement, or crown failure — we return and correct it. No charge, no argument.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 11. FAQ ─── -->
+  <section class="sp-faq">
+    <div class="sp-faq-inner">
+      <div class="sp-section-label">Common Questions</div>
+      <h2 class="sp-section-h2">Chimney Repair &amp; Rebuilding FAQ<br><em>Answered Honestly</em></h2>
+      <div class="sp-faq-list" id="sp-faq-list">
+        {faqItems.map((item, i) => (
+          <div class="sp-faq-item" id={`sp-faq-${i}`}>
+            <button
+              class="sp-faq-q"
+              aria-expanded="false"
+              aria-controls={`sp-faq-ans-${i}`}
+            >
+              <span>{item.question}</span>
+              <svg class="sp-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="sp-faq-a" id={`sp-faq-ans-${i}`} role="region">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 12. SERVICE AREAS ─── -->
+  <section class="sp-areas">
+    <div class="sp-areas-inner">
+      <div class="sp-section-label">Where We Work</div>
+      <h2 class="sp-section-h2">Chimney Repair &amp; Rebuilding Service Areas<br><em>Across Chicagoland</em></h2>
+      <p class="sp-areas-sub">
+        We repair and rebuild chimneys throughout the Chicago metro — North Shore, western suburbs, and surrounding communities.
+      </p>
+      <div class="sp-areas-grid">
+        <a href="/tuckpointing/chicago" class="sp-area">Chicago</a>
+        <a href="/tuckpointing/hinsdale" class="sp-area">Hinsdale</a>
+        <a href="/tuckpointing/oak-brook" class="sp-area">Oak Brook</a>
+        <a href="/tuckpointing/winnetka" class="sp-area">Winnetka</a>
+        <a href="/tuckpointing/highland-park" class="sp-area">Highland Park</a>
+        <a href="/tuckpointing/elmhurst" class="sp-area">Elmhurst</a>
+        <a href="/tuckpointing/western-springs" class="sp-area">Western Springs</a>
+        <a href="/tuckpointing/naperville" class="sp-area">Naperville</a>
+        <a href="/tuckpointing/wheaton" class="sp-area">Wheaton</a>
+        <a href="/tuckpointing/downers-grove" class="sp-area">Downers Grove</a>
+        <a href="/tuckpointing/la-grange" class="sp-area">La Grange</a>
+        <a href="/tuckpointing/clarendon-hills" class="sp-area">Clarendon Hills</a>
+        <a href="/tuckpointing/burr-ridge" class="sp-area">Burr Ridge</a>
+        <a href="/tuckpointing/willowbrook" class="sp-area">Willowbrook</a>
+        <a href="/tuckpointing/evanston" class="sp-area">Evanston</a>
+        <a href="/tuckpointing/wilmette" class="sp-area">Wilmette</a>
+        <a href="/tuckpointing/kenilworth" class="sp-area">Kenilworth</a>
+        <a href="/tuckpointing/glencoe" class="sp-area">Glencoe</a>
+        <a href="/tuckpointing/northbrook" class="sp-area">Northbrook</a>
+      </div>
+      <p class="sp-areas-note">Don't see your city? <a href="/contact" class="sp-areas-link">Contact us</a> — we likely serve your area.</p>
+    </div>
+  </section>
+
+  <!-- ─── 13. RELATED SERVICES ─── -->
+  <section class="sp-related">
+    <div class="sp-related-inner">
+      <div class="sp-section-label">Also Consider</div>
+      <h2 class="sp-section-h2">Related Masonry<br><em>Services</em></h2>
+      <div class="sp-related-grid">
+        <a href="/services/tuckpointing-repointing" class="sp-related-card">
+          <img src="/images/project-tuckpointing.jpg" alt="Tuckpointing and repointing" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Tuckpointing &amp; Repointing</h3>
+            <p class="sp-related-desc">Mortar joint restoration for brick and stone — the most common masonry repair for Chicagoland homes.</p>
+          </div>
+        </a>
+        <a href="/services/chimney-fireplace" class="sp-related-card">
+          <img src="/images/service-chimney.webp" alt="Chimney and fireplace masonry" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Chimney &amp; Fireplace</h3>
+            <p class="sp-related-desc">Custom chimney construction and fireplace masonry for residential properties and custom homes.</p>
+          </div>
+        </a>
+        <a href="/services/damaged-brick-replacement" class="sp-related-card">
+          <img src="/images/why-choose-us-brick.webp" alt="Damaged brick replacement" width="360" height="200" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Damaged Brick Replacement</h3>
+            <p class="sp-related-desc">Spalled, cracked, and structurally compromised bricks replaced and matched to your existing facade.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 14. CTA BANNER ─── -->
+  <CTABanner />
+
+  <!-- ─── 15. FOOTER ─── -->
+  <Footer />
+
+  <!-- ─── PROCESS SCROLL ANIMATION ─── -->
+  <script is:inline>
+    (function() {
+      function initStepAnimations() {
+        var gsap = window.__gsap;
+        var ScrollTrigger = window.__ScrollTrigger;
+        if (!gsap || !ScrollTrigger) return;
+        var steps = document.querySelectorAll('.sp-step');
+        if (!steps.length) return;
+        steps.forEach(function(step) {
+          gsap.fromTo(step, { opacity: 0, x: -24 }, {
+            opacity: 1, x: 0, duration: 0.55, ease: 'power2.out',
+            scrollTrigger: { trigger: step, start: 'top 88%', toggleActions: 'play none none reverse' }
+          });
+        });
+      }
+      // Always wait for animations:ready — prevents race with BaseLayout ScrollTrigger.kill()
+      window.removeEventListener('animations:ready', window.__spStepAnimReady);
+      window.__spStepAnimReady = initStepAnimations;
+      window.addEventListener('animations:ready', window.__spStepAnimReady);
+      if (window.__lenis) initStepAnimations();
+    })();
+  </script>
+
+  <!-- ─── FAQ ACCORDION SCRIPT ─── -->
+  <script is:inline>
+    (function() {
+      var btns = document.querySelectorAll('.sp-faq-q');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          btns.forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var ans = document.getElementById(b.getAttribute('aria-controls'));
+            if (ans) ans.style.maxHeight = null;
+          });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = document.getElementById(this.getAttribute('aria-controls'));
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+        });
+      });
+    })();
+  </script>
+
+</BaseLayout>
+
+<style>
+.sp-section-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin-bottom: 14px; }
+.sp-section-label--light { color: #D4A931; }
+.sp-section-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #1A1A1A; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-section-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-section-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; max-width: 640px; margin: 0 0 48px 0; }
+.sp-badge { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 0px; }
+.sp-badge--gold { background: #D4A931; color: #1A1A1A; }
+.sp-badge--outline { border: 2px solid #D4A931; color: #D4A931; background: transparent; }
+.sp-btn { display: inline-flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 13px 28px; min-height: 44px; border: 2px solid transparent; border-radius: 0px; transition: background 200ms ease, border-color 200ms ease, color 200ms ease; white-space: nowrap; cursor: pointer; }
+.sp-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+.sp-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+.sp-btn--primary:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+.sp-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+.sp-btn--ghost:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--outline { background: transparent; color: #1A1A1A; border-color: #1A1A1A; }
+.sp-btn--outline:hover { background: #1A1A1A; color: #D4A931; }
+.sp-btn--outline:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-hero { background: #F5F3EF; padding: 120px 0 100px; }
+.sp-hero-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
+.sp-hero-badges { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.sp-hero-h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; color: #1A1A1A; line-height: 1.1; margin: 0 0 20px 0; }
+.sp-hero-h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-hero-sub { font-family: 'Satoshi', sans-serif; font-size: 17px; color: #4A4A4A; line-height: 1.75; margin: 0 0 32px 0; max-width: 520px; }
+.sp-hero-stats { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.sp-stat { display: flex; flex-direction: column; gap: 4px; }
+.sp-stat-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: #8B8070; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-stat-divider { width: 1px; height: 40px; background: #D8D2C8; flex-shrink: 0; }
+.sp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.sp-hero-img-wrap { position: relative; }
+.sp-hero-img-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; border: 2px solid #D8D2C8; }
+.sp-trust { background: #1A1A1A; padding: 20px 0; border-top: 1px solid #2D2D2D; }
+.sp-trust-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.sp-trust-item { display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #D4A931; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-trust-item svg { flex-shrink: 0; }
+.sp-trust-sep { width: 1px; height: 20px; background: #2D2D2D; }
+.sp-problem { background: #E8E4DC; padding: 100px 0; }
+.sp-problem-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.sp-problem-card { background: #fff; border: 1px solid #D8D2C8; padding: 28px 24px; }
+.sp-problem-card:hover { border-color: #D4A931; }
+.sp-problem-icon { margin-bottom: 16px; }
+.sp-problem-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.04em; }
+.sp-problem-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-process { background: #F5F3EF; padding: 100px 0; }
+.sp-process-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-process-steps { display: flex; flex-direction: column; gap: 0; border: 1px solid #D8D2C8; }
+.sp-step { display: grid; grid-template-columns: 100px 1fr; gap: 0; border-bottom: 1px solid #D8D2C8; transition: background 200ms ease; opacity: 0; transform: translateX(-24px); }
+@media (prefers-reduced-motion: reduce) { .sp-step { opacity: 1; transform: none; } }
+.sp-step:last-child { border-bottom: none; }
+.sp-step:hover { background: #fff; }
+.sp-step-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 700; color: #D4A931; padding: 32px 0 32px 32px; display: flex; align-items: flex-start; opacity: 0.6; line-height: 1; }
+.sp-step-content { padding: 32px 32px 32px 0; }
+.sp-step-title { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 8px 0; }
+.sp-step-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0 0 10px 0; }
+.sp-step-why { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; padding: 10px 12px; border-left: 3px solid #D4A931; background: rgba(212,169,49,0.05); }
+.sp-step-why strong { color: #D4A931; font-weight: 700; }
+.sp-why { background: #E8E4DC; padding: 100px 0; }
+.sp-why-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #D8D2C8; border: 1px solid #D8D2C8; margin-top: 48px; }
+.sp-why-item { background: #fff; padding: 36px 32px; display: flex; gap: 24px; align-items: flex-start; }
+.sp-why-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #D4A931; opacity: 0.4; line-height: 1; flex-shrink: 0; padding-top: 2px; }
+.sp-why-content { display: flex; flex-direction: column; gap: 10px; }
+.sp-why-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+.sp-why-body { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.7; margin: 0; }
+.sp-tool { background: #1A1A1A; padding: 100px 0; }
+.sp-tool-inner { max-width: 900px; margin: 0 auto; padding: 0 80px; }
+.sp-tool-header { text-align: center; margin-bottom: 48px; }
+.sp-tool-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 16px 0; }
+.sp-tool-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-tool-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-warning-hook { background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.25); border-left: 3px solid #D4A931; padding: 20px 24px; margin: 0 auto 28px; max-width: 640px; text-align: left; }
+.sp-tool-warning-intro { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px 0; }
+.sp-tool-warning-list { margin: 0 0 14px 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+.sp-tool-warning-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.sp-tool-warning-cta { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #fff; margin: 0; }
+.sp-tool-embed { background: #fff; border: 2px solid #D4A931; padding: 40px; min-height: 200px; }
+.sp-tool-social { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+.sp-tool-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sp-tool-stat-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; color: #D4A931; line-height: 1; }
+.sp-tool-stat-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+.sp-tool-stat-sep { width: 1px; height: 36px; background: #2D2D2D; flex-shrink: 0; }
+.sp-tool-quote { border-left: 3px solid #D4A931; margin: 0 0 36px 0; padding: 12px 20px; background: rgba(212,169,49,0.06); }
+.sp-tool-quote p { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0 0 6px 0; }
+.sp-tool-quote cite { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; font-style: normal; letter-spacing: 0.04em; text-transform: uppercase; }
+.sp-tool-note { font-family: 'Satoshi', sans-serif; font-size: 12px; color: #8B8070; text-align: center; margin-top: 20px; line-height: 1.6; }
+.sp-tool-faq { margin-top: 48px; border-top: 1px solid #2D2D2D; padding-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+.sp-tool-faq-q { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0; }
+.sp-tool-faq-a { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+.sp-tool-faq-link { color: #D4A931; text-decoration: underline; }
+.sp-tool-faq-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-projects { background: #E8E4DC; padding: 100px 0; }
+.sp-projects-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.sp-project-card { background: #fff; border: 1px solid #D8D2C8; overflow: hidden; }
+.sp-project-card:hover { border-color: #D4A931; }
+.sp-project-img-wrap img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.sp-project-info { padding: 20px; }
+.sp-project-location { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+.sp-project-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-project-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.65; margin: 0; }
+.sp-pricing { background: #F5F3EF; padding: 100px 0; }
+.sp-pricing-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+.sp-price-card { background: #fff; border: 1px solid #D8D2C8; padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+.sp-price-card--featured { border: 2px solid #D4A931; position: relative; }
+.sp-price-popular { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; }
+.sp-price-tier { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #8B8070; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
+.sp-price-range { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #1A1A1A; line-height: 1; }
+.sp-price-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.sp-price-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; padding-left: 16px; position: relative; }
+.sp-price-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: #D4A931; }
+.sp-pricing-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.6; max-width: 600px; }
+.sp-pricing-link { color: #D4A931; text-decoration: underline; }
+.sp-pricing-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-pricing-guarantee { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #1A1A1A; background: rgba(212,169,49,0.07); border-left: 3px solid #D4A931; padding: 12px 16px; margin-top: 16px; max-width: 600px; }
+.sp-reviews { background: #E8E4DC; padding: 100px 0; }
+.sp-reviews-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-review-card { background: #fff; border-top: 1px solid #D8D2C8; border-right: 1px solid #D8D2C8; border-bottom: 1px solid #D8D2C8; border-left: 3px solid #D4A931; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.sp-review-stars { display: flex; gap: 3px; }
+.sp-review-text { font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; padding: 0; font-style: normal; flex: 1; }
+.sp-review-cite { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 600; color: #8B8070; font-style: normal; letter-spacing: 0.02em; }
+.sp-creds { background: #F5F3EF; padding: 100px 0; }
+.sp-creds-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-creds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; border: 2px solid #D8D2C8; margin-top: 48px; }
+.sp-cred-item { background: #fff; padding: 32px 28px; display: flex; gap: 20px; align-items: flex-start; }
+.sp-cred-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(212,169,49,0.08); border: 1px solid rgba(212,169,49,0.2); display: flex; align-items: center; justify-content: center; }
+.sp-cred-text { display: flex; flex-direction: column; gap: 6px; }
+.sp-cred-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; }
+.sp-cred-body { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.65; }
+.sp-creds-guarantee { margin-top: 32px; background: #1A1A1A; padding: 24px 32px; display: flex; align-items: flex-start; gap: 24px; }
+.sp-guarantee-badge { display: flex; align-items: center; gap: 10px; background: #D4A931; padding: 10px 16px; white-space: nowrap; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
+.sp-guarantee-text { font-family: 'Satoshi', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; margin: 0; align-self: center; }
+.sp-faq { background: #E8E4DC; padding: 100px 0; }
+.sp-faq-inner { max-width: 800px; margin: 0 auto; padding: 0 80px; }
+.sp-faq-list { border: 1px solid #D8D2C8; }
+.sp-faq-item { border-bottom: 1px solid #D8D2C8; }
+.sp-faq-item:last-child { border-bottom: none; }
+.sp-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600; color: #1A1A1A; line-height: 1.4; min-height: 44px; transition: background 200ms ease; }
+.sp-faq-q:hover { background: #fff; }
+.sp-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+.sp-faq-q[aria-expanded="true"] { color: #D4A931; }
+.sp-faq-q[aria-expanded="true"] .sp-faq-icon { transform: rotate(180deg); }
+.sp-faq-icon { flex-shrink: 0; transition: transform 200ms ease; }
+.sp-faq-a { max-height: 0; overflow: hidden; transition: max-height 300ms ease; }
+.sp-faq-a p { padding: 0 24px 20px; font-family: 'Satoshi', sans-serif; font-size: 15px; color: #4A4A4A; line-height: 1.75; margin: 0; }
+.sp-areas { background: #E8E4DC; padding: 100px 0; }
+.sp-areas-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-areas-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.75; margin: 0 0 40px 0; max-width: 560px; }
+.sp-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.sp-area { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; color: #1A1A1A; background: #fff; border: 1px solid #D8D2C8; border-bottom: 2px solid #D4A931; padding: 8px 16px; text-decoration: none; display: inline-block; transition: border-color 150ms ease, color 150ms ease, background 150ms ease; cursor: pointer; }
+.sp-area:hover { background: #D4A931; border-color: #D4A931; color: #1A1A1A; }
+.sp-area:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-areas-note { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; }
+.sp-areas-link { color: #D4A931; text-decoration: underline; }
+.sp-areas-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related { background: #F5F3EF; padding: 100px 0; }
+.sp-related-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.sp-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sp-related-card { background: #fff; border: 1px solid #D8D2C8; text-decoration: none; display: flex; flex-direction: column; transition: border-color 200ms ease; }
+.sp-related-card:hover { border-color: #D4A931; }
+.sp-related-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.sp-related-content { padding: 20px; flex: 1; }
+.sp-related-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
+.sp-related-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.65; margin: 0; }
+@media (max-width: 1100px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 40px; }
+  .sp-trust-inner { padding: 0 40px; }
+  .sp-problem-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .sp-hero { padding: 100px 0 72px; }
+  .sp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sp-hero-img-wrap { display: none; }
+  .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-related-grid { grid-template-columns: 1fr 1fr; }
+  .sp-creds-grid { grid-template-columns: 1fr 1fr; }
+  .sp-why-grid { grid-template-columns: 1fr; }
+  .sp-trust-sep { display: none; }
+  .sp-trust-inner { justify-content: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .sp-hero-inner, .sp-problem-inner, .sp-process-inner, .sp-why-inner, .sp-tool-inner, .sp-projects-inner, .sp-pricing-inner, .sp-reviews-inner, .sp-creds-inner, .sp-faq-inner, .sp-areas-inner, .sp-related-inner { padding: 0 20px; }
+  .sp-trust-inner { padding: 0 20px; }
+  .sp-hero { padding: 80px 0 56px; }
+  .sp-problem, .sp-process, .sp-why, .sp-tool, .sp-projects, .sp-pricing, .sp-reviews, .sp-creds, .sp-faq, .sp-areas, .sp-related { padding: 56px 0; }
+  .sp-problem-grid, .sp-projects-grid, .sp-pricing-grid, .sp-reviews-grid, .sp-creds-grid, .sp-related-grid { grid-template-columns: 1fr; }
+  .sp-step { grid-template-columns: 60px 1fr; }
+  .sp-step-num { font-size: 24px; padding: 24px 0 24px 20px; }
+  .sp-step-content { padding: 24px 20px 24px 0; }
+  .sp-hero-actions { flex-direction: column; }
+  .sp-btn { width: 100%; text-align: center; }
+  .sp-tool-embed { padding: 24px 20px; }
+}
+</style>

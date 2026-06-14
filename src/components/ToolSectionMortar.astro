@@ -1,0 +1,235 @@
+---
+import MortarDamageAssessment from './magnets/MortarDamageAssessment.astro';
+---
+
+<section class="ts ts--light" id="tool-mortar">
+  <div class="ts-inner">
+
+    <div class="ts-text">
+      <div class="ts-label">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true" class="ts-dot"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        <span>Free Tool · Restoration</span>
+      </div>
+      <h2 class="ts-heading">
+        Is Your Mortar<br>
+        <em class="ts-italic">Failing Silently?</em>
+      </h2>
+      <p class="ts-body">
+        Crumbling mortar is the #1 cause of water damage in Chicagoland homes — and most homeowners don't notice until it's a $10,000 problem. Use our free assessment to know exactly where you stand in 2 minutes.
+      </p>
+
+      <div class="ts-stat-row">
+        <div class="ts-stat-item">
+          <p class="ts-stat-num">#1</p>
+          <p class="ts-stat-desc">cause of water damage in Chicagoland brick homes</p>
+        </div>
+        <div class="ts-stat-divider"></div>
+        <div class="ts-stat-item">
+          <p class="ts-stat-num">2 min</p>
+          <p class="ts-stat-desc">to get your full mortar damage assessment report</p>
+        </div>
+      </div>
+
+      <blockquote class="ts-testimonial" cite="https://www.google.com/maps/place/All+Masonry+Services">
+        <p class="ts-quote">"I had no idea my mortar was this far gone. The assessment flagged 6 conditions I'd been ignoring for years — got it fixed before winter hit."</p>
+        <cite class="ts-reviewer">
+          <div class="ts-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="ts-name">Linda K.</span>
+          <span class="ts-loc">— Oak Park, IL</span>
+        </cite>
+      </blockquote>
+
+      <div class="ts-chips">
+        <span class="ts-chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="margin-right:5px;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg>Free — No Credit Card</span>
+        <span class="ts-chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="margin-right:5px;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg>Personalized Report</span>
+        <span class="ts-chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="margin-right:5px;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg>PDF Download Included</span>
+      </div>
+    </div>
+
+    <div class="ts-widget">
+      <MortarDamageAssessment />
+    </div>
+
+  </div>
+</section>
+
+<style>
+.ts {
+  padding: 100px 0;
+  overflow: hidden;
+}
+.ts--light { background: #E8E4DC; }
+
+.ts-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* TEXT COLUMN — sticky so it stays visible as widget scrolls */
+.ts-text {
+  position: sticky;
+  top: 120px;
+}
+
+.ts-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+}
+.ts-dot { display: inline-block; }
+
+.ts-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+}
+.ts-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+
+.ts-body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0 0 28px 0;
+}
+
+.ts-stat-row {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #D8D2C8;
+  border-bottom: 1px solid #D8D2C8;
+  margin-bottom: 28px;
+}
+.ts-stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 14px;
+}
+.ts-stat-item:first-child { padding-left: 0; }
+.ts-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: #D4A931;
+  line-height: 1;
+}
+.ts-stat-desc {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #4A4A4A;
+  line-height: 1.5;
+}
+.ts-stat-divider {
+  width: 1px;
+  height: 48px;
+  background: #D8D2C8;
+  flex-shrink: 0;
+}
+
+.ts-testimonial {
+  border-left: 3px solid #D4A931;
+  padding-left: 16px;
+  margin-bottom: 28px;
+}
+.ts-quote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #1A1A1A;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+.ts-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ts-stars {
+  font-size: 12px;
+  color: #D4A931;
+  letter-spacing: 1px;
+}
+.ts-name {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.ts-loc {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #8B8070;
+}
+.ts-testimonial cite {
+  font-style: normal;
+}
+
+.ts-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ts-chip {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  border: 2px solid #1A1A1A;
+  padding: 4px 10px;
+}
+
+/* WIDGET COLUMN — fills remaining space */
+.ts-widget {
+  min-width: 0;
+  width: 100%;
+}
+
+/* scroll animations handled by GSAP section-transitions.ts */
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .ts-inner { padding: 0 40px; gap: 48px; grid-template-columns: 360px 1fr; }
+}
+/* MOBILE — stack */
+@media (max-width: 900px) {
+  .ts { padding: 72px 0; }
+  .ts-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 40px;
+  }
+  .ts-text { position: static; }
+}
+@media (max-width: 640px) {
+  .ts { padding: 56px 0; }
+  .ts-inner { padding: 0 20px; }
+  .ts-stat-row { flex-direction: column; gap: 16px; }
+  .ts-stat-divider { width: 100%; height: 1px; }
+  .ts-stat-item { padding: 0; }
+}
+</style>
+

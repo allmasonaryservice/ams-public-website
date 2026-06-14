@@ -1,0 +1,190 @@
+---
+import { SEO } from 'astro-seo';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import Navbar from '../components/Navbar.astro';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = 'All Masonry Services — Professional masonry work you can trust.',
+  canonical = Astro.url.href,
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://allmasonryservices.com';
+const siteName = 'All Masonry Services';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Hero sequence: preload frame-001 so canvas paints immediately -->
+    <link rel="preload" as="image" href="/images/sequence-desktop-webp/frame-001.webp" media="(min-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/sequence-mobile-webp/frame-001.webp" media="(max-width: 767px)" fetchpriority="high" />
+
+    <!-- Fonts: Fraunces (Google) + Satoshi (Fontshare) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+
+    <!-- Fraunces — non-blocking, display=swap prevents invisible text -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&display=swap" /></noscript>
+
+    <!-- Satoshi — non-blocking, display=swap prevents invisible text -->
+    <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" /></noscript>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- SEO -->
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      noindex={noindex}
+      openGraph={{
+        basic: {
+          title: title,
+          type: ogType,
+          image: `${siteUrl}${ogImage}`,
+          url: canonical,
+        },
+        optional: {
+          description: description,
+          siteName: siteName,
+          locale: 'en_US',
+        },
+        image: {
+          alt: title,
+          width: 1200,
+          height: 630,
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: title,
+        description: description,
+        image: `${siteUrl}${ogImage}`,
+        imageAlt: title,
+      }}
+      extend={{
+        meta: [
+          { name: 'theme-color', content: '#1A1A1A' },
+          { name: 'author', content: siteName },
+          { name: 'robots', content: noindex ? 'noindex, nofollow' : 'index, follow' },
+        ],
+      }}
+    />
+
+    <!-- Schema.org -->
+    <SchemaOrg
+      siteName={siteName}
+      siteUrl={siteUrl}
+      description={description}
+      logo="/logo.svg"
+      email="contact@allmasonryservices.com"
+      socials={[
+        'https://www.facebook.com/allmasonryservices',
+        'https://www.instagram.com/allmasonryservices',
+      ]}
+    />
+
+    <!-- Leaflet — lazy-loaded only when map enters viewport (avoids render-blocking) -->
+    <link rel="preload" as="style" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /></noscript>
+
+    <!-- View Transitions — zero CLS on page change -->
+    <ClientRouter />
+  </head>
+
+  <body>
+    <Navbar />
+    <slot />
+
+    <script is:inline src="/libs/gsap.min.js"></script>
+    <script is:inline src="/libs/ScrollTrigger.min.js"></script>
+    <script is:inline src="/libs/lenis.min.js"></script>
+    <script is:inline>
+    (function() {
+      // gsap, ScrollTrigger, Lenis are now globals from the UMD scripts above
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined') {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.defaults({ duration: 0.8, ease: 'power2.out' });
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
+      window.__gsap = gsap;
+      window.__ScrollTrigger = ScrollTrigger;
+      window.__LenisClass = Lenis;
+
+      function initAnimations() {
+        var existingLenis = window.__lenis;
+        var existingTicker = window.__lenisTicker;
+
+        if (existingTicker) {
+          gsap.ticker.remove(existingTicker);
+          window.__lenisTicker = null;
+        }
+        if (existingLenis) {
+          existingLenis.destroy();
+          window.__lenis = null;
+        }
+        ScrollTrigger.getAll().forEach(function(t) { t.kill(); });
+        ScrollTrigger.clearScrollMemory();
+
+        var lenis = new Lenis({
+          duration: 1.2,
+          easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+          orientation: 'vertical',
+          smoothWheel: true,
+        });
+
+        var lenisTicker = function(time) { lenis.raf(time * 1000); };
+        gsap.ticker.add(lenisTicker);
+        gsap.ticker.lagSmoothing(0);
+        lenis.on('scroll', ScrollTrigger.update);
+        window.__lenis = lenis;
+        window.__lenisTicker = lenisTicker;
+
+        requestAnimationFrame(function() {
+          window.dispatchEvent(new CustomEvent('animations:ready'));
+        });
+      }
+
+      document.addEventListener('astro:page-load', initAnimations);
+      initAnimations();
+    })();
+    </script>
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+  </body>
+</html>

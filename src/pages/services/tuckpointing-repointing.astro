@@ -1,0 +1,1963 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+import MortarDamageAssessment from '../../components/magnets/MortarDamageAssessment.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/services/tuckpointing-repointing`;
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mortar Damage Assessment Tool",
+  "description": "Free online tool to assess mortar joint damage on Chicago and Chicagoland brick homes. Get a tuckpointing cost estimate in 60 seconds.",
+  "applicationCategory": "HomeAndGarden",
+  "operatingSystem": "Web",
+  "url": `${siteUrl}/services/tuckpointing-repointing#mortar-assessment-tool`,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "All Masonry Services",
+    "url": siteUrl
+  }
+};
+
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Masonry Services",
+  "url": siteUrl,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "92",
+    "bestRating": "5"
+  }
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Tuckpointing Works: AMS 5-Step Process",
+  "description": "How professional tuckpointing and mortar repointing is done on Chicago and Chicagoland brick homes.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Free On-Site Assessment",
+      "text": "We inspect your mortar joints, identify all areas of damage, and assess the depth of deterioration. You get a full written scope and a firm quote — no surprises once work starts."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Mortar Matching",
+      "text": "We match the new mortar to your existing joints — color, texture, and hardness. Using the wrong mortar hardness is the #1 cause of premature failure and cracked bricks."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Old Mortar Removal",
+      "text": "We grind out deteriorated mortar to a depth of 3/4\"–1\" using angle grinders and chisels — deep enough for the new mortar to bond properly without disturbing the brick face."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "New Mortar Application",
+      "text": "Fresh mortar is packed in layers — never in one shot, which causes shrinkage cracks. Each layer is tooled to match the original joint profile for a seamless, weathertight finish."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Cleanup & Final Walk-Through",
+      "text": "We clean mortar residue off the brick face, sweep the work area, and walk the job with you. If anything doesn't meet your standard, we fix it before we leave."
+    }
+  ]
+};
+
+const faqItems = [
+  {
+    question: "How much does tuckpointing cost in Chicago?",
+    answer: "Tuckpointing in Chicago typically costs $5–$25 per square foot depending on the extent of mortar damage, brick type, and accessibility. A standard chimney tuckpoint runs $300–$800. We provide free on-site estimates with no obligation — call 773-656-2107 to schedule."
+  },
+  {
+    question: "How do I know if my home needs tuckpointing?",
+    answer: "Look for crumbling or missing mortar joints, white chalky stains on brick (efflorescence), cracks wider than 1/4 inch, or mortar that crumbles when you press it. Chicago's freeze-thaw winters accelerate this damage — what looks minor in fall can become a serious water intrusion problem by spring."
+  },
+  {
+    question: "What happens if I delay tuckpointing repairs?",
+    answer: "Deteriorating mortar allows water to penetrate behind your brick. In Chicago's climate, that water freezes and expands every winter, cracking bricks from the inside. What starts as a $500 tuckpointing job can become a $5,000–$15,000 brick replacement project within 2–3 seasons of neglect."
+  },
+  {
+    question: "How long does tuckpointing last?",
+    answer: "Quality tuckpointing using correctly matched mortar lasts 20–30 years. The key is matching the mortar hardness to your brick — using a mortar that's too hard will crack the brick itself rather than flex with it. AMS matches every mortar mix to your specific brick type."
+  },
+  {
+    question: "Can tuckpointing be done in winter in Chicago?",
+    answer: "Tuckpointing requires temperatures above 40°F for mortar to cure properly. We typically work March through November in the Chicago area. If you're seeing damage now, schedule a spring appointment — we book up fast once the season starts."
+  },
+  {
+    question: "What is the difference between tuckpointing and repointing?",
+    answer: "Repointing means removing old mortar and replacing it — this is the core repair. Tuckpointing traditionally refers to a decorative technique with two-color mortar, but in the Chicago area both terms are used interchangeably to mean mortar joint repair. AMS does both structural repointing and decorative tuckpointing."
+  },
+  {
+    question: "Is AMS licensed and insured for tuckpointing in Illinois?",
+    answer: "Yes. All Masonry Services Inc is fully licensed and insured in Illinois. We carry general liability and workers' compensation insurance on every job. We're happy to provide proof of insurance before any work begins."
+  },
+  {
+    question: "Do you offer free estimates for tuckpointing?",
+    answer: "Yes — all estimates are free and come with no pressure or obligation. We assess the full scope of mortar damage, explain what needs to be done and why, and give you a written quote on the spot. Call 773-656-2107 or fill out our contact form."
+  },
+  {
+    question: "Which mortar type does my home need — Type N, S, or M?",
+    answer: "Type N (medium strength) is correct for above-grade exterior walls on most Chicago homes — flexible enough to move with brick without causing spalling. Type S is for below-grade and soil-contact work; Type M is for foundations and hardscape only. AMS matches every mortar mix to your specific brick type and location before touching your joints."
+  }
+];
+---
+
+<BaseLayout
+  title="Tuckpointing & Repointing Chicago | All Masonry Services"
+  description="Professional tuckpointing and mortar repointing for Chicago and Chicagoland homes. 19+ years experience. Free estimates. Call 773-656-2107."
+  canonical={pageUrl}
+  ogImage="/og-image.jpg"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+  <SchemaService
+    name="Tuckpointing & Repointing in Chicago & Chicagoland"
+    description="Professional tuckpointing and mortar repointing services for Chicago and Chicagoland homes. 19+ years experience, fully licensed and insured."
+    url={pageUrl}
+    provider="All Masonry Services"
+    providerUrl={siteUrl}
+    areaServed="Chicago, Chicagoland, IL"
+    serviceType="Tuckpointing"
+  />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- ─── 1. HERO ─── -->
+  <section class="sp-hero">
+    <div class="sp-hero-inner">
+      <div class="sp-hero-content">
+        <div class="sp-hero-badges">
+          <span class="sp-badge sp-badge--gold">Free Estimates</span>
+          <span class="sp-badge sp-badge--outline">Family-Owned Since 2007</span>
+        </div>
+        <h1 class="sp-hero-h1">
+          Tuckpointing &amp; Repointing<br>
+          <em>in Chicago &amp; Chicagoland</em>
+        </h1>
+        <p class="sp-hero-sub">
+          Chicago winters crack mortar joints faster than anywhere else in the Midwest.
+          We stop water infiltration before it becomes a brick replacement — with matched mortar, clean joints, and work that lasts 20–30 years.
+        </p>
+        <div class="sp-hero-stats">
+          <div class="sp-stat">
+            <span class="sp-stat-num">500+</span>
+            <span class="sp-stat-label">Homes Completed</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">4.8★</span>
+            <span class="sp-stat-label">92 Google Reviews</span>
+          </div>
+          <div class="sp-stat-divider"></div>
+          <div class="sp-stat">
+            <span class="sp-stat-num">19</span>
+            <span class="sp-stat-label">Cities Served</span>
+          </div>
+        </div>
+        <div class="sp-hero-actions">
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Free Estimate</a>
+          <a href="tel:7736562107" class="sp-btn sp-btn--ghost" aria-label="Call 773-656-2107">Call 773-656-2107</a>
+        </div>
+      </div>
+      <div class="sp-hero-img-wrap">
+        <img
+          src="/images/project-tuckpointing.jpg"
+          alt="Professional tuckpointing on a Chicago brick home"
+          width="600"
+          height="750"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 2. TRUST BAR ─── -->
+  <section class="sp-trust">
+    <div class="sp-trust-inner">
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Licensed &amp; Insured in Illinois
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Free On-Site Estimates
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Mortar Matched to Your Brick
+      </div>
+      <div class="sp-trust-sep"></div>
+      <div class="sp-trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        19+ Years in Chicagoland
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3. PROBLEM / CONSEQUENCE ─── -->
+  <section class="sp-problem">
+    <div class="sp-problem-inner">
+      <div class="sp-section-label">Why It Matters</div>
+      <h2 class="sp-section-h2">What Happens When You<br><em>Delay Tuckpointing</em></h2>
+      <p class="sp-section-sub">
+        Mortar joints are the weakest point in any brick wall. Chicago's freeze-thaw cycle attacks them every single winter. Here's what ignoring them costs you.
+      </p>
+      <div class="sp-problem-grid">
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Water Gets Behind Your Brick</h3>
+          <p class="sp-problem-body">
+            Cracked mortar is an open door for water. Once moisture gets behind the brick face, it saturates your wall cavity, insulation, and eventually your interior framing — invisible damage until it's expensive.
+          </p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Freeze-Thaw Destroys Bricks</h3>
+          <p class="sp-problem-body">
+            Water inside joints freezes and expands every winter — 9% expansion per freeze cycle. After 2–3 seasons it spalls bricks from the inside. A $500 tuckpointing job becomes a $10,000+ brick replacement.
+          </p>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Repair Cost Grows Every Season</h3>
+          <p class="sp-problem-body">
+            Mortar damage is exponential, not linear. The longer you wait, the more joints fail, the more water enters, the more bricks crack.
+          </p>
+          <div class="sp-cost-ramp" aria-label="Cost escalation timeline">
+            <div class="sp-cost-step">
+              <span class="sp-cost-stage">Now</span>
+              <span class="sp-cost-bar sp-cost-bar--1"></span>
+              <span class="sp-cost-dollar">$</span>
+              <span class="sp-cost-label">Tuckpointing</span>
+            </div>
+            <div class="sp-cost-step">
+              <span class="sp-cost-stage">1–2 yrs</span>
+              <span class="sp-cost-bar sp-cost-bar--2"></span>
+              <span class="sp-cost-dollar">$$</span>
+              <span class="sp-cost-label">Joint failure</span>
+            </div>
+            <div class="sp-cost-step">
+              <span class="sp-cost-stage">3–4 yrs</span>
+              <span class="sp-cost-bar sp-cost-bar--3"></span>
+              <span class="sp-cost-dollar">$$$</span>
+              <span class="sp-cost-label">Brick spalling</span>
+            </div>
+            <div class="sp-cost-step">
+              <span class="sp-cost-stage">5+ yrs</span>
+              <span class="sp-cost-bar sp-cost-bar--4"></span>
+              <span class="sp-cost-dollar">$$$$</span>
+              <span class="sp-cost-label">Structural</span>
+            </div>
+          </div>
+        </div>
+        <div class="sp-problem-card">
+          <div class="sp-problem-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="sp-problem-title">Failed Home Inspections</h3>
+          <p class="sp-problem-body">
+            Visible mortar deterioration is flagged on every home inspection. Buyers negotiate down — or walk away. Tuckpointing before listing your home is one of the highest-ROI repairs you can make.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 4. PROCESS ─── -->
+  <section class="sp-process">
+    <div class="sp-process-inner">
+      <div class="sp-section-label">How We Work</div>
+      <h2 class="sp-section-h2">Our Tuckpointing<br><em>Process</em></h2>
+      <p class="sp-section-sub">
+        No surprise crews. No hidden costs. You know exactly what happens at every step — and why.
+      </p>
+      <div class="sp-process-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Free On-Site Assessment</h3>
+            <p class="sp-step-body">We inspect your mortar joints, identify all areas of damage, and assess the depth of deterioration. You get a full written scope and a firm quote — no surprises once work starts.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Phone estimates for masonry are guesswork. The only accurate quote comes from seeing the brick in person — depth of damage, mortar type, and access all affect cost.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Mortar Matching</h3>
+            <p class="sp-step-body">We match the new mortar to your existing joints — color, texture, and hardness. Using the wrong mortar hardness is the #1 cause of premature failure and cracked bricks. We get this right.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Hard mortar on soft brick transfers stress directly to the brick face, causing spalling within 5–10 years. ASTM C270-compliant mortar matching prevents this entirely.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Old Mortar Removal</h3>
+            <p class="sp-step-body">We grind out deteriorated mortar to a depth of 3/4"–1" using angle grinders and chisels — deep enough for the new mortar to bond properly without disturbing the brick face.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Shallow removal (under 3/4") gives new mortar nothing to grip. It looks fine for one season, then pops out entirely. Proper depth is the difference between a 2-year fix and a 25-year fix.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">New Mortar Application</h3>
+            <p class="sp-step-body">Fresh mortar is packed in layers — never in one shot, which causes shrinkage cracks. Each layer is tooled to match the original joint profile for a seamless, weathertight finish.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Single-pass application shrinks as it cures, leaving micro-gaps at the brick edge. Layered application eliminates shrinkage — the joint cures fully bonded on all sides.</p>
+          </div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
+          <div class="sp-step-content">
+            <h3 class="sp-step-title">Cleanup &amp; Final Walk-Through</h3>
+            <p class="sp-step-body">We clean mortar residue off the brick face, sweep the work area, and walk the job with you. If anything doesn't meet your standard, we fix it before we leave.</p>
+            <p class="sp-step-why"><strong>Why it matters:</strong> Mortar residue left on brick permanently stains the face. The walk-through is your final check — not ours. We don't consider the job done until you do.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 5. WHY AMS ─── -->
+  <section class="sp-why">
+    <div class="sp-why-inner">
+      <div class="sp-section-label">What Sets Us Apart</div>
+      <h2 class="sp-section-h2">Why Chicagoland Homeowners<br><em>Choose AMS Over Anyone Else</em></h2>
+      <div class="sp-why-grid">
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">01</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Mortar-Match Guarantee</h3>
+            <p class="sp-why-body">We guarantee your new mortar matches your existing joints in color, texture, and hardness — or we redo it at no charge. No other contractor in the area offers this in writing.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">02</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Transparent, Written Estimates</h3>
+            <p class="sp-why-body">Every estimate is free, on-site, and in writing — scope, materials, and timeline before any work begins. No ballpark numbers over the phone.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">03</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Free Damage Assessment Tool</h3>
+            <p class="sp-why-body">Before you even call us, use our free mortar assessment to understand your damage level and realistic cost range. No sign-up, no sales call — just honest information so you can make an informed decision.</p>
+          </div>
+        </div>
+        <div class="sp-why-item">
+          <div class="sp-why-num" aria-hidden="true">04</div>
+          <div class="sp-why-content">
+            <h3 class="sp-why-title">Family-Owned — You Deal With the Owners</h3>
+            <p class="sp-why-body">Not a franchise, not a subcontractor network — when you call AMS you reach the owners, and the same crew that gives your estimate does the work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 6. TOOL EMBED ─── -->
+  <section class="sp-tool" id="mortar-assessment-tool">
+    <div class="sp-tool-inner">
+      <div class="sp-tool-header">
+        <div class="sp-section-label sp-section-label--light">Free Tool — No Sign-Up Required</div>
+        <h2 class="sp-tool-h2">Free Mortar Damage Assessment<br><em>for Chicagoland Homeowners</em></h2>
+        <div class="sp-tool-warning-hook" aria-label="Warning signs checklist">
+          <p class="sp-tool-warning-intro">Chicago freeze-thaw cycles destroy ignored mortar.</p>
+          <ul class="sp-tool-warning-list">
+            <li>Crumbling or missing mortar joints</li>
+            <li>White staining (efflorescence) on brick face</li>
+            <li>Cracks wider than ¼ inch in mortar</li>
+          </ul>
+          <p class="sp-tool-warning-cta">Find out how serious it is — and what it'll cost — in 60 seconds. Free.</p>
+        </div>
+        <p class="sp-tool-sub">8 warning signs. 60 seconds. Realistic tuckpointing cost range for your Chicagoland home.</p>
+      </div>
+      <div class="sp-tool-social">
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">847</span>
+          <span class="sp-tool-stat-label">Chicagoland homeowners assessed</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">4.8★</span>
+          <span class="sp-tool-stat-label">Average rating · 92 reviews</span>
+        </div>
+        <div class="sp-tool-stat-sep"></div>
+        <div class="sp-tool-stat">
+          <span class="sp-tool-stat-num">60s</span>
+          <span class="sp-tool-stat-label">To get your estimate</span>
+        </div>
+      </div>
+      <blockquote class="sp-tool-quote">
+        <p>"Used this before calling AMS — the estimate was spot on. Saved me from getting overcharged by another contractor."</p>
+        <cite>— Karen L., Winnetka homeowner</cite>
+      </blockquote>
+      <div class="sp-tool-embed">
+        <MortarDamageAssessment />
+      </div>
+      <p class="sp-tool-note">
+        Cost ranges are based on typical Chicagoland tuckpointing projects (2026). Your free on-site estimate from AMS may vary based on actual brick type, mortar depth, and access.
+      </p>
+      <div class="sp-tool-faq">
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">Is this mortar damage assessment free?</h3>
+          <p class="sp-tool-faq-a">Yes — completely free. No account, no email required. You only share contact info if you want your PDF report.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">How accurate is the tuckpointing cost estimate?</h3>
+          <p class="sp-tool-faq-a">Reflects real Chicagoland tuckpointing costs from 2026 — typically within 20–30% of the actual quote. An on-site estimate from AMS is always the most accurate number.</p>
+        </div>
+        <div class="sp-tool-faq-item">
+          <h3 class="sp-tool-faq-q">What should I do if the assessment shows moderate or severe damage?</h3>
+          <p class="sp-tool-faq-a">Schedule a free on-site assessment before the next Chicago winter. One freeze-thaw cycle through open mortar joints can double the repair cost. Call 773-656-2107 or <a href="/contact" class="sp-tool-faq-link">contact us here</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "How to Check Mortar Damage on Chicago Brick Homes",
+        "description": "Use this free mortar damage assessment to identify tuckpointing needs and get a cost estimate for Chicagoland brick homes.",
+        "totalTime": "PT1M",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Inspect your brick", "text": "Look for crumbling mortar joints, efflorescence (white staining), or cracks wider than ¼ inch." },
+          { "@type": "HowToStep", "position": 2, "name": "Answer 8 assessment questions", "text": "Walk through the 8 most common signs of mortar deterioration on Chicago-area brick homes." },
+          { "@type": "HowToStep", "position": 3, "name": "Get your damage level and cost range", "text": "Receive a personalized damage assessment and realistic tuckpointing cost range for your Chicagoland home — free, instant, no sign-up." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the mortar damage assessment free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — completely free. No account or email required. You only share contact info if you want your PDF report emailed." }
+          },
+          {
+            "@type": "Question",
+            "name": "How accurate is the tuckpointing cost estimate?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The estimate reflects real Chicagoland tuckpointing project costs from 2026 — typically within 20–30% of the actual contractor quote. An on-site estimate from All Masonry Services is always the most precise number." }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if the assessment shows severe mortar damage?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Schedule a free on-site assessment before the next Chicago winter. One freeze-thaw cycle through open mortar joints can significantly worsen damage and increase repair costs. Call All Masonry Services at 773-656-2107." }
+          }
+        ]
+      }
+    ]
+  }</script>
+
+  <!-- ─── 6. FEATURED PROJECTS ─── -->
+  <section class="sp-projects">
+    <div class="sp-projects-inner">
+      <div class="sp-section-label">Recent Work</div>
+      <h2 class="sp-section-h2">Tuckpointing Projects<br><em>Across Chicagoland</em></h2>
+      <div class="sp-projects-grid">
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-tuckpointing.jpg"
+              alt="Full tuckpointing restoration on a 1960s brick home in Hinsdale"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Hinsdale, IL</span>
+            <h3 class="sp-project-title">Full Mortar Restoration — 1960s Brick Home</h3>
+            <p class="sp-project-desc">Complete tuckpointing of all exterior walls and chimney. Mortar matched to original limestone-colored joints. Work completed in 4 days.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-restoration.jpg"
+              alt="Chimney tuckpointing and crown repair in Winnetka"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">Winnetka, IL</span>
+            <h3 class="sp-project-title">Chimney Tuckpointing &amp; Crown Repair</h3>
+            <p class="sp-project-desc">Deteriorated mortar joints on a 40-year-old chimney — all four sides repointed, crown repaired, and flashing sealed. Stopped active water leak.</p>
+          </div>
+        </div>
+        <div class="sp-project-card">
+          <div class="sp-project-img-wrap">
+            <img
+              src="/images/project-brick-exterior.jpg"
+              alt="Tuckpointing on a North Shore colonial home exterior"
+              width="540"
+              height="405"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="sp-project-info">
+            <span class="sp-project-location">North Shore, IL</span>
+            <h3 class="sp-project-title">Colonial Exterior — Pre-Sale Tuckpointing</h3>
+            <p class="sp-project-desc">Homeowner needed mortar work done before listing. We completed all visible joint repairs in 3 days. Home passed inspection with no masonry flags.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 7. PRICING ─── -->
+  <section class="sp-pricing">
+    <div class="sp-pricing-inner">
+      <div class="sp-section-label">Transparent Pricing</div>
+      <h2 class="sp-section-h2">What Tuckpointing<br><em>Costs in Chicago</em></h2>
+      <p class="sp-section-sub">
+        Every job is different — but here's what most Chicagoland homeowners pay. All pricing includes mortar matching, cleanup, and a written warranty.
+      </p>
+      <div class="sp-pricing-grid">
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Spot Repair</div>
+          <div class="sp-price-range">$300 – $800</div>
+          <ul class="sp-price-list">
+            <li>Chimney or isolated wall section</li>
+            <li>Up to 50 sq ft of joints</li>
+            <li>1-day job</li>
+            <li>Free estimate included</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+        <div class="sp-price-card sp-price-card--featured">
+          <div class="sp-price-popular">Most Common</div>
+          <div class="sp-price-tier">Partial Restoration</div>
+          <div class="sp-price-range">$1,200 – $3,500</div>
+          <ul class="sp-price-list">
+            <li>One or two sides of home</li>
+            <li>50–200 sq ft of joints</li>
+            <li>2–3 day job</li>
+            <li>Mortar color match included</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--primary">Get a Quote</a>
+        </div>
+        <div class="sp-price-card">
+          <div class="sp-price-tier">Full Home</div>
+          <div class="sp-price-range">$4,000 – $12,000</div>
+          <ul class="sp-price-list">
+            <li>All four sides + chimney</li>
+            <li>200+ sq ft of joints</li>
+            <li>4–7 day job</li>
+            <li>Written 5-year warranty</li>
+          </ul>
+          <a href="/contact" class="sp-btn sp-btn--outline">Get a Quote</a>
+        </div>
+      </div>
+      <p class="sp-pricing-note">
+        Prices vary by mortar depth, access difficulty, and scaffold requirements. Your free on-site estimate is the only accurate number. <a href="/contact" class="sp-pricing-link">Book yours here.</a>
+      </p>
+      <p class="sp-pricing-guarantee">Every project gets a free written estimate — scope, materials, and timeline in writing — before a single tool touches your brick. No surprises.</p>
+    </div>
+  </section>
+
+  <!-- ─── 8. REVIEWS ─── -->
+  <section class="sp-reviews">
+    <div class="sp-reviews-inner">
+      <div class="sp-section-label">What Homeowners Say</div>
+      <h2 class="sp-section-h2">Real Reviews from<br><em>Chicagoland Homeowners</em></h2>
+      <div class="sp-reviews-grid">
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text" cite="https://www.google.com/maps/place/All+Masonry+Services">
+            "We have a 1958 brick ranch and the mortar was crumbling on the back wall. AMS matched the mortar color perfectly — you can't tell where the old ends and new begins. Honest pricing, no upselling."
+          </blockquote>
+          <cite class="sp-review-cite">— Robert M. · Tuckpointing · Hinsdale, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text" cite="https://www.google.com/maps/place/All+Masonry+Services">
+            "Our chimney had been leaking for two winters. AMS came out, assessed the full damage, and tuckpointed the entire chimney. No more leaks after the last two winters. These guys actually know what they're doing."
+          </blockquote>
+          <cite class="sp-review-cite">— Linda K. · Chimney Tuckpointing · Winnetka, IL</cite>
+        </div>
+        <div class="sp-review-card">
+          <div class="sp-review-stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A931" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="sp-review-text" cite="https://www.google.com/maps/place/All+Masonry+Services">
+            "Had the whole front and side of our Oak Brook home tuckpointed before selling. Home inspector didn't flag a single masonry issue. House sold above asking. Best money we spent on the property."
+          </blockquote>
+          <cite class="sp-review-cite">— David &amp; Susan T. · Pre-Sale Repointing · Oak Brook, IL</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 9. CREDENTIALS ─── -->
+  <section class="sp-creds">
+    <div class="sp-creds-inner">
+      <div class="sp-section-label">Why Trust AMS</div>
+      <h2 class="sp-section-h2">Every Box Checked.<br><em>In Writing.</em></h2>
+      <div class="sp-creds-grid">
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Licensed in Illinois</span>
+            <span class="sp-cred-body">State-licensed masonry contractor — License #MA-104-018887. We pull permits when required and operate fully above board.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+          </div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Fully Insured — $2.5M Liability</span>
+            <span class="sp-cred-body">$2.5 million general liability coverage on every job. Proof of insurance available before any work begins — no exceptions.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Workers' Comp Covered</span>
+            <span class="sp-cred-body">Every crew member is covered. You're not liable if someone is injured on your property.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Family-Owned Since 2007</span>
+            <span class="sp-cred-body">Not a franchise. Not a call center. You deal with the owners — same crew, same standards, every job.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">ASTM C270 Mortar Matching</span>
+            <span class="sp-cred-body">Every mix matched to ASTM C270 standards — right hardness, right type. The single biggest factor in how long your tuckpointing lasts.</span>
+          </div>
+        </div>
+        <div class="sp-cred-item">
+          <div class="sp-cred-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A931" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="sp-cred-text">
+            <span class="sp-cred-title">Serving 19 Chicagoland Cities</span>
+            <span class="sp-cred-body">From Chicago to Naperville, Winnetka to Hinsdale — local crews, local knowledge.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sp-creds-guarantee">
+        <div class="sp-guarantee-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Mortar-Match Guarantee</span>
+        </div>
+        <p class="sp-guarantee-text">If your new mortar doesn't match your existing joints in color and texture — we redo it. No charge, no argument. That's our standard, not an exception.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 10. FAQ ─── -->
+  <section class="sp-faq">
+    <div class="sp-faq-inner">
+      <div class="sp-section-label">Common Questions</div>
+      <h2 class="sp-section-h2">Tuckpointing FAQ<br><em>Answered Honestly</em></h2>
+      <div class="sp-faq-list" id="sp-faq-list">
+        {faqItems.map((item, i) => (
+          <div class="sp-faq-item" id={`sp-faq-${i}`}>
+            <button
+              class="sp-faq-q"
+              aria-expanded="false"
+              aria-controls={`sp-faq-ans-${i}`}
+            >
+              <span>{item.question}</span>
+              <svg class="sp-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="sp-faq-a" id={`sp-faq-ans-${i}`} role="region">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 10. SERVICE AREAS ─── -->
+  <section class="sp-areas">
+    <div class="sp-areas-inner">
+      <div class="sp-section-label">Where We Work</div>
+      <h2 class="sp-section-h2">Tuckpointing Service Areas<br><em>Across Chicagoland</em></h2>
+      <p class="sp-areas-sub">
+        We serve homeowners throughout the Chicago metro — from the North Shore to the Western Suburbs and beyond.
+      </p>
+      <div class="sp-areas-grid">
+        <a href="/tuckpointing/chicago" class="sp-area">Chicago</a>
+        <a href="/tuckpointing/hinsdale" class="sp-area">Hinsdale</a>
+        <a href="/tuckpointing/oak-brook" class="sp-area">Oak Brook</a>
+        <a href="/tuckpointing/winnetka" class="sp-area">Winnetka</a>
+        <a href="/tuckpointing/highland-park" class="sp-area">Highland Park</a>
+        <a href="/tuckpointing/elmhurst" class="sp-area">Elmhurst</a>
+        <a href="/tuckpointing/western-springs" class="sp-area">Western Springs</a>
+        <a href="/tuckpointing/naperville" class="sp-area">Naperville</a>
+        <a href="/tuckpointing/wheaton" class="sp-area">Wheaton</a>
+        <a href="/tuckpointing/downers-grove" class="sp-area">Downers Grove</a>
+        <a href="/tuckpointing/la-grange" class="sp-area">La Grange</a>
+        <a href="/tuckpointing/clarendon-hills" class="sp-area">Clarendon Hills</a>
+        <a href="/tuckpointing/burr-ridge" class="sp-area">Burr Ridge</a>
+        <a href="/tuckpointing/willowbrook" class="sp-area">Willowbrook</a>
+        <a href="/tuckpointing/evanston" class="sp-area">Evanston</a>
+        <a href="/tuckpointing/wilmette" class="sp-area">Wilmette</a>
+        <a href="/tuckpointing/kenilworth" class="sp-area">Kenilworth</a>
+        <a href="/tuckpointing/glencoe" class="sp-area">Glencoe</a>
+        <a href="/tuckpointing/northbrook" class="sp-area">Northbrook</a>
+      </div>
+      <p class="sp-areas-note">Don't see your city? <a href="/contact" class="sp-areas-link">Contact us</a> — we likely serve your area.</p>
+    </div>
+  </section>
+
+  <!-- ─── 11. RELATED SERVICES ─── -->
+  <section class="sp-related">
+    <div class="sp-related-inner">
+      <div class="sp-section-label">Also Consider</div>
+      <h2 class="sp-section-h2">Related Masonry<br><em>Services</em></h2>
+      <div class="sp-related-grid">
+        <a href="/services/chimney-repair-rebuilding" class="sp-related-card">
+          <img src="/images/service-chimney.webp" alt="Chimney repair and rebuilding" width="360" height="240" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Chimney Repair &amp; Rebuilding</h3>
+            <p class="sp-related-desc">When tuckpointing isn't enough — full chimney rebuilds and structural repairs.</p>
+          </div>
+        </a>
+        <a href="/services/damaged-brick-replacement" class="sp-related-card">
+          <img src="/images/project-brick-restoration.jpg" alt="Damaged brick replacement" width="360" height="240" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Damaged Brick Replacement</h3>
+            <p class="sp-related-desc">Spalled or cracked bricks replaced and matched to your existing facade.</p>
+          </div>
+        </a>
+        <a href="/services/brick-installation" class="sp-related-card">
+          <img src="/images/why-choose-us-brick.webp" alt="Brick installation" width="360" height="240" loading="lazy" decoding="async" />
+          <div class="sp-related-content">
+            <h3 class="sp-related-title">Brick Installation</h3>
+            <p class="sp-related-desc">New brick walls, additions, and features built to last decades.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 12. CTA BANNER (shared component) ─── -->
+  <CTABanner />
+
+  <!-- ─── 13. FOOTER (shared component) ─── -->
+  <Footer />
+
+  <!-- ─── PROCESS SCROLL ANIMATION ─── -->
+  <script is:inline>
+    (function() {
+      function initStepAnimations() {
+        var gsap = window.__gsap;
+        var ScrollTrigger = window.__ScrollTrigger;
+        if (!gsap || !ScrollTrigger) return;
+
+        var steps = document.querySelectorAll('.sp-step');
+        if (!steps.length) return;
+
+        steps.forEach(function(step) {
+          gsap.fromTo(step,
+            { opacity: 0, x: -24 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.55,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: step,
+                start: 'top 88%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        });
+      }
+
+      if (window.__gsap && window.__ScrollTrigger) {
+      }
+      // Always wait for animations:ready — prevents race with BaseLayout ScrollTrigger.kill()
+      window.removeEventListener('animations:ready', window.__spStepAnimReady);
+      window.__spStepAnimReady = initStepAnimations;
+      window.addEventListener('animations:ready', window.__spStepAnimReady);
+      if (window.__lenis) initStepAnimations();
+    })();
+  </script>
+
+  <!-- ─── FAQ ACCORDION SCRIPT ─── -->
+  <script is:inline>
+    (function() {
+      var btns = document.querySelectorAll('.sp-faq-q');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          btns.forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var ans = document.getElementById(b.getAttribute('aria-controls'));
+            if (ans) ans.style.maxHeight = null;
+          });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = document.getElementById(this.getAttribute('aria-controls'));
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+        });
+      });
+    })();
+  </script>
+
+</BaseLayout>
+
+<style>
+/* ─── SHARED SECTION TOKENS ─── */
+.sp-section-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D4A931;
+  margin-bottom: 14px;
+}
+.sp-section-label--light { color: #D4A931; }
+.sp-section-h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+}
+.sp-section-h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: #D4A931;
+}
+.sp-section-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  max-width: 640px;
+  margin: 0 0 48px 0;
+}
+
+/* ─── BADGES ─── */
+.sp-badge {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 0px;
+}
+.sp-badge--gold { background: #D4A931; color: #1A1A1A; }
+.sp-badge--outline { border: 2px solid #D4A931; color: #D4A931; background: transparent; }
+
+/* ─── BUTTONS ─── */
+.sp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 28px;
+  min-height: 44px;
+  border: 2px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sp-btn--primary { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
+.sp-btn--primary:hover { background: #B8932A; border-color: #B8932A; }
+.sp-btn--primary:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--ghost { background: transparent; color: #D4A931; border-color: #D4A931; }
+.sp-btn--ghost:hover { background: #D4A931; color: #1A1A1A; }
+.sp-btn--ghost:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-btn--outline { background: transparent; color: #1A1A1A; border-color: #1A1A1A; }
+.sp-btn--outline:hover { background: #1A1A1A; color: #D4A931; }
+.sp-btn--outline:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+/* ─── 1. HERO ─── */
+.sp-hero {
+  background: #F5F3EF;
+  padding: 120px 0 100px;
+}
+.sp-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+}
+.sp-hero-badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.sp-hero-h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+}
+.sp-hero-h1 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-hero-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 17px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0 0 32px 0;
+  max-width: 520px;
+}
+.sp-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.sp-stat { display: flex; flex-direction: column; gap: 4px; }
+.sp-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #D4A931;
+  line-height: 1;
+}
+.sp-stat-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8B8070;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sp-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: #D8D2C8;
+  flex-shrink: 0;
+}
+.sp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.sp-hero-img-wrap {
+  position: relative;
+}
+.sp-hero-img-wrap img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  border: 2px solid #D8D2C8;
+}
+
+/* ─── 2. TRUST BAR ─── */
+.sp-trust {
+  background: #1A1A1A;
+  padding: 20px 0;
+  border-top: 1px solid #2D2D2D;
+}
+.sp-trust-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.sp-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #D4A931;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sp-trust-item svg { flex-shrink: 0; }
+.sp-trust-sep { width: 1px; height: 20px; background: #2D2D2D; }
+
+/* ─── 3. PROBLEM ─── */
+.sp-problem {
+  background: #E8E4DC;
+  padding: 100px 0;
+}
+.sp-problem-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.sp-problem-card {
+  background: #fff;
+  border: 1px solid #D8D2C8;
+  padding: 28px 24px;
+}
+.sp-problem-card:hover { border-color: #D4A931; }
+.sp-problem-icon { margin-bottom: 16px; }
+.sp-problem-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sp-problem-body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sp-cost-ramp {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.sp-cost-step {
+  display: grid;
+  grid-template-columns: 40px 1fr 28px auto;
+  align-items: center;
+  gap: 6px;
+}
+.sp-cost-stage {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #8B8070;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.sp-cost-bar {
+  height: 4px;
+  background: #D4A931;
+  display: block;
+}
+.sp-cost-bar--1 { width: 25%; opacity: 0.4; }
+.sp-cost-bar--2 { width: 50%; opacity: 0.6; }
+.sp-cost-bar--3 { width: 75%; opacity: 0.8; }
+.sp-cost-bar--4 { width: 100%; opacity: 1; }
+.sp-cost-dollar {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #D4A931;
+  text-align: right;
+}
+.sp-cost-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  color: #8B8070;
+  white-space: nowrap;
+}
+
+/* ─── 4. PROCESS ─── */
+.sp-process {
+  background: #F5F3EF;
+  padding: 100px 0;
+}
+.sp-process-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #D8D2C8;
+}
+.sp-step {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0;
+  border-bottom: 1px solid #D8D2C8;
+  transition: background 200ms ease;
+  opacity: 0;
+  transform: translateX(-24px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp-step { opacity: 1; transform: none; }
+}
+.sp-step:last-child { border-bottom: none; }
+.sp-step:hover { background: #fff; }
+.sp-step-num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #D4A931;
+  padding: 32px 0 32px 32px;
+  display: flex;
+  align-items: flex-start;
+  opacity: 0.6;
+  line-height: 1;
+}
+.sp-step-content { padding: 32px 32px 32px 0; }
+.sp-step-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 8px 0;
+}
+.sp-step-body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0 0 10px 0;
+}
+.sp-step-why {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #8B8070;
+  line-height: 1.65;
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid #D4A931;
+  background: rgba(212,169,49,0.05);
+}
+.sp-step-why strong {
+  color: #D4A931;
+  font-weight: 700;
+}
+
+/* ─── 5. WHY AMS ─── */
+.sp-why {
+  background: #E8E4DC;
+  padding: 100px 0;
+}
+.sp-why-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: #D8D2C8;
+  border: 1px solid #D8D2C8;
+  margin-top: 48px;
+}
+.sp-why-item {
+  background: #fff;
+  padding: 36px 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.sp-why-num {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #D4A931;
+  opacity: 0.4;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.sp-why-content { display: flex; flex-direction: column; gap: 10px; }
+.sp-why-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.sp-why-body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── 6. TOOL ─── */
+.sp-tool {
+  background: #1A1A1A;
+  padding: 100px 0;
+}
+.sp-tool-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-tool-header { text-align: center; margin-bottom: 48px; }
+.sp-tool-h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+}
+.sp-tool-h2 em { font-style: italic; font-weight: 400; color: #D4A931; }
+.sp-tool-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin: 0;
+}
+.sp-tool-warning-hook {
+  background: rgba(212,169,49,0.08);
+  border: 1px solid rgba(212,169,49,0.25);
+  border-left: 3px solid #D4A931;
+  padding: 20px 24px;
+  margin: 0 auto 28px;
+  max-width: 640px;
+  text-align: left;
+}
+.sp-tool-warning-intro {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #D4A931;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 12px 0;
+}
+.sp-tool-warning-list {
+  margin: 0 0 14px 0;
+  padding: 0 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sp-tool-warning-list li {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+.sp-tool-warning-cta {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+.sp-tool-embed {
+  background: #fff;
+  border: 2px solid #D4A931;
+  padding: 40px;
+  min-height: 200px;
+}
+.sp-tool-loading {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: #8B8070;
+  text-align: center;
+  padding: 40px 0;
+}
+.sp-tool-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.sp-tool-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sp-tool-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #D4A931;
+  line-height: 1;
+}
+.sp-tool-stat-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.sp-tool-stat-sep {
+  width: 1px;
+  height: 36px;
+  background: #2D2D2D;
+  flex-shrink: 0;
+}
+.sp-tool-quote {
+  border-left: 3px solid #D4A931;
+  margin: 0 0 36px 0;
+  padding: 12px 20px;
+  background: rgba(212,169,49,0.06);
+}
+.sp-tool-quote p {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  margin: 0 0 6px 0;
+}
+.sp-tool-quote cite {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #D4A931;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sp-tool-note {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #8B8070;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+.sp-tool-faq {
+  margin-top: 48px;
+  border-top: 1px solid #2D2D2D;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.sp-tool-faq-item {}
+.sp-tool-faq-q {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #D4A931;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px 0;
+}
+.sp-tool-faq-a {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin: 0;
+}
+.sp-tool-faq-link {
+  color: #D4A931;
+  text-decoration: underline;
+}
+.sp-tool-faq-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+/* ─── 6. PROJECTS ─── */
+.sp-projects {
+  background: #E8E4DC;
+  padding: 100px 0;
+}
+.sp-projects-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.sp-project-card {
+  background: #fff;
+  border: 1px solid #D8D2C8;
+  overflow: hidden;
+}
+.sp-project-card:hover { border-color: #D4A931; }
+.sp-project-img-wrap img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.sp-project-info { padding: 20px; }
+.sp-project-location {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #D4A931;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 6px;
+}
+.sp-project-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+.sp-project-desc {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #4A4A4A;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── 7. PRICING ─── */
+.sp-pricing {
+  background: #F5F3EF;
+  padding: 100px 0;
+}
+.sp-pricing-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.sp-price-card {
+  background: #fff;
+  border: 1px solid #D8D2C8;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sp-price-card--featured {
+  border: 2px solid #D4A931;
+  position: relative;
+}
+.sp-price-popular {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #D4A931;
+  color: #1A1A1A;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+.sp-price-tier {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8B8070;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 12px;
+}
+.sp-price-range {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1;
+}
+.sp-price-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.sp-price-list li {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: #4A4A4A;
+  padding-left: 16px;
+  position: relative;
+}
+.sp-price-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: #D4A931;
+}
+.sp-pricing-note {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #8B8070;
+  line-height: 1.6;
+  max-width: 600px;
+}
+.sp-pricing-link {
+  color: #D4A931;
+  text-decoration: underline;
+}
+.sp-pricing-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-pricing-guarantee {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+  background: rgba(212,169,49,0.07);
+  border-left: 3px solid #D4A931;
+  padding: 12px 16px;
+  margin-top: 16px;
+  max-width: 600px;
+}
+
+/* ─── 8. REVIEWS ─── */
+.sp-reviews {
+  background: #E8E4DC;
+  padding: 100px 0;
+}
+.sp-reviews-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sp-review-card {
+  background: #fff;
+  border-top: 1px solid #D8D2C8;
+  border-right: 1px solid #D8D2C8;
+  border-bottom: 1px solid #D8D2C8;
+  border-left: 3px solid #D4A931;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sp-review-stars { display: flex; gap: 3px; }
+.sp-review-text {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0;
+  font-style: normal;
+  flex: 1;
+}
+.sp-review-cite {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8B8070;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
+/* ─── 9. CREDENTIALS ─── */
+.sp-creds {
+  background: #F5F3EF;
+  padding: 100px 0;
+}
+.sp-creds-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-creds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: #D8D2C8;
+  border: 2px solid #D8D2C8;
+  margin-top: 48px;
+}
+.sp-cred-item {
+  background: #fff;
+  padding: 32px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.sp-cred-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(212,169,49,0.08);
+  border: 1px solid rgba(212,169,49,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-cred-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sp-cred-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sp-cred-body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: #4A4A4A;
+  line-height: 1.65;
+}
+.sp-creds-guarantee {
+  margin-top: 32px;
+  background: #1A1A1A;
+  padding: 24px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.sp-guarantee-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #D4A931;
+  padding: 10px 16px;
+  white-space: nowrap;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.sp-guarantee-text {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.65;
+  margin: 0;
+  align-self: center;
+}
+
+/* ─── 10. FAQ ─── */
+.sp-faq {
+  background: #E8E4DC;
+  padding: 100px 0;
+}
+.sp-faq-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-faq-list {
+  border: 1px solid #D8D2C8;
+}
+.sp-faq-item {
+  border-bottom: 1px solid #D8D2C8;
+}
+.sp-faq-item:last-child { border-bottom: none; }
+.sp-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  line-height: 1.4;
+  min-height: 44px;
+  transition: background 200ms ease;
+}
+.sp-faq-q:hover { background: #fff; }
+.sp-faq-q:focus-visible { outline: 2px solid #D4A931; outline-offset: -2px; }
+.sp-faq-q[aria-expanded="true"] { color: #D4A931; }
+.sp-faq-q[aria-expanded="true"] .sp-faq-icon { transform: rotate(180deg); }
+.sp-faq-icon { flex-shrink: 0; transition: transform 200ms ease; }
+.sp-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease;
+}
+.sp-faq-a p {
+  padding: 0 24px 20px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ─── 10. AREAS ─── */
+.sp-areas {
+  background: #E8E4DC;
+  padding: 100px 0;
+}
+.sp-areas-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-areas-sub {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 1.75;
+  margin: 0 0 40px 0;
+  max-width: 560px;
+}
+.sp-areas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.sp-area {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+  background: #fff;
+  border: 1px solid #D8D2C8;
+  border-bottom: 2px solid #D4A931;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+  cursor: pointer;
+}
+.sp-area:hover {
+  background: #D4A931;
+  border-color: #D4A931;
+  color: #1A1A1A;
+}
+.sp-area:focus-visible {
+  outline: 2px solid #D4A931;
+  outline-offset: 2px;
+}
+.sp-areas-note {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #8B8070;
+}
+.sp-areas-link {
+  color: #D4A931;
+  text-decoration: underline;
+}
+.sp-areas-link:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+
+/* ─── 11. RELATED ─── */
+.sp-related {
+  background: #F5F3EF;
+  padding: 100px 0;
+}
+.sp-related-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+.sp-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sp-related-card {
+  background: #fff;
+  border: 1px solid #D8D2C8;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 200ms ease;
+}
+.sp-related-card:hover { border-color: #D4A931; }
+.sp-related-card:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
+.sp-related-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.sp-related-content { padding: 20px; flex: 1; }
+.sp-related-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+.sp-related-desc {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #8B8070;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .sp-hero-inner,
+  .sp-problem-inner,
+  .sp-process-inner,
+  .sp-why-inner,
+  .sp-tool-inner,
+  .sp-projects-inner,
+  .sp-pricing-inner,
+  .sp-reviews-inner,
+  .sp-creds-inner,
+  .sp-faq-inner,
+  .sp-areas-inner,
+  .sp-related-inner { padding: 0 40px; }
+  .sp-trust-inner { padding: 0 40px; }
+  .sp-problem-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .sp-hero { padding: 100px 0 72px; }
+  .sp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sp-hero-img-wrap { display: none; }
+  .sp-projects-grid,
+  .sp-pricing-grid,
+  .sp-reviews-grid,
+  .sp-related-grid { grid-template-columns: 1fr 1fr; }
+  .sp-creds-grid { grid-template-columns: 1fr 1fr; }
+  .sp-why-grid { grid-template-columns: 1fr; }
+  .sp-trust-sep { display: none; }
+  .sp-trust-inner { justify-content: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .sp-hero-inner,
+  .sp-problem-inner,
+  .sp-process-inner,
+  .sp-why-inner,
+  .sp-tool-inner,
+  .sp-projects-inner,
+  .sp-pricing-inner,
+  .sp-reviews-inner,
+  .sp-creds-inner,
+  .sp-faq-inner,
+  .sp-areas-inner,
+  .sp-related-inner { padding: 0 20px; }
+  .sp-trust-inner { padding: 0 20px; }
+  .sp-hero { padding: 80px 0 56px; }
+  .sp-problem { padding: 56px 0; }
+  .sp-process { padding: 56px 0; }
+  .sp-why { padding: 56px 0; }
+  .sp-tool { padding: 56px 0; }
+  .sp-projects { padding: 56px 0; }
+  .sp-pricing { padding: 56px 0; }
+  .sp-reviews { padding: 56px 0; }
+  .sp-creds { padding: 56px 0; }
+  .sp-faq { padding: 56px 0; }
+  .sp-areas { padding: 56px 0; }
+  .sp-related { padding: 56px 0; }
+  .sp-problem-grid,
+  .sp-projects-grid,
+  .sp-pricing-grid,
+  .sp-reviews-grid,
+  .sp-creds-grid,
+  .sp-related-grid { grid-template-columns: 1fr; }
+  .sp-step { grid-template-columns: 60px 1fr; }
+  .sp-step-num { font-size: 24px; padding: 24px 0 24px 20px; }
+  .sp-step-content { padding: 24px 20px 24px 0; }
+  .sp-hero-actions { flex-direction: column; }
+  .sp-btn { width: 100%; text-align: center; }
+  .sp-tool-embed { padding: 24px 20px; }
+}
+</style>
