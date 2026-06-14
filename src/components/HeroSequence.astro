@@ -983,7 +983,9 @@
     padding-bottom: 40px;
     max-width: 100%;
   }
-  .seq-form-row { flex-direction: column; gap: 8px; }
+  .seq-form-row { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .seq-form-row .seq-input { flex: 1 1 120px; min-width: 0; }
+  .seq-form-row .seq-input--zip { flex: 0 0 90px; min-width: 0; }
   .seq-social-proof { flex-direction: column; gap: 4px; }
 
   /* Mobile overlay — bottom-up gradient so text at bottom reads clearly */
