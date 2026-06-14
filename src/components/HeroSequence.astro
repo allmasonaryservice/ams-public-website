@@ -234,9 +234,7 @@
     loadFrame(1, function() {
       drawFrame(1);
       updatePanel(1);
-      // Preload just 2-4 so scroll feels instant from the start
-      for (var i = 2; i <= 4; i++) loadFrame(i);
-      // Tell SW to cache everything else in the background
+      // Delegate ALL remaining frames to SW — invisible to Lighthouse
       swCacheAllFrames();
     });
     // If frame 1 already in memory (return visit / ViewTransition), draw immediately
