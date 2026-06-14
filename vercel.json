@@ -2,7 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
-  "regions": ["ord1"],
   "headers": [
     {
       "source": "/images/sequence-desktop-webp/(.*)",
