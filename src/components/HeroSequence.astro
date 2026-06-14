@@ -230,57 +230,45 @@
   }
 
   function preloadImages() {
+    // Load only frame 1 — SW handles background caching of all other frames
     loadFrame(1, function() {
       drawFrame(1);
       updatePanel(1);
-      for (var i = 2; i <= 5; i++) loadFrame(i);
-      scheduleBackground(6);
+      // Preload just 2-4 so scroll feels instant from the start
+      for (var i = 2; i <= 4; i++) loadFrame(i);
+      // Tell SW to cache everything else in the background
+      swCacheAllFrames();
     });
-    // If frame 1 already cached, drawFrame immediately
+    // If frame 1 already in memory (return visit / ViewTransition), draw immediately
     if (images[1] && images[1].complete && images[1].naturalWidth) {
       drawFrame(1);
       updatePanel(1);
     }
   }
 
-  function scheduleBackground(startFrom) {
-    var next = startFrom;
-    function idleChunk() {
-      var end = Math.min(next + 6, TOTAL_FRAMES + 1);
-      while (next < end) loadFrame(next++);
-      if (next <= TOTAL_FRAMES) {
-        if (typeof requestIdleCallback !== 'undefined') {
-          requestIdleCallback(idleChunk, { timeout: 4000 });
-        } else {
-          setTimeout(idleChunk, 80);
-        }
-      } else {
-        cacheSWFrames();
+  function swCacheAllFrames() {
+    // SW caches frames throttled at 20ms each — zero main-thread impact
+    if (!navigator.serviceWorker) return;
+    var ready = navigator.serviceWorker.controller
+      ? Promise.resolve(navigator.serviceWorker.controller)
+      : navigator.serviceWorker.ready.then(function(reg) { return reg.active; });
+    ready.then(function(sw) {
+      if (!sw) return;
+      var urls = [];
+      for (var i = 1; i <= TOTAL_FRAMES; i++) {
+        urls.push(FOLDER + 'frame-' + pad(i) + '.webp');
       }
-    }
-    if (typeof requestIdleCallback !== 'undefined') {
-      requestIdleCallback(idleChunk, { timeout: 1000 });
-    } else {
-      setTimeout(idleChunk, 200);
-    }
+      sw.postMessage({ type: 'CACHE_FRAMES', urls: urls });
+    }).catch(function() {});
   }
 
   function ensureLookahead(frame) {
     if (frame - lastLookahead < 5 && frame > lastLookahead) return;
     lastLookahead = frame;
-    var ahead = Math.min(frame + 15, TOTAL_FRAMES);
+    var ahead = Math.min(frame + 8, TOTAL_FRAMES);
     for (var i = frame + 1; i <= ahead; i++) {
       if (!images[i] || !images[i].src) loadFrame(i);
     }
-  }
-
-  function cacheSWFrames() {
-    if (!navigator.serviceWorker || !navigator.serviceWorker.controller) return;
-    var urls = [];
-    for (var i = 1; i <= TOTAL_FRAMES; i++) {
-      urls.push(FOLDER + 'frame-' + pad(i) + '.webp');
-    }
-    navigator.serviceWorker.controller.postMessage({ type: 'CACHE_FRAMES', urls: urls });
   }
 
   function updatePanel(frameNum) {
