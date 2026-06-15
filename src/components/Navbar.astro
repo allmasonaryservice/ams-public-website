@@ -974,8 +974,13 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
   border-radius: 0px;
   z-index: 150;
   overflow-y: auto;
+  overflow-x: hidden;
   transform: translateX(100%);
   transition: transform 300ms ease;
+  visibility: hidden;
+}
+.mobile-menu.open {
+  visibility: visible;
 }
 .mobile-menu.open {
   transform: translateX(0);
@@ -1296,8 +1301,8 @@ button:focus-visible {
 .mortar-line {
   position: absolute;
   top: 50%;
-  left: -10%;
-  width: 120%;
+  left: 0;
+  width: 100%;
   height: 3px;
   background: linear-gradient(
     to right,
