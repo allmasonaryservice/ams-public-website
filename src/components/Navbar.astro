@@ -260,11 +260,11 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
 ═══════════════════════════════════════════════ -->
 <script is:inline>
   function initNavbar() {
-    if (window.__navbarInitialized) return;
-    window.__navbarInitialized = true;
+    var hamburger = document.getElementById('nav-hamburger');
+    if (!hamburger || hamburger.dataset.navInit) return;
+    hamburger.dataset.navInit = '1';
 
     var navbar = document.getElementById('navbar');
-    var hamburger = document.getElementById('nav-hamburger');
     var mobileMenu = document.getElementById('mobile-menu');
     var mobileOverlay = document.getElementById('mobile-overlay');
     var mobileClose = document.getElementById('mobile-close');
@@ -378,11 +378,8 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
 
   initNavbar();
 
-  // Re-run on every Astro ViewTransition page load
-  document.addEventListener('astro:page-load', function() {
-    window.__navbarInitialized = false;
-    initNavbar();
-  });
+  // Re-run on every Astro ViewTransition page load (new DOM = new hamburger element = no dataset.navInit)
+  document.addEventListener('astro:page-load', initNavbar);
 </script>
 
 <style>
