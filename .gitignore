@@ -37,3 +37,6 @@ lighthouse-*.json
 docs/fetch-*.mjs
 docs/preview-*.mjs
 docs/.last-run.json
+
+# Source JPG images (converted to WebP — JPGs not needed in repo)
+public/images/projects/*.jpg
