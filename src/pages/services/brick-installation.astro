@@ -450,12 +450,13 @@ const faqItems = [
         </div>
         <div class="sp-project-card">
           <div class="sp-project-img-wrap">
-            <img src="/images/project-brick-restoration.webp" alt="Front facade brick installation in Western Springs" width="400" height="240" loading="lazy" decoding="async" />
+            <img src="/images/projects/wilmette-brick-installation-desktop.webp" alt="Front facade brick installation in Western Springs" width="400" height="240" loading="lazy" decoding="async" />
           </div>
           <div class="sp-project-info">
             <span class="sp-project-location">Western Springs, IL</span>
             <h3 class="sp-project-title">Front Facade Brick Installation</h3>
             <p class="sp-project-desc">New brick facade on a home undergoing full renovation — coordinated with the GC throughout, finished ahead of the window installation schedule.</p>
+            <a href="/projects/wilmette-brick-installation" class="sp-view-project-btn">VIEW PROJECT</a>
           </div>
         </div>
       </div>
@@ -755,7 +756,7 @@ const faqItems = [
           </div>
         </a>
         <a href="/services/tuckpointing-repointing" class="sp-related-card">
-          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing and repointing" width="400" height="200" loading="lazy" decoding="async" />
+          <img src="/images/projects/chicago-tuckpointing-repointing-desktop.webp" alt="Tuckpointing and repointing" width="400" height="200" loading="lazy" decoding="async" />
           <div class="sp-related-content">
             <h3 class="sp-related-title">Tuckpointing &amp; Repointing</h3>
             <p class="sp-related-desc">Mortar joint restoration for brick and stone — the most common masonry repair for Chicagoland homes.</p>
@@ -919,6 +920,25 @@ const faqItems = [
 .sp-project-location { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; color: #D4A931; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
 .sp-project-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.3; }
 .sp-project-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.65; margin: 0; }
+.sp-view-project-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 14px;
+  margin-top: 12px;
+  background: #D4A931;
+  color: #1A1A1A;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border: 2px solid #D4A931;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.sp-view-project-btn:hover { background: #B8932A; border-color: #B8932A; }
+.sp-view-project-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
 .sp-pricing { background: #F5F3EF; padding: 100px 0; }
 .sp-pricing-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
 .sp-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }

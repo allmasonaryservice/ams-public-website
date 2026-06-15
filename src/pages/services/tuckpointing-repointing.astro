@@ -506,7 +506,7 @@ const faqItems = [
         <div class="sp-project-card">
           <div class="sp-project-img-wrap">
             <img
-              src="/images/project-brick-restoration.webp"
+              src="/images/projects/winnetka-tuckpointing-repointing-desktop.webp"
               alt="Chimney tuckpointing and crown repair in Winnetka"
               width="540"
               height="405"
@@ -518,6 +518,7 @@ const faqItems = [
             <span class="sp-project-location">Winnetka, IL</span>
             <h3 class="sp-project-title">Chimney Tuckpointing &amp; Crown Repair</h3>
             <p class="sp-project-desc">Deteriorated mortar joints on a 40-year-old chimney — all four sides repointed, crown repaired, and flashing sealed. Stopped active water leak.</p>
+            <a href="/projects/winnetka-tuckpointing-repointing" class="sp-view-project-btn">VIEW PROJECT</a>
           </div>
         </div>
         <div class="sp-project-card">
@@ -786,7 +787,7 @@ const faqItems = [
           </div>
         </a>
         <a href="/services/damaged-brick-replacement" class="sp-related-card">
-          <img src="/images/project-brick-restoration.webp" alt="Damaged brick replacement" width="360" height="240" loading="lazy" decoding="async" />
+          <img src="/images/projects/evanston-damaged-brick-replacement-desktop.webp" alt="Damaged brick replacement" width="360" height="240" loading="lazy" decoding="async" />
           <div class="sp-related-content">
             <h3 class="sp-related-title">Damaged Brick Replacement</h3>
             <p class="sp-related-desc">Spalled or cracked bricks replaced and matched to your existing facade.</p>
@@ -1491,6 +1492,25 @@ const faqItems = [
   line-height: 1.65;
   margin: 0;
 }
+.sp-view-project-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 14px;
+  margin-top: 12px;
+  background: #D4A931;
+  color: #1A1A1A;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border: 2px solid #D4A931;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.sp-view-project-btn:hover { background: #B8932A; border-color: #B8932A; }
+.sp-view-project-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
 
 /* ─── 7. PRICING ─── */
 .sp-pricing {
