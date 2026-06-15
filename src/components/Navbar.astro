@@ -259,7 +259,10 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
      SCRIPT — deferred, no TBT impact
 ═══════════════════════════════════════════════ -->
 <script is:inline>
-  (function initNavbar() {
+  function initNavbar() {
+    if (window.__navbarInitialized) return;
+    window.__navbarInitialized = true;
+
     var navbar = document.getElementById('navbar');
     var hamburger = document.getElementById('nav-hamburger');
     var mobileMenu = document.getElementById('mobile-menu');
@@ -296,7 +299,6 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
       }
     }, { passive: true });
 
-    // Run once on init to set correct state
     updateNavbar();
 
     // ── Desktop Dropdown ─────────────────────────────
@@ -357,13 +359,13 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
       }, { once: true });
     }
 
-    hamburger.addEventListener('click', function() {
+    hamburger.addEventListener('click', function(e) {
+      e.stopPropagation();
       mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
     });
     if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
     if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
 
-    // Mobile accordion
     if (mobileServicesBtn && mobileAccordion) {
       mobileServicesBtn.addEventListener('click', function() {
         var isOpen = mobileAccordion.classList.contains('open');
@@ -372,119 +374,14 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
         mobileServicesBtn.classList.toggle('accordion-open', !isOpen);
       });
     }
-  })();
+  }
+
+  initNavbar();
 
   // Re-run on every Astro ViewTransition page load
   document.addEventListener('astro:page-load', function() {
-    (function initNavbar() {
-      var navbar = document.getElementById('navbar');
-      var hamburger = document.getElementById('nav-hamburger');
-      var mobileMenu = document.getElementById('mobile-menu');
-      var mobileOverlay = document.getElementById('mobile-overlay');
-      var mobileClose = document.getElementById('mobile-close');
-      var servicesBtn = document.getElementById('services-btn');
-      var servicesDropdown = document.getElementById('services-dropdown');
-      var servicesItem = document.getElementById('services-item');
-      var mobileServicesBtn = document.getElementById('mobile-services-btn');
-      var mobileAccordion = document.getElementById('mobile-services-accordion');
-      var announceStrip = document.getElementById('announce-strip');
-      var announceCta = document.getElementById('announce-cta-link');
-
-      if (!navbar || !hamburger || !mobileMenu || !servicesBtn || !servicesDropdown || !servicesItem) return;
-
-      var STRIP_HEIGHT = 36;
-      var ticking = false;
-      var dropdownTimeout;
-
-      function updateNavbar() {
-        var scrolled = window.scrollY > STRIP_HEIGHT;
-        navbar.classList.toggle('scrolled', scrolled);
-        navbar.classList.toggle('strip-hidden', scrolled);
-        if (announceStrip) announceStrip.classList.toggle('hidden', scrolled);
-        if (announceCta) announceCta.setAttribute('tabindex', scrolled ? '-1' : '0');
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          requestAnimationFrame(updateNavbar);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      updateNavbar();
-
-      function openDropdown() {
-        clearTimeout(dropdownTimeout);
-        servicesDropdown.classList.add('open');
-        servicesBtn.setAttribute('aria-expanded', 'true');
-      }
-
-      function closeDropdown() {
-        dropdownTimeout = setTimeout(function() {
-          servicesDropdown.classList.remove('open');
-          servicesBtn.setAttribute('aria-expanded', 'false');
-        }, 120);
-      }
-
-      servicesItem.addEventListener('mouseenter', openDropdown);
-      servicesItem.addEventListener('mouseleave', closeDropdown);
-      servicesBtn.addEventListener('click', function() {
-        servicesDropdown.classList.contains('open') ? closeDropdown() : openDropdown();
-      });
-
-      document.addEventListener('click', function(e) {
-        if (!servicesItem.contains(e.target)) {
-          servicesDropdown.classList.remove('open');
-          servicesBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          servicesDropdown.classList.remove('open');
-          servicesBtn.setAttribute('aria-expanded', 'false');
-          closeMobileMenu();
-        }
-      });
-
-      function openMobileMenu() {
-        mobileMenu.style.willChange = 'transform';
-        mobileMenu.classList.add('open');
-        mobileOverlay.classList.add('open');
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        hamburger.setAttribute('aria-expanded', 'true');
-        hamburger.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeMobileMenu() {
-        mobileMenu.classList.remove('open');
-        mobileOverlay.classList.remove('open');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.classList.remove('active');
-        document.body.style.overflow = '';
-        mobileMenu.addEventListener('transitionend', function() {
-          mobileMenu.style.willChange = 'auto';
-        }, { once: true });
-      }
-
-      hamburger.addEventListener('click', function() {
-        mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
-      });
-      if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
-      if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
-
-      if (mobileServicesBtn && mobileAccordion) {
-        mobileServicesBtn.addEventListener('click', function() {
-          var isOpen = mobileAccordion.classList.contains('open');
-          mobileAccordion.classList.toggle('open', !isOpen);
-          mobileServicesBtn.setAttribute('aria-expanded', String(!isOpen));
-          mobileServicesBtn.classList.toggle('accordion-open', !isOpen);
-        });
-      }
-    })();
+    window.__navbarInitialized = false;
+    initNavbar();
   });
 </script>
 
