@@ -43,3 +43,7 @@ public/images/projects/*.jpg
 
 # Debug/test screenshots
 *.png
+
+# Playwright one-off test scripts
+test_*.mjs
+test-*.mjs
