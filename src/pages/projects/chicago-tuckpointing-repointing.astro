@@ -1,0 +1,370 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = siteUrl + '/projects/chicago-tuckpointing-repointing';
+
+const project = {
+  slug: "chicago-tuckpointing-repointing",
+  citySlug: "chicago",
+  serviceSlug: "tuckpointing-repointing",
+  city: "Chicago",
+  county: "Cook County",
+  neighborhood: "Lincoln Park",
+  serviceType: "Tuckpointing & Repointing",
+  materialUsed: "Type S mortar blend",
+  year: "2026",
+  sqft: "800",
+  costRange: "$1,800-$4,200",
+  duration: "2-4 days",
+  warranty: "5-year labor warranty",
+  title: "Chicago Tuckpointing & Repointing — All Masonry Services Inc",
+  seoTitle: "Tuckpointing Chicago IL | Expert Repointing 2026",
+  metaDescription: "Crumbling mortar in Chicago? AMS fixes failing joints before freeze-thaw cycles cause costly brick damage. 19+ years serving Chicago homeowners. Free estimate.",
+  h1: "Chicago's Crumbling Mortar Is a Ticking Clock — Expert Tuckpointing Before Winter Hits in 2026",
+  blogTitle1: "Why Chicago Homeowners Must Tuckpoint Before the Next Hard Freeze",
+  blogTitle2: "How Deteriorating Mortar Joints Destroy Chicago Brick Homes From the Inside Out",
+  problemHeading: "Failing Mortar Joints Are Letting Chicago's Winters Destroy Your Brick",
+  problemBody: "Chicago's brutal freeze-thaw cycle is the number one enemy of aging mortar joints — water infiltrates hairline cracks, freezes, expands, and pries your brickwork apart from the inside. Left unaddressed, deteriorating mortar allows moisture to penetrate walls, rotting framing, triggering mold, and compromising structural integrity. Every season you wait, the repair scope — and the bill — grows significantly.",
+  problemConsequences: [
+    "Water infiltration soaks interior walls, insulation, and framing leading to mold and rot repairs costing $10,000+",
+    "Structural brick veneer separation that puts the safety of occupants and passersby at risk",
+    "Full brick replacement required instead of affordable repointing if mortar deterioration spreads unchecked"
+  ],
+  outcomeHeading: "Tight, Weather-Proof Joints That Protect Your Chicago Home for Years",
+  outcomeBody: "After AMS tuckpointing, your mortar joints are packed with color-matched, weather-grade Type S mortar that seals out moisture and restores structural integrity. Chicago homeowners consistently report an end to interior dampness, peeling paint, and efflorescence after our repointing work. Your brick façade looks sharp and is ready to handle another Chicago winter without compromise.",
+  processSteps: [
+    { step: 1, title: "Joint Inspection & Mapping", detail: "We walk the entire façade and probe every joint, identifying depth of deterioration, crack patterns, and sections needing full repointing vs. spot repair." },
+    { step: 2, title: "Mortar Removal", detail: "Deteriorated mortar is ground out to a minimum 3/4-inch depth using angle grinders and chisels — deep enough for a lasting bond without damaging the brick faces." },
+    { step: 3, title: "Color-Matched Mortar Packing", detail: "We mix and apply Type S mortar matched to your existing joint color, tooling each joint to the correct profile for maximum water deflection." },
+    { step: 4, title: "Final Wash & Inspection", detail: "Joints are brushed clean, the wall is washed down, and a foreman performs a point-by-point inspection to confirm complete coverage and a uniform finish." }
+  ],
+  faqItems: [
+    { question: "How do I know if my Chicago home needs tuckpointing or full brick replacement?", answer: "If the brick faces themselves are sound but mortar joints are recessed, crumbling, or show gaps, tuckpointing restores the wall at a fraction of the cost of replacement. We probe every joint during our free assessment to give you an honest answer." },
+    { question: "How long does tuckpointing last on a Chicago home?", answer: "Properly installed Type S mortar tuckpointing on a Chicago home typically lasts 20-30 years. Annual visual checks after major winters help catch any spot repairs before they spread." },
+    { question: "Can you match the mortar color to my existing brick?", answer: "Yes. AMS carries a wide range of mortar pigments and mixes on-site until we achieve a close match to your existing joint color so the repair blends seamlessly." }
+  ],
+  fomoLine: "Chicago freeze-thaw season waits for no one — call AMS today before your mortar joints fail through another winter.",
+  tags: ["tuckpointing", "repointing", "chicago", "mortar repair", "brick masonry", "chicago masonry"]
+};
+
+const heroImage = { desktopUrl: "/images/projects/chicago-tuckpointing-repointing-desktop.webp", mobileUrl: "/images/projects/chicago-tuckpointing-repointing-mobile.webp", imageAlt: "Tuckpointing & Repointing project by All Masonry Services in Chicago, IL — Chicago Tuckpointing & Repointing — All Masonry Services Inc" };
+
+const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }, { "@type": "ListItem", "position": 2, "name": "Projects", "item": siteUrl + "/projects" }, { "@type": "ListItem", "position": 3, "name": project.serviceType, "item": siteUrl + "/services/" + project.serviceSlug }, { "@type": "ListItem", "position": 4, "name": project.city, "item": pageUrl }] };
+const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness", "name": "All Masonry Services", "url": siteUrl, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "92", "bestRating": "5" } };
+---
+
+<BaseLayout title={project.seoTitle} description={project.metaDescription} canonical={pageUrl}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(ratingSchema)} />
+  <SchemaService name={project.serviceType + " in " + project.city + ", IL"} description={project.metaDescription} url={pageUrl} provider="All Masonry Services" providerUrl={siteUrl} areaServed={project.city + ", IL"} serviceType={project.serviceType} />
+  <SchemaFAQ items={project.faqItems} />
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a><span>/</span><a href="/projects">Projects</a><span>/</span><a href={"/services/" + project.serviceSlug}>{project.serviceType}</a><span>/</span><span>{project.city}</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pp-hero">
+    <div class="pp-hero-inner">
+      <div class="pp-tags">{project.tags.map(t => <span class="pp-tag">{t}</span>)}</div>
+      <h1 class="pp-h1">{project.h1}</h1>
+      <p class="pp-hero-meta">Completed 2026 &nbsp;·&nbsp; {project.city}, {project.county}</p>
+    </div>
+    <div class="pp-hero-img">
+      <picture>
+        <source media="(max-width:600px)" srcset={heroImage.mobileUrl} type="image/webp" />
+        <img src={heroImage.desktopUrl} alt={heroImage.imageAlt} width="750" height="422" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="pp-stats-bar">
+    <div class="pp-stats-inner">
+      <div class="pp-stat"><span class="pp-stat-val">{project.sqft} sq ft</span><span class="pp-stat-lbl">Project Area</span></div>
+      <div class="pp-stat"><span class="pp-stat-val">{project.duration}</span><span class="pp-stat-lbl">Duration</span></div>
+      <div class="pp-stat"><span class="pp-stat-val">{project.serviceType}</span><span class="pp-stat-lbl">Service Type</span></div>
+      <div class="pp-stat"><span class="pp-stat-val">{project.year}</span><span class="pp-stat-lbl">Year Completed</span></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="pp-problem">
+    <div class="pp-problem-inner">
+      <div class="pp-problem-left">
+        <h2>{project.problemHeading}</h2>
+        <p>{project.problemBody}</p>
+      </div>
+      <div class="pp-callout">
+        <p class="pp-callout-header">If left untreated:</p>
+        <ul>{project.problemConsequences.map(c => <li>{c}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="pp-process">
+    <div class="pp-process-inner">
+      <h2>How We Fixed It</h2>
+      <div class="pp-steps">
+        {project.processSteps.map(s => (
+          <div class="pp-step">
+            <span class="pp-step-num">0{s.step}</span>
+            <h3>{s.title}</h3>
+            <p>{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME + DETAILS -->
+  <section class="pp-outcome">
+    <div class="pp-outcome-inner">
+      <div class="pp-outcome-left">
+        <h2>{project.outcomeHeading}</h2>
+        <p>{project.outcomeBody}</p>
+      </div>
+      <div class="pp-details-card">
+        <div class="pp-detail-row"><span class="pp-detail-label">Location</span><span>{project.city}, IL — {project.neighborhood}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Materials</span><span>{project.materialUsed}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Cost Range</span><span>{project.costRange}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Warranty</span><span>{project.warranty}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Completed</span><span>{project.year}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pp-faq">
+    <div class="pp-faq-inner">
+      <h2>Questions About This Project</h2>
+      <div class="pp-faq-list">
+        {project.faqItems.map(f => (
+          <details class="pp-faq-item">
+            <summary class="pp-faq-q">{f.question}</summary>
+            <p class="pp-faq-a">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pp-cta">
+    <div class="pp-cta-inner">
+      <h2>Need Similar Work in {project.city}?</h2>
+      <p>{project.fomoLine}</p>
+      <div class="pp-cta-actions">
+        <a href="/contact" class="pp-cta-btn">Request Free Estimate</a>
+        <a href="tel:7736562107" class="pp-phone-btn" aria-label="Call All Masonry Services at 773-656-2107">773-656-2107</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEARBY PROJECTS -->
+  <section class="pp-nearby">
+    <div class="pp-nearby-inner">
+      <h2>Other Projects Near {project.city}</h2>
+      <div class="pp-nearby-grid">
+        <a href="/projects/evanston-damaged-brick-replacement" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Damaged Brick Replacement in Evanston, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">brick repair</span><span class="pp-mini-tag">evanston</span></div>
+            <p class="pp-mini-title">Evanston Damaged Brick Replacement</p>
+            <p class="pp-mini-city">Evanston, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/northbrook-chimney-repair-rebuilding" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Chimney Repair & Rebuilding in Northbrook, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">chimney repair</span><span class="pp-mini-tag">northbrook</span></div>
+            <p class="pp-mini-title">Northbrook Chimney Repair & Rebuilding</p>
+            <p class="pp-mini-city">Northbrook, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/wilmette-brick-installation" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Brick Installation in Wilmette, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">brick installation</span><span class="pp-mini-tag">wilmette</span></div>
+            <p class="pp-mini-title">Wilmette Brick Installation</p>
+            <p class="pp-mini-city">Wilmette, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PROJECTS -->
+  <section class="pp-related">
+    <div class="pp-related-inner">
+      <h2>More {project.serviceType} Projects</h2>
+      <div class="pp-related-grid">
+        <a href="/projects/elmhurst-tuckpointing-repointing" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing in Elmhurst, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">tuckpointing</span><span class="pp-mini-tag">elmhurst</span></div>
+            <p class="pp-mini-title">Elmhurst Tuckpointing & Repointing</p>
+            <p class="pp-mini-city">Elmhurst, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/winnetka-tuckpointing-repointing" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing in Winnetka, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">tuckpointing</span><span class="pp-mini-tag">winnetka</span></div>
+            <p class="pp-mini-title">Tuckpointing & Repointing in Winnetka, IL</p>
+            <p class="pp-mini-city">Winnetka, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/la-grange-tuckpointing-repointing" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing in La Grange, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">tuckpointing</span><span class="pp-mini-tag">la grange</span></div>
+            <p class="pp-mini-title">Tuckpointing & Repointing in La Grange, IL</p>
+            <p class="pp-mini-city">La Grange, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="pp-blog">
+    <div class="pp-blog-inner">
+      <h2>More on {project.serviceType} in Chicagoland</h2>
+      <div class="pp-blog-grid">
+        <a href="/blog" class="pp-blog-card"><h3>{project.blogTitle1}</h3><span class="pp-read-more">Read Article</span></a>
+        <a href="/blog" class="pp-blog-card"><h3>{project.blogTitle2}</h3><span class="pp-read-more">Read Article</span></a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ALL border-radius: 0px — NO EXCEPTIONS */
+* { box-sizing: border-box; }
+
+.breadcrumb { background: #1A1A1A; padding: 12px 0; }
+.breadcrumb-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:flex; gap:8px; align-items:center; font-family:'Satoshi',sans-serif; font-size:12px; }
+.breadcrumb-inner a { color:#D4A931; text-decoration:none; }
+.breadcrumb-inner span { color:#8B8070; }
+
+.pp-hero { background:#F5F3EF; padding-top:60px; }
+.pp-hero-inner { max-width:1280px; margin:0 auto; padding:0 80px 40px; }
+.pp-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.pp-tag { font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border:1px solid #D4A931; padding:3px 8px; }
+.pp-h1 { font-family:'Fraunces',serif; font-size:clamp(28px,3.5vw,44px); font-weight:900; color:#1A1A1A; line-height:1.15; margin:0 0 16px; }
+.pp-hero-meta { font-family:'Satoshi',sans-serif; font-size:13px; color:#8B8070; }
+.pp-hero-img img { width:100%; height:auto; display:block; border-top:3px solid #D4A931; }
+
+.pp-stats-bar { background:#1A1A1A; padding:32px 0; }
+.pp-stats-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.pp-stat { text-align:center; padding:0 20px; border-right:1px solid #2D2D2D; }
+.pp-stat:last-child { border-right:none; }
+.pp-stat-val { display:block; font-family:'Fraunces',serif; font-size:clamp(16px,2vw,22px); font-weight:700; color:#D4A931; }
+.pp-stat-lbl { display:block; font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8B8070; margin-top:4px; }
+
+.pp-problem { background:#F5F3EF; padding:100px 0; }
+.pp-problem-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.pp-problem-left h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 20px; }
+.pp-problem-left p { font-family:'Satoshi',sans-serif; font-size:16px; color:#4A4A4A; line-height:1.75; margin:0; }
+.pp-callout { background:#fff; border-left:3px solid #D4A931; border:1px solid #D8D2C8; border-left:3px solid #D4A931; padding:24px; }
+.pp-callout-header { font-family:'Satoshi',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#D4A931; margin:0 0 12px; }
+.pp-callout ul { margin:0; padding:0 0 0 16px; }
+.pp-callout li { font-family:'Satoshi',sans-serif; font-size:14px; color:#4A4A4A; line-height:1.7; margin-bottom:8px; }
+
+.pp-process { background:#E8E4DC; padding:100px 0; }
+.pp-process-inner { max-width:1280px; margin:0 auto; padding:0 80px; }
+.pp-process h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 48px; }
+.pp-steps { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
+.pp-step { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; padding:28px; }
+.pp-step-num { font-family:'Fraunces',serif; font-size:32px; font-weight:900; color:#D4A931; display:block; margin-bottom:12px; }
+.pp-step h3 { font-family:'Satoshi',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#1A1A1A; margin:0 0 10px; }
+.pp-step p { font-family:'Satoshi',sans-serif; font-size:14px; color:#4A4A4A; line-height:1.7; margin:0; }
+
+.pp-outcome { background:#F5F3EF; padding:100px 0; }
+.pp-outcome-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.pp-outcome-left h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 20px; }
+.pp-outcome-left p { font-family:'Satoshi',sans-serif; font-size:16px; color:#4A4A4A; line-height:1.75; margin:0; }
+.pp-details-card { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; padding:28px; }
+.pp-detail-row { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #D8D2C8; font-family:'Satoshi',sans-serif; font-size:13px; }
+.pp-detail-row:last-child { border-bottom:none; }
+.pp-detail-label { font-weight:700; color:#1A1A1A; text-transform:uppercase; font-size:10px; letter-spacing:0.06em; }
+
+.pp-faq { background:#E8E4DC; padding:100px 0; }
+.pp-faq-inner { max-width:800px; margin:0 auto; padding:0 80px; }
+.pp-faq h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 40px; }
+.pp-faq-item { border:1px solid #D8D2C8; background:#fff; margin-bottom:8px; }
+.pp-faq-item[open] { border-color:#D4A931; }
+.pp-faq-q { font-family:'Satoshi',sans-serif; font-size:15px; font-weight:700; color:#1A1A1A; padding:20px 24px; cursor:pointer; list-style:none; }
+.pp-faq-q::-webkit-details-marker { display:none; }
+.pp-faq-a { font-family:'Satoshi',sans-serif; font-size:14px; color:#4A4A4A; line-height:1.75; padding:0 24px 20px; margin:0; }
+
+.pp-cta { background:#1A1A1A; padding:100px 0; text-align:center; }
+.pp-cta-inner { max-width:800px; margin:0 auto; padding:0 80px; }
+.pp-cta h2 { font-family:'Fraunces',serif; font-size:clamp(28px,3vw,40px); font-weight:700; color:#fff; margin:0 0 16px; }
+.pp-cta p { font-family:'Satoshi',sans-serif; font-size:16px; color:#8B8070; margin:0 0 32px; }
+.pp-cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.pp-cta-btn { display:inline-flex; align-items:center; height:52px; padding:0 28px; background:#D4A931; color:#1A1A1A; font-family:'Satoshi',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; border:2px solid #D4A931; }
+.pp-cta-btn:hover { background:#B8932A; border-color:#B8932A; }
+.pp-phone-btn { display:inline-flex; align-items:center; height:52px; padding:0 28px; background:transparent; color:#D4A931; font-family:'Satoshi',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-decoration:none; border:2px solid #D4A931; }
+.pp-phone-btn:hover { background:#D4A931; color:#1A1A1A; }
+
+.pp-nearby,.pp-related { background:#F5F3EF; padding:100px 0; }
+.pp-related { background:#E8E4DC; }
+.pp-nearby-inner,.pp-related-inner { max-width:1280px; margin:0 auto; padding:0 80px; }
+.pp-nearby h2,.pp-related h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 40px; }
+.pp-nearby-grid,.pp-related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.pp-mini-card { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; text-decoration:none; color:inherit; display:block; transition:border-color 250ms ease; }
+.pp-mini-card:hover { border-color:#D4A931; }
+.pp-mini-card img { width:100%; height:180px; object-fit:cover; display:block; }
+.pp-mini-card-body { padding:16px; }
+.pp-mini-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.pp-mini-tag { font-family:'Satoshi',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border:1px solid #D4A931; padding:2px 6px; }
+.pp-mini-title { font-family:'Fraunces',serif; font-size:14px; font-weight:700; color:#1A1A1A; margin:0 0 6px; }
+.pp-mini-city { font-family:'Satoshi',sans-serif; font-size:11px; color:#8B8070; }
+.pp-mini-cta { display:inline-block; margin-top:10px; font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border-bottom:1px solid #D4A931; }
+
+.pp-blog { background:#F5F3EF; padding:80px 0; }
+.pp-blog-inner { max-width:1280px; margin:0 auto; padding:0 80px; }
+.pp-blog h2 { font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,28px); font-weight:700; color:#1A1A1A; margin:0 0 32px; }
+.pp-blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.pp-blog-card { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; padding:28px; text-decoration:none; color:inherit; display:block; transition:border-color 250ms ease; }
+.pp-blog-card:hover { border-color:#D4A931; }
+.pp-blog-card h3 { font-family:'Fraunces',serif; font-size:18px; font-weight:700; color:#1A1A1A; margin:0 0 16px; line-height:1.3; }
+.pp-read-more { font-family:'Satoshi',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border-bottom:1px solid #D4A931; }
+
+@media (max-width:1100px) {
+  .breadcrumb-inner,.pp-hero-inner,.pp-stats-inner,.pp-problem-inner,.pp-process-inner,.pp-outcome-inner,.pp-faq-inner,.pp-cta-inner,.pp-nearby-inner,.pp-related-inner,.pp-blog-inner { padding-left:40px; padding-right:40px; }
+}
+@media (max-width:900px) {
+  .pp-problem { padding:72px 0; } .pp-process { padding:72px 0; } .pp-outcome { padding:72px 0; } .pp-faq { padding:72px 0; } .pp-cta { padding:72px 0; } .pp-nearby,.pp-related { padding:72px 0; }
+  .pp-problem-inner,.pp-outcome-inner { grid-template-columns:1fr; }
+  .pp-steps { grid-template-columns:1fr; }
+  .pp-stats-inner { grid-template-columns:repeat(2,1fr); }
+  .pp-nearby-grid,.pp-related-grid { grid-template-columns:repeat(2,1fr); }
+  .pp-blog-grid { grid-template-columns:1fr; }
+}
+@media (max-width:640px) {
+  .breadcrumb-inner,.pp-hero-inner,.pp-stats-inner,.pp-problem-inner,.pp-process-inner,.pp-outcome-inner,.pp-faq-inner,.pp-cta-inner,.pp-nearby-inner,.pp-related-inner,.pp-blog-inner { padding-left:20px; padding-right:20px; }
+  .pp-problem { padding:56px 0; } .pp-process { padding:56px 0; } .pp-outcome { padding:56px 0; } .pp-faq { padding:56px 0; } .pp-cta { padding:56px 0; } .pp-nearby,.pp-related { padding:56px 0; }
+  .pp-nearby-grid,.pp-related-grid { grid-template-columns:1fr; }
+  .pp-stats-inner { grid-template-columns:repeat(2,1fr); }
+}
+</style>

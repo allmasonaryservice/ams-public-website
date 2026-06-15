@@ -1,0 +1,395 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaService from '../../components/SchemaService.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = siteUrl + '/projects/evanston-custom-home-masonry';
+
+const project = {
+  slug: "evanston-custom-home-masonry",
+  citySlug: "evanston",
+  serviceSlug: "custom-home-masonry",
+  serviceType: "Custom Home Masonry",
+  city: "Evanston",
+  neighborhood: "Evanston",
+  county: "Cook County",
+  year: "2026",
+  title: "Custom Home Masonry in Evanston, IL",
+  seoTitle: "Custom Home Masonry Evanston IL | AMS Masonry 2026",
+  metaDescription: "Custom home masonry in Evanston, IL. AMS designs & builds bespoke brick, stone & masonry for Evanston homes. 19+ yrs, 4.8★. Get your free estimate.",
+  h1: "Evanston Custom Home Masonry: Your Home Deserves Masonry That Matches Its Character — and Survives Lake Michigan Winters",
+  problemHeading: "Evanston's Lake Effect Climate Accelerates Masonry Deterioration Faster Than Inland Suburbs",
+  problemBody: "Evanston's proximity to Lake Michigan means homes face a uniquely punishing combination of lake-effect moisture, accelerated freeze-thaw cycles, and salt-laden wind-driven rain that causes masonry to deteriorate significantly faster than in inland Chicagoland communities. Custom masonry features — brick facades, stone porches, decorative cornices, and entryway columns — that were not built to these enhanced moisture and thermal standards develop cracks, spalling, and mortar failure within a decade, requiring costly repairs that outpace any initial savings from lower-quality installation. Building or restoring custom masonry in Evanston demands a contractor who understands the lakefront microclimate, not just general Chicagoland standards.",
+  problemConsequences: [
+    "Lake effect moisture infiltration through custom masonry details accelerates interior wall damage on Evanston homes faster than in inland suburbs",
+    "Incorrectly specified mortar and brick on lakefront-adjacent Evanston properties fail within 5–8 years instead of the expected 20–30",
+    "Deteriorating custom masonry details on Evanston historic district homes attract City historic preservation citations and mandatory repair orders"
+  ],
+  outcomeHeading: "Bespoke Masonry Built for Evanston's Lakefront Climate and Architectural Heritage",
+  outcomeBody: "AMS designs custom masonry systems for Evanston homes with enhanced moisture management — specifying higher-absorption brick, lime-compatible mortars, and thorough flashing at every transition. Whether you are restoring a historic Victorian front porch, adding a custom stone entryway, or installing decorative brick details, our masons bring the precision and material knowledge that Evanston's climate demands — and that lasts.",
+  processSteps: [
+    {
+      step: 1,
+      title: "Site-Specific Climate & Design Consultation",
+      detail: "We assess your property's specific exposure — wind direction, shade patterns, and proximity to the lake — and design a masonry system with the material specs and moisture management details those conditions require."
+    },
+    {
+      step: 2,
+      title: "Lakefront-Grade Material Selection",
+      detail: "Brick units, stone, mortar type, and sealant are specified for Evanston's enhanced freeze-thaw and moisture exposure — not just standard Illinois residential code minimum requirements."
+    },
+    {
+      step: 3,
+      title: "Custom Installation with Enhanced Detailing",
+      detail: "Installation includes full weather barriers, through-wall flashing at all horizontal surfaces, weep holes at correct intervals, and mortar joints tooled to drain rather than catch water."
+    },
+    {
+      step: 4,
+      title: "Inspection, Sealing & Documentation",
+      detail: "Completed work is inspected at every transition point, a breathable water repellent is applied, and full material documentation is provided — including product data sheets for all mortars and sealants used."
+    }
+  ],
+  faqItems: [
+    {
+      question: "Does Evanston's historic district affect what masonry work I can do on my home?",
+      answer: "Yes. Properties within Evanston's designated historic districts are subject to review by the Preservation Commission for exterior changes including masonry additions and alterations. AMS is experienced with the Evanston historic review process and can advise on compliant design approaches."
+    },
+    {
+      question: "Why does masonry seem to fail faster in Evanston than in other Chicago suburbs?",
+      answer: "Evanston's lake-effect moisture load, wind-driven rain exposure, and salt content in precipitation create a more aggressive weathering environment than inland suburbs. This demands stricter material specifications — particularly softer lime mortars, freeze-thaw-rated brick, and thorough water repellent treatment."
+    },
+    {
+      question: "What custom masonry features are most popular on Evanston homes?",
+      answer: "Front porch restoration, entryway columns, decorative stone or brick window surrounds, garden walls, and historic cornice repair are the most common custom masonry requests in Evanston — particularly on Victorian, Craftsman, and Prairie-style homes."
+    }
+  ],
+  fomoLine: "Evanston's lake effect winter is relentless — call AMS now and get your custom masonry built before the next season starts the clock.",
+  costRange: "$6,000–$18,000",
+  warranty: "5-year labor warranty",
+  duration: "1–3 weeks",
+  sqft: "Varies by project",
+  materialUsed: "Freeze-thaw rated brick, lime-compatible mortar, natural stone, breathable water repellent, through-wall flashing",
+  tags: ["custom masonry", "evanston", "lakefront", "historic home", "brick", "stone", "chicagoland"],
+  blogTitle1: "Why Evanston Homes Need Lakefront-Grade Masonry Specs — Not Standard Chicagoland Materials",
+  blogTitle2: "Restoring a Victorian Front Porch in Evanston: What the Custom Masonry Process Looks Like"
+};
+
+const heroImage = { desktopUrl: "/images/projects/evanston-custom-home-masonry-desktop.webp", mobileUrl: "/images/projects/evanston-custom-home-masonry-mobile.webp", imageAlt: "Custom Home Masonry project by All Masonry Services in Evanston, IL — Custom Home Masonry in Evanston, IL" };
+
+const breadcrumbSchema = { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":siteUrl},{"@type":"ListItem","position":2,"name":"Projects","item":siteUrl+"/projects"},{"@type":"ListItem","position":3,"name":project.serviceType,"item":siteUrl+"/services/"+project.serviceSlug},{"@type":"ListItem","position":4,"name":project.city,"item":pageUrl}] };
+const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","name":"All Masonry Services","url":siteUrl,"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"92","bestRating":"5"} };
+---
+
+<BaseLayout title={project.seoTitle} description={project.metaDescription} canonical={pageUrl}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(ratingSchema)} />
+  <SchemaService name={project.serviceType + " in " + project.city + ", IL"} description={project.metaDescription} url={pageUrl} provider="All Masonry Services" providerUrl={siteUrl} areaServed={project.city + ", IL"} serviceType={project.serviceType} />
+  <SchemaFAQ items={project.faqItems} />
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a><span>/</span><a href="/projects">Projects</a><span>/</span><a href={"/services/"+project.serviceSlug}>{project.serviceType}</a><span>/</span><span>{project.city}</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pp-hero">
+    <div class="pp-hero-inner">
+      <div class="pp-tags">{project.tags.map(t => <span class="pp-tag">{t}</span>)}</div>
+      <h1 class="pp-h1">{project.h1}</h1>
+      <p class="pp-hero-meta">Completed 2026 &nbsp;·&nbsp; {project.city}, {project.county}</p>
+    </div>
+    <div class="pp-hero-img">
+      <picture>
+        <source media="(max-width:600px)" srcset={heroImage.mobileUrl} type="image/webp" />
+        <img src={heroImage.desktopUrl} alt={heroImage.imageAlt} width="750" height="422" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="pp-stats-bar">
+    <div class="pp-stats-inner">
+      <div class="pp-stat"><span class="pp-stat-val">{project.sqft}</span><span class="pp-stat-lbl">Project Area</span></div>
+      <div class="pp-stat"><span class="pp-stat-val">{project.duration}</span><span class="pp-stat-lbl">Duration</span></div>
+      <div class="pp-stat"><span class="pp-stat-val">{project.serviceType}</span><span class="pp-stat-lbl">Service Type</span></div>
+      <div class="pp-stat"><span class="pp-stat-val">{project.year}</span><span class="pp-stat-lbl">Year Completed</span></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="pp-problem">
+    <div class="pp-problem-inner">
+      <div class="pp-problem-left">
+        <h2>{project.problemHeading}</h2>
+        <p>{project.problemBody}</p>
+      </div>
+      <div class="pp-callout">
+        <p class="pp-callout-header">If left untreated:</p>
+        <ul>{project.problemConsequences.map(c => <li>{c}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="pp-process">
+    <div class="pp-process-inner">
+      <h2>How We Fixed It</h2>
+      <div class="pp-steps">
+        {project.processSteps.map(s => (
+          <div class="pp-step">
+            <span class="pp-step-num">0{s.step}</span>
+            <h3>{s.title}</h3>
+            <p>{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME + DETAILS -->
+  <section class="pp-outcome">
+    <div class="pp-outcome-inner">
+      <div class="pp-outcome-left">
+        <h2>{project.outcomeHeading}</h2>
+        <p>{project.outcomeBody}</p>
+      </div>
+      <div class="pp-details-card">
+        <div class="pp-detail-row"><span class="pp-detail-label">Location</span><span>{project.city}, IL — {project.neighborhood}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Materials</span><span>{project.materialUsed}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Cost Range</span><span>{project.costRange}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Warranty</span><span>{project.warranty}</span></div>
+        <div class="pp-detail-row"><span class="pp-detail-label">Completed</span><span>{project.year}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pp-faq">
+    <div class="pp-faq-inner">
+      <h2>Questions About This Project</h2>
+      <div class="pp-faq-list">
+        {project.faqItems.map(f => (
+          <details class="pp-faq-item">
+            <summary class="pp-faq-q">{f.question}</summary>
+            <p class="pp-faq-a">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pp-cta">
+    <div class="pp-cta-inner">
+      <h2>Need Similar Work in {project.city}?</h2>
+      <p>{project.fomoLine}</p>
+      <div class="pp-cta-actions">
+        <a href="/contact" class="pp-cta-btn">Request Free Estimate</a>
+        <a href="tel:7736562107" class="pp-phone-btn" aria-label="Call All Masonry Services at 773-656-2107">773-656-2107</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEARBY PROJECTS -->
+  <section class="pp-nearby">
+    <div class="pp-nearby-inner">
+      <h2>Other Projects Near {project.city}</h2>
+      <div class="pp-nearby-grid">
+        <a href="/projects/evanston-damaged-brick-replacement" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Damaged Brick Replacement project in Evanston, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">Brick Repair</span><span class="pp-mini-tag">Evanston</span></div>
+            <p class="pp-mini-title">Evanston Damaged Brick Replacement</p>
+            <p class="pp-mini-city">Evanston, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/wilmette-brick-installation" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Brick Installation project in Wilmette, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">Brick</span><span class="pp-mini-tag">Wilmette</span></div>
+            <p class="pp-mini-title">Wilmette Brick Installation</p>
+            <p class="pp-mini-city">Wilmette, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/northbrook-chimney-repair-rebuilding" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Chimney Repair & Rebuilding project in Northbrook, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">Chimney</span><span class="pp-mini-tag">Northbrook</span></div>
+            <p class="pp-mini-title">Northbrook Chimney Repair & Rebuilding</p>
+            <p class="pp-mini-city">Northbrook, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PROJECTS -->
+  <section class="pp-related">
+    <div class="pp-related-inner">
+      <h2>More {project.serviceType} Projects</h2>
+      <div class="pp-related-grid">
+        <a href="/projects/oak-brook-custom-home-masonry" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Custom Home Masonry project in Oak Brook, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">Custom Home</span><span class="pp-mini-tag">Oak Brook</span></div>
+            <p class="pp-mini-title">Oak Brook Custom Home Masonry</p>
+            <p class="pp-mini-city">Oak Brook, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/kenilworth-custom-home-masonry" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Custom Home Masonry project in Kenilworth, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">Custom Home</span><span class="pp-mini-tag">Kenilworth</span></div>
+            <p class="pp-mini-title">Custom Home Masonry in Kenilworth</p>
+            <p class="pp-mini-city">Kenilworth, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+        <a href="/projects/glencoe-natural-stone-limestone" class="pp-mini-card">
+          <img src="/images/project-brick-restoration.webp" alt="Natural Stone & Limestone project in Glencoe, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <div class="pp-mini-card-body">
+            <div class="pp-mini-tags"><span class="pp-mini-tag">Natural Stone</span><span class="pp-mini-tag">Glencoe</span></div>
+            <p class="pp-mini-title">Glencoe Natural Stone & Limestone</p>
+            <p class="pp-mini-city">Glencoe, IL</p>
+            <span class="pp-mini-cta">View Case Study</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="pp-blog">
+    <div class="pp-blog-inner">
+      <h2>More on {project.serviceType} in Chicagoland</h2>
+      <div class="pp-blog-grid">
+        <a href="/blog" class="pp-blog-card"><h3>{project.blogTitle1}</h3><span class="pp-read-more">Read Article</span></a>
+        <a href="/blog" class="pp-blog-card"><h3>{project.blogTitle2}</h3><span class="pp-read-more">Read Article</span></a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ALL border-radius: 0px — NO EXCEPTIONS */
+* { box-sizing: border-box; }
+
+.breadcrumb { background: #1A1A1A; padding: 12px 0; }
+.breadcrumb-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:flex; gap:8px; align-items:center; font-family:'Satoshi',sans-serif; font-size:12px; }
+.breadcrumb-inner a { color:#D4A931; text-decoration:none; }
+.breadcrumb-inner span { color:#8B8070; }
+
+.pp-hero { background:#F5F3EF; padding-top:60px; }
+.pp-hero-inner { max-width:1280px; margin:0 auto; padding:0 80px 40px; }
+.pp-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.pp-tag { font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border:1px solid #D4A931; padding:3px 8px; }
+.pp-h1 { font-family:'Fraunces',serif; font-size:clamp(28px,3.5vw,44px); font-weight:900; color:#1A1A1A; line-height:1.15; margin:0 0 16px; }
+.pp-hero-meta { font-family:'Satoshi',sans-serif; font-size:13px; color:#8B8070; }
+.pp-hero-img img { width:100%; height:auto; display:block; border-top:3px solid #D4A931; }
+
+.pp-stats-bar { background:#1A1A1A; padding:32px 0; }
+.pp-stats-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.pp-stat { text-align:center; padding:0 20px; border-right:1px solid #2D2D2D; }
+.pp-stat:last-child { border-right:none; }
+.pp-stat-val { display:block; font-family:'Fraunces',serif; font-size:clamp(16px,2vw,22px); font-weight:700; color:#D4A931; }
+.pp-stat-lbl { display:block; font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8B8070; margin-top:4px; }
+
+.pp-problem { background:#F5F3EF; padding:100px 0; }
+.pp-problem-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.pp-problem-left h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 20px; }
+.pp-problem-left p { font-family:'Satoshi',sans-serif; font-size:16px; color:#4A4A4A; line-height:1.75; margin:0; }
+.pp-callout { background:#fff; border-left:3px solid #D4A931; border:1px solid #D8D2C8; border-left:3px solid #D4A931; padding:24px; }
+.pp-callout-header { font-family:'Satoshi',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#D4A931; margin:0 0 12px; }
+.pp-callout ul { margin:0; padding:0 0 0 16px; }
+.pp-callout li { font-family:'Satoshi',sans-serif; font-size:14px; color:#4A4A4A; line-height:1.7; margin-bottom:8px; }
+
+.pp-process { background:#E8E4DC; padding:100px 0; }
+.pp-process-inner { max-width:1280px; margin:0 auto; padding:0 80px; }
+.pp-process h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 48px; }
+.pp-steps { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
+.pp-step { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; padding:28px; }
+.pp-step-num { font-family:'Fraunces',serif; font-size:32px; font-weight:900; color:#D4A931; display:block; margin-bottom:12px; }
+.pp-step h3 { font-family:'Satoshi',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#1A1A1A; margin:0 0 10px; }
+.pp-step p { font-family:'Satoshi',sans-serif; font-size:14px; color:#4A4A4A; line-height:1.7; margin:0; }
+
+.pp-outcome { background:#F5F3EF; padding:100px 0; }
+.pp-outcome-inner { max-width:1280px; margin:0 auto; padding:0 80px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.pp-outcome-left h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 20px; }
+.pp-outcome-left p { font-family:'Satoshi',sans-serif; font-size:16px; color:#4A4A4A; line-height:1.75; margin:0; }
+.pp-details-card { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; padding:28px; }
+.pp-detail-row { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #D8D2C8; font-family:'Satoshi',sans-serif; font-size:13px; }
+.pp-detail-row:last-child { border-bottom:none; }
+.pp-detail-label { font-weight:700; color:#1A1A1A; text-transform:uppercase; font-size:10px; letter-spacing:0.06em; }
+
+.pp-faq { background:#E8E4DC; padding:100px 0; }
+.pp-faq-inner { max-width:1280px; margin:0 auto; padding:0 80px; max-width:800px; }
+.pp-faq h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 40px; }
+.pp-faq-item { border:1px solid #D8D2C8; background:#fff; margin-bottom:8px; }
+.pp-faq-item[open] { border-color:#D4A931; }
+.pp-faq-q { font-family:'Satoshi',sans-serif; font-size:15px; font-weight:700; color:#1A1A1A; padding:20px 24px; cursor:pointer; list-style:none; }
+.pp-faq-q::-webkit-details-marker { display:none; }
+.pp-faq-a { font-family:'Satoshi',sans-serif; font-size:14px; color:#4A4A4A; line-height:1.75; padding:0 24px 20px; margin:0; }
+
+.pp-cta { background:#1A1A1A; padding:100px 0; text-align:center; }
+.pp-cta-inner { max-width:800px; margin:0 auto; padding:0 80px; }
+.pp-cta h2 { font-family:'Fraunces',serif; font-size:clamp(28px,3vw,40px); font-weight:700; color:#fff; margin:0 0 16px; }
+.pp-cta p { font-family:'Satoshi',sans-serif; font-size:16px; color:#8B8070; margin:0 0 32px; }
+.pp-cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.pp-cta-btn { display:inline-flex; align-items:center; height:52px; padding:0 28px; background:#D4A931; color:#1A1A1A; font-family:'Satoshi',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; border:2px solid #D4A931; }
+.pp-cta-btn:hover { background:#B8932A; border-color:#B8932A; }
+.pp-phone-btn { display:inline-flex; align-items:center; height:52px; padding:0 28px; background:transparent; color:#D4A931; font-family:'Satoshi',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-decoration:none; border:2px solid #D4A931; }
+.pp-phone-btn:hover { background:#D4A931; color:#1A1A1A; }
+
+.pp-nearby,.pp-related { background:#F5F3EF; padding:100px 0; }
+.pp-related { background:#E8E4DC; }
+.pp-nearby-inner,.pp-related-inner { max-width:1280px; margin:0 auto; padding:0 80px; }
+.pp-nearby h2,.pp-related h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 40px; }
+.pp-nearby-grid,.pp-related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.pp-mini-card { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; text-decoration:none; color:inherit; display:block; transition:border-color 250ms ease; }
+.pp-mini-card:hover { border-color:#D4A931; }
+.pp-mini-card img { width:100%; height:180px; object-fit:cover; display:block; }
+.pp-mini-card-body { padding:16px; }
+.pp-mini-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.pp-mini-tag { font-family:'Satoshi',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border:1px solid #D4A931; padding:2px 6px; }
+.pp-mini-title { font-family:'Fraunces',serif; font-size:14px; font-weight:700; color:#1A1A1A; margin:0 0 6px; }
+.pp-mini-city { font-family:'Satoshi',sans-serif; font-size:11px; color:#8B8070; }
+.pp-mini-cta { display:inline-block; margin-top:10px; font-family:'Satoshi',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border-bottom:1px solid #D4A931; }
+
+.pp-blog { background:#F5F3EF; padding:80px 0; }
+.pp-blog-inner { max-width:1280px; margin:0 auto; padding:0 80px; }
+.pp-blog h2 { font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,28px); font-weight:700; color:#1A1A1A; margin:0 0 32px; }
+.pp-blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.pp-blog-card { background:#fff; border:1px solid #D8D2C8; border-top:3px solid #D4A931; padding:28px; text-decoration:none; color:inherit; display:block; transition:border-color 250ms ease; }
+.pp-blog-card:hover { border-color:#D4A931; }
+.pp-blog-card h3 { font-family:'Fraunces',serif; font-size:18px; font-weight:700; color:#1A1A1A; margin:0 0 16px; line-height:1.3; }
+.pp-read-more { font-family:'Satoshi',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#D4A931; border-bottom:1px solid #D4A931; }
+
+@media (max-width:1100px) {
+  .breadcrumb-inner,.pp-hero-inner,.pp-stats-inner,.pp-problem-inner,.pp-process-inner,.pp-outcome-inner,.pp-faq-inner,.pp-cta-inner,.pp-nearby-inner,.pp-related-inner,.pp-blog-inner { padding-left:40px; padding-right:40px; }
+}
+@media (max-width:900px) {
+  .pp-problem { padding:72px 0; } .pp-process { padding:72px 0; } .pp-outcome { padding:72px 0; } .pp-faq { padding:72px 0; } .pp-cta { padding:72px 0; } .pp-nearby,.pp-related { padding:72px 0; }
+  .pp-problem-inner,.pp-outcome-inner { grid-template-columns:1fr; }
+  .pp-steps { grid-template-columns:1fr; }
+  .pp-stats-inner { grid-template-columns:repeat(2,1fr); }
+  .pp-nearby-grid,.pp-related-grid { grid-template-columns:repeat(2,1fr); }
+  .pp-blog-grid { grid-template-columns:1fr; }
+}
+@media (max-width:640px) {
+  .breadcrumb-inner,.pp-hero-inner,.pp-stats-inner,.pp-problem-inner,.pp-process-inner,.pp-outcome-inner,.pp-faq-inner,.pp-cta-inner,.pp-nearby-inner,.pp-related-inner,.pp-blog-inner { padding-left:20px; padding-right:20px; }
+  .pp-problem { padding:56px 0; } .pp-process { padding:56px 0; } .pp-outcome { padding:56px 0; } .pp-faq { padding:56px 0; } .pp-cta { padding:56px 0; } .pp-nearby,.pp-related { padding:56px 0; }
+  .pp-nearby-grid,.pp-related-grid { grid-template-columns:1fr; }
+  .pp-stats-inner { grid-template-columns:repeat(2,1fr); }
+}
+</style>

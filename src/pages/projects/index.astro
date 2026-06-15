@@ -1,0 +1,473 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import CTABanner from '../../components/CTABanner.astro'
+import Footer from '../../components/Footer.astro'
+
+const siteUrl = 'https://allmasonryservices.com'
+
+const allProjects = [
+  { slug: "chicago-tuckpointing-repointing", title: "Chicago Tuckpointing & Repointing — All Masonry Services Inc", city: "Chicago", serviceType: "Tuckpointing & Repointing", tags: ["tuckpointing","repointing","chicago","mortar repair","brick masonry","chicago masonry"], year: "2026", sqft: "800", duration: "2-4 days" },
+  { slug: "hinsdale-brick-installation", title: "Hinsdale Brick Installation — All Masonry Services Inc", city: "Hinsdale", serviceType: "Brick Installation", tags: ["brick installation","hinsdale","custom masonry","brick facade","dupage county","hinsdale masonry"], year: "2026", sqft: "1,200", duration: "1-3 weeks" },
+  { slug: "winnetka-natural-stone-limestone", title: "Winnetka Natural Stone & Limestone — All Masonry Services Inc", city: "Winnetka", serviceType: "Natural Stone & Limestone", tags: ["natural stone","limestone","winnetka","north shore masonry","stone restoration","indiana limestone"], year: "2026", sqft: "600", duration: "1-2 weeks" },
+  { slug: "northbrook-chimney-repair-rebuilding", title: "Northbrook Chimney Repair & Rebuilding — All Masonry Services Inc", city: "Northbrook", serviceType: "Chimney Repair & Rebuilding", tags: ["chimney repair","chimney rebuilding","northbrook","chimney masonry","cook county masonry","northbrook chimney"], year: "2026", sqft: "N/A", duration: "1-5 days" },
+  { slug: "evanston-damaged-brick-replacement", title: "Evanston Damaged Brick Replacement — All Masonry Services Inc", city: "Evanston", serviceType: "Damaged Brick Replacement", tags: ["damaged brick replacement","evanston","spalling brick","brick repair","historic brick","cook county masonry"], year: "2026", sqft: "500", duration: "1-3 days" },
+  { slug: "oak-brook-custom-home-masonry", title: "Oak Brook Custom Home Masonry — All Masonry Services Inc", city: "Oak Brook", serviceType: "Custom Home Masonry", tags: ["custom home masonry","oak brook","luxury masonry","custom brick","dupage county","oak brook masonry"], year: "2026", sqft: "2,500", duration: "3-8 weeks" },
+  { slug: "naperville-brick-stone-veneers", title: "Naperville Brick & Stone Veneers — All Masonry Services Inc", city: "Naperville", serviceType: "Brick & Stone Veneers", tags: ["brick veneer","stone veneer","naperville","masonry veneer","dupage county","naperville masonry"], year: "2026", sqft: "900", duration: "3-7 days" },
+  { slug: "elmhurst-tuckpointing-repointing", title: "Elmhurst Tuckpointing & Repointing — All Masonry Services Inc", city: "Elmhurst", serviceType: "Tuckpointing & Repointing", tags: ["tuckpointing","repointing","elmhurst","mortar repair","dupage county","elmhurst masonry"], year: "2026", sqft: "750", duration: "2-4 days" },
+  { slug: "wheaton-chimney-fireplace", title: "Wheaton Chimney & Fireplace Masonry — All Masonry Services Inc", city: "Wheaton", serviceType: "Chimney & Fireplace", tags: ["chimney repair","fireplace masonry","wheaton","firebox repair","dupage county","wheaton chimney"], year: "2026", sqft: "N/A", duration: "1-4 days" },
+  { slug: "downers-grove-cmu-block-installation", title: "Downers Grove CMU Block Installation — All Masonry Services Inc", city: "Downers Grove", serviceType: "CMU Block Installation", tags: ["cmu block installation","downers grove","concrete masonry","retaining wall","dupage county","structural masonry"], year: "2026", sqft: "N/A", duration: "1-3 weeks" },
+  { slug: "wilmette-brick-installation", title: "Wilmette Brick Installation — All Masonry Services Inc", city: "Wilmette", serviceType: "Brick Installation", tags: ["brick installation","wilmette","north shore masonry","clay brick","cook county masonry","wilmette masonry"], year: "2026", sqft: "1,100", duration: "1-3 weeks" },
+  { slug: "glencoe-natural-stone-limestone", title: "Glencoe Natural Stone & Limestone — All Masonry Services Inc", city: "Glencoe", serviceType: "Natural Stone & Limestone", tags: ["natural stone","limestone","glencoe","estate masonry","north shore masonry","indiana limestone"], year: "2026", sqft: "700", duration: "1-2 weeks" },
+  { slug: "highland-park-commercial-brick-stone", title: "Highland Park Commercial Brick & Stone — All Masonry Services Inc", city: "Highland Park", serviceType: "Commercial Brick & Stone", tags: ["commercial masonry","highland park","commercial brick","commercial stone","lake county masonry","commercial facade"], year: "2026", sqft: "3,500", duration: "2-8 weeks" },
+  { slug: "kenilworth-custom-home-masonry", title: "Custom Home Masonry in Kenilworth, IL", city: "Kenilworth", serviceType: "Custom Home Masonry", tags: ["custom masonry","kenilworth","luxury home masonry","brick","stone","chicagoland"], year: "2026", sqft: "Varies by project", duration: "1–3 weeks" },
+  { slug: "la-grange-tuckpointing-repointing", title: "Tuckpointing & Repointing in La Grange, IL", city: "La Grange", serviceType: "Tuckpointing & Repointing", tags: ["tuckpointing","repointing","la grange","brick repair","mortar","chicagoland"], year: "2026", sqft: "Varies by wall area", duration: "2–5 days" },
+  { slug: "western-springs-damaged-brick-replacement", title: "Damaged Brick Replacement in Western Springs, IL", city: "Western Springs", serviceType: "Damaged Brick Replacement", tags: ["brick replacement","spalling brick","western springs","masonry repair","chicagoland"], year: "2026", sqft: "Varies by repair area", duration: "1–3 days" },
+  { slug: "clarendon-hills-brick-stone-veneers", title: "Brick & Stone Veneers in Clarendon Hills, IL", city: "Clarendon Hills", serviceType: "Brick & Stone Veneers", tags: ["stone veneer","brick veneer","clarendon hills","exterior masonry","curb appeal","chicagoland"], year: "2026", sqft: "200–800 sq ft typical", duration: "3–7 days" },
+  { slug: "burr-ridge-chimney-repair-rebuilding", title: "Chimney Repair & Rebuilding in Burr Ridge, IL", city: "Burr Ridge", serviceType: "Chimney Repair & Rebuilding", tags: ["chimney repair","chimney rebuilding","burr ridge","masonry","flashing","chicagoland"], year: "2026", sqft: "Chimney stack above roofline", duration: "2–5 days" },
+  { slug: "willowbrook-commercial-masonry-veneers", title: "Commercial Masonry Veneers in Willowbrook, IL", city: "Willowbrook", serviceType: "Commercial Masonry Veneers", tags: ["commercial masonry","stone veneer","willowbrook","storefront","commercial renovation","dupage county"], year: "2026", sqft: "500–5,000 sq ft typical", duration: "1–3 weeks" },
+  { slug: "chicago-natural-stone-limestone", title: "Natural Stone & Limestone Masonry in Lincoln Park, Chicago, IL", city: "Chicago", serviceType: "Natural Stone & Limestone", tags: ["natural stone","limestone","chicago","lincoln park","greystone","restoration","chicagoland"], year: "2026", sqft: "Varies by facade area", duration: "3–10 days" },
+  { slug: "hinsdale-chimney-fireplace", title: "Chimney & Fireplace Masonry in Hinsdale, IL", city: "Hinsdale", serviceType: "Chimney & Fireplace", tags: ["chimney","fireplace","hinsdale","masonry","firebox","luxury home","chicagoland"], year: "2026", sqft: "Varies by project scope", duration: "2–7 days" },
+  { slug: "winnetka-tuckpointing-repointing", title: "Tuckpointing & Repointing in Winnetka, IL", city: "Winnetka", serviceType: "Tuckpointing & Repointing", tags: ["tuckpointing","repointing","winnetka","north shore","historic brick","masonry","chicagoland"], year: "2026", sqft: "Varies by wall area", duration: "2–7 days" },
+  { slug: "northbrook-brick-installation", title: "Brick Installation in Northbrook, IL", city: "Northbrook", serviceType: "Brick Installation", tags: ["brick installation","northbrook","brick patio","brick wall","masonry","chicagoland"], year: "2026", sqft: "Varies by project", duration: "3–10 days" },
+  { slug: "evanston-custom-home-masonry", title: "Custom Home Masonry in Evanston, IL", city: "Evanston", serviceType: "Custom Home Masonry", tags: ["custom masonry","evanston","lakefront","historic home","brick","stone","chicagoland"], year: "2026", sqft: "Varies by project", duration: "1–3 weeks" },
+  { slug: "oak-brook-commercial-brick-stone", title: "Commercial Brick & Stone Masonry in Oak Brook, IL", city: "Oak Brook", serviceType: "Commercial Brick & Stone", tags: ["commercial masonry","brick","stone","oak brook","office park","retail","dupage county","chicagoland"], year: "2026", sqft: "500–10,000 sq ft typical", duration: "1–4 weeks" }
+]
+
+const imageMap: Record<string, { slug: string; imageUrl: string; imageAlt: string }> = {
+  "chicago-tuckpointing-repointing": { slug: "chicago-tuckpointing-repointing", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Tuckpointing & Repointing project by All Masonry Services in Chicago, IL — Chicago Tuckpointing & Repointing — All Masonry Services Inc" },
+  "hinsdale-brick-installation": { slug: "hinsdale-brick-installation", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Brick Installation project by All Masonry Services in Hinsdale, IL — Hinsdale Brick Installation — All Masonry Services Inc" },
+  "winnetka-natural-stone-limestone": { slug: "winnetka-natural-stone-limestone", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Natural Stone & Limestone project by All Masonry Services in Winnetka, IL — Winnetka Natural Stone & Limestone — All Masonry Services Inc" },
+  "northbrook-chimney-repair-rebuilding": { slug: "northbrook-chimney-repair-rebuilding", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Chimney Repair & Rebuilding project by All Masonry Services in Northbrook, IL — Northbrook Chimney Repair & Rebuilding — All Masonry Services Inc" },
+  "evanston-damaged-brick-replacement": { slug: "evanston-damaged-brick-replacement", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Damaged Brick Replacement project by All Masonry Services in Evanston, IL — Evanston Damaged Brick Replacement — All Masonry Services Inc" },
+  "oak-brook-custom-home-masonry": { slug: "oak-brook-custom-home-masonry", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Custom Home Masonry project by All Masonry Services in Oak Brook, IL — Oak Brook Custom Home Masonry — All Masonry Services Inc" },
+  "naperville-brick-stone-veneers": { slug: "naperville-brick-stone-veneers", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Brick & Stone Veneers project by All Masonry Services in Naperville, IL — Naperville Brick & Stone Veneers — All Masonry Services Inc" },
+  "elmhurst-tuckpointing-repointing": { slug: "elmhurst-tuckpointing-repointing", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Tuckpointing & Repointing project by All Masonry Services in Elmhurst, IL — Elmhurst Tuckpointing & Repointing — All Masonry Services Inc" },
+  "wheaton-chimney-fireplace": { slug: "wheaton-chimney-fireplace", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Chimney & Fireplace project by All Masonry Services in Wheaton, IL — Wheaton Chimney & Fireplace Masonry — All Masonry Services Inc" },
+  "downers-grove-cmu-block-installation": { slug: "downers-grove-cmu-block-installation", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "CMU Block Installation project by All Masonry Services in Downers Grove, IL — Downers Grove CMU Block Installation — All Masonry Services Inc" },
+  "wilmette-brick-installation": { slug: "wilmette-brick-installation", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Brick Installation project by All Masonry Services in Wilmette, IL — Wilmette Brick Installation — All Masonry Services Inc" },
+  "glencoe-natural-stone-limestone": { slug: "glencoe-natural-stone-limestone", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Natural Stone & Limestone project by All Masonry Services in Glencoe, IL — Glencoe Natural Stone & Limestone — All Masonry Services Inc" },
+  "highland-park-commercial-brick-stone": { slug: "highland-park-commercial-brick-stone", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Commercial Brick & Stone project by All Masonry Services in Highland Park, IL — Highland Park Commercial Brick & Stone — All Masonry Services Inc" },
+  "kenilworth-custom-home-masonry": { slug: "kenilworth-custom-home-masonry", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Custom Home Masonry project by All Masonry Services in Kenilworth, IL — Custom Home Masonry in Kenilworth, IL" },
+  "la-grange-tuckpointing-repointing": { slug: "la-grange-tuckpointing-repointing", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Tuckpointing & Repointing project by All Masonry Services in La Grange, IL — Tuckpointing & Repointing in La Grange, IL" },
+  "western-springs-damaged-brick-replacement": { slug: "western-springs-damaged-brick-replacement", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Damaged Brick Replacement project by All Masonry Services in Western Springs, IL — Damaged Brick Replacement in Western Springs, IL" },
+  "clarendon-hills-brick-stone-veneers": { slug: "clarendon-hills-brick-stone-veneers", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Brick & Stone Veneers project by All Masonry Services in Clarendon Hills, IL — Brick & Stone Veneers in Clarendon Hills, IL" },
+  "burr-ridge-chimney-repair-rebuilding": { slug: "burr-ridge-chimney-repair-rebuilding", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Chimney Repair & Rebuilding project by All Masonry Services in Burr Ridge, IL — Chimney Repair & Rebuilding in Burr Ridge, IL" },
+  "willowbrook-commercial-masonry-veneers": { slug: "willowbrook-commercial-masonry-veneers", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Commercial Masonry Veneers project by All Masonry Services in Willowbrook, IL — Commercial Masonry Veneers in Willowbrook, IL" },
+  "chicago-natural-stone-limestone": { slug: "chicago-natural-stone-limestone", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Natural Stone & Limestone project by All Masonry Services in Chicago, IL — Natural Stone & Limestone Masonry in Lincoln Park, Chicago, IL" },
+  "hinsdale-chimney-fireplace": { slug: "hinsdale-chimney-fireplace", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Chimney & Fireplace project by All Masonry Services in Hinsdale, IL — Chimney & Fireplace Masonry in Hinsdale, IL" },
+  "winnetka-tuckpointing-repointing": { slug: "winnetka-tuckpointing-repointing", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Tuckpointing & Repointing project by All Masonry Services in Winnetka, IL — Tuckpointing & Repointing in Winnetka, IL" },
+  "northbrook-brick-installation": { slug: "northbrook-brick-installation", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Brick Installation project by All Masonry Services in Northbrook, IL — Brick Installation in Northbrook, IL" },
+  "evanston-custom-home-masonry": { slug: "evanston-custom-home-masonry", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Custom Home Masonry project by All Masonry Services in Evanston, IL — Custom Home Masonry in Evanston, IL" },
+  "oak-brook-commercial-brick-stone": { slug: "oak-brook-commercial-brick-stone", imageUrl: "/images/project-brick-restoration.webp", imageAlt: "Commercial Brick & Stone project by All Masonry Services in Oak Brook, IL — Commercial Brick & Stone Masonry in Oak Brook, IL" }
+}
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Masonry Projects by All Masonry Services Inc — Chicagoland IL",
+  "description": "Completed masonry projects across 19 Chicagoland cities including tuckpointing, brick installation, chimney repair, natural stone, and custom home masonry.",
+  "url": `${siteUrl}/projects`,
+  "numberOfItems": 25,
+  "itemListElement": allProjects.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": p.title,
+    "url": `${siteUrl}/projects/${p.slug}`
+  }))
+}
+---
+
+<BaseLayout
+  title="Masonry Projects in Chicagoland IL — All Masonry Services Inc"
+  description="Browse 25 completed masonry projects across 19 Chicagoland cities. Tuckpointing, brick installation, chimney repair, natural stone & more — all done by our own crew since 2007."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <!-- HERO -->
+  <section class="proj-hero">
+    <div class="proj-hero-inner">
+      <span class="proj-badge">CASE STUDIES</span>
+      <h1 class="proj-h1">Real Masonry Projects.<br /><em>Real Chicagoland Homes.</em></h1>
+      <p class="proj-sub">Every project below completed by our own crew. No stock photos, no subcontractors — 19+ years of documented work across 19 Chicagoland cities.</p>
+      <div class="proj-stats-row">
+        <div class="proj-stat">
+          <span class="proj-stat-num">25</span>
+          <span class="proj-stat-label">Projects</span>
+        </div>
+        <div class="proj-stat">
+          <span class="proj-stat-num">4.8&#9733;</span>
+          <span class="proj-stat-label">Google Rating</span>
+        </div>
+        <div class="proj-stat">
+          <span class="proj-stat-num">19+</span>
+          <span class="proj-stat-label">Years Experience</span>
+        </div>
+        <div class="proj-stat">
+          <span class="proj-stat-num">19</span>
+          <span class="proj-stat-label">Cities Served</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section class="proj-grid-section">
+    <div class="proj-grid-inner">
+      <span class="section-label">ALL PROJECTS</span>
+      <h2 class="section-h2">Browse Our Work</h2>
+      <div class="proj-grid">
+        {allProjects.map(p => (
+          <a href={"/projects/" + p.slug} class="proj-card">
+            <div class="proj-card-img-wrap">
+              <img
+                src={imageMap[p.slug]?.imageUrl || '/images/project-brick-restoration.webp'}
+                alt={imageMap[p.slug]?.imageAlt || p.title}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="400"
+              />
+              <span class="proj-card-year">{p.year}</span>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-tags">
+                {p.tags.map(t => <span class="proj-tag">{t}</span>)}
+              </div>
+              <h3 class="proj-card-title">{p.title}</h3>
+              <div class="proj-card-location">
+                <span class="proj-loc-dot"></span>
+                {p.city}, IL
+              </div>
+              <div class="proj-card-meta">
+                {p.sqft && <span>{p.sqft}</span>}
+                <span>{p.duration}</span>
+              </div>
+              <span class="proj-card-cta">View Case Study</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ── HERO ── */
+  .proj-hero {
+    background: #1A1A1A;
+    padding: 100px 0;
+  }
+
+  .proj-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  .proj-badge {
+    display: inline-block;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #D4A931;
+    color: #1A1A1A;
+    padding: 4px 10px;
+    border-radius: 0;
+    margin-bottom: 24px;
+  }
+
+  .proj-h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(36px, 4vw, 52px);
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0 0 20px 0;
+  }
+
+  .proj-h1 em {
+    font-style: italic;
+    color: #D4A931;
+  }
+
+  .proj-sub {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #C0B9AE;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 48px 0;
+  }
+
+  .proj-stats-row {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .proj-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .proj-stat-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #D4A931;
+    line-height: 1;
+  }
+
+  .proj-stat-label {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #9A9490;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── GRID SECTION ── */
+  .proj-grid-section {
+    background: #F5F3EF;
+    padding: 100px 0;
+  }
+
+  .proj-grid-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #D4A931;
+    margin-bottom: 12px;
+  }
+
+  .section-h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 36px);
+    color: #1A1A1A;
+    margin: 0 0 48px 0;
+    line-height: 1.15;
+  }
+
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ── CARDS ── */
+  .proj-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #ffffff;
+    border: 1px solid #D8D2C8;
+    border-top: 3px solid #D4A931;
+    border-radius: 0;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .proj-card:hover {
+    border: 2px solid #D4A931;
+    border-top: 2px solid #D4A931;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .proj-card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+  }
+
+  .proj-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .proj-card:hover .proj-card-img-wrap img {
+    transform: scale(1.03);
+  }
+
+  .proj-card-year {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: #1A1A1A;
+    color: #D4A931;
+    padding: 3px 8px;
+    border-radius: 0;
+  }
+
+  .proj-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .proj-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .proj-tag {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #D4A931;
+    border: 1px solid #D4A931;
+    padding: 3px 8px;
+    border-radius: 0;
+    line-height: 1.4;
+  }
+
+  .proj-card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #1A1A1A;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .proj-card-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #4A4A4A;
+  }
+
+  .proj-loc-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #D4A931;
+    border-radius: 0;
+    flex-shrink: 0;
+  }
+
+  .proj-card-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #7A7470;
+  }
+
+  .proj-card-meta span {
+    position: relative;
+  }
+
+  .proj-card-meta span:not(:first-child)::before {
+    content: '·';
+    margin-right: 16px;
+    position: absolute;
+    left: -18px;
+    color: #C0B9AE;
+  }
+
+  .proj-card-cta {
+    display: inline-block;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #D4A931;
+    border-bottom: 1px solid #D4A931;
+    padding-bottom: 2px;
+    margin-top: 4px;
+    align-self: flex-start;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .proj-hero-inner,
+    .proj-grid-inner {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .proj-hero {
+      padding: 72px 0;
+    }
+
+    .proj-grid-section {
+      padding: 72px 0;
+    }
+
+    .proj-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proj-stats-row {
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .proj-hero {
+      padding: 56px 0;
+    }
+
+    .proj-grid-section {
+      padding: 56px 0;
+    }
+
+    .proj-hero-inner,
+    .proj-grid-inner {
+      padding: 0 20px;
+    }
+
+    .proj-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .proj-stats-row {
+      gap: 24px;
+    }
+
+    .proj-stat-num {
+      font-size: 26px;
+    }
+
+    .proj-sub {
+      font-size: 16px;
+    }
+  }
+</style>
