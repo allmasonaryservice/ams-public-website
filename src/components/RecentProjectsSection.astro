@@ -54,7 +54,7 @@ const projects = [
   },
 ];
 
-const featured = projects.find(p => p.featured);
+const featured = projects.find(p => p.featured)!;
 const rest = projects.filter(p => !p.featured);
 ---
 
@@ -440,22 +440,25 @@ const rest = projects.filter(p => !p.featured);
 .rp-view-btn:active { background: #9A7A22; border-color: #9A7A22; }
 .rp-view-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
 
-/* CTA text on cards */
+/* CTA button on grid cards */
 .rp-card-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 14px;
+  margin-top: 4px;
+  background: #D4A931;
+  color: #1A1A1A;
   font-family: 'Satoshi', sans-serif;
   font-weight: 700;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #D4A931;
-  border-bottom: 1px solid #D4A931;
-  padding-bottom: 2px;
-  margin-top: 4px;
+  border: 2px solid #D4A931;
   align-self: flex-start;
-  transition: color 200ms ease, border-color 200ms ease;
+  transition: background 200ms ease, border-color 200ms ease;
 }
-.rp-card:hover .rp-card-cta { color: #B8932A; border-color: #B8932A; }
+.rp-card:hover .rp-card-cta { background: #B8932A; border-color: #B8932A; }
 
 /* See All Projects */
 .rp-all-wrap {
