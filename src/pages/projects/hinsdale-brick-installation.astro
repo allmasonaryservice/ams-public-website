@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SchemaService from '../../components/SchemaService.astro';
 import SchemaFAQ from '../../components/SchemaFAQ.astro';
-import CTABanner from '../../components/CTABanner.astro';
 import Footer from '../../components/Footer.astro';
 
 const siteUrl = 'https://allmasonryservices.com';
@@ -56,11 +55,14 @@ const heroImage = { desktopUrl: "/images/projects/hinsdale-brick-installation-de
 
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }, { "@type": "ListItem", "position": 2, "name": "Projects", "item": siteUrl + "/projects" }, { "@type": "ListItem", "position": 3, "name": project.serviceType, "item": siteUrl + "/services/" + project.serviceSlug }, { "@type": "ListItem", "position": 4, "name": project.city, "item": pageUrl }] };
 const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness", "name": "All Masonry Services", "url": siteUrl, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "92", "bestRating": "5" } };
+
+const howToSchema = { "@context": "https://schema.org", "@type": "HowTo", "name": "How We Completed This Masonry Project", "description": project.outcomeHeading, "step": project.processSteps.map((s, i) => ({ "@type": "HowToStep", "position": i + 1, "name": s.title, "text": s.detail })) };
 ---
 
 <BaseLayout title={project.seoTitle} description={project.metaDescription} canonical={pageUrl}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(ratingSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   <SchemaService name={project.serviceType + " in " + project.city + ", IL"} description={project.metaDescription} url={pageUrl} provider="All Masonry Services" providerUrl={siteUrl} areaServed={project.city + ", IL"} serviceType={project.serviceType} />
   <SchemaFAQ items={project.faqItems} />
 
@@ -176,7 +178,7 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
       <h2>Other Projects Near {project.city}</h2>
       <div class="pp-nearby-grid">
         <a href="/projects/oak-brook-custom-home-masonry" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Custom Home Masonry in Oak Brook, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/oak-brook-custom-home-masonry-desktop.webp" alt="Custom Home Masonry in Oak Brook, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">custom masonry</span><span class="pp-mini-tag">oak brook</span></div>
             <p class="pp-mini-title">Oak Brook Custom Home Masonry</p>
@@ -185,7 +187,7 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
           </div>
         </a>
         <a href="/projects/elmhurst-tuckpointing-repointing" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing in Elmhurst, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/elmhurst-tuckpointing-repointing-desktop.webp" alt="Tuckpointing & Repointing in Elmhurst, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">tuckpointing</span><span class="pp-mini-tag">elmhurst</span></div>
             <p class="pp-mini-title">Elmhurst Tuckpointing & Repointing</p>
@@ -194,7 +196,7 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
           </div>
         </a>
         <a href="/projects/hinsdale-chimney-fireplace" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Chimney & Fireplace Masonry in Hinsdale, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/hinsdale-chimney-fireplace-desktop.webp" alt="Chimney & Fireplace Masonry in Hinsdale, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">chimney</span><span class="pp-mini-tag">hinsdale</span></div>
             <p class="pp-mini-title">Chimney & Fireplace Masonry in Hinsdale, IL</p>
@@ -212,7 +214,7 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
       <h2>More {project.serviceType} Projects</h2>
       <div class="pp-related-grid">
         <a href="/projects/wilmette-brick-installation" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Brick Installation in Wilmette, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/wilmette-brick-installation-desktop.webp" alt="Brick Installation in Wilmette, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">brick installation</span><span class="pp-mini-tag">wilmette</span></div>
             <p class="pp-mini-title">Wilmette Brick Installation</p>
@@ -221,7 +223,7 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
           </div>
         </a>
         <a href="/projects/northbrook-brick-installation" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Brick Installation in Northbrook, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/northbrook-brick-installation-desktop.webp" alt="Brick Installation in Northbrook, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">brick installation</span><span class="pp-mini-tag">northbrook</span></div>
             <p class="pp-mini-title">Brick Installation in Northbrook, IL</p>
@@ -230,7 +232,7 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
           </div>
         </a>
         <a href="/projects/naperville-brick-stone-veneers" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Brick & Stone Veneers in Naperville, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/naperville-brick-stone-veneers-desktop.webp" alt="Brick & Stone Veneers in Naperville, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">brick veneers</span><span class="pp-mini-tag">naperville</span></div>
             <p class="pp-mini-title">Naperville Brick & Stone Veneers</p>
@@ -367,4 +369,5 @@ const ratingSchema = { "@context": "https://schema.org", "@type": "LocalBusiness
   .pp-nearby-grid,.pp-related-grid { grid-template-columns:1fr; }
   .pp-stats-inner { grid-template-columns:repeat(2,1fr); }
 }
-</style>
+
+a:focus-visible,button:focus-visible,summary:focus-visible { outline:2px solid #D4A931; outline-offset:2px; }</style>

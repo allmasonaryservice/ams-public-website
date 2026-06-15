@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SchemaService from '../../components/SchemaService.astro';
 import SchemaFAQ from '../../components/SchemaFAQ.astro';
-import CTABanner from '../../components/CTABanner.astro';
 import Footer from '../../components/Footer.astro';
 
 const siteUrl = 'https://allmasonryservices.com';
@@ -81,11 +80,14 @@ const heroImage = { desktopUrl: "/images/projects/la-grange-tuckpointing-repoint
 
 const breadcrumbSchema = { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":siteUrl},{"@type":"ListItem","position":2,"name":"Projects","item":siteUrl+"/projects"},{"@type":"ListItem","position":3,"name":project.serviceType,"item":siteUrl+"/services/"+project.serviceSlug},{"@type":"ListItem","position":4,"name":project.city,"item":pageUrl}] };
 const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","name":"All Masonry Services","url":siteUrl,"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"92","bestRating":"5"} };
+
+const howToSchema = { "@context": "https://schema.org", "@type": "HowTo", "name": "How We Completed This Masonry Project", "description": project.outcomeHeading, "step": project.processSteps.map((s, i) => ({ "@type": "HowToStep", "position": i + 1, "name": s.title, "text": s.detail })) };
 ---
 
 <BaseLayout title={project.seoTitle} description={project.metaDescription} canonical={pageUrl}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(ratingSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   <SchemaService name={project.serviceType + " in " + project.city + ", IL"} description={project.metaDescription} url={pageUrl} provider="All Masonry Services" providerUrl={siteUrl} areaServed={project.city + ", IL"} serviceType={project.serviceType} />
   <SchemaFAQ items={project.faqItems} />
 
@@ -201,7 +203,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
       <h2>Other Projects Near {project.city}</h2>
       <div class="pp-nearby-grid">
         <a href="/projects/western-springs-damaged-brick-replacement" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Damaged Brick Replacement project in Western Springs, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/western-springs-damaged-brick-replacement-desktop.webp" alt="Damaged Brick Replacement project in Western Springs, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">Brick Replacement</span><span class="pp-mini-tag">Western Springs</span></div>
             <p class="pp-mini-title">Damaged Brick Replacement in Western Springs, IL</p>
@@ -210,7 +212,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
           </div>
         </a>
         <a href="/projects/clarendon-hills-brick-stone-veneers" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Brick & Stone Veneers project in Clarendon Hills, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/clarendon-hills-brick-stone-veneers-desktop.webp" alt="Brick & Stone Veneers project in Clarendon Hills, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">Stone Veneers</span><span class="pp-mini-tag">Clarendon Hills</span></div>
             <p class="pp-mini-title">Brick &amp; Stone Veneers in Clarendon Hills, IL</p>
@@ -219,7 +221,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
           </div>
         </a>
         <a href="/projects/burr-ridge-chimney-repair-rebuilding" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Chimney Repair & Rebuilding project in Burr Ridge, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/burr-ridge-chimney-repair-rebuilding-desktop.webp" alt="Chimney Repair & Rebuilding project in Burr Ridge, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">Chimney Repair</span><span class="pp-mini-tag">Burr Ridge</span></div>
             <p class="pp-mini-title">Chimney Repair &amp; Rebuilding in Burr Ridge, IL</p>
@@ -237,7 +239,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
       <h2>More {project.serviceType} Projects</h2>
       <div class="pp-related-grid">
         <a href="/projects/chicago-tuckpointing-repointing" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing project in Chicago, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/chicago-tuckpointing-repointing-desktop.webp" alt="Tuckpointing & Repointing project in Chicago, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">Tuckpointing</span><span class="pp-mini-tag">Chicago</span></div>
             <p class="pp-mini-title">Chicago Tuckpointing &amp; Repointing</p>
@@ -246,7 +248,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
           </div>
         </a>
         <a href="/projects/elmhurst-tuckpointing-repointing" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing project in Elmhurst, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/elmhurst-tuckpointing-repointing-desktop.webp" alt="Tuckpointing & Repointing project in Elmhurst, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">Tuckpointing</span><span class="pp-mini-tag">Elmhurst</span></div>
             <p class="pp-mini-title">Elmhurst Tuckpointing &amp; Repointing</p>
@@ -255,7 +257,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
           </div>
         </a>
         <a href="/projects/winnetka-tuckpointing-repointing" class="pp-mini-card">
-          <img src="/images/project-brick-restoration.webp" alt="Tuckpointing & Repointing project in Winnetka, IL" width="600" height="400" loading="lazy" decoding="async" />
+          <img src="/images/projects/winnetka-tuckpointing-repointing-desktop.webp" alt="Tuckpointing & Repointing project in Winnetka, IL" width="600" height="400" loading="lazy" decoding="async" />
           <div class="pp-mini-card-body">
             <div class="pp-mini-tags"><span class="pp-mini-tag">Tuckpointing</span><span class="pp-mini-tag">Winnetka</span></div>
             <p class="pp-mini-title">Tuckpointing &amp; Repointing in Winnetka, IL</p>
@@ -333,7 +335,7 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
 .pp-detail-label { font-weight:700; color:#1A1A1A; text-transform:uppercase; font-size:10px; letter-spacing:0.06em; }
 
 .pp-faq { background:#E8E4DC; padding:100px 0; }
-.pp-faq-inner { max-width:1280px; margin:0 auto; padding:0 80px; max-width:800px; }
+.pp-faq-inner { max-width:800px; margin:0 auto; padding:0 80px; }
 .pp-faq h2 { font-family:'Fraunces',serif; font-size:clamp(24px,2.5vw,32px); font-weight:700; color:#1A1A1A; margin:0 0 40px; }
 .pp-faq-item { border:1px solid #D8D2C8; background:#fff; margin-bottom:8px; }
 .pp-faq-item[open] { border-color:#D4A931; }
@@ -392,4 +394,5 @@ const ratingSchema = { "@context":"https://schema.org","@type":"LocalBusiness","
   .pp-nearby-grid,.pp-related-grid { grid-template-columns:1fr; }
   .pp-stats-inner { grid-template-columns:repeat(2,1fr); }
 }
-</style>
+
+a:focus-visible,button:focus-visible,summary:focus-visible { outline:2px solid #D4A931; outline-offset:2px; }</style>
