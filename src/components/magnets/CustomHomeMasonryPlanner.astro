@@ -1,4 +1,4 @@
----
+﻿---
 const geminiKey = import.meta.env.PUBLIC_GEMINI_KEY ?? '';
 ---
 <div id="chmp-cfg" data-key={geminiKey} style="display:none"></div>
@@ -111,11 +111,11 @@ const geminiKey = import.meta.env.PUBLIC_GEMINI_KEY ?? '';
       </div>
       <div class="result-actions">
         <button class="btn btn-primary" onclick="chDownloadPDF()">Download PDF Report</button>
-        <a href="/contact" class="btn btn-outline">Book Free Consultation</a>
+        <a href="/contact#form" class="btn btn-outline">Book Free Consultation</a>
       </div>
     </div>
     <div class="error-state" id="ch-error" style="display:none">
-      <p class="error-text">Something went wrong generating your plan. <a href="/contact">Contact us directly →</a></p>
+      <p class="error-text">Something went wrong generating your plan. <a href="/contact#form">Contact us directly →</a></p>
     </div>
   </div>
 

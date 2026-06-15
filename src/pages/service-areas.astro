@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
 import Footer from '../components/Footer.astro';
@@ -417,7 +417,7 @@ const areasJson = JSON.stringify(areas.map(a => ({ name: a.name, slug: a.slug, l
       <h1>Masonry Contractor<br><em>Across Chicagoland.</em></h1>
       <p class="sa-hero-sub">Tuckpointing, brick repair, chimney restoration, and stone work across 19 Illinois communities since 2007. North Shore estates, western suburb colonials, DuPage corridor homes — if your masonry needs work, we're already nearby.</p>
       <div class="sa-hero-actions">
-        <a href="/contact" class="sa-btn sa-btn--primary">Get a Free Estimate</a>
+        <a href="/contact#form" class="sa-btn sa-btn--primary">Get a Free Estimate</a>
         <a href="tel:+17736562107" class="sa-btn sa-btn--ghost">Call 773-656-2107</a>
       </div>
       <div class="sa-hero-stats">
@@ -465,7 +465,7 @@ const areasJson = JSON.stringify(areas.map(a => ({ name: a.name, slug: a.slug, l
               </li>
             ))}
           </ul>
-          <a href="/contact" class="samap-cta">Not Sure We Cover Your Area? Ask Us</a>
+          <a href="/contact#form" class="samap-cta">Not Sure We Cover Your Area? Ask Us</a>
         </div>
       </div>
     </div>

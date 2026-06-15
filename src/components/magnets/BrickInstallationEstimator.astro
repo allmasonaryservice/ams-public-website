@@ -1,4 +1,4 @@
----
+﻿---
 // Lead Magnet: Brick Installation — AI Cost & Material Estimator
 const geminiKey = import.meta.env.PUBLIC_GEMINI_KEY ?? '';
 ---
@@ -107,11 +107,11 @@ const geminiKey = import.meta.env.PUBLIC_GEMINI_KEY ?? '';
       </div>
       <div class="result-actions">
         <button class="btn btn-primary" onclick="brDownloadPDF()">Download PDF Estimate →</button>
-        <a href="/contact" class="btn btn-outline">Book Free On-Site Quote →</a>
+        <a href="/contact#form" class="btn btn-outline">Book Free On-Site Quote →</a>
       </div>
     </div>
     <div class="error-state" id="br-error" style="display:none">
-      <p class="error-text">Unable to generate estimate. <a href="/contact">Contact us directly →</a></p>
+      <p class="error-text">Unable to generate estimate. <a href="/contact#form">Contact us directly →</a></p>
     </div>
   </div>
 
