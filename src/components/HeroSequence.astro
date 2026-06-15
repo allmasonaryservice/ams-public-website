@@ -108,17 +108,17 @@
             <span class="seq-stars">★★★★★</span>
             <span class="seq-social-text">500+ Chicagoland homes restored since 2007</span>
           </div>
-          <form class="seq-form" id="seq-hero-form">
+          <form class="seq-form" id="seq-hero-form" novalidate>
             <div class="seq-form-row">
               <label for="hero-name" class="seq-visually-hidden">Your Name</label>
-              <input id="hero-name" class="seq-input" type="text" placeholder="Your Name" autocomplete="name" required />
+              <input id="hero-name" name="name" class="seq-input" type="text" placeholder="Your Name" autocomplete="name" required />
               <label for="hero-phone" class="seq-visually-hidden">Phone Number</label>
-              <input id="hero-phone" class="seq-input" type="tel" placeholder="Phone Number" autocomplete="tel" required />
+              <input id="hero-phone" name="phone" class="seq-input" type="tel" placeholder="Phone Number" autocomplete="tel" required />
               <label for="hero-zip" class="seq-visually-hidden">ZIP Code</label>
-              <input id="hero-zip" class="seq-input seq-input--zip" type="text" placeholder="ZIP Code" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" autocomplete="postal-code" required />
+              <input id="hero-zip" name="zip" class="seq-input seq-input--zip" type="text" placeholder="ZIP Code" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" autocomplete="postal-code" required />
             </div>
             <label for="hero-service" class="seq-visually-hidden">What's the problem?</label>
-            <select id="hero-service" class="seq-input seq-select" required>
+            <select id="hero-service" name="service" class="seq-input seq-select" required>
               <option value="" disabled selected>What's the problem?</option>
               <option value="tuckpointing">Tuckpointing / Mortar Repair</option>
               <option value="brick-replacement">Damaged or Spalled Brick Replacement</option>
@@ -127,9 +127,21 @@
               <option value="not-sure">Not Sure — That's Why I Want the Inspection</option>
               <option value="estimate">Just Looking for an Estimate</option>
             </select>
-            <button class="seq-form-submit" type="submit">Schedule My Free Inspection →</button>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <button class="seq-form-submit" id="seq-form-btn" type="submit">
+              <span id="seq-btn-text">Schedule My Free Inspection →</span>
+              <span id="seq-btn-spinner" style="display:none">Sending…</span>
+            </button>
           </form>
-          <p class="seq-form-note">We call within 2 hours · Licensed &amp; Insured · Chicagoland Only</p>
+          <div id="seq-form-success" style="display:none; text-align:center; padding:20px 0;">
+            <div style="font-size:28px; margin-bottom:8px;">✓</div>
+            <p style="font-family:'Satoshi',sans-serif; font-size:15px; font-weight:700; color:#D4A931; margin:0 0 4px;">You're on the list!</p>
+            <p style="font-family:'Satoshi',sans-serif; font-size:13px; color:rgba(255,255,255,0.7); margin:0;">We'll call you within 2 hours to schedule your free inspection.</p>
+          </div>
+          <div id="seq-form-error" style="display:none; text-align:center; padding:8px 0;">
+            <p style="font-family:'Satoshi',sans-serif; font-size:12px; color:#ff6b6b; margin:0;">Something went wrong. Please call us at <a href="tel:7736562107" style="color:#D4A931;">773-656-2107</a>.</p>
+          </div>
+          <p class="seq-form-note" id="seq-form-note">We call within 2 hours · Licensed &amp; Insured · Chicagoland Only</p>
         </div>
       </div>
 
@@ -180,7 +192,41 @@
   var images = window.__seqImages;
 
   var form = document.getElementById('seq-hero-form');
-  if (form) form.addEventListener('submit', function(e) { e.preventDefault(); });
+  if (form) form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('hero-name').value.trim();
+    var phone = document.getElementById('hero-phone').value.trim();
+    var zip = document.getElementById('hero-zip').value.trim();
+    var service = document.getElementById('hero-service').value;
+    var honeypot = form.querySelector('input[name="_gotcha"]').value;
+    if (honeypot) return;
+    if (!name || !phone || !service) return;
+    var btn = document.getElementById('seq-form-btn');
+    var btnText = document.getElementById('seq-btn-text');
+    var spinner = document.getElementById('seq-btn-spinner');
+    var successEl = document.getElementById('seq-form-success');
+    var errorEl = document.getElementById('seq-form-error');
+    var noteEl = document.getElementById('seq-form-note');
+    if (btn) btn.disabled = true;
+    if (btnText) btnText.style.display = 'none';
+    if (spinner) spinner.style.display = 'inline';
+    if (errorEl) errorEl.style.display = 'none';
+    var data = new FormData(form);
+    fetch('https://formspree.io/f/xpwzkqdw', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function(res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          if (noteEl) noteEl.style.display = 'none';
+          if (successEl) successEl.style.display = 'block';
+        } else { throw new Error('fail'); }
+      })
+      .catch(function() {
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.style.display = 'inline';
+        if (spinner) spinner.style.display = 'none';
+        if (errorEl) errorEl.style.display = 'block';
+      });
+  });
 
   function pad(n) { return String(n).padStart(3, '0'); }
 
