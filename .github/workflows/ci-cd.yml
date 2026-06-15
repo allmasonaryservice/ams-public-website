@@ -70,6 +70,7 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          PUBLIC_GEMINI_KEY: ${{ secrets.PUBLIC_GEMINI_KEY }}
 
       - name: Deploy prebuilt to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
