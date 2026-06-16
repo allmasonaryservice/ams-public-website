@@ -7,6 +7,6 @@ export default defineConfig({
   site: 'https://allmasonryservices.com',
   integrations: [sitemap()],
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
 });
