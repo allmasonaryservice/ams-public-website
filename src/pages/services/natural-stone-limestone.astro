@@ -812,6 +812,28 @@ const faqItems = [
     })();
   </script>
 
+
+  <!-- ─── BLOG RESOURCES ─── -->
+  <section class="lp-blog-section" style="background:#F5F3EF;border-top:1px solid #D8D2C8;padding:80px 0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 80px;">
+      <div style="font-family:'Satoshi',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D4A931;margin-bottom:12px;">From the Blog</div>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;color:#1A1A1A;line-height:1.1;margin-bottom:40px;">Related Reading &amp; <em style="font-style:italic;font-weight:400;color:#D4A931;">Resources</em></h2>
+      <div class="lp-blog-grid">
+        <a href="/blog/natural-stone-limestone-chicago-guide" class="lp-blog-card">
+          <div class="lp-blog-tag">Read More</div>
+          <h3 class="lp-blog-title">Natural Stone & Limestone Masonry in Chicago</h3>
+          <p class="lp-blog-desc">Indiana limestone, greystone, and fieldstone — materials, repair methods, and what to expect.</p>
+          <span class="lp-blog-read">Read Article</span>
+        </a>
+        <a href="/blog/stone-style-selector-tool-guide" class="lp-blog-card">
+          <div class="lp-blog-tag">Read More</div>
+          <h3 class="lp-blog-title">How to Use Our Free Stone Style Selector Tool</h3>
+          <p class="lp-blog-desc">Pick the right stone profile for your home's architecture in minutes.</p>
+          <span class="lp-blog-read">Read Article</span>
+        </a>
+      </div>
+    </div>
+  </section>
   <CTABanner />
   <Footer />
 </BaseLayout>
@@ -1032,4 +1054,15 @@ const faqItems = [
   .sp-btn { width: 100%; text-align: center; }
   .sp-tool-embed { padding: 24px 20px; }
 }
-</style>
+
+  .lp-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; margin-top: 0; }
+  .lp-blog-card { background: #fff; padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit; transition: background 200ms ease; }
+  .lp-blog-card:hover { background: #FAFAF8; }
+  .lp-blog-tag { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; }
+  .lp-blog-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: #1A1A1A; line-height: 1.3; }
+  .lp-blog-desc { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #555; line-height: 1.6; flex: 1; }
+  .lp-blog-read { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #D4A931; margin-top: 8px; }
+  @media (max-width: 900px) { .lp-blog-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .lp-blog-grid { grid-template-columns: 1fr; } }
+
+  </style>

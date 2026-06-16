@@ -1,0 +1,388 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+export function getStaticPaths() {
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = `${siteUrl}/blog/${post.slug}`;
+const mobileHeroImage = post.heroImage.replace('/images/blog/', '/images/blog/mobile/');
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": siteUrl + "/blog" },
+    { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
+  ]
+};
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.metaDescription,
+  "image": { "@type": "ImageObject", "url": siteUrl + post.heroImage, "width": 1200, "height": 630 },
+  "datePublished": post.publishDate,
+  "dateModified": post.publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": "All Masonry Services",
+    "url": siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "All Masonry Services",
+    "url": siteUrl,
+    "logo": { "@type": "ImageObject", "url": siteUrl + "/og-image.jpg" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "keywords": post.tags.join(', ')
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": post.faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+---
+
+<BaseLayout title={post.seoTitle} description={post.metaDescription} canonical={pageUrl} ogType="article" ogImage={post.heroImage}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- BREADCRUMB -->
+  <nav class="bl-breadcrumb" aria-label="Breadcrumb">
+    <div class="bl-breadcrumb-inner">
+      <a href="/">Home</a><span>/</span><a href="/blog">Blog</a><span>/</span><span>{post.categoryLabel}</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="bl-hero">
+    <div class="bl-hero-inner">
+      <div class="bl-meta-row">
+        <span class="bl-cat-badge">{post.categoryLabel}</span>
+        <span class="bl-dot">·</span>
+        <span class="bl-read-time">{post.readingTime} min read</span>
+        <span class="bl-dot">·</span>
+        <time class="bl-date" datetime={post.publishDate}>{new Date(post.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+      </div>
+      <h1 class="bl-h1">{post.h1}</h1>
+    </div>
+    <div class="bl-hero-img">
+      <picture>
+        <source media="(max-width: 640px)" srcset={mobileHeroImage} width="640" height="400" />
+        <img src={post.heroImage} alt={post.heroAlt} width="1200" height="675" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
+  </section>
+
+  <!-- CONTENT WRAPPER -->
+  <div class="bl-wrapper">
+    <article class="bl-article">
+
+      <!-- TLDR BOX -->
+      <div class="bl-tldr">
+        <span class="bl-tldr-label">TL;DR</span>
+        <p>{post.tldr}</p>
+      </div>
+
+      <!-- TOC -->
+      <nav class="bl-toc" aria-label="Table of contents">
+        <p class="bl-toc-title">In This Article</p>
+        <ol class="bl-toc-list">
+          {post.sections.map(s => <li><a href={'#' + s.heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}>{s.heading}</a></li>)}
+          <li><a href="#case-study">Case Study</a></li>
+          {post.toolCTA && <li><a href="#tool">Free Tool</a></li>}
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <!-- INTRO -->
+      <p class="bl-intro">{post.intro}</p>
+
+      <!-- SECTIONS -->
+      {post.sections.map(s => (
+        <section class="bl-section">
+          <h2 id={s.heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}>{s.heading}</h2>
+          <div class="bl-body" set:html={s.body.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>').replace(/^/, '<p>').replace(/$/, '</p>')} />
+        </section>
+      ))}
+
+      <!-- CASE STUDY -->
+      <section class="bl-case-study" id="case-study">
+        <h2>{post.caseStudy.heading}</h2>
+        <div class="bl-body" set:html={post.caseStudy.body.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>')} />
+      </section>
+
+      <!-- TOOL CTA -->
+      {post.toolCTA && (
+        <div class="bl-tool-cta" id="tool">
+          <div class="bl-tool-cta-inner">
+            <p class="bl-tool-cta-label">Free Tool</p>
+            <p class="bl-tool-cta-desc">{post.toolCTA.description}</p>
+            <a href={post.toolCTA.href} class="bl-tool-cta-btn">{post.toolCTA.label}</a>
+          </div>
+        </div>
+      )}
+
+      <!-- FAQ -->
+      <section class="bl-faq" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="bl-faq-list">
+          {post.faqs.map(f => (
+            <details class="bl-faq-item">
+              <summary class="bl-faq-q">{f.q}</summary>
+              <p class="bl-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- INTERNAL LINKS -->
+      <div class="bl-links-row">
+        {post.relatedServiceHref && (
+          <a href={post.relatedServiceHref} class="bl-link-pill">
+            <span class="bl-link-pill-label">Service</span>
+            {post.relatedService}
+          </a>
+        )}
+        {post.relatedCityHref && (
+          <a href={post.relatedCityHref} class="bl-link-pill">
+            <span class="bl-link-pill-label">City Page</span>
+            {post.relatedCity}
+          </a>
+        )}
+        {post.relatedToolHref && (
+          <a href={post.relatedToolHref} class="bl-link-pill">
+            <span class="bl-link-pill-label">Free Tool</span>
+            {post.relatedTool}
+          </a>
+        )}
+      </div>
+
+      <!-- CTA -->
+      <div class="bl-cta">
+        <h2>Need Masonry Work in {post.relatedCity || 'Chicagoland'}?</h2>
+        <p>AMS has been serving {post.relatedCity || 'Chicagoland'} since 2007 — 500+ projects, 4.8★ rating, 92 reviews. Licensed & insured. Free on-site estimates.</p>
+        <div class="bl-cta-actions">
+          <a href="/contact#form" class="bl-cta-btn">Request Free Estimate</a>
+          <a href="tel:7736562107" class="bl-cta-phone">773-656-2107</a>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="bl-sidebar">
+      <div class="bl-sidebar-card">
+        <p class="bl-sidebar-heading">Get a Free Estimate</p>
+        <p class="bl-sidebar-desc">Licensed & insured. No subcontractors. Written scope before any work begins.</p>
+        <a href="/contact#form" class="bl-sidebar-btn">Request Estimate</a>
+        <a href="tel:7736562107" class="bl-sidebar-phone">773-656-2107</a>
+      </div>
+
+      {post.relatedServiceHref && (
+        <div class="bl-sidebar-card">
+          <p class="bl-sidebar-heading">Related Service</p>
+          <a href={post.relatedServiceHref} class="bl-sidebar-link">{post.relatedService}</a>
+        </div>
+      )}
+
+      {post.relatedCityHref && (
+        <div class="bl-sidebar-card">
+          <p class="bl-sidebar-heading">Serving {post.relatedCity}</p>
+          <a href={post.relatedCityHref} class="bl-sidebar-link">View {post.relatedCity} Page</a>
+        </div>
+      )}
+
+      <div class="bl-sidebar-card">
+        <p class="bl-sidebar-heading">Free Tools</p>
+        <ul class="bl-sidebar-tools">
+          <li><a href="/services/tuckpointing-repointing#tool">Mortar Damage Assessment</a></li>
+          <li><a href="/services/damaged-brick-replacement#tool">Brick Damage Counter</a></li>
+          <li><a href="/services/chimney-repair-rebuilding#tool">Chimney Risk Score</a></li>
+          <li><a href="/services/chimney-fireplace#tool">Chimney Inspection Checklist</a></li>
+          <li><a href="/services/natural-stone-limestone#tool">Stone Style Selector</a></li>
+          <li><a href="/services/custom-home-masonry#tool">Home Masonry Planner</a></li>
+          <li><a href="/services/brick-installation#tool">Brick Installation Estimator</a></li>
+          <li><a href="/services/brick-stone-veneers#tool">Veneer Coverage Calculator</a></li>
+          <li><a href="/services/commercial-brick-stone#tool">Commercial Scope Builder</a></li>
+          <li><a href="/services/commercial-masonry-veneers#tool">Facade Coverage Estimator</a></li>
+          <li><a href="/services/cmu-block-installation#tool">CMU Load Calculator</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- RELATED POSTS -->
+  {post.relatedPosts.length > 0 && (() => {
+    const related = blogPosts.filter(p => post.relatedPosts.includes(p.slug)).slice(0, 3);
+    return related.length > 0 ? (
+      <section class="bl-related">
+        <div class="bl-related-inner">
+          <h2>Related Articles</h2>
+          <div class="bl-related-grid">
+            {related.map(r => (
+              <a href={'/blog/' + r.slug} class="bl-related-card">
+                <img src={r.heroImage} alt={r.heroAlt} width="600" height="315" loading="lazy" decoding="async" />
+                <div class="bl-related-body">
+                  <span class="bl-related-cat">{r.categoryLabel}</span>
+                  <p class="bl-related-title">{r.title}</p>
+                  <span class="bl-related-cta">Read Article</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ) : null;
+  })()}
+
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ALL border-radius: 0px — NO EXCEPTIONS */
+* { box-sizing: border-box; }
+
+/* BREADCRUMB */
+.bl-breadcrumb { background: #1A1A1A; padding: 12px 0; }
+.bl-breadcrumb-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; gap: 8px; align-items: center; font-family: 'Satoshi', sans-serif; font-size: 12px; }
+.bl-breadcrumb-inner a { color: #D4A931; text-decoration: none; }
+.bl-breadcrumb-inner span { color: #8B8070; }
+
+/* HERO */
+.bl-hero { background: #F5F3EF; padding-top: 56px; }
+.bl-hero-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px 40px; }
+.bl-meta-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.bl-cat-badge { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #D4A931; border: 1px solid #D4A931; padding: 3px 10px; }
+.bl-dot { color: #8B8070; font-size: 12px; }
+.bl-read-time, .bl-date { font-family: 'Satoshi', sans-serif; font-size: 12px; color: #8B8070; }
+.bl-h1 { font-family: 'Fraunces', serif; font-size: clamp(26px, 3vw, 42px); font-weight: 900; color: #1A1A1A; line-height: 1.15; margin: 0; }
+.bl-hero-img img { width: 100%; height: auto; display: block; border-top: 3px solid #D4A931; max-height: 480px; object-fit: cover; }
+
+/* WRAPPER: article + sidebar */
+.bl-wrapper { max-width: 1280px; margin: 0 auto; padding: 64px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; align-items: start; }
+
+/* ARTICLE */
+.bl-article { min-width: 0; }
+
+/* TLDR */
+.bl-tldr { background: #1A1A1A; border-left: 3px solid #D4A931; padding: 24px 28px; margin-bottom: 40px; }
+.bl-tldr-label { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; display: block; margin-bottom: 10px; }
+.bl-tldr p { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0; }
+
+/* TOC */
+.bl-toc { background: #F5F3EF; border: 1px solid #D8D2C8; border-left: 3px solid #D4A931; padding: 24px 28px; margin-bottom: 40px; }
+.bl-toc-title { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8B8070; margin: 0 0 14px; }
+.bl-toc-list { margin: 0; padding: 0 0 0 18px; }
+.bl-toc-list li { font-family: 'Satoshi', sans-serif; font-size: 14px; margin-bottom: 8px; }
+.bl-toc-list a { color: #1A1A1A; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 200ms; }
+.bl-toc-list a:hover { border-bottom-color: #D4A931; color: #D4A931; }
+
+/* INTRO */
+.bl-intro { font-family: 'Satoshi', sans-serif; font-size: 17px; color: #4A4A4A; line-height: 1.8; margin: 0 0 40px; }
+
+/* SECTIONS */
+.bl-section { margin-bottom: 48px; }
+.bl-section h2 { font-family: 'Fraunces', serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; color: #1A1A1A; margin: 0 0 20px; border-bottom: 2px solid #E8E4DC; padding-bottom: 12px; }
+.bl-body { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.8; }
+.bl-body p { margin: 0 0 16px; }
+.bl-body strong { color: #1A1A1A; font-weight: 700; }
+
+/* CASE STUDY */
+.bl-case-study { background: #E8E4DC; border-left: 3px solid #D4A931; padding: 36px 40px; margin-bottom: 48px; }
+.bl-case-study h2 { font-family: 'Fraunces', serif; font-size: clamp(18px, 2vw, 24px); font-weight: 700; color: #1A1A1A; margin: 0 0 16px; }
+
+/* TOOL CTA */
+.bl-tool-cta { background: #1A1A1A; padding: 36px 40px; margin-bottom: 48px; }
+.bl-tool-cta-label { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin: 0 0 10px; }
+.bl-tool-cta-desc { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 20px; }
+.bl-tool-cta-btn { display: inline-block; background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: opacity 200ms; }
+.bl-tool-cta-btn:hover { opacity: 0.88; }
+
+/* FAQ */
+.bl-faq { margin-bottom: 48px; }
+.bl-faq h2 { font-family: 'Fraunces', serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; color: #1A1A1A; margin: 0 0 24px; border-bottom: 2px solid #E8E4DC; padding-bottom: 12px; }
+.bl-faq-item { border: 1px solid #D8D2C8; border-top: 3px solid #D4A931; margin-bottom: 12px; }
+.bl-faq-q { font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; color: #1A1A1A; padding: 18px 20px; cursor: pointer; list-style: none; }
+.bl-faq-q::-webkit-details-marker { display: none; }
+.bl-faq-a { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #4A4A4A; line-height: 1.75; margin: 0; padding: 0 20px 18px; }
+
+/* INTERNAL LINK PILLS */
+.bl-links-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+.bl-link-pill { display: flex; flex-direction: column; gap: 4px; background: #F5F3EF; border: 1px solid #D8D2C8; border-top: 3px solid #D4A931; padding: 14px 18px; text-decoration: none; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; transition: border-color 200ms; min-width: 160px; }
+.bl-link-pill:hover { border-color: #D4A931; }
+.bl-link-pill-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; }
+
+/* ARTICLE CTA */
+.bl-cta { background: #1A1A1A; padding: 48px 40px; text-align: center; margin-bottom: 0; }
+.bl-cta h2 { font-family: 'Fraunces', serif; font-size: clamp(22px, 2.5vw, 32px); font-weight: 700; color: #fff; margin: 0 0 14px; }
+.bl-cta p { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0 0 28px; }
+.bl-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.bl-cta-btn { background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 16px 32px; text-decoration: none; transition: opacity 200ms; }
+.bl-cta-btn:hover { opacity: 0.88; }
+.bl-cta-phone { border: 1px solid rgba(255,255,255,0.3); color: #fff; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; padding: 16px 28px; text-decoration: none; transition: border-color 200ms; }
+.bl-cta-phone:hover { border-color: #D4A931; color: #D4A931; }
+
+/* SIDEBAR */
+.bl-sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 24px; }
+.bl-sidebar-card { background: #F5F3EF; border: 1px solid #D8D2C8; border-top: 3px solid #D4A931; padding: 24px; }
+.bl-sidebar-heading { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #D4A931; margin: 0 0 10px; }
+.bl-sidebar-desc { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; line-height: 1.6; margin: 0 0 16px; }
+.bl-sidebar-btn { display: block; background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 13px 20px; text-decoration: none; text-align: center; margin-bottom: 10px; transition: opacity 200ms; }
+.bl-sidebar-btn:hover { opacity: 0.88; }
+.bl-sidebar-phone { display: block; text-align: center; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: #1A1A1A; text-decoration: none; border: 1px solid #D8D2C8; padding: 10px; transition: border-color 200ms; }
+.bl-sidebar-phone:hover { border-color: #D4A931; }
+.bl-sidebar-link { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #1A1A1A; text-decoration: none; border-bottom: 1px solid #D4A931; }
+.bl-sidebar-link:hover { color: #D4A931; }
+.bl-sidebar-tools { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.bl-sidebar-tools a { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A4A4A; text-decoration: none; border-bottom: 1px solid transparent; transition: color 200ms, border-color 200ms; }
+.bl-sidebar-tools a:hover { color: #D4A931; border-bottom-color: #D4A931; }
+
+/* RELATED */
+.bl-related { background: #E8E4DC; padding: 80px 0; }
+.bl-related-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.bl-related h2 { font-family: 'Fraunces', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; color: #1A1A1A; margin: 0 0 36px; }
+.bl-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bl-related-card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid #D8D2C8; border-top: 3px solid #D4A931; transition: border-color 200ms; }
+.bl-related-card:hover { border-color: #D4A931; }
+.bl-related-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.bl-related-body { padding: 20px; }
+.bl-related-cat { font-family: 'Satoshi', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; display: block; margin-bottom: 8px; }
+.bl-related-title { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; line-height: 1.35; }
+.bl-related-cta { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #D4A931; border-bottom: 1px solid #D4A931; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .bl-breadcrumb-inner, .bl-hero-inner, .bl-related-inner { padding: 0 40px; }
+  .bl-wrapper { padding: 48px 40px; gap: 40px; grid-template-columns: 1fr 280px; }
+}
+@media (max-width: 900px) {
+  .bl-wrapper { grid-template-columns: 1fr; }
+  .bl-sidebar { position: static; }
+  .bl-related-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bl-breadcrumb-inner, .bl-hero-inner, .bl-related-inner { padding: 0 20px; }
+  .bl-wrapper { padding: 36px 20px; }
+  .bl-related-grid { grid-template-columns: 1fr; }
+  .bl-cta { padding: 36px 20px; }
+  .bl-case-study, .bl-tool-cta { padding: 24px 20px; }
+}
+</style>

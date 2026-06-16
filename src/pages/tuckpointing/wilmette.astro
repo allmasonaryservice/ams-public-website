@@ -272,7 +272,18 @@ const breadcrumbSchema = {
   .lp-proj-all-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 22px; background: #1A1A1A; color: #D4A931; font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; border: 2px solid #1A1A1A; transition: background 200ms ease, color 200ms ease; }
   .lp-proj-all-btn:hover { background: #D4A931; color: #1A1A1A; border-color: #D4A931; }
   .lp-proj-all-btn:focus-visible { outline: 2px solid #D4A931; outline-offset: 2px; }
-  @media (max-width: 900px) { .lp-proj-grid { grid-template-columns: 1fr !important; } }  </style>
+  @media (max-width: 900px) { .lp-proj-grid { grid-template-columns: 1fr !important; } }  
+  .lp-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #D8D2C8; margin-top: 0; }
+  .lp-blog-card { background: #fff; padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit; transition: background 200ms ease; }
+  .lp-blog-card:hover { background: #FAFAF8; }
+  .lp-blog-tag { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; }
+  .lp-blog-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: #1A1A1A; line-height: 1.3; }
+  .lp-blog-desc { font-family: 'Satoshi', sans-serif; font-size: 14px; color: #555; line-height: 1.6; flex: 1; }
+  .lp-blog-read { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #D4A931; margin-top: 8px; }
+  @media (max-width: 900px) { .lp-blog-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .lp-blog-grid { grid-template-columns: 1fr; } }
+
+  </style>
 
   <!-- HERO -->
   <section class="lp-hero">
@@ -540,6 +551,34 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+
+  <!-- ─── BLOG RESOURCES ─── -->
+  <section class="lp-section lp-blog" style="background:#F5F3EF;border-top:1px solid #D8D2C8;">
+    <div class="lp-section-inner">
+      <div class="lp-section-label">From the Blog</div>
+      <h2 class="lp-section-h2">Masonry Resources for <em>Wilmette Homeowners</em></h2>
+      <div class="lp-blog-grid">
+        <a href="/blog/tuckpointing-repointing-chicago-guide" class="lp-blog-card">
+          <div class="lp-blog-tag">Service Guide</div>
+          <h3 class="lp-blog-title">Complete Guide to Tuckpointing &amp; Repointing in Chicago</h3>
+          <p class="lp-blog-desc">When to repoint, what mortar to use, and how Chicago freeze-thaw cycles destroy failing joints.</p>
+          <span class="lp-blog-read">Read Article</span>
+        </a>
+        <a href="/blog/tuckpointing-cost-chicago-2026" class="lp-blog-card">
+          <div class="lp-blog-tag">Pricing Guide</div>
+          <h3 class="lp-blog-title">Tuckpointing Cost in Chicago 2026: What to Expect</h3>
+          <p class="lp-blog-desc">Per-linear-foot pricing, full two-flat estimates, and factors that move the number up or down.</p>
+          <span class="lp-blog-read">Read Article</span>
+        </a>
+        <a href="/blog/masonry-contractor-wilmette-il" class="lp-blog-card">
+          <div class="lp-blog-tag">Local Guide</div>
+          <h3 class="lp-blog-title">Masonry Contractor in Wilmette, IL — What to Know</h3>
+          <p class="lp-blog-desc">Local permit requirements, common brick types, and what sets Wilmette masonry apart from other suburbs.</p>
+          <span class="lp-blog-read">Read Article</span>
+        </a>
+      </div>
+    </div>
+  </section>
   <CTABanner />
 
   <!-- BACK LINK -->

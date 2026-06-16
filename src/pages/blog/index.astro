@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const siteUrl = 'https://allmasonryservices.com';
+const pageUrl = siteUrl + '/blog';
+
+const categories = [
+  { key: 'all', label: 'All Articles' },
+  { key: 'city', label: 'By City' },
+  { key: 'service', label: 'By Service' },
+  { key: 'tool', label: 'Tools & Guides' },
+  { key: 'topic', label: 'Expert Tips' },
+];
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "AMS Masonry Blog — Chicagoland Brick, Stone & Chimney Guides",
+  "description": "Expert masonry guides for Chicago and Chicagoland homeowners. Brick repair, tuckpointing, chimney work, limestone restoration, and more — from AMS, serving Chicagoland since 2007.",
+  "url": pageUrl,
+  "publisher": { "@type": "Organization", "name": "All Masonry Services", "url": siteUrl }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": pageUrl }
+  ]
+};
+---
+
+<BaseLayout
+  title="Masonry Blog — Chicagoland Brick, Chimney & Stone Guides | AMS"
+  description="Expert masonry guides for Chicago and Chicagoland homeowners. Tuckpointing costs, brick repair, chimney guides, limestone restoration — from AMS, serving Chicagoland since 2007."
+  canonical={pageUrl}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- BREADCRUMB -->
+  <nav class="bi-breadcrumb" aria-label="Breadcrumb">
+    <div class="bi-breadcrumb-inner">
+      <a href="/">Home</a><span>/</span><span>Blog</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="bi-header">
+    <div class="bi-header-inner">
+      <p class="bi-header-label">Masonry Knowledge Base</p>
+      <h1 class="bi-h1">Chicagoland Brick, Stone & Chimney Guides</h1>
+      <p class="bi-header-sub">Expert articles from AMS — 19 years, 500+ projects, serving Chicago and 19 suburbs. Everything you need to make smart masonry decisions.</p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="bi-stats">
+    <div class="bi-stats-inner">
+      <div class="bi-stat"><span class="bi-stat-val">{blogPosts.length}</span><span class="bi-stat-lbl">Articles</span></div>
+      <div class="bi-stat"><span class="bi-stat-val">19</span><span class="bi-stat-lbl">Cities Covered</span></div>
+      <div class="bi-stat"><span class="bi-stat-val">11</span><span class="bi-stat-lbl">Services</span></div>
+      <div class="bi-stat"><span class="bi-stat-val">11</span><span class="bi-stat-lbl">Free Tools</span></div>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="bi-filter" id="bi-filter">
+    <div class="bi-filter-inner">
+      {categories.map(cat => (
+        <button class="bi-filter-btn" data-cat={cat.key}>{cat.label}</button>
+      ))}
+    </div>
+  </div>
+
+  <!-- POSTS GRID -->
+  <section class="bi-posts">
+    <div class="bi-posts-inner">
+      <div class="bi-grid" id="bi-grid">
+        {blogPosts.map(post => (
+          <a href={'/blog/' + post.slug} class="bi-card" data-category={post.category}>
+            <div class="bi-card-img">
+              <picture>
+                <source media="(max-width: 640px)" srcset={post.heroImage.replace('/images/blog/', '/images/blog/mobile/')} width="640" height="400" />
+                <img src={post.heroImage} alt={post.heroAlt} width="600" height="315" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="bi-card-body">
+              <div class="bi-card-meta">
+                <span class="bi-card-cat">{post.categoryLabel}</span>
+                <span class="bi-card-dot">·</span>
+                <span class="bi-card-time">{post.readingTime} min</span>
+              </div>
+              <h2 class="bi-card-title">{post.title}</h2>
+              <p class="bi-card-excerpt">{post.metaDescription}</p>
+              <span class="bi-card-cta">Read Article</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS STRIP -->
+  <section class="bi-tools">
+    <div class="bi-tools-inner">
+      <h2>Free Masonry Tools — No Login Required</h2>
+      <p class="bi-tools-sub">Use our AI-powered tools to assess your masonry, estimate costs, and plan your project — all free, instant results, PDF download available.</p>
+      <div class="bi-tools-grid">
+        <a href="/services/tuckpointing-repointing#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Mortar Damage Assessment</span>
+          <span class="bi-tool-desc">8 questions → tuckpointing vs. repointing vs. full replacement</span>
+        </a>
+        <a href="/services/damaged-brick-replacement#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Brick Damage Counter</span>
+          <span class="bi-tool-desc">Count damaged bricks → cost estimate + urgency rating</span>
+        </a>
+        <a href="/services/chimney-repair-rebuilding#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Chimney Risk Score</span>
+          <span class="bi-tool-desc">12 questions → low / medium / high structural risk</span>
+        </a>
+        <a href="/services/chimney-fireplace#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Chimney Inspection Checklist</span>
+          <span class="bi-tool-desc">10 warning signs → safety assessment + repair priorities</span>
+        </a>
+        <a href="/services/natural-stone-limestone#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Stone Style Selector</span>
+          <span class="bi-tool-desc">Home style + location → perfect stone type recommendation</span>
+        </a>
+        <a href="/services/custom-home-masonry#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Custom Home Masonry Planner</span>
+          <span class="bi-tool-desc">Project details → personalized scope, timeline & cost range</span>
+        </a>
+        <a href="/services/brick-installation#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Brick Installation Estimator</span>
+          <span class="bi-tool-desc">Wall dimensions + brick type → material count + cost</span>
+        </a>
+        <a href="/services/brick-stone-veneers#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Veneer Coverage Calculator</span>
+          <span class="bi-tool-desc">Elevation dimensions → coverage breakdown + cost estimate</span>
+        </a>
+        <a href="/services/commercial-brick-stone#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Commercial Scope Builder</span>
+          <span class="bi-tool-desc">Building type + scope → AI-generated spec sheet</span>
+        </a>
+        <a href="/services/commercial-masonry-veneers#tool" class="bi-tool-card">
+          <span class="bi-tool-name">Facade Coverage Estimator</span>
+          <span class="bi-tool-desc">Building dimensions + veneer type → facade coverage plan</span>
+        </a>
+        <a href="/services/cmu-block-installation#tool" class="bi-tool-card">
+          <span class="bi-tool-name">CMU Load Calculator</span>
+          <span class="bi-tool-desc">Wall dimensions + block size → block count + mortar estimate</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bi-cta">
+    <div class="bi-cta-inner">
+      <h2>Ready to Talk to a Masonry Expert?</h2>
+      <p>AMS serves Chicago and 19 Chicagoland suburbs. Licensed, insured, no subcontractors. Free on-site estimates with written scope before any work begins.</p>
+      <div class="bi-cta-actions">
+        <a href="/contact#form" class="bi-cta-btn">Request Free Estimate</a>
+        <a href="tel:7736562107" class="bi-cta-phone">773-656-2107</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+(function() {
+  var filterBtns = document.querySelectorAll('.bi-filter-btn');
+  var cards = document.querySelectorAll('.bi-card');
+
+  function setActive(btn) {
+    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-cat');
+      setActive(btn);
+      cards.forEach(function(card) {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Set "All" as default active
+  var allBtn = document.querySelector('.bi-filter-btn[data-cat="all"]');
+  if (allBtn) allBtn.classList.add('active');
+})();
+</script>
+
+<style>
+* { box-sizing: border-box; }
+
+/* BREADCRUMB */
+.bi-breadcrumb { background: #1A1A1A; padding: 12px 0; }
+.bi-breadcrumb-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; gap: 8px; align-items: center; font-family: 'Satoshi', sans-serif; font-size: 12px; }
+.bi-breadcrumb-inner a { color: #D4A931; text-decoration: none; }
+.bi-breadcrumb-inner span { color: #8B8070; }
+
+/* HEADER */
+.bi-header { background: #1A1A1A; padding: 80px 0 72px; }
+.bi-header-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; text-align: center; }
+.bi-header-label { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; margin: 0 0 16px; }
+.bi-h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: #fff; margin: 0 0 20px; line-height: 1.1; }
+.bi-header-sub { font-family: 'Satoshi', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 640px; margin: 0 auto; }
+
+/* STATS */
+.bi-stats { background: #D4A931; padding: 0; }
+.bi-stats-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: repeat(4, 1fr); }
+.bi-stat { padding: 20px 0; text-align: center; border-right: 1px solid rgba(0,0,0,0.15); }
+.bi-stat:last-child { border-right: none; }
+.bi-stat-val { display: block; font-family: 'Fraunces', serif; font-size: 28px; font-weight: 900; color: #1A1A1A; }
+.bi-stat-lbl { display: block; font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(0,0,0,0.6); margin-top: 2px; }
+
+/* FILTER */
+.bi-filter { background: #F5F3EF; border-bottom: 1px solid #D8D2C8; padding: 0; position: sticky; top: 0; z-index: 10; }
+.bi-filter-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: flex; gap: 0; overflow-x: auto; }
+.bi-filter-btn { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #8B8070; background: none; border: none; border-bottom: 2px solid transparent; padding: 16px 20px; cursor: pointer; white-space: nowrap; transition: color 200ms, border-color 200ms; }
+.bi-filter-btn:hover, .bi-filter-btn.active { color: #1A1A1A; border-bottom-color: #D4A931; }
+
+/* POSTS */
+.bi-posts { background: #F5F3EF; padding: 64px 0; }
+.bi-posts-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.bi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+/* CARD */
+.bi-card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid #D8D2C8; border-top: 3px solid #D4A931; transition: border-color 250ms; }
+.bi-card:hover { border-color: #D4A931; }
+.bi-card-img img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.bi-card-body { padding: 24px; }
+.bi-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.bi-card-cat { font-family: 'Satoshi', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #D4A931; }
+.bi-card-dot { color: #D8D2C8; font-size: 10px; }
+.bi-card-time { font-family: 'Satoshi', sans-serif; font-size: 11px; color: #8B8070; }
+.bi-card-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: #1A1A1A; margin: 0 0 10px; line-height: 1.3; }
+.bi-card-excerpt { font-family: 'Satoshi', sans-serif; font-size: 13px; color: #8B8070; line-height: 1.6; margin: 0 0 16px; }
+.bi-card-cta { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #D4A931; border-bottom: 1px solid #D4A931; }
+
+/* TOOLS */
+.bi-tools { background: #1A1A1A; padding: 80px 0; }
+.bi-tools-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+.bi-tools h2 { font-family: 'Fraunces', serif; font-size: clamp(24px, 2.5vw, 34px); font-weight: 700; color: #fff; margin: 0 0 12px; }
+.bi-tools-sub { font-family: 'Satoshi', sans-serif; font-size: 15px; color: rgba(255,255,255,0.6); margin: 0 0 40px; line-height: 1.6; }
+.bi-tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.bi-tool-card { display: flex; flex-direction: column; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid #D4A931; padding: 20px 22px; text-decoration: none; transition: background 200ms; }
+.bi-tool-card:hover { background: rgba(255,255,255,0.09); }
+.bi-tool-name { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #fff; }
+.bi-tool-desc { font-family: 'Satoshi', sans-serif; font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* CTA */
+.bi-cta { background: #E8E4DC; padding: 80px 0; }
+.bi-cta-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; text-align: center; }
+.bi-cta h2 { font-family: 'Fraunces', serif; font-size: clamp(26px, 3vw, 38px); font-weight: 700; color: #1A1A1A; margin: 0 0 16px; }
+.bi-cta p { font-family: 'Satoshi', sans-serif; font-size: 16px; color: #4A4A4A; line-height: 1.7; margin: 0 0 32px; }
+.bi-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.bi-cta-btn { background: #D4A931; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 16px 36px; text-decoration: none; transition: opacity 200ms; }
+.bi-cta-btn:hover { opacity: 0.88; }
+.bi-cta-phone { border: 2px solid #1A1A1A; color: #1A1A1A; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; padding: 15px 28px; text-decoration: none; transition: background 200ms; }
+.bi-cta-phone:hover { background: #1A1A1A; color: #fff; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .bi-breadcrumb-inner, .bi-header-inner, .bi-posts-inner, .bi-tools-inner, .bi-cta-inner, .bi-stats-inner { padding: 0 40px; }
+  .bi-filter-inner { padding: 0 40px; }
+  .bi-grid { grid-template-columns: repeat(2, 1fr); }
+  .bi-tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bi-breadcrumb-inner, .bi-header-inner, .bi-posts-inner, .bi-tools-inner, .bi-cta-inner, .bi-stats-inner { padding: 0 20px; }
+  .bi-filter-inner { padding: 0 20px; }
+  .bi-grid { grid-template-columns: 1fr; }
+  .bi-tools-grid { grid-template-columns: 1fr; }
+  .bi-stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .bi-stat { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
+}
+</style>
