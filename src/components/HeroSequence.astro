@@ -515,6 +515,11 @@
   visibility: visible;
   pointer-events: auto;
 }
+/* Intro panel inner visible immediately — LCP <h1> must not wait for JS */
+.seq-panel-intro .seq-panel-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ─── Panel inner — default (left-aligned service panels) ── */
 .seq-panel-inner {
