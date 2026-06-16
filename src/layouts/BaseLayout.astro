@@ -37,22 +37,9 @@ const siteName = 'All Masonry Services';
     <link rel="preload" as="image" href="/images/sequence-desktop-webp/frame-001.webp" media="(min-width: 768px)" fetchpriority="high" />
     <link rel="preload" as="image" href="/images/sequence-mobile-webp/frame-001.webp" media="(max-width: 767px)" fetchpriority="high" />
 
-    <!-- Fonts: Fraunces (Google) + Satoshi (Fontshare) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.fontshare.com" />
-
-    <!-- Fraunces — non-blocking, display=swap prevents invisible text -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&display=swap" /></noscript>
-
-    <!-- Satoshi — non-blocking, display=swap prevents invisible text -->
-    <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" />
-    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" /></noscript>
+    <!-- Fonts: self-hosted Fraunces + Satoshi — no CDN, no 3rd-party round-trip -->
+    <link rel="preload" as="font" href="/fonts/satoshi-400.woff2" type="font/woff2" crossorigin />
+    <link rel="preload" as="font" href="/fonts/fraunces-700.woff2" type="font/woff2" crossorigin />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
